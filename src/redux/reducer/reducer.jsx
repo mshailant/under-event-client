@@ -10,6 +10,7 @@ function rootReducer(state = InitialState, action) {
         case GET_ALL_EVENTS_DB:
             return {
                 ...state,
+                eventosDb: action.payload
             }
         default:
             return {
