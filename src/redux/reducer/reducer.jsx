@@ -1,5 +1,16 @@
+import {
+GET_ALL_EVENTS_DB,
+} from "../actions/actions.jsx";
+const InitialState = {
+    eventosDb: [],
+}
+
 function rootReducer(state = InitialState, action) {
     switch (action.type) {
+        case GET_ALL_EVENTS_DB:
+            return {
+                ...state,
+            }
         default:
             return {
                 state,
