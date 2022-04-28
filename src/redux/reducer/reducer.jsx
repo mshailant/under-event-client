@@ -1,22 +1,23 @@
-import {
-GET_ALL_EVENTS_DB,
-} from "../actions/actions.jsx";
+import * as Action from "../actions/actions.jsx";
 const InitialState = {
-    eventosDb: [],
-}
+  eventosDb: [],
+};
 
 function rootReducer(state = InitialState, action) {
-    switch (action.type) {
-        case GET_ALL_EVENTS_DB:
-            return {
-                ...state,
-                eventosDb: action.payload
-            }
-        default:
-            return {
-                state,
-            }
-
-    }
+  switch (action.type) {
+    case Action.GET_ALL_EVENTS_DB:
+      return {
+        ...state,
+        eventosDb: action.payload,
+      };
+    case Action.CREATE_EVENT:
+      return {
+        ...state,
+      };
+    default:
+      return {
+        state,
+      };
+  }
 }
 export default rootReducer;
