@@ -1,0 +1,161 @@
+.container{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+    
+    
+    
+    
+  }
+  
+  a{
+    text-decoration: none !important;
+  }
+  
+  a:hover{
+    color: wheat;
+  }
+
+  .card{
+    
+    
+    width: auto;
+    height: auto;
+    list-style: none;
+    gap: 15px;
+  }
+  
+  
+  
+  .container:hover{
+    cursor: pointer;
+    transform: translatex(20px);
+    transition: all 0.2s;
+    background: rgba(158, 7, 245, 0.226);
+   
+    
+  }
+  
+  .text {
+    font-size: 28px;
+    color: wheat;
+    animation: flicker 1.5s infinite alternate;
+    color: rgb(226, 226, 226);
+    font-family: 'Kanit', sans-serif;
+
+  }
+
+  .a{
+    animation: parpadear 2s infinite backwards;
+  }
+
+  @keyframes flicker {
+      
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  
+        text-shadow:
+        0 0 4px rgba(158, 12, 158, 0.63),
+        0 0 11px rgba(31, 16, 32, 0.589),
+        0 0 19px rgba(225, 7, 245, 0.918),
+        0 0 40px rgba(225, 7, 245, 0.589),
+        0 0 80px rgba(225, 7, 245, 0.589),
+        0 0 90px rgba(225, 7, 245, 0.589),
+        0 0 100px rgba(247, 8, 255, 0.746),
+        0 0 150px #0a0000;
+    
+    }
+    
+    20%, 24%, 55% {        
+        text-shadow: none;
+    }    
+  }
+  
+  .title {
+    color: wheat;
+    margin-left: 20px;
+    font-size: 23px;
+  }
+  
+  .score{
+    font-size: 18px;
+    margin-top: 15px;
+    color: rgb(236, 236, 236);
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+    
+    
+  }
+  
+  .scoreContainer{
+  
+  }
+  
+  .label{
+    font-family: 'Kanit', sans-serif;
+    font-size: 25px;
+    font-weight: bolder;
+    color: rgb(226, 226, 226);
+    animation: flicker 1.5s infinite alternate;
+    margin-left: 25%;
+  }
+
+  
+
+  @keyframes flicker {
+      
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  
+        text-shadow:
+        0 0 4px rgba(158, 12, 158, 0.63),
+        0 0 11px rgba(31, 16, 32, 0.589),
+        0 0 19px rgba(225, 7, 245, 0.918),
+        0 0 40px rgba(225, 7, 245, 0.589),
+        0 0 80px rgba(225, 7, 245, 0.589),
+        0 0 90px rgba(225, 7, 245, 0.589),
+        0 0 100px rgba(247, 8, 255, 0.746),
+        0 0 150px #0a0000;
+    
+    }
+    
+    20%, 24%, 55% {        
+        text-shadow: none;
+    }    
+  }
+  
+  
+  .dish{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+    color:rgba(240, 240, 240, 0.76);
+    margin-left: 10%;
+    margin-top: 10px;
+  }
+  
+  .author{
+    font-size: 21px;
+    font-weight: bolder;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(213, 179, 245);
+  }
+  
+  
+  
+  @media (max-width: 980px) {
+    .card {
+      width: 350px;
+      height: 200px;
+      margin: 50px auto;
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      color: rgb(7, 0, 0);
+      background-color: rgb(224, 157, 157);
+      opacity: 0.9;
+      border-radius: 10px;
+      box-shadow: 0px 0px 30px 2px rgb(95, 24, 45);
+      font-style: italic;
+      padding: 10px 5px 0px 5px;
+    }
+  }
+  
