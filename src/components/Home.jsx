@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import * as Action from "../redux/actions/actions";
-
+import styles from "./Home.module.css"
 
 
 import { Container, Row, Col } from "react-bootstrap";
@@ -24,22 +24,21 @@ export default function Home() {
     dispatch(Action.getAllEvent());
   }, [dispatch]);
   return (
-    <div>
+    <div className={styles.background}>
       
 
       <Nav />
 
-      <Container>
-        <Row className="rows">
-          <Col className="columns">
+     
+          <div className={styles.cards}>
             {events?.map((c) => (
-              <div>
+              <div key={c.id}>
                 <Individual id={c.id} title={c.title} imagen={c.imagen} />
               </div>
             ))}
-          </Col>
-        </Row>
-      </Container>
+     
+
+     </div>
     </div>
   );
 }
