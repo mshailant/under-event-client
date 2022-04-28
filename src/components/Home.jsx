@@ -2,14 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import * as Action from "../redux/actions/actions"
-import Logo from "../components/Logo.jsx";
-
 import * as Action from "../redux/actions/actions";
+
+
+
 import { Container, Row, Col } from "react-bootstrap";
 import Individual from "./Card";
-import Nav from "./Nav"
-
+import Nav from "./Nav";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -20,24 +19,19 @@ export default function Home() {
     dispatch(Action.getAllEvent());
   }, [dispatch]);
 
-
-    console.log(events);
-    useEffect(() => {
-        dispatch(Action.getAllEvent())
-    }, [dispatch])
-    return (
-        <div>
-            <p>HOLA SOY EL HOME !</p>
-            <Logo />
-
-
+  console.log(events);
+  useEffect(() => {
+    dispatch(Action.getAllEvent());
+  }, [dispatch]);
   return (
     <div>
-        <Nav/>
       
-      <Container >
+
+      <Nav />
+
+      <Container>
         <Row className="rows">
-          <Col className="columns" >
+          <Col className="columns">
             {events?.map((c) => (
               <div>
                 <Individual id={c.id} title={c.title} imagen={c.imagen} />

@@ -1,12 +1,14 @@
 import React from "react";
 import { Container, Row, Col, Navbar, Nav, NavDropdown,  FormControl, Form, Collapse, Brand, Item, Button } from "react-bootstrap";
-
+import Logo from "../components/Logo.jsx";
 
 export default function Navegacion(){
     return (
+
+     
         <Navbar bg="light" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#"><img src={"https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg" } width="50px" height="35"/></Navbar.Brand>
+          <Navbar.Brand href="#"><Logo /></Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
