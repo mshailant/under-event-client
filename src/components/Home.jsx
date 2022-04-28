@@ -19,7 +19,7 @@ export default function Home() {
             <p>HOLA SOY EL HOME !</p>
 
             {events?.map((c) => (
-                <div>
+                <div key={c.id}>
                     <Card
                         id={c.id}
                         title={c.title}
