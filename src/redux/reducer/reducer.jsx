@@ -14,6 +14,11 @@ function rootReducer(state = InitialState, action) {
       return {
         ...state,
       };
+    case Action.GET_BY_TITLE:
+      return {
+        ...state,
+        eventosDb: action.payload,
+      }
     default:
       return {
         state,

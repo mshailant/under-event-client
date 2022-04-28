@@ -2,6 +2,8 @@ import React from "react";
 import { Container, Row, Col, Navbar, Nav, NavDropdown,  FormControl, Form, Collapse, Brand, Item, Button } from "react-bootstrap";
 import Logo from "../components/Logo.jsx";
 
+import Searchbar from "./Searchbar"
+
 export default function Navegacion(){
     return (
 
@@ -30,7 +32,9 @@ export default function Navegacion(){
                 Link
               </Nav.Link>
             </Nav>
-            <Form className="d-flex">
+
+            <Searchbar/>
+            {/* <Form className="d-flex">
               <FormControl
                 type="search"
                 placeholder="Search"
@@ -38,7 +42,7 @@ export default function Navegacion(){
                 aria-label="Search"
               />
               <Button variant="outline-success">Search</Button>
-            </Form>
+            </Form> */}
           </Navbar.Collapse>
         </Container>
       </Navbar>
