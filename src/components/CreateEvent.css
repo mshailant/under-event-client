@@ -1,0 +1,12 @@
+.danger {
+  position: relative;
+  font-size: 0.8rem;
+  top: 0.5rem;
+  color: red;
+  border-color: red;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
