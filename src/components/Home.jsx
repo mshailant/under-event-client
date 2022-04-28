@@ -9,6 +9,7 @@ import styles from "./Home.module.css"
 import { Container, Row, Col } from "react-bootstrap";
 import Individual from "./Card";
 import Nav from "./Nav";
+import Carousely from "./Carousel";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -28,6 +29,8 @@ export default function Home() {
       
 
       <Nav />
+      
+      <Carousely />
 
      
           <div className={styles.cards}>
