@@ -6,7 +6,7 @@ export default function Navegacion(){
     return (
         <Navbar bg="light" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+          <Navbar.Brand href="#"><img src={"https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg" } width="50px" height="35"/></Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
