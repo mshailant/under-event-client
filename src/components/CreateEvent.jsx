@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createEvent } from "../redux/actions/actions";
 import "./CreateEvent.css";
+import { Button } from "react-bootstrap";
 export function validate(input) {
   let errors = {};
 
@@ -112,11 +113,16 @@ export default function CreateEvent() {
     <div>
       <div>
         <Link to="/home">
-          <button>Back to main page</button>
+          <Button variant="outline-dark">Back to main page</Button>
         </Link>
       </div>
-      <div>
+      <div className="container">
         <form onSubmit={(e) => handleSubmit(e)}>
+          <div className="title">
+             <h2>Create your Events</h2>
+          </div>
+
+          <div className="all-label">
           <label>Title:</label>
           <input
             type="text"
@@ -190,7 +196,9 @@ export default function CreateEvent() {
             onChange={(e) => handleInputChange(e)}
           />
           {errors.stock && <p className="danger">{errors.stock}</p>}
-          <button type="submit">Create Event</button>
+
+          </div>
+          <Button style={{marginTop: 10, marginLeft: 70}} variant="outline-dark">Create Event</Button>
         </form>
       </div>
     </div>
