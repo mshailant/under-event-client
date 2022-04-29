@@ -22,11 +22,12 @@ export default function Carousely() {
 
           <Carousel.Caption></Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item style={{marginTop: 50}}>
+        <Carousel.Item style={{marginTop: 50  }}>
           <img
             className="d-block w-100"
-            src={"./img/03.jpg"}
+            src={"./img/03.jpg" }
             alt="Third slide"
+            
           />
 
           <Carousel.Caption></Carousel.Caption>

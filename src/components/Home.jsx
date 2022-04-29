@@ -7,14 +7,14 @@ import styles from "./Home.module.css";
 
 import { Container, Row, Col } from "react-bootstrap";
 
-import Nav from "./Nav";
+
 import Carousely from "./Carousel";
 import Cardi from "./Cardi";
+import Buttom from "./Button/ScrollButton";
 
 export default function Home() {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.eventosDb);
-  
 
   console.log(events);
   useEffect(() => {
@@ -36,6 +36,7 @@ export default function Home() {
           </div>
         ))}
       </div>
+      <Buttom/>
     </div>
   );
 }
