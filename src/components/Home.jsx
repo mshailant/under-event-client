@@ -14,6 +14,7 @@ import Cardi from "./Cardi";
 export default function Home() {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.eventosDb);
+  
 
   console.log(events);
   useEffect(() => {

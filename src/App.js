@@ -7,6 +7,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CreateEvent from "./components/CreateEvent";
 import Nav from "./components/Nav";
 
+import Detail from "./components/Detail";
+
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +16,8 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/createEvent" element={<CreateEvent />} />
+
+        <Route path="/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );
