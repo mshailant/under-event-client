@@ -2,6 +2,7 @@ import axios from "axios";
 export const GET_ALL_EVENTS_DB = "GET_ALL_EVENTS_DB";
 export const CREATE_EVENT = "CREATE_EVENT";
 export const GET_BY_TITLE = "GET_BY_TITLE";
+export const BY_EVENT_TYPE = "BY_EVENT_TYPE";
 
 export function getAllEvent() {
   return async function (dispatch) {
@@ -42,4 +43,12 @@ export function getByTitle(title) {
           payload: obtener.data,
         });
   };
+}
+
+//filtar por tipo de evento
+export function byEventType(payload) {
+  return {
+      type: BY_EVENT_TYPE,
+      payload
+  }
 }
