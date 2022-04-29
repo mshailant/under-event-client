@@ -23,7 +23,7 @@ import Logo from "../components/Logo.jsx";
 import LoginButton from "./LoginButton.jsx";
 import ProfileButton from "./ProfileButton.jsx";
 import Searchbar from "./Searchbar";
-
+import styles from "./Nav.module.css"
 export default function Navegacion() {
   const dispatch = useDispatch();
   const { isAuthenticated, isLoading, error } = useAuth0();
@@ -34,6 +34,7 @@ export default function Navegacion() {
   }
 
   return (
+    <header className={styles.nav}>
     <Navbar bg="light" expand="lg">
       <Container fluid>
         <Navbar.Brand href="#">
@@ -78,5 +79,7 @@ export default function Navegacion() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+  </header>
   );
 }
+

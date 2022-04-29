@@ -12,7 +12,7 @@ export function validate(input) {
   if (!input.description) {
     errors.description = "Please description is require";
   }
-  if (!input.performers) {
+  if (!input.performers.length <= 0) {
     errors.performers = " Please performers ir require";
   }
   if (!input.imagen) {
@@ -35,7 +35,7 @@ export default function CreateEvent() {
   const stateInitialForms = {
     title: "",
     description: "",
-    performers: [],
+    performers: "",
     imagen: "",
     date: "",
     time: "",
@@ -52,7 +52,8 @@ export default function CreateEvent() {
     } else if (
       input.title === "" &&
       input.description === "" &&
-      input.performers === "" &&
+      input.performers === "",
+      
       input.imagen === "" &&
       input.date === "" &&
       input.time === "" &&
@@ -65,7 +66,7 @@ export default function CreateEvent() {
       setInput({
         title: "",
         description: "",
-        performers: [],
+        performers: "",
         imagen: "",
         date: "",
         time: "",
@@ -87,6 +88,21 @@ export default function CreateEvent() {
         [e.target.name]: e.target.value,
       })
     );
+  };
+
+  const handlePerformers = (e) => {
+    setInput({
+      ...input,
+      performers: [...input.performers, e.target.value],
+    });
+
+    setErrors(
+      validate({
+        ...input,
+        performers: [...input.performers, e.target.value],
+      })
+    );
+  
   };
 
   return (
@@ -116,13 +132,13 @@ export default function CreateEvent() {
           />
           {errors.description && <p className="danger">{errors.description}</p>}
           <label>Performers:</label>
-          <input
+           <input
             type="text"
             name="performers"
             value={input.performers}
-            onChange={(e) => handleInputChange(e)}
+            onChange={(e) => handlePerformers(e)}
           />
-          {errors.performers && <p className="danger">{errors.performers}</p>}
+          {errors.performers && <p className="danger">{errors.performers}</p>} 
           <label>Imagen:</label>
           <input
             type="text"
@@ -155,7 +171,7 @@ export default function CreateEvent() {
             onChange={(e) => handleInputChange(e)}
           />
           {errors.stock && <p className="danger">{errors.stock}</p>}
-          <button type="submit">Create Game</button>
+          <button type="submit">Create Event</button>
         </form>
       </div>
     </div>

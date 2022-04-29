@@ -8,6 +8,8 @@ import CreateEvent from "./components/CreateEvent";
 import Nav from "./components/Nav";
 import UserProfile from "./components/UserProfile";
 
+import Detail from "./components/Detail";
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +18,8 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/profile" element={<UserProfile />} />
         <Route exact path="/createEvent" element={<CreateEvent />} />
+
+        <Route path="/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );
