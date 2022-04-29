@@ -1,34 +1,43 @@
+
 import React from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getDetail } from "../redux/actions/actions.jsx";
 import { useParams } from "react-router"
 
-export default function Detail() {
-    const { id } = useParams();
+
+const Detail = () => {
     const dispatch = useDispatch();
-    const detailEventos = useSelector(state => state.detailEventos);
-    console.log(detailEventos, "Hola soy el estado de redux de detail");
+    const detalles = useSelector((state) => state.detailEventos);
+    const { id } = useParams();
+    
 
     useEffect(() => {
         dispatch(getDetail(id));
     }, []);
+
+   
+   
+
     const handleDirectToHomeFromDetail = () => {
-        window.location.href = "/";
-    }
-
-    return (
+       
+        window.location.href = "/"
+    };
+    return ( 
         <div>
-            <h4> holA soy el Detail  </h4>
-            <h1> {detailEventos.title}</h1>
-            <p >⭐ TIPO DE EVENTOS {detailEventos.eventType}</p>
-            <p> CUANDO ? {detailEventos.eventTime} </p>
-            <img src={detailEventos.imagen} alt= "imagen no encontrada"/>
-            <div>
-
-            <button onClick={handleDirectToHomeFromDetail}>VOLVER AL HOME</button>
-            </div>
-
+            {
+                detalles ?
+                <div>
+                <h4>Hola, {detalles.title} </h4> 
+                <p> TIPO DE EVENTOS {detalles.eventType}</p>
+                <p> CUANDO ? {detalles.eventTime} </p>
+                <img src={detalles.imagen} alt= "imagen no encontrada"/>
+                </div>
+                :
+                <h4>Chau</h4>
+            }
         </div>
     )
-};
+}
+
+export default Detail 

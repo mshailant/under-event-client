@@ -10,7 +10,7 @@ import { Card, Button, CardGroup, Container, Row, Col } from "react-bootstrap";
 export default function Cardi({id, title, imagen,}){
 
   const handleClickDirectiontoDetail = () => {
-    window.location.href = `/` + id;
+    window.location.href = "/" + id;
   };
   return(
  

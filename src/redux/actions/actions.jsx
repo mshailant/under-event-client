@@ -50,7 +50,8 @@ export function getByTitle(title) {
 }
 export function getDetail(id) {
   return async (dispatch) => {
-    let json = await axios.get(`http://localhost:3001/events/event${id}`);
+    let json = await axios.get("http://localhost:3001/events/" + id);
+    
     return dispatch({
       type: GET_DETAIL,
       payload: json.data,

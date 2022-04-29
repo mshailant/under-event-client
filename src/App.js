@@ -16,7 +16,6 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/createEvent" element={<CreateEvent />} />
-
         <Route path="/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>
