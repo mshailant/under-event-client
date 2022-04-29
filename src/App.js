@@ -18,7 +18,6 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/profile" element={<UserProfile />} />
         <Route exact path="/createEvent" element={<CreateEvent />} />
-
         <Route path="/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>

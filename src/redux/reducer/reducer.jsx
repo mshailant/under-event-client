@@ -2,7 +2,7 @@ import * as Action from "../actions/actions.jsx";
 const InitialState = {
   eventosDb: [],
 
-  detailEventos: [],	
+  detailEventos: {},	
 
   allEventType: []
 
@@ -25,8 +25,8 @@ function rootReducer(state = InitialState, action) {
         ...state,
         eventosDb: action.payload,
       }
-
     case Action.GET_DETAIL:
+      
       return {
         ...state,
         detailEventos: action.payload,
