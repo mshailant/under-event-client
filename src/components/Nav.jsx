@@ -3,11 +3,12 @@ import { Container, Row, Col, Navbar, Nav, NavDropdown,  FormControl, Form, Coll
 import Logo from "../components/Logo.jsx";
 
 import Searchbar from "./Searchbar"
+import styles from "./Nav.module.css"
 
 export default function Navegacion(){
     return (
 
-     
+      <header className={styles.nav}>
         <Navbar bg="light" expand="lg">
         <Container fluid>
           <Navbar.Brand href="#"><Logo /></Navbar.Brand>
@@ -46,5 +47,6 @@ export default function Navegacion(){
           </Navbar.Collapse>
         </Container>
       </Navbar>
+    </header>
     )
 }
