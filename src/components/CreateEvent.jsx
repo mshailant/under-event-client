@@ -12,9 +12,9 @@ export function validate(input) {
   if (!input.description) {
     errors.description = "Please description is require";
   }
-  if (!input.performers.length <= 0) {
-    errors.performers = " Please performers ir require";
-  }
+  // if (!input.performers.length <= 0) {
+  //   errors.performers = " Please performers ir require";
+  // }
   if (!input.imagen) {
     errors.imagen = "Please image is require";
   }
@@ -35,7 +35,9 @@ export default function CreateEvent() {
   const stateInitialForms = {
     title: "",
     description: "",
-    performers: "",
+    // performers: "",
+    eventType: "",
+    eventTime: "",
     imagen: "",
     date: "",
     time: "",
@@ -52,8 +54,9 @@ export default function CreateEvent() {
     } else if (
       input.title === "" &&
       input.description === "" &&
-      input.performers === "",
-      
+      // input.performers === "",
+      input.eventType === "" &&
+      input.eventTime === "" &&
       input.imagen === "" &&
       input.date === "" &&
       input.time === "" &&
@@ -66,7 +69,7 @@ export default function CreateEvent() {
       setInput({
         title: "",
         description: "",
-        performers: "",
+        // performers: "",
         imagen: "",
         date: "",
         time: "",
@@ -90,20 +93,20 @@ export default function CreateEvent() {
     );
   };
 
-  const handlePerformers = (e) => {
-    setInput({
-      ...input,
-      performers: [...input.performers, e.target.value],
-    });
+  // const handlePerformers = (e) => {
+  //   setInput({
+  //     ...input,
+  //     performers: [input.performers, e.target.value],
+  //   });
 
-    setErrors(
-      validate({
-        ...input,
-        performers: [...input.performers, e.target.value],
-      })
-    );
-  
-  };
+  //   setErrors(
+  //     validate({
+  //       ...input,
+  //       performers: [input.performers, e.target.value],
+  //     })
+  //   );
+
+  // };
 
   return (
     <div>
@@ -131,14 +134,30 @@ export default function CreateEvent() {
             onChange={(e) => handleInputChange(e)}
           />
           {errors.description && <p className="danger">{errors.description}</p>}
-          <label>Performers:</label>
+
+          <label>eventType:</label>
+          <input
+            type="text"
+            name="eventType"
+            value={input.eventType}
+            onChange={(e) => handleInputChange(e)}
+          />
+
+          <label>eventTime:</label>
+          <input
+            type="text"
+            name="eventTime"
+            value={input.eventTime}
+            onChange={(e) => handleInputChange(e)}
+          />
+          {/* <label>Performers:</label>
            <input
             type="text"
             name="performers"
             value={input.performers}
             onChange={(e) => handlePerformers(e)}
           />
-          {errors.performers && <p className="danger">{errors.performers}</p>} 
+          {errors.performers && <p className="danger">{errors.performers}</p>}  */}
           <label>Imagen:</label>
           <input
             type="text"
