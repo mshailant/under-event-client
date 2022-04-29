@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Dropdown } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 export default function ProfileButton() {
   const { logout } = useAuth0();
@@ -12,9 +13,10 @@ export default function ProfileButton() {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+        <LinkContainer to="/profile">
+          <Dropdown.Item to="/profile">Profile</Dropdown.Item>
+        </LinkContainer>
+
         <Dropdown.Divider />
         <Dropdown.Item
           onClick={() => logout({ returnTo: window.location.origin })}

@@ -1,7 +1,5 @@
 body{
-    background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
-    url('../images/pexels-cottonbro-5236996.jpg');
+    background-color: white;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
