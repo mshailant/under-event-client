@@ -1,6 +1,7 @@
 import * as Action from "../actions/actions.jsx";
 const InitialState = {
   eventosDb: [],
+  allEventType: []
 };
 
 function rootReducer(state = InitialState, action) {
@@ -9,6 +10,7 @@ function rootReducer(state = InitialState, action) {
       return {
         ...state,
         eventosDb: action.payload,
+        allEventType: action.payload,
       };
     case Action.CREATE_EVENT:
       return {
@@ -18,6 +20,15 @@ function rootReducer(state = InitialState, action) {
       return {
         ...state,
         eventosDb: action.payload,
+      }
+    case Action.BY_EVENT_TYPE:
+      const allEventType = state.allEventType;
+      const eventFilter = action.payload === 'All' ?
+        allEventType :
+        allEventType.filter(i => i.eventType === action.payload)
+      return {
+        ...state,
+        eventosDb: eventFilter,
       }
     default:
       return {

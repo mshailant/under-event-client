@@ -7,7 +7,7 @@ import { Card, Button, CardGroup, Container, Row, Col } from "react-bootstrap";
 
 
 
-export default function Individual({id, title, imagen,}){
+export default function Cardi({id, title, imagen,}){
   return(
  
     <Container>
