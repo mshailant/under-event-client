@@ -3,6 +3,11 @@ export const GET_ALL_EVENTS_DB = "GET_ALL_EVENTS_DB";
 export const CREATE_EVENT = "CREATE_EVENT";
 export const GET_BY_TITLE = "GET_BY_TITLE";
 
+export const GET_DETAIL = "GET_DETAIL";
+
+export const BY_EVENT_TYPE = "BY_EVENT_TYPE";
+
+
 export function getAllEvent() {
   return async function (dispatch) {
     try {
@@ -18,16 +23,16 @@ export function getAllEvent() {
 }
 
 export function createEvent(payload) {
-  return async () => {
+  return async (dispatch) => {
     try {
       const json = await axios.post(
         "http://localhost:3001/events/createEvent",
         payload
       );
-      return {
+      return dispatch({
         type: CREATE_EVENT,
-        payload,
-      };
+        payload: json.data,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -37,9 +42,26 @@ export function createEvent(payload) {
 export function getByTitle(title) {
   return async (dispatch) => {
     let obtener = await axios.get(`http://localhost:3001/events/getTitle?title=${title}`);
-      return dispatch({
-          type: GET_BY_TITLE,
-          payload: obtener.data,
-        });
+    return dispatch({
+      type: GET_BY_TITLE,
+      payload: obtener.data,
+    });
   };
+}
+export function getDetail(id) {
+  return async (dispatch) => {
+    let json = await axios.get(`http://localhost:3001/events/getDetail?id=${id}`);
+    return dispatch({
+      type: GET_DETAIL,
+      payload: json.data,
+    });
+  };
+}
+
+//filtar por tipo de evento
+export function byEventType(payload) {
+  return {
+      type: BY_EVENT_TYPE,
+      payload
+  }
 }

@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createEvent } from "../redux/actions/actions";
 import "./CreateEvent.css";
@@ -49,8 +49,19 @@ export default function CreateEvent() {
     e.preventDefault();
     if (Object.values(errors).length > 0) {
       alert("Please complete the information required");
+    } else if (
+      input.title === "" &&
+      input.description === "" &&
+      input.performers === "" &&
+      input.imagen === "" &&
+      input.date === "" &&
+      input.time === "" &&
+      input.stock === ""
+    ) {
+      alert("Please complete the form");
     } else {
       dispatch(createEvent(input));
+      alert("New event added successfully!");
       setInput({
         title: "",
         description: "",
