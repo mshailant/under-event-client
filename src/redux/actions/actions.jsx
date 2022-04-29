@@ -18,16 +18,16 @@ export function getAllEvent() {
 }
 
 export function createEvent(payload) {
-  return async () => {
+  return async (dispatch) => {
     try {
       const json = await axios.post(
         "http://localhost:3001/events/createEvent",
         payload
       );
-      return {
+      return dispatch({
         type: CREATE_EVENT,
-        payload,
-      };
+        payload: json.data,
+      });
     } catch (err) {
       console.log(err);
     }
