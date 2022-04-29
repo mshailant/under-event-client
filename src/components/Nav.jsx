@@ -18,11 +18,10 @@ import {
 import Logo from "../components/Logo.jsx";
 import LoginButton from "./LoginButton.jsx";
 import ProfileButton from "./ProfileButton.jsx";
+import Searchbar from "./Searchbar";
 
 export default function Navegacion() {
   const { isAuthenticated, isLoading, error } = useAuth0();
-
-  console.log("isAuthenticated: ", isAuthenticated);
 
   return (
     <Navbar bg="light" expand="lg">
@@ -53,15 +52,17 @@ export default function Navegacion() {
               Link
             </Nav.Link>
           </Nav>
-          <Form className="d-flex">
-            <FormControl
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
+
+          <Searchbar />
+          {/* <Form className="d-flex">
+              <FormControl
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+              />
+              <Button variant="outline-success">Search</Button>
+            </Form> */}
           {isAuthenticated ? <ProfileButton /> : <LoginButton />}
         </Navbar.Collapse>
       </Container>
