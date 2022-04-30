@@ -12,7 +12,7 @@ import Footer from './Footer/Footer';
 import Carousely from "./Carousel";
 import Cardi from "./Cardi";
 import Buttom from "./Button/ScrollButton";
-
+import ContactUs from "./ContactUs"
 
 
 
@@ -39,25 +39,26 @@ export default function Home() {
         <h1>UnderEvents App</h1>
         <hr/>
         <p>Web Site of selling tickets </p>
-        <button className={styles.myBtn}></button>
-        
+        <button className={styles.myBtn}></button>    
     </div>
-</div>
-    </div>      </div>
+    </div>
+    </div>      
+    </div>
+    
     <div className={styles.background}>
-     <div className={styles.parallax} >
-       
-     </div>
-     <div className={styles.acercaDe}>
-
-     <div className={styles.infoContainer}>
-    <h1 className={styles.h1}>Acerca de Nosotros</h1>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, nulla minus? Exercitationem, similique dolore laborum quod maiores dolores officiis eius inventore tempora voluptas deleniti repellat iusto tenetur, dolor blanditiis alias.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quisquam molestias qui deserunt fugiat delectus iusto, natus veniam voluptatibus expedita sint sed magnam quasi. Blanditiis iste eum aperiam optio veniam!</p>
-
-    <div className={styles.aboutGallery}>
-    <Carousely />
+      <div className={styles.parallax} >   
     </div>
+    
+    <div className={styles.acercaDe}>
+    
+    <div className={styles.infoContainer}>
+      <h1 className={styles.h1}>Acerca de Nosotros</h1>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, nulla minus? Exercitationem, similique dolore laborum quod maiores dolores officiis eius inventore tempora voluptas deleniti repellat iusto tenetur, dolor blanditiis alias.</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quisquam molestias qui deserunt fugiat delectus iusto, natus veniam voluptatibus expedita sint sed magnam quasi. Blanditiis iste eum aperiam optio veniam!</p>
+
+      <div className={styles.aboutGallery}>
+      <Carousely />
+      </div>
     </div>
   
 
@@ -72,10 +73,12 @@ export default function Home() {
       </div>
       <Buttom />
 
-     
+    <ContactUs/>
+
     </div>
     <Footer/>
     </div>
+    
 
 
   );
