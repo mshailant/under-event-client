@@ -7,6 +7,7 @@ import styles from "./Home.module.css";
 
 import { Container, Row, Col } from "react-bootstrap";
 
+import Footer from './Footer/Footer';
 
 import Carousely from "./Carousel";
 import Cardi from "./Cardi";
@@ -26,6 +27,7 @@ export default function Home() {
     dispatch(Action.getAllEvent());
   }, [dispatch]);
   return (
+    <div>
     <div className={styles.background}>
       <Carousely />
 
@@ -36,7 +38,13 @@ export default function Home() {
           </div>
         ))}
       </div>
-      <Buttom/>
+      <Buttom />
+
+     
     </div>
+    <Footer/>
+    </div>
+
+
   );
 }

@@ -32,7 +32,7 @@ export default function Searchbar() {
                 className="me-2"
                 aria-label="Search"
             />
-            <Button onClick={(e) => handleSubmit(e)} variant="outline-success">Search</Button>
+            <Button onClick={(e) => handleSubmit(e)} variant="light">Search</Button>
         </Form>
     )
 }

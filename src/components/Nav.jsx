@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import * as Action from "../redux/actions/actions";
+import style from "./Nav.module.css"
 
 import {
   Container,
@@ -35,7 +36,7 @@ export default function Navegacion() {
 
   return (
     <header className={styles.nav}>
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="dark" expand="lg" style={{position: "relative"}}>
       <Container fluid>
         <Navbar.Brand href="#">
           <Logo />
@@ -47,7 +48,7 @@ export default function Navegacion() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
+            
             <Nav.Link href="#action2">
               <select  onChange={handleEventType}>
                 <option value='All' key='All'>All events</option>
@@ -58,24 +59,25 @@ export default function Navegacion() {
               </select>
 
             </Nav.Link>
-            <NavDropdown title="Link" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
+            <NavDropdown  title="Link" id="navbarScrollingDropdown">
+              <NavDropdown.Item   href="#action3">More</NavDropdown.Item>
+              <NavDropdown.Item  href="#action4">
+                About Us
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
+              <NavDropdown.Item   href="#action5">
+                Create your own event
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#" disabled>
+            <Nav.Link href="#"   disabled>
               Link
             </Nav.Link>
+            
           </Nav>
 
           <Searchbar />
 
-          {isAuthenticated ? <ProfileButton /> : <LoginButton />}
+          {isAuthenticated ? <ProfileButton /> : <LoginButton  />}
         </Navbar.Collapse>
       </Container>
     </Navbar>
