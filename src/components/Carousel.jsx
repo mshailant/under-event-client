@@ -11,7 +11,7 @@ export default function Carousely() {
   return (
     <div  >
       <Carousel>
-        <Carousel.Item style={{marginTop: 50,  width: "1250px",  height: 650,  marginLeft: "18%", borderRadius: 15,  marginTop: 35 }}>
+        <Carousel.Item style={{marginTop: 0, height: 750,    marginTop: 10 ,paddingTop: 50 }}>
           <img 
             style={{borderRadius: 8, }}
             className="d-block w-100"
@@ -20,7 +20,7 @@ export default function Carousely() {
           />
           <Carousel.Caption></Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item style={{marginTop: 50 ,    width: "1250px",  height: 650 , marginLeft: "18%", borderRadius: 15,  marginTop: 35}}>
+        <Carousel.Item style={{marginTop: 0 ,  height: 750,     marginTop: 10, paddingTop: 50, }}>
           <img 
             className="d-block w-100"
             src={imagen}
@@ -30,7 +30,7 @@ export default function Carousely() {
 
           <Carousel.Caption></Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item style={{marginTop: 50 ,   width: "1250px", height: 650 , marginLeft: "18%" , borderRadius: 15, marginTop: 35  }}>
+        <Carousel.Item style={{marginTop: 0 , height: 750 ,    marginTop: 10 , paddingTop: 50, }}>
           <img 
             className="d-block w-100"
             src={imagenes}
