@@ -1,9 +1,13 @@
-body{
-    background-color: white;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+.background{
     
+    
+       background-image: 
+  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
+  url('../images/pexels-wendy-wei-1916821\(1\).jpg'); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  
   
 }
 
@@ -11,9 +15,9 @@ body{
     display: grid;
   
     justify-content: center;
-    grid-template-columns: repeat(auto-fill, 450px);
+    grid-template-columns: repeat(auto-fill, 500px);
     padding: 45px;
-    gap: 35px;
+    gap: 45px;
     margin-top: 35px;
     text-decoration: none;
 
