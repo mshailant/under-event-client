@@ -57,6 +57,14 @@
   flex-direction: column;
 }
 
+.acercaDe .infoContainer p{
+  text-align: center;
+  font-size: 25px;
+  color: rgb(255, 255, 255);
+  line-height: 35px;
+  margin:10px 0px;
+}
+
 .h1{
   font-size: 50px;
   font-weight: 400;
@@ -66,13 +74,6 @@
   
 }
 
-.acercaDe .infoContainer p{
-  text-align: center;
-  font-size: 25px;
-  color: rgb(255, 255, 255);
-  line-height: 35px;
-  margin:10px 0px;
-}
 
 .acercaDe .infoContainer .aboutGallery{
   width:100% ;
@@ -167,3 +168,4 @@
 .myBtn:hover {
   background-color: #555; /* Add a dark-grey background on hover */
 }
+
