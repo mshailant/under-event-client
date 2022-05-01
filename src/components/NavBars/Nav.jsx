@@ -3,9 +3,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
-
+import MyComponent from "../DateRangePicker";
 import * as Action from "../../redux/actions/actions";
 import style from "./Nav.module.css"
+
 
 import {
   Container,
@@ -38,10 +39,13 @@ export default function Navegacion() {
 
   return (
     <header className={styles.nav}>
+        
     <Navbar bg="dark" expand="lg" style={{position: "relative"}}>
       <Container fluid>
+        
         <Navbar.Brand href="#">
           <Logo />
+          
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -61,6 +65,8 @@ export default function Navegacion() {
               </select>
 
             </Nav.Link>
+          
+          
             <NavDropdown  title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item   href="#action3">More</NavDropdown.Item>
               <NavDropdown.Item  href="#action4">
@@ -87,6 +93,7 @@ export default function Navegacion() {
           </Nav>
 
           <Searchbar />
+          
 
           {isAuthenticated ? <ProfileButton /> : <LoginButton  />}
         </Navbar.Collapse>

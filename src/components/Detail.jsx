@@ -59,15 +59,16 @@ const Detail = () => {
 </Navbar>
   
       {detalles ? (
-        <Card  style={{ width: "75%",  height: "850px", background: "rgba(255, 255, 255, 0.781)", marginLeft: "13%", marginBottom: "55px", marginTop: "25px"}}>
-          <Card.Img style={{width: "40%", height: "100%", background: "rgba(0, 0, 0, 0.6)", marginTop: "10px", marginBottom: "15px"}} variant="top" src={detalles.imagen} />
+        <Card  style={{ width: "60%",  height: "650px", background: "rgba(255, 255, 255, 0.781)", marginLeft: "20%", marginBottom: "55px", marginTop: "25px"}}>
+          <Card.Img style={{width: "40%", height: "50%", background: "rgba(0, 0, 0, 0.6)", marginTop: "10px", marginBottom: "15px"}} variant="top" src={detalles.imagen} />
           
-          <Card.Body style={{width: "100%", height: "auto", background: "rgba(0, 0, 0, 0.6)", }} >
+          <Card.Body style={{width: "100%", height: "auto", height: "30%",  background: "rgba(0, 0, 0, 0.6)", }} >
             <Card.Text style={{color: "white", fontSize: "31px"}}>{detalles.title}</Card.Text>
             <Card.Text style={{color: "white", fontSize: "28px"}}>Date: {detalles.date} {detalles.eventTime}</Card.Text>
             <Card.Text style={{color: "white", fontSize: "28px"}}>Time: {detalles.time} {detalles.eventTime}</Card.Text>
-          <Button style={{fontSize: "25px", }} variant="success" >Buy your tickets</Button>
+        
           </Card.Body>
+          <Button style={{fontSize: "25px",  }} variant="success" >Buy your tickets</Button>
         </Card>
       ) : (
         <h4>Chau</h4>
