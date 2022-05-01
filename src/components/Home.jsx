@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as Action from "../redux/actions/actions";
 import styles from "./Home.module.css";
 
-import { Container, Row, Col } from "react-bootstrap";
+import { Alert,  } from "react-bootstrap";
 
 import Footer from './Footer/Footer';
 import ScrollButton from "./Button/ScrollButton";
@@ -15,6 +15,13 @@ import Buttom from "./Button/ScrollButton";
 
 import ContactUs from "./ContactUs";
 import Nav from "./NavBars/Nav";
+import Dates from "./DateRangePicker";
+import AlertDismissible from "./Alerts/AlertForEmpty";
+
+
+
+
+
 
 
 
@@ -29,7 +36,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.eventosDb);
 
-  console.log(events);
+  
   useEffect(() => {
     dispatch(Action.getAllEvent());
   }, [dispatch]);
@@ -37,9 +44,7 @@ export default function Home() {
   console.log(events);
   useEffect(() => {
     dispatch(Action.getAllEvent());
-    return () => {
-      dispatch(Action.getTime())
-    }
+   
   }, [dispatch]);
 
   const time = useSelector(state => state.filterTime)
@@ -47,8 +52,10 @@ export default function Home() {
   
   return (
     <div className={styles.containerGeneral}>
-    
-      <div className={styles.parallax}>  
+      
+   
+      <div className={styles.parallax}> 
+     
       <div className={styles.Welcome}>
       <div className={styles.imgHeader}>
     <div className={styles.Welcome}>
@@ -92,13 +99,45 @@ export default function Home() {
 
 </div >
       <div className={styles.cardsContainer}>
-        <h2 className={styles.events}>Our Events</h2>
+        <h2 className={styles.events}>Next Events</h2>
+        <div className={styles.Date}>
+          
+      <Dates/> 
+      </div>
       <div className={styles.cards}>
-        {events?.map((c) => (
-          <div key={c.id}>
-            <Cardi id={c.id} title={c.title} imagen={c.imagen} />
-          </div>
-        ))}
+      { events  ? events.map( (e) => {
+            
+             
+             
+
+                return (
+                    
+                      <div key={e.id}>
+                        
+                    
+                    <Cardi title={e.title} 
+                    imagen={e.imagen} 
+                    date={e.date} 
+                    id={e.id}
+                    key={e.id}
+                   
+                    
+                    />
+                   
+                    </div>
+                    )  
+                }): <Alert style={{width: "850px", height: "450px", marginLeft: "90%"}} variant="light">
+                <Alert.Heading>Hey, nice to see you</Alert.Heading>
+                <p style={{fontSize: "45px"}}>
+                 Upps... something went wrong.
+                </p>
+                <hr />
+                <p className="mb-0">
+                  Whenever you need to, be sure to use margin utilities to keep things nice
+                  and tidy.
+                </p>
+              </Alert>
+                }
       </div>
     
       </div>

@@ -12,15 +12,17 @@ import Detail from "./components/Detail";
 
 import Nav from "./components/NavBars/Nav";
 
+
 function App() {
   return (
     <BrowserRouter>
+   
       <Nav/>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route  path="/" element={<Home />} />
         <Route exact path="/profile" element={<UserProfile />} />
         <Route exact path="/createEvent" element={<CreateEvent />} />
-        <Route path="/:id" element={<Detail />} />
+        <Route exact path="/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );
