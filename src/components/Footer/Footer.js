@@ -8,6 +8,7 @@ FooterLink,
 Heading,
 } from "./FooterStyles";
 
+
 const Footer = () => {
 return (
 	<Box>

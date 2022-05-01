@@ -112,7 +112,7 @@ export default function CreateEvent() {
   return (
     <div>
       <div>
-        <Link to="/home">
+        <Link to="/">
           <Button style={{marginTop: 10, marginLeft: 70}} variant="outline-dark">Back to main page</Button>
         </Link>
       </div>

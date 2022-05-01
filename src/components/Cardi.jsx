@@ -7,7 +7,7 @@ import style from "./Card.module.css"
 
 
 
-export default function Cardi({id, title, imagen,}){
+export default function Cardi({id, title, imagen, description}){
 
   const handleClickDirectiontoDetail = () => {
     window.location.href = "/" + id;
@@ -17,7 +17,7 @@ export default function Cardi({id, title, imagen,}){
     <Container>
   
   <Row>
-    <Col sm><Card className={style.cards} style={{ width: '23rem', height: "32rem", background: "rgba(255, 255, 255, 0.821)",}}>
+    {/* <Col sm><Card className={style.cards} style={{ width: '23rem', height: "32rem", background: "rgba(255, 255, 255, 0.821)",}}>
   <Card.Img className={style.img} variant="top" src={imagen}/>
   <Card.Body>
     <Card.Title>{title}</Card.Title>
@@ -27,7 +27,17 @@ export default function Cardi({id, title, imagen,}){
     </Card.Text>
     <Button className={style.btn} style={{marginTop: 45, marginLeft: 100}} variant="outline-dark" onClick={handleClickDirectiontoDetail}>Go to details</Button>
   </Card.Body>
-</Card></Col>
+</Card></Col> */}
+
+<Card>
+    <Card.Img variant="top" src={imagen} />
+    <Card.Body>
+      <Card.Text>
+       {title}
+      </Card.Text>
+      <Button className={style.btn} style={{marginTop: 45, marginLeft: 100}} variant="outline-dark" onClick={handleClickDirectiontoDetail}>Buy</Button>
+    </Card.Body>
+  </Card>
     
   </Row>
 </Container>

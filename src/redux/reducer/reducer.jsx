@@ -4,7 +4,9 @@ const InitialState = {
 
   detailEventos: {},	
 
-  allEventType: []
+  allEventType: [],
+
+  filterTime: []
 
 };
 
@@ -20,7 +22,7 @@ function rootReducer(state = InitialState, action) {
       return {
         ...state,
       };
-    case Action.GET_BY_TITLE:
+    case Action.GET_TIME:
       return {
         ...state,
         eventosDb: action.payload,
@@ -41,6 +43,8 @@ function rootReducer(state = InitialState, action) {
         ...state,
         eventosDb: eventFilter,
       }
+
+      
 
     default:
       return {
