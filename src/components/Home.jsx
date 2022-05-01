@@ -12,10 +12,14 @@ import ScrollButton from "./Button/ScrollButton";
 import Carousely from "./Carousel";
 import Cardi from "./Cardi";
 import Buttom from "./Button/ScrollButton";
+
 import ContactUs from "./ContactUs";
 import Nav from "./NavBars/Nav";
 
 
+
+
+import ContactUs from "./ContactUs"
 
 
 
@@ -51,6 +55,7 @@ export default function Home() {
         <h1>UnderEvents App</h1>
         <hr/>
         <p>Web Site of selling tickets </p>
+
         <button className={styles.myBtn}>Next events</button>
         
     </div>
@@ -60,6 +65,14 @@ export default function Home() {
 </div>
 
     </div>      </div>
+
+        <button className={styles.myBtn}></button>    
+    </div>
+    </div>
+    </div>      
+    </div>
+    
+
     <div className={styles.background}>
       <div className={styles.parallax} >   
     </div>
@@ -92,10 +105,14 @@ export default function Home() {
       <Buttom />
 
 
+
    
    <div className={styles.contactUs}>
    <ContactUs/>
    </div>
+
+    <ContactUs/>
+
     </div>
     
      <ScrollButton/>
