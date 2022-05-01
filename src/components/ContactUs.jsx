@@ -29,17 +29,17 @@ export default class ContactUs extends Component {
                 <div className={styles.contactUs}>
                     <h1 className={styles.contactUsTitle}>Contact Us</h1>
                     <div className={styles.contactUsContent}>
-                        <Form onSubmit={sendEmail}>
+                        <Form style={{color: "white"}} onSubmit={sendEmail}>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Label>Email address</Form.Label>
+                                <Form.Label style={{color: "white"}} >Email address</Form.Label>
                                 <Form.Control type="email" placeholder="name@example.com" />
                             </Form.Group>
                             <Form.Group className="mb-3">
-                                <Form.Label>Name</Form.Label>
+                                <Form.Label style={{color: "white"}}>Name</Form.Label>
                                 <Form.Control rows={3} />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                                <Form.Label>Comments</Form.Label>
+                                <Form.Label style={{color: "white"}}>Comments</Form.Label>
                                 <Form.Control as="textarea" rows={3} />
                             </Form.Group>
                             <div className="d-grid gap-2">

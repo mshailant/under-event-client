@@ -197,13 +197,13 @@ color: rgb(238, 238, 238);
 
 .Date{
   
+    background: rgb(0, 0, 0);
+    color: rgb(238, 238, 238);
+  
 }
 
 
 
-  background: rgb(0, 0, 0);
-  color: rgb(238, 238, 238);
-}
 
 
 .myBtn {
@@ -226,4 +226,7 @@ color: rgb(238, 238, 238);
   background-color: #555; /* Add a dark-grey background on hover */
 }
 
+.contactUS{
+  margin-bottom: 55px;
+}
 
