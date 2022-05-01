@@ -8,10 +8,11 @@ import styles from "./Home.module.css";
 import { Container, Row, Col } from "react-bootstrap";
 
 import Footer from './Footer/Footer';
-
+import ScrollButton from "./Button/ScrollButton";
 import Carousely from "./Carousel";
 import Cardi from "./Cardi";
 import Buttom from "./Button/ScrollButton";
+import ContactUs from "./ContactUs";
 import Nav from "./NavBars/Nav";
 
 
@@ -41,8 +42,8 @@ export default function Home() {
   console.log(time, "estado de redux")
   
   return (
-    <div>
-      <Nav/>
+    <div className={styles.containerGeneral}>
+    
       <div className={styles.parallax}>  
       <div className={styles.Welcome}>
       <div className={styles.imgHeader}>
@@ -60,19 +61,19 @@ export default function Home() {
 
     </div>      </div>
     <div className={styles.background}>
-     <div className={styles.parallax} >
-       
-     </div>
-     <div className={styles.acercaDe}>
-
-     <div className={styles.infoContainer}>
-    <h1 className={styles.h1}>Acerca de Nosotros</h1>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, nulla minus? Exercitationem, similique dolore laborum quod maiores dolores officiis eius inventore tempora voluptas deleniti repellat iusto tenetur, dolor blanditiis alias.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quisquam molestias qui deserunt fugiat delectus iusto, natus veniam voluptatibus expedita sint sed magnam quasi. Blanditiis iste eum aperiam optio veniam!</p>
-
-    <div className={styles.aboutGallery}>
-    <Carousely />
+      <div className={styles.parallax} >   
     </div>
+    
+    <div className={styles.acercaDe}>
+    
+    <div className={styles.infoContainer}>
+      <h1 className={styles.h1}>Acerca de Nosotros</h1>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, nulla minus? Exercitationem, similique dolore laborum quod maiores dolores officiis eius inventore tempora voluptas deleniti repellat iusto tenetur, dolor blanditiis alias.</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quisquam molestias qui deserunt fugiat delectus iusto, natus veniam voluptatibus expedita sint sed magnam quasi. Blanditiis iste eum aperiam optio veniam!</p>
+
+      <div className={styles.aboutGallery}>
+      <Carousely />
+      </div>
     </div>
   
 
@@ -86,16 +87,22 @@ export default function Home() {
           </div>
         ))}
       </div>
+    
       </div>
       <Buttom />
 
+
    
+   <div className={styles.contactUs}>
+   <ContactUs/>
+   </div>
     </div>
     
+     <ScrollButton/>
      
-    
     <Footer/>
     </div>
+    
 
 
   );

@@ -1,0 +1,32 @@
+.contactUs {
+    background-color: #0000003d;
+    width: 100%;
+   
+  
+    height: 100%;
+    margin-top: 65px;
+}
+  
+.contactUs .contactUsContent{
+   
+    width: 60%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 500px;
+}
+
+.contactUsTitle{
+    color: beige;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 65px;
+    font-weight: bold;
+}
+
+.emailPlace{
+    background-color: black;
+}

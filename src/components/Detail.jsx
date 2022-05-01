@@ -75,7 +75,7 @@ const Detail = () => {
       
 
       <Card  style={{ width: "100%",  height: "5%", background: "rgba(255, 255, 255, 0.781)", marginTop: "5px"}}>
-      <Card.Img style={{width: "600px", height: "15%", background: "rgba(0, 0, 0, 0.6)", marginTop: "3px", marginBottom: "3px", marginLeft: "32%"}} variant="top" src={imagen} />
+      <Card.Img style={{width: "600px", height: "15%", background: "rgba(0, 0, 0, 0.6)", marginTop: "3px", marginBottom: "3px", marginLeft: "34%"}} variant="top" src={imagen} />
           
          
         </Card>
