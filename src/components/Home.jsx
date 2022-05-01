@@ -5,27 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import * as Action from "../redux/actions/actions";
 import styles from "./Home.module.css";
 
-import { Alert,  } from "react-bootstrap";
+import { Alert  } from "react-bootstrap";
 
 import Footer from './Footer/Footer';
 import ScrollButton from "./Button/ScrollButton";
 import Carousely from "./Carousel";
 import Cardi from "./Cardi";
 import Buttom from "./Button/ScrollButton";
-
-import ContactUs from "./ContactUs";
-import Nav from "./NavBars/Nav";
-import Dates from "./DateRangePicker";
-import AlertDismissible from "./Alerts/AlertForEmpty";
-
-
-
-
-
-
-
-
-
 import ContactUs from "./ContactUs"
 
 
@@ -62,24 +48,12 @@ export default function Home() {
         <h1>UnderEvents App</h1>
         <hr/>
         <p>Web Site of selling tickets </p>
-
-        <button className={styles.myBtn}>Next events</button>
-        
-    </div>
-
-   
-    
-</div>
-
-    </div>      </div>
-
         <button className={styles.myBtn}></button>    
     </div>
     </div>
     </div>      
     </div>
     
-
     <div className={styles.background}>
       <div className={styles.parallax} >   
     </div>
@@ -102,7 +76,7 @@ export default function Home() {
         <h2 className={styles.events}>Next Events</h2>
         <div className={styles.Date}>
           
-      <Dates/> 
+     
       </div>
       <div className={styles.cards}>
       { events  ? events.map( (e) => {
@@ -142,15 +116,10 @@ export default function Home() {
     
       </div>
       <Buttom />
-
-
-
-   
-   <div className={styles.contactUs}>
-   <ContactUs/>
-   </div>
+      <div className={styles.contactUS}>
 
     <ContactUs/>
+    </div>
 
     </div>
     
