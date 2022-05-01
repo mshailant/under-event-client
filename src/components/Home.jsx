@@ -8,11 +8,19 @@ import styles from "./Home.module.css";
 import { Container, Row, Col } from "react-bootstrap";
 
 import Footer from './Footer/Footer';
-
+import ScrollButton from "./Button/ScrollButton";
 import Carousely from "./Carousel";
 import Cardi from "./Cardi";
 import Buttom from "./Button/ScrollButton";
+
+import ContactUs from "./ContactUs";
+import Nav from "./NavBars/Nav";
+
+
+
+
 import ContactUs from "./ContactUs"
+
 
 
 
@@ -29,9 +37,17 @@ export default function Home() {
   console.log(events);
   useEffect(() => {
     dispatch(Action.getAllEvent());
+    return () => {
+      dispatch(Action.getTime())
+    }
   }, [dispatch]);
+
+  const time = useSelector(state => state.filterTime)
+  console.log(time, "estado de redux")
+  
   return (
-    <div>
+    <div className={styles.containerGeneral}>
+    
       <div className={styles.parallax}>  
       <div className={styles.Welcome}>
       <div className={styles.imgHeader}>
@@ -39,12 +55,24 @@ export default function Home() {
         <h1>UnderEvents App</h1>
         <hr/>
         <p>Web Site of selling tickets </p>
+
+        <button className={styles.myBtn}>Next events</button>
+        
+    </div>
+
+   
+    
+</div>
+
+    </div>      </div>
+
         <button className={styles.myBtn}></button>    
     </div>
     </div>
     </div>      
     </div>
     
+
     <div className={styles.background}>
       <div className={styles.parallax} >   
     </div>
@@ -62,8 +90,9 @@ export default function Home() {
     </div>
   
 
-</div>
-
+</div >
+      <div className={styles.cardsContainer}>
+        <h2 className={styles.events}>Our Events</h2>
       <div className={styles.cards}>
         {events?.map((c) => (
           <div key={c.id}>
@@ -71,11 +100,23 @@ export default function Home() {
           </div>
         ))}
       </div>
+    
+      </div>
       <Buttom />
+
+
+
+   
+   <div className={styles.contactUs}>
+   <ContactUs/>
+   </div>
 
     <ContactUs/>
 
     </div>
+    
+     <ScrollButton/>
+     
     <Footer/>
     </div>
     

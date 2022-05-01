@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
 export const Box = styled.div`
-padding: 80px 60px;
+
+padding: 60px 60px;
 background: rgb(36, 36, 36);
 position: relative;
 bottom: 0;
 width: 100%;
+
+
 
 
 @media (max-width: 1000px) {
@@ -46,9 +49,10 @@ color: #fff;
 margin-bottom: 20px;
 font-size: 18px;
 text-decoration: none;
+font family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 
 &:hover {
-	color: green;
+	color: #391E46;
 	transition: 200ms ease-in;
 }
 `;

@@ -2,8 +2,9 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { LinkContainer } from "react-router-bootstrap";
 
-import * as Action from "../redux/actions/actions";
+import * as Action from "../../redux/actions/actions";
 import style from "./Nav.module.css"
 
 import {
@@ -20,11 +21,12 @@ import {
   Item,
   Button,
 } from "react-bootstrap";
-import Logo from "../components/Logo.jsx";
-import LoginButton from "./LoginButton.jsx";
-import ProfileButton from "./ProfileButton.jsx";
-import Searchbar from "./Searchbar";
+import Logo from "../Logo.jsx";
+import LoginButton from "../LoginButton.jsx";
+import ProfileButton from "../ProfileButton.jsx";
+import Searchbar from "../Searchbar";
 import styles from "./Nav.module.css"
+
 export default function Navegacion() {
   const dispatch = useDispatch();
   const { isAuthenticated, isLoading, error } = useAuth0();
@@ -65,9 +67,18 @@ export default function Navegacion() {
                 About Us
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item   href="#action5">
+              <LinkContainer to = "/createEvent">
+              
+              <NavDropdown.Item >
+
+              
+                
                 Create your own event
+                
               </NavDropdown.Item>
+
+              </LinkContainer>
+              
             </NavDropdown>
             <Nav.Link href="#"   disabled>
               Link

@@ -8,6 +8,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import store from "../src/redux/store/store.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
