@@ -1,11 +1,11 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+
+import {  useDispatch } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
-import MyComponent from "../DateRangePicker";
+
 import * as Action from "../../redux/actions/actions";
-import style from "./Nav.module.css"
+
 
 
 import {

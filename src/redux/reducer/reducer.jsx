@@ -29,6 +29,11 @@ function rootReducer(state = InitialState, action) {
         ...state,
         detailEventos: action.payload,
       };
+    case Action.GET_BY_TITLE:
+      return{
+        ...state,
+        eventosDb: action.payload,
+      }
 
     case Action.BY_EVENT_TYPE:
       const allEventType = state.allEventType;

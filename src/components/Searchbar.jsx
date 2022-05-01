@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getByTitle } from "../redux/actions/actions";
 
-import { Container, Row, Col, Navbar, Nav, NavDropdown, FormControl, Form, Collapse, Brand, Item, Button } from "react-bootstrap";
+import {  FormControl, Form, Button } from "react-bootstrap";
 
 export default function Searchbar() {
     const [name, setName] = useState("");
