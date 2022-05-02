@@ -2,6 +2,8 @@ import * as Action from "../actions/actions.jsx";
 const InitialState = {
   eventosDb: [],
 
+  eventosBack: [],
+
   detailEventos: {},	
 
   allEventType: [],
@@ -17,8 +19,10 @@ function rootReducer(state = InitialState, action) {
     case Action.GET_ALL_EVENTS_DB:
       return {
         ...state,
+        eventosBack: action.payload,
         eventosDb: action.payload,
         allEventType: action.payload,
+        allEventState: action.payload
       };
     case Action.CREATE_EVENT:
       return {
@@ -40,7 +44,7 @@ function rootReducer(state = InitialState, action) {
 
    
       case Action.GET_STATES:
-        const allState = state.eventosDb;
+        const allState = state.allEventState;
         const stateFilter =
           action.payload === "All"
             ? allState
@@ -57,7 +61,7 @@ function rootReducer(state = InitialState, action) {
         };
 
         case Action.BY_EVENT_TYPE:
-        const allType = state.eventosDb;
+        const allType = state.allEventType;
         const typeFilter =
           action.payload === "All"
             ? allType
@@ -67,6 +71,7 @@ function rootReducer(state = InitialState, action) {
         return {
           ...state,
          
+          eventosBack: typeFilter,
           eventosDb: typeFilter
           
         
