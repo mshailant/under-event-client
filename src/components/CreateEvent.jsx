@@ -38,7 +38,9 @@ export function validate(input) {
   else if (!input.state) {
     errors.state = "Please, insert state you want to buy";
   }
- 
+  else if (!input.place) {
+    errors.state = "Please, insert place";
+  }
 
   return errors;
 }
@@ -53,7 +55,8 @@ export default function CreateEvent() {
     date: "",
     time: "",
     stock: "",
-    state: ""
+    state: "",
+    place: ""
   };
 
   const [input, setInput] = useState(stateInitialForms);
@@ -73,7 +76,8 @@ export default function CreateEvent() {
       input.date === "" &&
       input.time === "" &&
       input.stock === ""&&
-      input.state === ""
+      input.state === ""&&
+      input.place === ""
     ) {
       alert("Please complete the form");
     } else {
@@ -88,7 +92,8 @@ export default function CreateEvent() {
         time: "",
         stock: "",
         eventType: "",
-        state: ""
+        state: "",
+        place: ""
       });
     }
   };
@@ -188,6 +193,20 @@ export default function CreateEvent() {
               <div className={styles.alert} >
               {errors.description && (
                 <p className={styles.danger}>{errors.description}</p>
+              )}
+              </div>
+
+              <label className={styles.labelInput} >Place:</label>
+              <input
+                type="text"
+                name="place"
+                value={input.place}
+                onChange={(e) => handleInputChange(e)}
+                className={styles.place}
+              />
+              <div className={styles.alert} >
+              {errors.place && (
+                <p className={styles.danger}>{errors.place}</p>
               )}
               </div>
 
