@@ -13,6 +13,7 @@ import {Nav, Navbar, NavDropdown, Container} from "react-bootstrap"
 
 
 import imagen from "../images/cret.jpg"
+import Footer from "./Footer/Footer.js";
 
 
 const Detail = () => {
@@ -38,28 +39,18 @@ const Detail = () => {
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
-      <Nav.Link href="#features">Features</Nav.Link>
-      <Nav.Link href="#pricing">Pricing</Nav.Link>
-      <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-      </NavDropdown>
+    
     </Nav>
     <Nav>
-      <Nav.Link href="#deets">More deets</Nav.Link>
-      <Nav.Link eventKey={2} href="#memes">
-        Dank memes
-      </Nav.Link>
+    
+   
     </Nav>
   </Navbar.Collapse>
   </Container>
 </Navbar>
   
       {detalles ? (
-        <Card  style={{ width: "60%",  height: "650px", background: "rgba(255, 255, 255, 0.781)", marginLeft: "20%", marginBottom: "55px", marginTop: "25px"}}>
+        <Card  style={{ width: "60%",  height: "650px", background: "rgba(210, 210, 210, 0.529)", marginLeft: "20%", marginBottom: "150px", marginTop: "25px"}}>
           <Card.Img style={{width: "40%", height: "50%", background: "rgba(0, 0, 0, 0.6)", marginTop: "10px", marginBottom: "15px"}} variant="top" src={detalles.imagen} />
           
           <Card.Body style={{width: "100%", height: "auto", height: "30%",  background: "rgba(0, 0, 0, 0.6)", }} >
@@ -75,11 +66,12 @@ const Detail = () => {
       )}
       
 
-      <Card  style={{ width: "100%",  height: "5%", background: "rgba(255, 255, 255, 0.781)", marginTop: "5px"}}>
+      <Card  style={{ width: "100%",  height: "5%", background: "rgba(210, 210, 210, 0.529)", }}>
       <Card.Img style={{width: "600px", height: "15%", background: "rgba(0, 0, 0, 0.6)", marginTop: "3px", marginBottom: "3px", marginLeft: "34%"}} variant="top" src={imagen} />
           
          
         </Card>
+        <Footer/>
     </div>
   );
 };

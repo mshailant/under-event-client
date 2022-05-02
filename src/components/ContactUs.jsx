@@ -4,7 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import emailjs from 'emailjs-com';
 import styles from "./ContactUs.module.css"
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2"
+
 
 export default class ContactUs extends Component {
     render() {
@@ -26,7 +27,8 @@ export default class ContactUs extends Component {
               })
         }
         return (
-                <div className={styles.contactUs}>
+         
+                <div className={styles.contactUs} >
                     <h1 className={styles.contactUsTitle}>Contact Us</h1>
                     <div className={styles.contactUsContent}>
                         <Form style={{color: "white"}} onSubmit={sendEmail}>
@@ -43,13 +45,14 @@ export default class ContactUs extends Component {
                                 <Form.Control as="textarea" rows={3} />
                             </Form.Group>
                             <div className="d-grid gap-2">
-                                <Button type='submit' variant="primary" size="lg" onClick={handleOnClick}>
+                                <Button type='submit' variant="primary" size="lg" onClick={handleOnClick} >
                                     Send comment
                                 </Button>
                             </div>
                         </Form>
                     </div>
                 </div>
+               
         )
     }
 }

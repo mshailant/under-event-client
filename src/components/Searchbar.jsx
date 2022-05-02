@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getByTitle } from "../redux/actions/actions";
+import scrollToCards from "./ScrollButtom/scrollToCars";
 
 import {  FormControl, Form, Button } from "react-bootstrap";
 
@@ -24,7 +25,7 @@ export default function Searchbar() {
 
     return (
 
-        <Form className="d-flex">
+        <Form onSubmit={(e) => handleSubmit(e)} className="d-flex">
             <FormControl 
                 type="search"
                 placeholder="Search"
@@ -32,7 +33,7 @@ export default function Searchbar() {
                 className="me-2"
                 aria-label="Search"
             />
-            <Button onClick={(e) => handleSubmit(e)} variant="light">Search</Button>
+            <Button type="submit" onClick={() => scrollToCards()} variant="light">Search</Button>
         </Form>
     )
 }

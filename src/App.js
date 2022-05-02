@@ -17,7 +17,7 @@ function App() {
   return (
     <BrowserRouter>
    
-      <Nav/>
+     
       <Routes>
         <Route  path="/" element={<Home />} />
         <Route exact path="/profile" element={<UserProfile />} />

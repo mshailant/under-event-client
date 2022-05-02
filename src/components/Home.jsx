@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as Action from "../redux/actions/actions";
 import styles from "./Home.module.css";
 
-import { Alert  } from "react-bootstrap";
+
 
 import Footer from './Footer/Footer';
 import ScrollButton from "./Button/ScrollButton";
@@ -13,7 +13,11 @@ import Carousely from "./Carousel";
 import Cardi from "./Cardi";
 import Buttom from "./Button/ScrollButton";
 import ContactUs from "./ContactUs"
-
+import { Alert } from "react-bootstrap";
+import Nav from "./NavBars/Nav"
+import scrollHalf from "./ScrollButtom/scrollHalfButtom";
+import { FaArrowDown } from 'react-icons/fa';
+import { SpinnerCircularFixed } from 'spinners-react';
 
 
 
@@ -21,25 +25,30 @@ import ContactUs from "./ContactUs"
 export default function Home() {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.eventosDb);
+  const [carga, setCarga] = useState(true);
+  console.log(events)
 
   
   useEffect(() => {
-    dispatch(Action.getAllEvent());
+    dispatch(Action.getAllEvent()).then(() => setCarga(false));
   }, [dispatch]);
 
-  console.log(events);
-  useEffect(() => {
-    dispatch(Action.getAllEvent());
-   
-  }, [dispatch]);
+  
 
-  const time = useSelector(state => state.filterTime)
-  console.log(time, "estado de redux")
+  if (carga) {
+    return (
+      <div className={styles.containerSpinner}>
+        <div style={{background: "black", width: "2000px", height: "100vh"}}>
+        < SpinnerCircularFixed style={{marginLeft: "940px", fontWeight: "bold", marginTop: "250px"}}/>;
+        </div>
+      </div>
+    );
+  }
   
   return (
     <div className={styles.containerGeneral}>
       
-   
+    <Nav/>
       <div className={styles.parallax}> 
      
       <div className={styles.Welcome}>
@@ -48,10 +57,15 @@ export default function Home() {
         <h1>UnderEvents App</h1>
         <hr/>
         <p>Web Site of selling tickets </p>
-        <button className={styles.myBtn}></button>    
+        {/* <button onClick = {() => scrollHalf()} >Upcoming Events</button> */}
+        <div className={styles.arrowContainer}>
+    <FaArrowDown className={styles.btnArrowDown} onClick = {() => scrollHalf()} /> 
+    </div>  
+       
+            
     </div>
     </div>
-    </div>      
+    </div>   
     </div>
     
     <div className={styles.background}>
@@ -79,7 +93,7 @@ export default function Home() {
      
       </div>
       <div className={styles.cards}>
-      { events  ? events.map( (e) => {
+      { Array.isArray(events) && events.length ? events.map( (e) => {
             
              
              
@@ -93,6 +107,9 @@ export default function Home() {
                     imagen={e.imagen} 
                     date={e.date} 
                     id={e.id}
+                    eventType={e.eventType}
+                    state={e.state}
+                    place={e.place}
                     key={e.id}
                    
                     
@@ -100,26 +117,28 @@ export default function Home() {
                    
                     </div>
                     )  
-                }): <Alert style={{width: "850px", height: "450px", marginLeft: "90%"}} variant="light">
-                <Alert.Heading>Hey, nice to see you</Alert.Heading>
-                <p style={{fontSize: "45px"}}>
-                 Upps... something went wrong.
+                }) : ( <Alert style={{width: "850px", height: "350px", marginLeft: "75%"}} variant="light">
+                <Alert.Heading>Ups... Something went wrong</Alert.Heading>
+                <p>
+                  Aww yeah, you successfully read this important alert message. This example
+                  text is going to run a bit longer so that you can see how spacing within an
+                  alert works with this kind of content.
                 </p>
                 <hr />
                 <p className="mb-0">
                   Whenever you need to, be sure to use margin utilities to keep things nice
                   and tidy.
                 </p>
-              </Alert>
+              </Alert>)
                 }
       </div>
-    
-      </div>
-      <Buttom />
       <div className={styles.contactUS}>
 
-    <ContactUs/>
-    </div>
+<ContactUs/>
+</div>
+      </div>
+      <Buttom />
+     
 
     </div>
     

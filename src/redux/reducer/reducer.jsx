@@ -6,7 +6,9 @@ const InitialState = {
 
   allEventType: [],
 
-  filterTime: []
+  filterTime: [],
+
+  allEventState: []
 
 };
 
@@ -33,36 +35,43 @@ function rootReducer(state = InitialState, action) {
       return{
         ...state,
         eventosDb: action.payload,
+        
       }
 
-    case Action.BY_EVENT_TYPE:
-      const allEventType = state.allEventType;
-      const eventFilter = action.payload === 'All' ?
-        allEventType :
-        allEventType.filter(i => i.eventType === action.payload)
-      return {
-        ...state,
-        eventosDb: eventFilter,
-      };
+   
+      case Action.GET_STATES:
+        const allState = state.eventosDb;
+        const stateFilter =
+          action.payload === "All"
+            ? allState
+            : allState.filter((g) =>
+                g.state === action.payload
+              );
+        return {
+          ...state,
+          
+          eventosDb: stateFilter
+          
+        
 
-      case Action.TIME_FILTER:
-      let dateSort =
-        action.payload === "asc"
-          ? state.allEventType.sort((a, b) => {
-              if (a.date > b.date) return 1;
-              if (b.date > a.date) return -1;
-              return 0;
-            })
-          : state.allEventType.sort((a, b) => {
-              if (a.date > b.date) return -1;
-              if (b.date > a.date) return 1;
-              return 0;
-            });
-      return {
-        ...state,
-        eventosDb: dateSort,
-      };
+        };
 
+        case Action.BY_EVENT_TYPE:
+        const allType = state.eventosDb;
+        const typeFilter =
+          action.payload === "All"
+            ? allType
+            : allType.filter((g) =>
+                g.eventType === action.payload
+              );
+        return {
+          ...state,
+         
+          eventosDb: typeFilter
+          
+        
+
+        };
       
 
     default:
