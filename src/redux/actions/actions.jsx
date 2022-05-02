@@ -6,7 +6,7 @@ export const GET_BY_TITLE = "GET_BY_TITLE";
 export const GET_DETAIL = "GET_DETAIL";
 
 export const BY_EVENT_TYPE = "BY_EVENT_TYPE";
-export const TIME_FILTER = "TIME_FILTER"
+export const GET_STATES = "GET_STATES"
 
 
 export function getAllEvent() {
@@ -68,26 +68,12 @@ export function byEventType(payload) {
   }
 }
 
-export function timeFilter (payload) {
+
+
+export function getState(payload) {
   return {
-      type: TIME_FILTER,
+      type: GET_STATES,
       payload
   }
 }
 
-// export function byEventTime(payload) {
-//   return {
-//       type: GET_TIME,
-//       payload
-//   }
-// }
-
-// export function getTime(date) {
-//   return async (dispatch) => {
-//     let response = await axios.get(`http://localhost:3001/events/getTitle?date=${date}`);
-//     return dispatch({
-//       type: GET_TIME,
-//       payload: response.data,
-//     });
-//   };
-// }

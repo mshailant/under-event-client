@@ -1,6 +1,21 @@
 .containerGeneral{
-  height: 100vh;
+  height: 3000px;
   background: black;
+}
+.containerGeneral:before{
+  top: 50%;
+  height: 0px;
+  
+  content: ' ';
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+.containerGeneral{
+  height: 100%;
+  background: black;
+  
   
 }
 
@@ -26,7 +41,7 @@ margin-right: 60px;
 display: grid;
 
 justify-content: center;
-grid-template-columns: repeat(auto-fill, 250px);
+grid-template-columns: repeat(auto-fill, 350px);
 padding: 45px;
 gap: 25px;
 margin-top: 35px;
@@ -162,8 +177,8 @@ margin-bottom: 35px;
 }
 
 .imgHeader .Welcome > button{
-width:150px ;
-height: 45px;
+width:160px ;
+height: 65px;
 background: rgb(244, 244, 244) ;
 
 border: none;
@@ -180,6 +195,24 @@ font-weight: bold;
 
 }
 
+.arrowContainer{
+  
+}
+
+.btnArrowDown{
+  font-size: 55px;
+  color: white;
+  cursor: pointer;
+  
+}
+
+.btnArrowDown:hover{
+  transform: scale(1.18);
+  transition: all 0.5s;
+  z-index: 1000;
+  position: relative;
+}
+
 .imgHeader .Welcome > button:hover{
 
 background: rgb(0, 0, 0);
@@ -188,10 +221,11 @@ color: rgb(238, 238, 238);
 
 
 .contactUs{
+  position: relative;
   height: 100vh;
   background: black;
   margin-top: 55px;
-  padding-bottom: -55px;
+  
 }
 
 
@@ -228,5 +262,13 @@ color: rgb(238, 238, 238);
 
 .contactUS{
   margin-bottom: 55px;
+  height: 100%;
+  padding-bottom: 50px;
+}
+
+.containerSpinner{
+  margin-right: 55%;
+     
+  
 }
 
