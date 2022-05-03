@@ -11,3 +11,9 @@
 #navbarScrollingDropdown{
 	color: white;
 }
+
+.title{
+	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	color: black;
+	font-weight: bold;
+}

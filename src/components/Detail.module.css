@@ -1,20 +1,29 @@
-.containerDetail{
+.container{
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background:  #d0d3d4 ; 
+    height: auto;
+}
+
+.container2{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background: #ecf0f1;
     
     height: 100%;
     width: auto;
+    
    
    
-        background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('../images/pexels-wendy-wei-1916821\(1\).jpg');  
+        
         
       
         /* Set a specific height */
-        min-height: 600px;
+      
       
         /* Create the parallax scrolling effect */
        
@@ -26,21 +35,50 @@
     height: 650px;
 }
 
-.bodyDetail{
+.ticketContainer{
+    
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    align-self: flex-start;
-    background: black;
-    height: 350px;
-    color: white;
-    
-    
-    
-}
-
-.bodyDetail h2{
+    align-self: center;
+    background: rgba(148, 147, 147, 0.323);
     margin-top: 20px;
-    font-size: 30px;
+    
 }
 
+.ticketContainer h1{
+    font-size: 23px;
+}
+
+
+.captionContainer{
+    margin-top: 55px;
+}
+
+.caption{
+    margin-top: 60px;
+}
+
+.caption h2{
+    font-size: 29px;
+    font-weight: bolder;
+}
+
+.caption p{
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.containerDate{
+    margin-top: 60px;
+}
+
+.caption h4 {
+    font-size: 24px;
+    font-weight: bolder;
+  
+}
+
+.caption h5{
+    font-size: 24px;
+    font-weight: bolder;
+}
