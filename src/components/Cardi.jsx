@@ -1,8 +1,9 @@
 import React from "react";
-import { Card, Button, CardGroup, Container, Row, Col } from "react-bootstrap";
+import { Card, Button, CardGroup, Container, Row, Col, ListGroup, ListGroupItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import style from "./Card.module.css";
-import img from "../images/logo.png"
+import img from "../images/logo.png";
+import {FaCalendar, FaSearchLocation, FaTicketAlt} from 'react-icons/fa'
 
 export default function Cardi({ id, title, imagen, description, date, place }) {
   const handleClickDirectiontoDetail = () => {
@@ -11,22 +12,21 @@ export default function Cardi({ id, title, imagen, description, date, place }) {
   return (
     <Container>
       <Row>
-        <Card>
-          <Card.Img style={{height: "250px", width:"auto", }} variant="top" src={imagen ? imagen : img } />
-          <Card.Body style={{height: "260px", width:"auto", }} >
-            <Card.Text>{title}</Card.Text>
-            <Card.Text>{place}</Card.Text>
-            <Card.Text>Date: {date}</Card.Text>
-
-            <Button
-              className={style.btn}
-              style={{ marginTop: 45, marginLeft: 100 }}
-              variant="outline-dark"
-              onClick={handleClickDirectiontoDetail}
-            >
-              Buy
-            </Button>
+        <Card style={{ width: "18rem", height: "500px" }}>
+          <Card.Img style={{height: "200px"}} variant="top" src={imagen ? imagen : img} />
+          <Card.Body  >
+            <Card.Title  >{title}</Card.Title>
+         
           </Card.Body>
+          <ListGroup className="list-group-flush">
+            <ListGroupItem></ListGroupItem>
+            <ListGroupItem><FaCalendar/> {date}</ListGroupItem>
+            <ListGroupItem><FaSearchLocation/> {place}</ListGroupItem>
+          </ListGroup>
+          <Card.Body>
+            
+          </Card.Body>
+            <Button className={style.btn} style={{width: "auto"}} variant="warning" onClick={() => handleClickDirectiontoDetail()} href="#"><FaTicketAlt/> Buy</Button>
         </Card>
       </Row>
     </Container>

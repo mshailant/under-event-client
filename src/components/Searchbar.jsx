@@ -26,14 +26,8 @@ export default function Searchbar() {
     return (
 
         <Form onSubmit={(e) => handleSubmit(e)} className="d-flex">
-            <FormControl 
-                type="search"
-                placeholder="Search"
-                onChange={(e) => handleInput(e)}
-                className="me-2"
-                aria-label="Search"
-            />
-            <Button type="submit" onClick={() => scrollToCards()} variant="light">Search</Button>
+            <input style={{width: "auto", height: "31px", marginTop: "1px"}} onChange={handleInput} class="form-control" type="text" placeholder="Search" aria-label="Search"></input>
+            <Button style={{ height: "30px", marginTop: "2px" }} type="submit" onClick={() => scrollToCards()}  variant="outline-warning"><p style={{marginBottom: 5}}>Search</p></Button>
         </Form>
     )
 }

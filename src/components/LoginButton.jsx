@@ -10,9 +10,9 @@ export default function LoginButton() {
   };
 
   return (
-    <Button
+    <Button  
       className="m-2"
-      variant="success"
+      variant="outline-warning"
       onClick={() => loginWithPopup(options)}
     >
       Log In
