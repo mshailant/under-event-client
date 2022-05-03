@@ -8,7 +8,7 @@ export default function ProfileButton() {
 
   return (
     <Dropdown align="end" className="m-2">
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
+      <Dropdown.Toggle style={{marginLeft: "auto"}} variant="warning" id="dropdown-basic">
         Profile
       </Dropdown.Toggle>
 
