@@ -5,7 +5,7 @@ import { Content, Heading } from './Styles';
 export default function Buttom (){
     return (
         <Fragment>
-        <Heading>GeeksForGeeks</Heading>
+        <Heading >GeeksForGeeks</Heading>
         <Content />
         <ScrollButton />
       </Fragment>

@@ -6,9 +6,10 @@ export default class ScrollComponent extends Component {
         return (
             <ScrollButton 
                 behavior={'smooth'} 
-                buttonBackgroundColor={'red'}
+                buttonBackgroundColor={'black'}
                 iconType={'arrow-up'}
                 style= {{fontSize: '24px'}}
+                
             />
         );
     }

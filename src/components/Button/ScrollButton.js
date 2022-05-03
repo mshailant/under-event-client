@@ -30,7 +30,7 @@ window.addEventListener('scroll', toggleVisible);
 return (
 	<Button>
 	<FaArrowUp onClick={scrollToTop}
-	style={{display: visible ? 'inline' : 'none'}} />
+	style={{display: visible ? 'inline' : 'none', color: "black"}} />
 	</Button>
 );
 }

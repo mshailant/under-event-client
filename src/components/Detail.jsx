@@ -9,18 +9,19 @@ import { Card, Button, } from "react-bootstrap";
 
 import {LinkContainer} from 'react-router-bootstrap'
 
-import {Nav, Navbar, NavDropdown, Container} from "react-bootstrap"
+import {Nav, Navbar, NavDropdown, Container, Row, Col, Figure, Form, Placeholder } from "react-bootstrap"
+import NavTop from "./NavBars/Nav.jsx";
 
 
-import imagen from "../images/cret.jpg"
-import Footer from "./Footer/Footer.js";
+import imagen from "../images/concert2.jpg"
+import FooterPage from "./NewFooter.jsx";
 
 
 const Detail = () => {
   const dispatch = useDispatch();
   const detalles = useSelector((state) => state.detailEventos);
   const { id } = useParams();
-  console.log(detalles)
+  console.log(detalles, "detallaso")
 
   useEffect(() => {
     dispatch(getDetail(id));
@@ -30,49 +31,116 @@ const Detail = () => {
     window.location.href = "/";
   };
   return (
-      <div className={styles.containerDetail}>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-  <Container>
-      <LinkContainer to = "/">
-  <Navbar.Brand style={{}} >UnderEventApp</Navbar.Brand>
-  </LinkContainer>
-  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-  <Navbar.Collapse id="responsive-navbar-nav">
-    <Nav className="me-auto">
-    
-    </Nav>
-    <Nav>
-    
-   
-    </Nav>
-  </Navbar.Collapse>
-  </Container>
-</Navbar>
-  
-      {detalles ? (
-        <Card  style={{ width: "60%",  height: "650px", background: "rgba(210, 210, 210, 0.529)", marginLeft: "20%", marginBottom: "150px", marginTop: "25px"}}>
-          <Card.Img style={{width: "40%", height: "50%", background: "rgba(0, 0, 0, 0.6)", marginTop: "10px", marginBottom: "15px"}} variant="top" src={detalles.imagen} />
-          
-          <Card.Body style={{width: "100%", height: "auto", height: "30%",  background: "rgba(0, 0, 0, 0.6)", }} >
-            <Card.Text style={{color: "white", fontSize: "31px"}}>{detalles.title}</Card.Text>
-            <Card.Text style={{color: "white", fontSize: "28px"}}>Date: {detalles.date} {detalles.eventTime}</Card.Text>
-            <Card.Text style={{color: "white", fontSize: "28px"}}>Time: {detalles.time} {detalles.eventTime}</Card.Text>
-        
-          </Card.Body>
-          <Button style={{fontSize: "25px",  }} variant="success" >Buy your tickets</Button>
-        </Card>
-      ) : (
-        <h4>Chau</h4>
-      )}
-      
+    <div  >
 
-      <Card  style={{ width: "100%",  height: "5%", background: "rgba(210, 210, 210, 0.529)", }}>
-      <Card.Img style={{width: "600px", height: "15%", background: "rgba(0, 0, 0, 0.6)", marginTop: "3px", marginBottom: "3px", marginLeft: "34%"}} variant="top" src={imagen} />
-          
-         
-        </Card>
-        <Footer/>
+    {detalles ? (
+    <div className={styles.container} >
+    <NavTop/>
+  <Container style={{background: "#ecf0f1", marginTop: "25px"}}>
+
+  <Row>
+    <Col xl><Figure>
+<Figure.Image
+  width={500}
+  height={500}
+  alt="171x180"
+  src={detalles.imagen}
+/>
+
+</Figure></Col>
+    <Col  xs={{ order: 12 }}><div className={styles.container2} style={{backGround: "black", height: "auto" }}>
+     
+      <div className={styles.ticketContainer}><Container>
+  <Row >
+    <Col xs>Tipo de Ticket</Col>
+    <Col xs={{ order: 12 }}>Valor</Col>
+    <Col xs={{ order: 1 }}>Cantidad</Col>
+  </Row>
+</Container></div>
+      <div className={styles.ticketContainer} ><Container>
+  <Row >
+    <Col xs>Cuota {detalles.title}</Col>
+    <Col xs={{ order: 12 }}>$ 3500 </Col>
+    <Col xs={{ order: 1 }}><Form.Select aria-label="Default select example">
+  <option>0</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</Form.Select></Col>
+  </Row>
+</Container> </div>
+      <div className={styles.ticketContainer} ><Container>
+  <Row>
+    <Col xs>First, but unordered</Col>
+    <Col xs={{ order: 12 }}>Second, but last</Col>
+    <Col xs={{ order: 1 }}><Form.Select aria-label="Default select example">
+  <option>0</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</Form.Select></Col>
+  </Row>
+</Container> </div>
+
+<div className={styles.ticketContainer} ><Container>
+  <Row>
+    <Col xs>First, but unordered</Col>
+    <Col xs={{ order: 12 }}>Second, but last</Col>
+    <Col xs={{ order: 1 }}><Form.Select aria-label="Default select example">
+  <option>0</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</Form.Select></Col>
+  </Row>
+</Container> </div>
+
+<div className={styles.ticketContainer} ><Container>
+  <Row>
+    <Col xs>First, but unordered</Col>
+    <Col xs={{ order: 12 }}>Second, but last</Col>
+    <Col xs={{ order: 1 }}>Third, but second</Col>
+  </Row>
+</Container>
+ </div>
+ <Figure.Caption>
+  <div>
+    <div  > <hr/>
     </div>
+    <div className={styles.caption} ><>
+  <p  aria-hidden="false">
+    <h2>{detalles.title}</h2>
+  </p>
+  <p aria-hidden="false">
+    <p>{detalles.description}</p>
+  </p> <hr/>
+  <div className={styles.containerDate}>
+  <p aria-hidden="false">
+    <h4>Fecha : {detalles.date}</h4>
+  </p>
+  <p aria-hidden="false">
+    <h5>Horario : {detalles.time}</h5>
+  </p>
+  </div>
+
+  
+</></div>
+
+
+  </div>
+</Figure.Caption>
+      </div>
+      
+      </Col>
+    
+  </Row>
+</Container>
+<FooterPage/>
+</div>): <h1>error</h1>}
+</div>
+
+
+    
   );
 };
 

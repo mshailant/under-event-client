@@ -47,32 +47,13 @@ export default function NavTop() {
  
 <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
-          <Navbar.Brand style={{color: "#f1c40f"}}  href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand style={{color: "#f1c40f", fontFamily: "font-family: 'Rubik Glitch', cursive;"}}  href="#home"><h2  className={styles.title} >UnderVentsApp</h2></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link style={{color: "white"}} href="#features">Features</Nav.Link>
-              <Nav.Link style={{color: "white"}} href="#pricing">Pricing</Nav.Link>
-              <NavDropdown
-                style={{ marginLeft: "30px"}}
-                className={styles.nav}
-                title={
-                  <span  className="text-primary my-auto">More Information</span>
-                }
-                id="navbarScrollingDropdown"
-              >
-                <NavDropdown.Item onClick={() => scrollBottom()}>
-                  Contact Us
-                </NavDropdown.Item>
-                <NavDropdown.Item onClick={() => aboutUs()}>
-                  About Us
-                </NavDropdown.Item>
+              <Nav.Link style={{color: "black"}} href="/createEvent">Crear Eventos</Nav.Link>
               
-                <NavDropdown.Divider />
-                <LinkContainer to="/createEvent">
-                  <NavDropdown.Item>Create your own event</NavDropdown.Item>
-                </LinkContainer>
-              </NavDropdown>
+             
             </Nav>
             <Nav>
              
@@ -183,7 +164,7 @@ export function Selector () {
     <div>
        <Navbar  style={{width: "100%",  marginBottom: "25px"}} variant="light" bg="light">
   <Container>
-  <Navbar.Brand style={{marginLeft: "auto"}} href="#">Navbar</Navbar.Brand>
+  <Navbar.Brand style={{marginLeft: "auto"}} href="#">UnderEventsApp</Navbar.Brand>
        <Form.Select style={{width: "400px"}} size="sm"  onChange={handleStates} >
                 <option onClick={() => scrollHalf()} value="All" key="All">
                   States

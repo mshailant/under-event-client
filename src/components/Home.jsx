@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as Action from "../redux/actions/actions";
 import styles from "./Home.module.css";
-import Footer from "./Footer/Footer";
-import ScrollButton from "./Button/ScrollButton";
+import FooterPage from "./NewFooter";
+
 import Carousely, { Carouse2 } from "./Carousel";
 import Cardi from "./Cardi";
 import Buttom from "./Button/ScrollButton";
-import ContactUs from "./ContactUs";
+//import ContactUs from "./ContactUs";
 import { Alert } from "react-bootstrap";
 import NavTop from "./NavBars/Nav";
 import { SpinnerCircularFixed } from "spinners-react";
@@ -99,14 +99,18 @@ export default function Home() {
               </Alert>
             )}
           </div>
-         
-        </div>
+          {/* <div className={styles.contactUS}>
+            <ContactUs />
+          </div> */}
+        </div >
+        
         <Buttom />
+       
       </div>
 
-      <ScrollButton />
+     
 
-      <Footer />
+      <FooterPage />
     </div>
   );
 }
