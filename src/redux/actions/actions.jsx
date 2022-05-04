@@ -6,7 +6,8 @@ export const GET_BY_TITLE = "GET_BY_TITLE";
 export const GET_DETAIL = "GET_DETAIL";
 
 export const BY_EVENT_TYPE = "BY_EVENT_TYPE";
-export const GET_STATES = "GET_STATES"
+export const GET_STATES = "GET_STATES";
+export const FILTER_DATE = "FILTER_DATE"
 
 
 export function getAllEvent() {
@@ -74,6 +75,15 @@ export function getState(payload) {
   return {
       type: GET_STATES,
       payload
+  }
+}
+
+//filtrar por Date
+
+export function byFilterDate(payload) {
+  return {
+    type: FILTER_DATE,
+    payload
   }
 }
 
