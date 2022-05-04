@@ -35,19 +35,9 @@ export default function NavTop() {
 
   const userLogedin = useSelector((state) => state.userLogedin);
 
-  function handleEventType(e) {
-    e.preventDefault();
-    dispatch(Action.byEventType(e.target.value));
-  }
-
-  function handleStates(e) {
-    e.preventDefault();
-    dispatch(Action.getState(e.target.value));
-  }
-
   return (
     <header className={styles.nav}>
-      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+      <Navbar collapseOnSelect expand="lg" bg="warning" variant="warning">
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand
@@ -126,11 +116,14 @@ export function Selector() {
     <div>
       <Navbar
         style={{ width: "100%", marginBottom: "25px" }}
-        variant="light"
-        bg="light"
+        variant="warning"
+        bg="warning"
       >
         <Container>
-          <Navbar.Brand style={{ marginLeft: "auto" }} href="#">
+          <Navbar.Brand
+            style={{ marginLeft: "auto", color: "white", fontWeight: "bold" }}
+            href="#"
+          >
             UnderEventsApp
           </Navbar.Brand>
           <Form.Select

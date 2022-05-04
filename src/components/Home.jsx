@@ -12,6 +12,7 @@ import Buttom from "./Button/ScrollButton";
 import { Alert } from "react-bootstrap";
 import { SpinnerCircularFixed } from "spinners-react";
 import { Selector } from "./NavBars/Nav";
+import NavTop from "./NavBars/Nav";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -42,6 +43,8 @@ export default function Home() {
 
   return (
     <div className={styles.containerGeneral}>
+      <NavTop />
+
       <Carousely />
 
       <div className={styles.navegation}>

@@ -21,21 +21,34 @@ export default function Cardi({ id, title, imagen, description, date, place }) {
   return (
     <Container>
       <Row>
-        <Card style={{ width: "18rem", height: "500px" }}>
+        <Card
+          className={style.cards}
+          style={{
+            width: "18rem",
+            height: "520px",
+            width: "400px",
+            background: "  #d0d3d4  ",
+          }}
+        >
           <Card.Img
-            style={{ height: "200px" }}
+            style={{ height: "220px" }}
             variant="top"
             src={imagen ? imagen : img}
           />
-          <Card.Body>
+          <Card.Body style={{ width: "400px" }}>
             <Card.Title>{title}</Card.Title>
           </Card.Body>
-          <ListGroup className="list-group-flush">
-            <ListGroupItem></ListGroupItem>
-            <ListGroupItem>
+          <ListGroup
+            style={{ background: "  #d0d3d4  " }}
+            className="list-group-flush"
+          >
+            <ListGroupItem
+              style={{ background: "  #d0d3d4  " }}
+            ></ListGroupItem>
+            <ListGroupItem style={{ background: "  #d0d3d4  " }}>
               <FaCalendar /> {date}
             </ListGroupItem>
-            <ListGroupItem>
+            <ListGroupItem style={{ background: "  #d0d3d4  " }}>
               <FaSearchLocation /> {place}
             </ListGroupItem>
           </ListGroup>

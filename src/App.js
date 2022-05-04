@@ -29,7 +29,7 @@ function App() {
 
   return (
     <BrowserRouter history={history}>
-      <NavTop />
+      {/* <NavTop /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route exact path="/profile" element={<UserProfile />} />

@@ -5,6 +5,7 @@
     background-size: cover;
     background:  #d0d3d4 ; 
     height: auto;
+   
 }
 
 .container2{
@@ -30,6 +31,24 @@
     
 }
 
+.containerGrid{
+    border-style:double;
+    border-color: #d8a602;
+    border-width: 5px;
+    box-shadow: 0 0 3px rgb(190, 190, 190), 0 0 6px rgb(193, 193, 193),
+    0 0 9px rgb(225, 174, 7), 0 0 12px rgb(119, 118, 119),
+    0 0 15px rgb(77, 77, 78), 0 0 18px rgb(225, 174, 7);
+}
+
+.cardImg{
+    border-style:double;
+    border-color: #d8a602;
+    border-width: 5px;
+    box-shadow: 0 0 3px rgb(190, 190, 190), 0 0 6px rgb(193, 193, 193),
+    0 0 9px rgb(225, 174, 7), 0 0 12px rgb(119, 118, 119),
+    0 0 15px rgb(77, 77, 78), 0 0 18px rgb(225, 174, 7);
+    margin-top: 10px;
+}
 .img{
     width: 850px;
     height: 650px;
@@ -48,6 +67,16 @@
 .ticketContainer h1{
     font-size: 23px;
 }
+
+.ticketContainerBuy{
+    width: 100%;
+    display: flex;
+    align-self: center;
+
+    margin-top: 20px;
+}
+
+
 
 
 .captionContainer{

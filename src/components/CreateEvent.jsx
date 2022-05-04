@@ -8,6 +8,7 @@ import Footer from "./Footer/Footer";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
+import NavTop from "./NavBars/Nav";
 
 export function validate(input) {
   let errors = {};
@@ -125,18 +126,7 @@ export function CreateEvent() {
 
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Container>
-          <LinkContainer to="/">
-            <Navbar.Brand style={{}}>UnderEventApp</Navbar.Brand>
-          </LinkContainer>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto"></Nav>
-            <Nav></Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <NavTop />
       <div className={styles.containerCreate}>
         <div className={styles.containerInput}>
           <div className={styles.container}>

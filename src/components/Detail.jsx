@@ -21,6 +21,7 @@ import {
   Placeholder,
 } from "react-bootstrap";
 
+import NavTop from "./NavBars/Nav.jsx";
 import imagen from "../images/concert2.jpg";
 import FooterPage from "./NewFooter.jsx";
 
@@ -41,14 +42,19 @@ const Detail = () => {
     <div>
       {detalles ? (
         <div className={styles.container}>
-          <Container style={{ background: "#ecf0f1", marginTop: "25px" }}>
+          <NavTop />
+          <Container
+            className={styles.containerGrid}
+            style={{ background: "#ecf0f1", marginTop: "25px" }}
+          >
             <Row>
               <Col xl>
                 <Figure>
                   <Figure.Image
-                    width={500}
-                    height={500}
-                    alt="171x180"
+                    className={styles.cardImg}
+                    width={620}
+                    height={700}
+                    alt="171x250"
                     src={detalles.imagen}
                   />
                 </Figure>
@@ -117,15 +123,20 @@ const Detail = () => {
                     </Container>{" "}
                   </div>
 
-                  <div className={styles.ticketContainer}>
+                  <div className={styles.ticketContainerBuy}>
                     <Container>
                       <Row>
-                        <Col xs>First, but unordered</Col>
-                        <Col xs={{ order: 12 }}>Second, but last</Col>
-                        <Col xs={{ order: 1 }}>Third, but second</Col>
+                        <Col xs></Col>
+                        <Col xs={{ order: 12 }}></Col>
+                        <Col style={{ marginLeft: "270px" }} xs={{ order: 1 }}>
+                          <Button variant="warning">Comprar</Button>
+                        </Col>
                       </Row>
                     </Container>
                   </div>
+                  <Figure.Caption>
+                    <div>hola aca pone el calendario!!!</div>
+                  </Figure.Caption>
                   <Figure.Caption>
                     <div>
                       <div>
