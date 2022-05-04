@@ -143,26 +143,20 @@ export function Selector() {
             onChange={handleStates}
           >
             <option onClick={() => scrollHalf()} value="All" key="All">
-              States
+              Ciudades
             </option>
 
-            <option onClick={() => scrollHalf()} value="VA" key="VA">
-              Virginia
+            <option onClick={() => scrollHalf()} value="Buenos Aires" key="Buenos Aires">
+            Buenos Aires
             </option>
-            <option onClick={() => scrollHalf()} value="LA" key="LA">
-              Los Angeles
+            <option onClick={() => scrollHalf()} value="Cordoba Capital" key="Cordoba Capital">
+            Cordoba Capital
             </option>
-            <option onClick={() => scrollHalf()} value="GA" key="GA">
-              Georgia
+            <option onClick={() => scrollHalf()} value="Cordoba" key="Cordoba">
+            Cordoba
             </option>
-            <option onClick={() => scrollHalf()} value="TN" key="TN">
-              Tennessee
-            </option>
-            <option onClick={() => scrollHalf()} value="MD" key="MD">
-              Maryland
-            </option>
-            <option onClick={() => scrollHalf()} value="WI" key="WI">
-              Wisconsin
+            <option onClick={() => scrollHalf()} value="Mar del Plata" key="Mar del Plata">
+            Mar del Plata
             </option>
           </Form.Select>
 
@@ -173,31 +167,49 @@ export function Selector() {
             onChange={handleEventType}
           >
             <option value="All" key="All">
-              All events
+              Generos
             </option>
             <option
               onClick={() => scrollHalf()}
-              value="ncaa_baseball"
-              key="ncaa_baseball"
+              value="Reggae"
+              key="Reggae"
             >
-              Baseball
+              Reggae
             </option>
             <option
               onClick={() => scrollHalf()}
-              value="minor_league_baseball"
-              key="minor_league_baseball"
+              value="Urbano latino"
+              key="Urbano latino"
             >
-              Minor League Baseball
+              Urbano latino
             </option>
             <option
               onClick={() => scrollHalf()}
-              value="music_festival"
-              key="music_festival"
+              value="Pop"
+              key="Pop"
             >
-              Music Festival
+              Pop
             </option>
-            <option onClick={() => scrollHalf()} value="concert" key="concert">
-              Concert
+            <option
+              onClick={() => scrollHalf()}
+              value="Rock Nacional"
+              key="Rock Nacional"
+            >
+              Rock Nacional
+            </option>
+            <option
+              onClick={() => scrollHalf()}
+              value="Rock"
+              key="Rock"
+            >
+              Rock
+            </option>
+            <option
+              onClick={() => scrollHalf()}
+              value="Ska"
+              key="Ska"
+            >
+              Ska
             </option>
           </Form.Select>
 

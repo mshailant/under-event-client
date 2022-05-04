@@ -49,7 +49,7 @@ function rootReducer(state = InitialState, action) {
       const stateFilter =
         action.payload === "All"
           ? allState
-          : allState.filter((g) => g.state === action.payload);
+          : allState.filter((g) => g.city === action.payload);
       return {
         ...state,
 
@@ -61,7 +61,7 @@ function rootReducer(state = InitialState, action) {
       const typeFilter =
         action.payload === "All"
           ? allType
-          : allType.filter((g) => g.eventType === action.payload);
+          : allType.filter((g) => g.genero === action.payload);
       return {
         ...state,
 
