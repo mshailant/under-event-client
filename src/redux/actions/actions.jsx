@@ -9,6 +9,7 @@ export const BY_EVENT_TYPE = "BY_EVENT_TYPE";
 export const GET_STATES = "GET_STATES";
 export const FILTER_DATE = "FILTER_DATE"
 
+export const GET_USER = "GET_USER";
 
 export function getAllEvent() {
   return async function (dispatch) {
@@ -43,7 +44,9 @@ export function createEvent(payload) {
 
 export function getByTitle(title) {
   return async (dispatch) => {
-    let obtener = await axios.get(`http://localhost:3001/events/getTitle?title=${title}`);
+    let obtener = await axios.get(
+      `http://localhost:3001/events/getTitle?title=${title}`
+    );
     return dispatch({
       type: GET_BY_TITLE,
       payload: obtener.data,
@@ -53,7 +56,7 @@ export function getByTitle(title) {
 export function getDetail(id) {
   return async (dispatch) => {
     let json = await axios.get("http://localhost:3001/events/" + id);
-    
+
     return dispatch({
       type: GET_DETAIL,
       payload: json.data,
@@ -64,20 +67,29 @@ export function getDetail(id) {
 //filtar por tipo de evento
 export function byEventType(payload) {
   return {
-      type: BY_EVENT_TYPE,
-      payload
-  }
+    type: BY_EVENT_TYPE,
+    payload,
+  };
 }
-
-
 
 export function getState(payload) {
   return {
-      type: GET_STATES,
-      payload
-  }
+    type: GET_STATES,
+    payload,
+  };
 }
 
+export function getUserByEmail(email) {
+  return async (dispatch) => {
+    let json = await axios.get(
+      `http://localhost:3001/users/getUser?email=${email}`
+    );
+    return dispatch({
+      type: GET_USER,
+      payload: json.data,
+    });
+  };
+}
 //filtrar por Date
 
 export function byFilterDate(payload) {
