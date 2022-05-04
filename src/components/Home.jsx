@@ -74,6 +74,7 @@ export default function Home() {
                       state={e.state}
                       place={e.place}
                       key={e.id}
+                      month={e.month}
                     />
                     
                   </div>

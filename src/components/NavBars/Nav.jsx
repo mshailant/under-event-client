@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LinkContainer } from "react-router-bootstrap";
 import * as Action from "../../redux/actions/actions";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import ProfileButton from '../ProfileButton'
 import {
   Container,
@@ -20,7 +21,7 @@ import {
 } from "react-bootstrap";
 import Logo from "../Logo.jsx";
 import LoginButton from "../LoginButton";
-
+import {getAllEvent, byFilterDate} from "../../redux/actions/actions"
 import Searchbar from "../Searchbar";
 import styles from "./Nav.module.css";
 import scrollHalf from "../ScrollButtom/scrollHalfButtom";
@@ -31,18 +32,15 @@ export default function NavTop() {
   const dispatch = useDispatch();
   const { isAuthenticated, isLoading, error } = useAuth0();
 
-  function handleEventType(e) {
-    e.preventDefault();
-    dispatch(Action.byEventType(e.target.value));
-  }
 
-  function handleStates(e) {
-    e.preventDefault();
-    dispatch(Action.getState(e.target.value));
-  }
+
+  
+
+ 
 
   return (
     <header className={styles.nav}>
+  
 
  
 <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -74,80 +72,22 @@ export default function NavTop() {
 
 
 
-      {/* <Navbar bg="dark" expand="lg" style={{ position: "relative" }}>
-        <Container fluid>
-          <Navbar.Brand href="#">
-            <Logo />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
-            <Nav
-              className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
-              navbarScroll
-            >
-              <Nav.Link href="#action2">
-              <select  onChange={ handleStates}>
-                <option onClick={() => scrollHalf()} value='All' key='All'>States</option>
-              
-                <option onClick={() => scrollHalf()}  value='VA' key='VA' >Virginia</option>
-                <option onClick={() => scrollHalf()} value='LA' key='LA' >Los Angeles</option>
-                <option  onClick={() => scrollHalf()} value='GA' key='GA' >Georgia</option>
-                <option  onClick={() => scrollHalf()} value='TN'key='TN'  >Tennessee</option>
-                <option  onClick={() => scrollHalf()} value='MD' key='MD' >Maryland</option>
-                <option onClick={() => scrollHalf()} value='WI' key='WI' >Wisconsin</option>
-              </select>
 
-            </Nav.Link>
-
-            <Nav.Link href="#action2">
-              <select  onChange={handleEventType}>
-                <option value='All' key='All'>All events</option>
-                <option value='ncaa_baseball' key='ncaa_baseball' >Baseball</option>
-                <option value='minor_league_baseball' key='minor_league_baseball'>Minor League Baseball</option>
-                <option value='music_festival' key='music_festival'>Music Festival</option>
-                <option value='concert' key='concert'>Concert</option>
-              </select>
-
-            </Nav.Link> 
-
-             
-
-              <br />
-
-              <NavDropdown
-                style={{ marginLeft: "30px" }}
-                className={styles.nav}
-                title={
-                  <span className="text-primary my-auto">More Information</span>
-                }
-                id="navbarScrollingDropdown"
-              >
-                <NavDropdown.Item onClick={() => scrollBottom()}>
-                  Contact Us
-                </NavDropdown.Item>
-                <NavDropdown.Item onClick={() => aboutUs()}>
-                  About Us
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <LinkContainer to="/createEvent">
-                  <NavDropdown.Item>Create your own event</NavDropdown.Item>
-                </LinkContainer>
-              </NavDropdown>
-            </Nav>
-
-            <Searchbar />
-
-            {isAuthenticated ? <ProfileButton onClick={() => aboutUs()} /> : <LoginButton />}
-          </Navbar.Collapse>
-        </Container>
-      </Navbar> */}
     </header>
   );
 }
 
 
 export function Selector () {
+
+  const eventosBack = useSelector((state) => state.eventosBack)
+  const filterDate = useSelector((state) => state.filterDate)
+
+ useEffect(() => {
+   dispatch(getAllEvent());
+   dispatch(byFilterDate());
+ }, []);
+
 
   const dispatch = useDispatch();
 
@@ -159,6 +99,12 @@ export function Selector () {
   function handleStates(e) {
     e.preventDefault();
     dispatch(Action.getState(e.target.value));
+  }
+
+  function handleDate(e) {
+    e.preventDefault();
+    dispatch(Action.byFilterDate(e.target.value));
+   
   }
   return (
     <div>
@@ -230,8 +176,30 @@ export function Selector () {
               </Form.Select>
 
               <Form.Select style={{width: "400px"}} size="sm">
-    <option>Small select</option>
-  </Form.Select>
+          <option>Small select</option>
+          </Form.Select>
+
+
+           
+              <Form.Select style={{width: "400px"}} size="sm"
+                onChange={handleDate}
+                
+               
+              >
+                <option value="All" key="All">
+                  Por mes
+                </option>
+                {filterDate?.map((e) => {
+                  return (
+                    <option key={e.month} value={e.month}>
+                      {e.month[0] + e.month.slice(1)}
+                    </option>
+                  )
+                })}
+             
+
+              </Form.Select>
+
 
              
               
