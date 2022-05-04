@@ -10,8 +10,8 @@ import imagenes from "../images/maxresdefault.jpg"
 export default function Carousely() {
   return (
     <div   >
-      <Carousel  style={{height: "420px",   width: "auto",  }} >
-        <Carousel.Item style={{marginTop: 0, height: "580px",   width: "100%",   }}>
+      <Carousel  style={{height: "476px",   width: "auto",  }} >
+        <Carousel.Item style={{marginTop: 0, height: "580px",   width: "80%", marginLeft: "10%"   }}>
           <img 
             
             className="d-block w-100"
@@ -19,9 +19,9 @@ export default function Carousely() {
             alt="First slide"
             style={{height: "85%", width: "auto", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundAttachment: "fixed"}}
           />
-          <Carousel.Caption></Carousel.Caption>
+         
         </Carousel.Item>
-        <Carousel.Item style={{marginTop: 0, height: "580px",  width: "100%",   }}>
+        <Carousel.Item style={{marginTop: 0, height: "580px",   width: "80%", marginLeft: "10%"   }}>
           <img 
             className="d-block w-100"
             src={imagen}
@@ -30,18 +30,18 @@ export default function Carousely() {
           />
         
 
-          <Carousel.Caption></Carousel.Caption>
+         
         </Carousel.Item>
-        <Carousel.Item style={{marginTop: 0, height: "580px",   width: "100%",   }}>
+        <Carousel.Item style={{marginTop: 0, height: "580px",   width: "80%", marginLeft: "10%"  }}>
           <img 
             className="d-block w-100"
             src={imagenes}
             alt="Third slide"
-            style={{height: "85%", width: "auto"}}
+            style={{height: "85%", width: "400px"}}
             
           />
 
-          <Carousel.Caption></Carousel.Caption>
+         
         </Carousel.Item>
       </Carousel>
     </div>
