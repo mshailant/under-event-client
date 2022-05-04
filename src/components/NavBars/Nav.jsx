@@ -43,7 +43,7 @@ export default function NavTop() {
   
 
  
-<Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+<Navbar collapseOnSelect expand="lg" bg="warning" variant="warning">
         <Container>
           <Navbar.Brand style={{color: "#f1c40f", fontFamily: "font-family: 'Rubik Glitch', cursive;"}}  href="#home"><h2  className={styles.title} >UnderVentsApp</h2></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -64,18 +64,19 @@ export default function NavTop() {
       </Navbar>
 
 
-
-
-
-
-
-
-
-
-
     </header>
   );
 }
+
+
+
+
+
+
+
+
+
+
 
 
 export function Selector () {
@@ -108,9 +109,9 @@ export function Selector () {
   }
   return (
     <div>
-       <Navbar  style={{width: "100%",  marginBottom: "25px"}} variant="light" bg="light">
+       <Navbar  style={{width: "100%",  marginBottom: "25px"}} variant="warning" bg="warning">
   <Container>
-  <Navbar.Brand style={{marginLeft: "auto"}} href="#">UnderEventsApp</Navbar.Brand>
+  <Navbar.Brand style={{marginLeft: "auto", color: "white", fontWeight: "bold"}} href="#">UnderEventsApp</Navbar.Brand>
        <Form.Select style={{width: "400px"}} size="sm"  onChange={handleStates} >
                 <option onClick={() => scrollHalf()} value="All" key="All">
                   States

@@ -12,7 +12,7 @@ export default function LoginButton() {
   return (
     <Button  
       className="m-2"
-      variant="outline-warning"
+      variant="secondary"
       onClick={() => loginWithPopup(options)}
     >
       Log In
