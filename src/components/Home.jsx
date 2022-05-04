@@ -10,10 +10,8 @@ import Cardi from "./Cardi";
 import Buttom from "./Button/ScrollButton";
 //import ContactUs from "./ContactUs";
 import { Alert } from "react-bootstrap";
-import NavTop from "./NavBars/Nav";
 import { SpinnerCircularFixed } from "spinners-react";
 import { Selector } from "./NavBars/Nav";
-
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -44,8 +42,6 @@ export default function Home() {
 
   return (
     <div className={styles.containerGeneral}>
-      <NavTop />
-
       <Carousely />
 
       <div className={styles.navegation}>
@@ -53,14 +49,11 @@ export default function Home() {
       </div>
       <Carouse2 />
 
-
       <div className={styles.background}>
         <div className={styles.infoContainer}></div>
         <div className={styles.cardsContainer}>
-         
           <div className={styles.Date}></div>
           <div className={styles.cards}>
-           
             {Array.isArray(events) && events.length ? (
               events.map((e) => {
                 return (
@@ -75,7 +68,6 @@ export default function Home() {
                       place={e.place}
                       key={e.id}
                     />
-                    
                   </div>
                 );
               })
@@ -102,23 +94,12 @@ export default function Home() {
           {/* <div className={styles.contactUS}>
             <ContactUs />
           </div> */}
-        </div >
-        
-        <Buttom />
-       
-      </div>
+        </div>
 
-     
+        <Buttom />
+      </div>
 
       <FooterPage />
     </div>
   );
 }
-
-
-
-
-
-
-
-
