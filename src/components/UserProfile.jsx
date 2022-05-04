@@ -1,12 +1,17 @@
 import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { Container, Row, Col } from "react-bootstrap";
+import Loading from "../components/Loading";
 
-export default function UserProfile() {
-  const { user } = useAuth0();
+export function UserProfile() {
+  const { user, isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
-    <Container className="mb-5 mt-5">
+    <Container>
       <Row className="align-items-center profile-header mb-5 text-center text-md-left">
         <Col md={2}>
           <img
@@ -33,3 +38,5 @@ export default function UserProfile() {
     </Container>
   );
 }
+
+export default withAuthenticationRequired(UserProfile);
