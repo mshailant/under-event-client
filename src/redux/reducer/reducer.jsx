@@ -12,7 +12,7 @@ const InitialState = {
 
   allEventState: [],
 
-  filterDate: []
+ 
 
 };
 
