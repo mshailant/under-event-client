@@ -36,14 +36,14 @@ const Detail = () => {
     {detalles ? (
     <div className={styles.container} >
     <NavTop/>
-  <Container style={{background: "#ecf0f1", marginTop: "25px"}}>
+  <Container className={styles.containerGrid} style={{background: "#ecf0f1", marginTop: "25px"}}>
 
   <Row>
-    <Col xl><Figure>
-<Figure.Image
-  width={500}
-  height={500}
-  alt="171x180"
+    <Col xl><Figure  >
+<Figure.Image className={styles.cardImg}
+  width={620}
+  height={700}
+  alt="171x250"
   src={detalles.imagen}
 />
 
@@ -95,14 +95,18 @@ const Detail = () => {
   </Row>
 </Container> </div>
 
-<div className={styles.ticketContainer} ><Container>
+<div className={styles.ticketContainerBuy} ><Container>
   <Row>
-    <Col xs>First, but unordered</Col>
-    <Col xs={{ order: 12 }}>Second, but last</Col>
-    <Col xs={{ order: 1 }}>Third, but second</Col>
+    <Col xs></Col>
+    <Col xs={{ order: 12 }}></Col>
+    <Col style={{marginLeft: "270px"}} xs={{ order: 1 }}><Button variant="warning">Comprar</Button></Col>
   </Row>
 </Container>
+
  </div>
+ <Figure.Caption>
+  <div>hola aca pone el calendario!!!</div>
+</Figure.Caption>
  <Figure.Caption>
   <div>
     <div  > <hr/>
@@ -129,6 +133,7 @@ const Detail = () => {
 
   </div>
 </Figure.Caption>
+
       </div>
       
       </Col>
