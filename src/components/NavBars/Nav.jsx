@@ -4,7 +4,6 @@ import { LinkContainer } from "react-router-bootstrap";
 import * as Action from "../../redux/actions/actions";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import ProfileButton from "../ProfileButton";
 import {
   Container,
   Row,
@@ -22,7 +21,6 @@ import {
   Image,
 } from "react-bootstrap";
 import Logo from "../Logo.jsx";
-import LoginButton from "../LoginButton";
 import { getAllEvent, byFilterDate } from "../../redux/actions/actions";
 import Searchbar from "../Searchbar";
 import styles from "./Nav.module.css";
