@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LinkContainer } from "react-router-bootstrap";
 import * as Action from "../../redux/actions/actions";
-import { useDispatch, useSelector } from "react-redux";
-
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import ProfileButton from "../ProfileButton";
 import {
   Container,
   Row,
@@ -21,7 +22,8 @@ import {
   Image,
 } from "react-bootstrap";
 import Logo from "../Logo.jsx";
-
+import LoginButton from "../LoginButton";
+import { getAllEvent, byFilterDate } from "../../redux/actions/actions";
 import Searchbar from "../Searchbar";
 import styles from "./Nav.module.css";
 import scrollHalf from "../ScrollButtom/scrollHalfButtom";
@@ -31,9 +33,6 @@ import aboutUs from "../ScrollButtom/scrollAboutUs";
 export default function NavTop() {
   const dispatch = useDispatch();
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
-  const [userData, setUserData] = useState({});
-
-  const userLogedin = useSelector((state) => state.userLogedin);
 
   return (
     <header className={styles.nav}>
@@ -102,6 +101,14 @@ export default function NavTop() {
 }
 
 export function Selector() {
+  const eventosBack = useSelector((state) => state.eventosBack);
+  const filterDate = useSelector((state) => state.filterDate);
+
+  useEffect(() => {
+    dispatch(getAllEvent());
+    dispatch(byFilterDate());
+  }, []);
+
   const dispatch = useDispatch();
 
   function handleEventType(e) {
@@ -112,6 +119,11 @@ export function Selector() {
   function handleStates(e) {
     e.preventDefault();
     dispatch(Action.getState(e.target.value));
+  }
+
+  function handleDate(e) {
+    e.preventDefault();
+    dispatch(Action.byFilterDate(e.target.value));
   }
   return (
     <div>
@@ -193,6 +205,23 @@ export function Selector() {
 
           <Form.Select style={{ width: "400px" }} size="sm">
             <option>Small select</option>
+          </Form.Select>
+
+          <Form.Select
+            style={{ width: "400px" }}
+            size="sm"
+            onChange={handleDate}
+          >
+            <option value="All" key="All">
+              Por mes
+            </option>
+            {filterDate?.map((e) => {
+              return (
+                <option key={e.month} value={e.month}>
+                  {e.month[0] + e.month.slice(1)}
+                </option>
+              );
+            })}
           </Form.Select>
 
           <Searchbar />

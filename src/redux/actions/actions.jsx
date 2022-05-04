@@ -7,6 +7,7 @@ export const GET_DETAIL = "GET_DETAIL";
 
 export const BY_EVENT_TYPE = "BY_EVENT_TYPE";
 export const GET_STATES = "GET_STATES";
+export const FILTER_DATE = "FILTER_DATE"
 
 export const GET_USER = "GET_USER";
 
@@ -89,3 +90,12 @@ export function getUserByEmail(email) {
     });
   };
 }
+//filtrar por Date
+
+export function byFilterDate(payload) {
+  return {
+    type: FILTER_DATE,
+    payload
+  }
+}
+

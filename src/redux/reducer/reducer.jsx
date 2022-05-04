@@ -26,6 +26,7 @@ function rootReducer(state = InitialState, action) {
         eventosDb: action.payload,
         allEventType: action.payload,
         allEventState: action.payload,
+        filterDate: action.payload,
       };
     case Action.CREATE_EVENT:
       return {
@@ -72,6 +73,19 @@ function rootReducer(state = InitialState, action) {
       return {
         ...state,
         userLogedin: action.payload,
+      };
+
+    case Action.FILTER_DATE:
+      const allDate = state.eventosBack;
+      const dateFilter =
+        action.payload === "All"
+          ? allDate
+          : allDate.filter((g) => g.month?.includes(action.payload));
+      console.log("filtradoMeses", dateFilter);
+      return {
+        ...state,
+
+        eventosDb: dateFilter,
       };
 
     default:
