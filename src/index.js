@@ -6,18 +6,30 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { Auth0Provider } from "@auth0/auth0-react";
 import store from "../src/redux/store/store.jsx";
+import history from "./utils/history.js";
+import { getConfig } from "./config.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+const onRedirectCallback = (appState) => {
+  history.push(
+    appState && appState.returnTo ? appState.returnTo : window.location.pathname
+  );
+};
+
+const config = getConfig();
+
+const providerConfig = {
+  domain: config.domain,
+  clientId: config.clientId,
+  ...(config.audience ? { audience: config.audience } : null),
+  redirectUri: window.location.origin,
+  onRedirectCallback,
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Auth0Provider
-      domain="dev-5at2rm27.us.auth0.com"
-      clientId="aqm1X1GPxvVdTQsbpaqQUSZn6wpER7R6"
-      redirectUri={window.location.origin}
-      useRefreshTokens={true}
-    >
+    <Auth0Provider {...providerConfig}>
       <Provider store={store}>
         <App />
       </Provider>
