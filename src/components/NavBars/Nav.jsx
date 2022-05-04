@@ -60,6 +60,7 @@ export default function NavTop() {
               <Nav.Link style={{ color: "white" }} eventKey={2}>
                 {!isAuthenticated && (
                   <Button
+                    style={{ color: "white" }}
                     className="m-2"
                     variant="outline-warning"
                     onClick={() => loginWithRedirect()}
