@@ -27,7 +27,7 @@ export default function Cardi({ id, title, imagen, description, date, place }) {
             width: "18rem",
             height: "520px",
             width: "400px",
-            background: "  #d0d3d4  ",
+            background: "#979a9a",
           }}
         >
           <Card.Img
@@ -39,16 +39,16 @@ export default function Cardi({ id, title, imagen, description, date, place }) {
             <Card.Title>{title}</Card.Title>
           </Card.Body>
           <ListGroup
-            style={{ background: "  #d0d3d4  " }}
+            style={{ background: "  #979a9a " }}
             className="list-group-flush"
           >
             <ListGroupItem
-              style={{ background: "  #d0d3d4  " }}
+              style={{ background: "  #979a9a " }}
             ></ListGroupItem>
-            <ListGroupItem style={{ background: "  #d0d3d4  " }}>
+            <ListGroupItem style={{ background: "  #979a9a " }}>
               <FaCalendar /> {date}
             </ListGroupItem>
-            <ListGroupItem style={{ background: "  #d0d3d4  " }}>
+            <ListGroupItem style={{ background: "  #979a9a  " }}>
               <FaSearchLocation /> {place}
             </ListGroupItem>
           </ListGroup>

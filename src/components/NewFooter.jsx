@@ -9,7 +9,7 @@ const FooterPage = () => {
       <MDBContainer  fluid className="text-center text-md-left">
         <MDBRow className='mb-4' >
           <MDBCol md="6">
-            <h5 style={{color: "black", fontWeight: "bold"}} className="title">UnderEventApp</h5>
+            <h5 style={{color: "white", fontWeight: "bold"}} className="title">UnderEventApp</h5>
             <p style={{backGround: "white", fontWeight: "bold"}} >
               Tu lugar para poder mostrar tu talento..
             </p>

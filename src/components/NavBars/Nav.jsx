@@ -34,7 +34,7 @@ export default function NavTop() {
 
   return (
     <header className={styles.nav}>
-      <Navbar collapseOnSelect expand="lg" bg="warning" variant="warning">
+      <Navbar collapseOnSelect expand="lg" bg="secondary" variant="secondary">
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand
@@ -124,119 +124,127 @@ export function Selector() {
     dispatch(Action.byFilterDate(e.target.value));
   }
   return (
-    <div>
-      <Navbar
-        style={{ width: "100%", marginBottom: "25px" }}
-        variant="warning"
-        bg="warning"
-      >
-        <Container>
-          <Navbar.Brand
-            style={{ marginLeft: "auto", color: "white", fontWeight: "bold" }}
-            href="#"
-          >
-            UnderEventsApp
-          </Navbar.Brand>
-          <Form.Select
-            style={{ width: "400px" }}
-            size="sm"
-            onChange={handleStates}
-          >
-            <option onClick={() => scrollHalf()} value="All" key="All">
-              Ciudades
-            </option>
+    <div className={styles.container}>
+     <Container>
+  <Row>
+    <Col><Navbar
+style={{ width: "90%", marginBottom: "25px", marginLeft: "5%" }}
+bg="secondary" variant="secondary"
+>
+<Container>
+  <Navbar.Brand
+    style={{ marginLeft: "auto", color: "rgb(226, 181, 0)", fontWeight: "bold" }}
+    href="#"
+  >
+    UnderEventsApp
+  </Navbar.Brand>
 
-            <option onClick={() => scrollHalf()} value="Buenos Aires" key="Buenos Aires">
-            Buenos Aires
-            </option>
-            <option onClick={() => scrollHalf()} value="Cordoba Capital" key="Cordoba Capital">
-            Cordoba Capital
-            </option>
-            <option onClick={() => scrollHalf()} value="Cordoba" key="Cordoba">
-            Cordoba
-            </option>
-            <option onClick={() => scrollHalf()} value="Mar del Plata" key="Mar del Plata">
-            Mar del Plata
-            </option>
-          </Form.Select>
 
-          <br />
-          <Form.Select
-            style={{ width: "400px" }}
-            size="sm"
-            onChange={handleEventType}
-          >
-            <option value="All" key="All">
-              Generos
-            </option>
-            <option
-              onClick={() => scrollHalf()}
-              value="Reggae"
-              key="Reggae"
-            >
-              Reggae
-            </option>
-            <option
-              onClick={() => scrollHalf()}
-              value="Urbano latino"
-              key="Urbano latino"
-            >
-              Urbano latino
-            </option>
-            <option
-              onClick={() => scrollHalf()}
-              value="Pop"
-              key="Pop"
-            >
-              Pop
-            </option>
-            <option
-              onClick={() => scrollHalf()}
-              value="Rock Nacional"
-              key="Rock Nacional"
-            >
-              Rock Nacional
-            </option>
-            <option
-              onClick={() => scrollHalf()}
-              value="Rock"
-              key="Rock"
-            >
-              Rock
-            </option>
-            <option
-              onClick={() => scrollHalf()}
-              value="Ska"
-              key="Ska"
-            >
-              Ska
-            </option>
-          </Form.Select>
+  <Form.Select
+    style={{ width: "400px" }}
+    size="sm"
+    onChange={handleStates}
+  >
+    <option onClick={() => scrollHalf()} value="All" key="All">
+      Ciudades
+    </option>
 
-          <Form.Select style={{ width: "400px" }} size="sm">
-            <option>Small select</option>
-          </Form.Select>
+    <option onClick={() => scrollHalf()} value="Buenos Aires" key="Buenos Aires">
+    Buenos Aires
+    </option>
+    <option onClick={() => scrollHalf()} value="Cordoba Capital" key="Cordoba Capital">
+    Cordoba Capital
+    </option>
+    <option onClick={() => scrollHalf()} value="Cordoba" key="Cordoba">
+    Cordoba
+    </option>
+    <option onClick={() => scrollHalf()} value="Mar del Plata" key="Mar del Plata">
+    Mar del Plata
+    </option>
+  </Form.Select>
 
-          <Form.Select
-            style={{ width: "400px" }}
-            size="sm"
-            onChange={handleDate}
-          >
-            <option value="All" key="All">
-              Por mes
-            </option>
-            {filterDate?.map((e) => {
-              return (
-                <option key={e.month} value={e.month}>
-                  {e.month[0] + e.month.slice(1)}
-                </option>
-              );
-            })}
-          </Form.Select>
+  <br />
+  <Form.Select
+    style={{ width: "400px" }}
+    size="sm"
+    onChange={handleEventType}
+  >
+    <option value="All" key="All">
+      Generos
+    </option>
+    <option
+      onClick={() => scrollHalf()}
+      value="Reggae"
+      key="Reggae"
+    >
+      Reggae
+    </option>
+    <option
+      onClick={() => scrollHalf()}
+      value="Urbano latino"
+      key="Urbano latino"
+    >
+      Urbano latino
+    </option>
+    <option
+      onClick={() => scrollHalf()}
+      value="Pop"
+      key="Pop"
+    >
+      Pop
+    </option>
+    <option
+      onClick={() => scrollHalf()}
+      value="Rock Nacional"
+      key="Rock Nacional"
+    >
+      Rock Nacional
+    </option>
+    <option
+      onClick={() => scrollHalf()}
+      value="Rock"
+      key="Rock"
+    >
+      Rock
+    </option>
+    <option
+      onClick={() => scrollHalf()}
+      value="Ska"
+      key="Ska"
+    >
+      Ska
+    </option>
+  </Form.Select>
 
-          <Searchbar />
-        </Container>
-      </Navbar>
+  <Form.Select style={{ width: "400px" }} size="sm">
+    <option>Small select</option>
+  </Form.Select>
+
+  <Form.Select
+    style={{ width: "400px" }}
+    size="sm"
+    onChange={handleDate}
+  >
+    <option value="All" key="All">
+      Por mes
+    </option>
+    {filterDate?.map((e) => {
+      return (
+        <option key={e.month} value={e.month}>
+          {e.month[0] + e.month.slice(1)}
+        </option>
+      );
+    })}
+  </Form.Select>
+
+  <Searchbar />
+</Container>
+</Navbar></Col>
+  </Row>
+</Container>
     </div>
   );
 }
+
+
+

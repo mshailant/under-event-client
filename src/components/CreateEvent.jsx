@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createEvent } from "../redux/actions/actions";
 import styles from "./CreateEvent.module.css";
-import { Button, FormControl, Col, Row, Container } from "react-bootstrap";
+import { Button, FormControl, Col, Row, Container, Form, InputGroup,  SplitButton, Dropdown  } from "react-bootstrap";
 import Footer from "./Footer/Footer";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import NavTop from "./NavBars/Nav";
+import imagen from '../images/pexels-darya-sannikova-3824763.jpg'
+import FormExample from "./FormBootstrap/FormBotstrap";
+import FooterPage from "./NewFooter";
 
 export function validate(input) {
   let errors = {};
@@ -40,7 +43,7 @@ export function validate(input) {
   return errors;
 }
 
-export function CreateEvent() {
+export default function CreateEvent() {
   const { user, isLoading } = useAuth0();
 
   const stateInitialForms = {
@@ -109,188 +112,248 @@ export function CreateEvent() {
     );
   };
 
-  // const handlePerformers = (e) => {
-  //   setInput({
-  //     ...input,
-  //     performers: [input.performers, e.target.value],
-  //   });
+ return (
+   <div className={styles.container1} >
+     <Container fluid>
+  <Row>
+    <Col><NavTop/>
+     <Container  >
+  <Row>
+    <Col xs><div className={styles.container1}>
+       <div style={{marginTop: "85px"}}>
+       <Form>
+  <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Label> Tu Email: </Form.Label>
+    <Form.Control type="email" placeholder="Enter email" />
+    <Form.Text className="text-muted">
+      We'll never share your email with anyone else.
+    </Form.Text>
+  </Form.Group>
 
-  //   setErrors(
-  //     validate({
-  //       ...input,
-  //       performers: [input.performers, e.target.value],
-  //     })
-  //   );
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+  
+  
+    
+  </Form.Group>
+  <Form.Group className="mb-3" controlId="formBasicCheckbox">
+    
+  </Form.Group>
+  
+  <FormExample/>
+  <div><h5>INGRESA LOS DATOS DE TU EVENTO</h5></div>
+  <Form.Label>Provincia de destino</Form.Label>
+  <Form.Select aria-label="Default select example">
+  <option>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
 
-  // };
+  
+</Form.Select>
+<Form.Label>Tipo de evento</Form.Label>
+<Form.Select aria-label="Default select example">
+  <option>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
 
-  return (
-    <div>
-      <NavTop />
-      <div className={styles.containerCreate}>
-        <div className={styles.containerInput}>
-          <div className={styles.container}>
-            <div className={styles.img}>
-              {/* <img 
-            style={{borderRadius: 8, }}
-            className="d-block w-50"
-            src={Event}
-            alt="First slide"
-          />  */}
-            </div>
+  
+</Form.Select>
+<div>
+<Form.Text id="passwordHelpBlock" muted>
+    Your password must be 8-20 characters long, contain letters and numbers, and
+    must not contain spaces, special characters, or emoji.
+  </Form.Text>
+</div>
+<Form.Label>Evento solo para mayores de edad</Form.Label>
+<Form.Select aria-label="Default select example">
+  <option>No</option>
+  <option value="1">No</option>
+  <option value="1">Si</option>
 
-            <div className={styles.container}>
-              <form onSubmit={(e) => handleSubmit(e)}>
-                <div className={styles.title}>
-                  <h2>Create your Events</h2>
-                </div>
+  
+</Form.Select>
+<>
+  <Form.Label htmlFor="inputPassword5">Nombre del evento</Form.Label>
+  <Form.Control
+    type="text"
+    id="inputPassword5"
+    aria-describedby="passwordHelpBlock"
+  />
+  
+  <Form.Label htmlFor="inputPassword5">Escribe la categoria del evento</Form.Label>
+  <Form.Control
+    type="text"
+    id="inputPassword5"
+    aria-describedby="passwordHelpBlock"
+  />
 
-                <div className={styles.allLabel}>
-                  <label className={styles.labelInput}>Title:</label>
+<Form.Label htmlFor="inputPassword5">Artistas Participantes</Form.Label>
+  <Form.Control
+    type="text"
+    id="inputPassword5"
+    aria-describedby="passwordHelpBlock"
+  />
+<Form.Label htmlFor="inputPassword5">Escribe detalle del evento</Form.Label>
+<InputGroup>
+    <InputGroup.Text>With textarea</InputGroup.Text>
+    <FormControl as="textarea" aria-label="With textarea" />
+  </InputGroup>
+ 
+  <div><Container>
+  <Row>
 
-                  <input
-                    type="text"
-                    name="title"
-                    value={input.title}
-                    onChange={(e) => handleInputChange(e)}
-                    className={styles.allInput}
-                  />
-                  <div className={styles.alert}>
-                    {errors.title && (
-                      <p className={styles.danger}>{errors.title}</p>
-                    )}
-                  </div>
+    <Form.Label htmlFor="inputPassword5">Fecha de inicio del evento</Form.Label>
+    <Col xs={{ order: 12 }}><Form.Select aria-label="Default select example">
+  <option>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</Form.Select></Col>
+    <Col xs={{ order: 1 }}><Form.Select aria-label="Default select example">
+  <option>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</Form.Select></Col>
+  </Row>
+</Container>
 
-                  <label className={styles.labelInput}>Description:</label>
-                  <input
-                    type="text"
-                    name="description"
-                    value={input.description}
-                    onChange={(e) => handleInputChange(e)}
-                    className={styles.allInput}
-                  />
-                  <div className={styles.alert}>
-                    {errors.description && (
-                      <p className={styles.danger}>{errors.description}</p>
-                    )}
-                  </div>
+<Container>
+  <Row>
 
-                  <label className={styles.labelInput}>Place:</label>
-                  <input
-                    type="text"
-                    name="place"
-                    value={input.place}
-                    onChange={(e) => handleInputChange(e)}
-                    className={styles.place}
-                  />
-                  <div className={styles.alert}>
-                    {errors.place && (
-                      <p className={styles.danger}>{errors.place}</p>
-                    )}
-                  </div>
+    <Form.Label htmlFor="inputPassword5">Escribe detalle del evento</Form.Label>
+    <Col xs={{ order: 12 }}><Form.Select aria-label="Default select example">
+  <option>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</Form.Select></Col>
+    <Col xs={{ order: 1 }}><Form.Select aria-label="Default select example">
+  <option>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</Form.Select></Col>
+  </Row>
+</Container></div>
 
-                  {/* <label>Performers:</label>
-           <input
-            type="text"
-            name="performers"
-            value={input.performers}
-            onChange={(e) => handlePerformers(e)}
-          />
-          {errors.performers && <p className="danger">{errors.performers}</p>}  */}
-                  <label className={styles.labelInput}>Imagen:</label>
-                  <input
-                    type="text"
-                    name="imagen"
-                    value={input.imagen}
-                    onChange={(e) => handleInputChange(e)}
-                    className={styles.allInput}
-                  />
-                  <div className={styles.alert}>
-                    {errors.imagen && (
-                      <p className={styles.danger}>{errors.imagen}</p>
-                    )}
-                  </div>
-                  <label className={styles.labelInput}>Date:</label>
-                  <input
-                    type="text"
-                    name="date"
-                    value={input.date}
-                    onChange={(e) => handleInputChange(e)}
-                    className={styles.allInput}
-                  />
-                  <div className={styles.alert}>
-                    {errors.date && (
-                      <p className={styles.danger}>{errors.date}</p>
-                    )}
-                  </div>
-                  <label className={styles.labelInput}>Time:</label>
-                  <input
-                    type="text"
-                    name="time"
-                    value={input.time}
-                    onChange={(e) => handleInputChange(e)}
-                    className={styles.allInput}
-                  />
-                  <div className={styles.alert}>
-                    {errors.time && (
-                      <p className={styles.danger}>{errors.time}</p>
-                    )}
-                  </div>
-                  <label className={styles.labelInput}>Tickets:</label>
-                  <input
-                    type="text"
-                    name="stock"
-                    value={input.stock}
-                    onChange={(e) => handleInputChange(e)}
-                    className={styles.allInput}
-                  />
-                  <div className={styles.alert}>
-                    {errors.stock && (
-                      <p className={styles.danger}>{errors.stock}</p>
-                    )}
-                  </div>
-                  <label className={styles.labelInput}>Event Type:</label>
-                  <input
-                    type="text"
-                    name="eventType"
-                    value={input.eventType}
-                    onChange={(e) => handleInputChange(e)}
-                    className={styles.allInput}
-                  />
-                  <div className={styles.alert}>
-                    {errors.stock && (
-                      <p className={styles.danger}>{errors.stock}</p>
-                    )}
-                  </div>
-                  <label className={styles.labelInput}>State:</label>
-                  <input
-                    type="text"
-                    name="state"
-                    value={input.state}
-                    onChange={(e) => handleInputChange(e)}
-                    className={styles.allInput}
-                  />
-                  <div className={styles.alert}>
-                    {errors.state && (
-                      <p className={styles.danger}>{errors.state}</p>
-                    )}
-                  </div>
-                </div>
-                <Button
-                  style={{ marginTop: 10, marginLeft: 140, marginTop: 45 }}
-                  variant="outline-light"
-                  type="submit"
-                >
-                  Create Event
-                </Button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <Footer />
-    </div>
-  );
-}
+<div><Container>
+  <Row>
 
-export default withAuthenticationRequired(CreateEvent);
+    <Form.Label htmlFor="inputPassword5">Fecha y hora de termino de tu evento</Form.Label>
+    <Col xs={{ order: 12 }}><Form.Select aria-label="Default select example">
+  <option>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</Form.Select></Col>
+    <Col xs={{ order: 1 }}><Form.Select aria-label="Default select example">
+  <option>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</Form.Select></Col>
+  </Row>
+</Container>
+
+<Container>
+  <Row>
+
+    <Form.Label htmlFor="inputPassword5"></Form.Label>
+    <Col xs={{ order: 12 }}><Form.Select aria-label="Default select example">
+  <option>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</Form.Select></Col>
+    <Col xs={{ order: 1 }}><Form.Select aria-label="Default select example">
+  <option>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</Form.Select></Col>
+  </Row>
+</Container>
+<div className={styles.direcction}>
+<Form.Label htmlFor="inputPassword5">Provincia: </Form.Label>
+<Form.Select aria-label="Default select example">
+  <option>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</Form.Select>
+
+<>
+
+  <Form.Label htmlFor="inputPassword5">Direccion:  </Form.Label>
+  <Form.Control
+    type="password"
+    id="inputPassword5"
+    aria-describedby="passwordHelpBlock"
+  />
+  
+</>
+
+<>
+
+  <Form.Label htmlFor="inputPassword5">Lugar del evento: </Form.Label>
+  <Form.Control
+    type="password"
+    id="inputPassword5"
+    aria-describedby="passwordHelpBlock"
+  />
+  
+  <InputGroup style={{marginTop: "17px"}}  className="mb-3">
+    <SplitButton
+      variant="outline-secondary"
+      title="Cargar Imagen"
+      id="segmented-button-dropdown-1"
+      type="file"
+    >
+      <Dropdown.Item href="#">Action</Dropdown.Item>
+      <Dropdown.Item href="#">Another action</Dropdown.Item>
+      <Dropdown.Item href="#">Something else here</Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Item href="#">Separated link</Dropdown.Item>
+    </SplitButton>
+   
+  </InputGroup>
+
+</>
+
+<div className="d-grid gap-2">
+  <Button style={{fontWeight: "bolder"}} variant="warning" size="lg">
+    Crea tu Evento
+  </Button>
+  
+</div>
+</div>
+</div>
+
+</>
+
+
+</Form>
+
+       </div>
+      </div></Col>
+    <Col xs={{ order: 12 }}>
+    <div className={styles.divImg}><img className={styles.img} src={imagen} width="620px" height="auto" /></div></Col>
+    
+  </Row>
+</Container>
+<div className={styles.footer}>
+<Footer/>
+</div>
+
+</Col>
+  </Row>
+</Container>
+     
+   </div>
+ )
+
+  }
+
+

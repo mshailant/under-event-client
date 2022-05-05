@@ -1,25 +1,36 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-.containerCreate{
-    background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
-    url('../images/pexels-wendy-wei-1916821\(1\).jpg'); 
-     display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      height: auto;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      
-      
+.container1{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background:  hsl(195, 4%, 82%) ; 
+    height: 100%;
+    width: auto;
+    
+   
 }
 
-.container{
-    margin-left: 17%;
-    margin-top: 55px;
+.container2{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background: #ecf0f1;
+    
+    height: 100%;
+    width: auto;
+    
+   
+   
+        
+        
+      
+        /* Set a specific height */
+      
+      
+        /* Create the parallax scrolling effect */
+       
+    
 }
 
 .containerInput {
@@ -67,4 +78,30 @@
 .allInput {
     width: 300px;
 }
+
+.img{
+    margin-top: 150px;
+    
+    border-style:double;
+    border-color: #d8a602;
+    border-width: 5px;
+    box-shadow: 0 0 3px rgb(190, 190, 190), 0 0 6px rgb(193, 193, 193),
+    0 0 9px rgb(225, 174, 7), 0 0 12px rgb(119, 118, 119),
+    0 0 15px rgb(77, 77, 78), 0 0 18px rgb(225, 174, 7);
+    
+}
+
+.divImg{
+ margin-left: 75px;
+}
+
+
+.direcction{
+    margin-top: 27px;
+}
+
+.footer{
+    margin-top: 75px;
+}
+
 
