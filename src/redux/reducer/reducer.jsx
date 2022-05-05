@@ -17,6 +17,10 @@ const InitialState = {
   users: [],
 
   cart: [],
+  
+  allCities: [],
+
+  allGeneros: []
 };
 
 function rootReducer(state = InitialState, action) {
@@ -30,15 +34,26 @@ function rootReducer(state = InitialState, action) {
         allEventState: action.payload,
         filterDate: action.payload,
       };
+    case Action.GET_ALL_CITIES:
+      return {
+        ...state,
+        allCities: action.payload,
+
+      };
+    case Action.GET_ALL_GENEROS:
+      return {
+        ...state,
+        allGeneros: action.payload,
+
+      };
     case Action.CREATE_EVENT:
       return {
         ...state,
       };
-
-      case Action.CREATE_USER:
-        return {
-          ...state,
-        };
+    case Action.CREATE_USER:
+      return {
+        ...state,
+      };
 
     case Action.GET_DETAIL:
       return {
