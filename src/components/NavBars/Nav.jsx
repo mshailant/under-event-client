@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LinkContainer } from "react-router-bootstrap";
 import * as Action from "../../redux/actions/actions";
@@ -104,11 +104,14 @@ export function Selector() {
   const cities = useSelector((state) => state.allCities);
   const generos = useSelector((state) => state.allGeneros);
 
+  const [filterCity, setFilterCity] = useState("");
+
   useEffect(() => {
-    dispatch(getAllEvent());
     dispatch(byFilterDate());
     dispatch(getAllCities());
     dispatch(getAllGeneros())
+
+    localStorage.getItem('nombre')? dispatch(Action.getState(localStorage.getItem('nombre'))) : dispatch(getAllEvent())
   }, []);
 
   const dispatch = useDispatch();
@@ -117,11 +120,29 @@ export function Selector() {
     e.preventDefault();
     dispatch(Action.byEventType(e.target.value));
   }
-
+  // -----------------------------------------
   function handleStates(e) {
     e.preventDefault();
-    dispatch(Action.getState(e.target.value));
+    const city = e.target.value
+    setFilterCity(city)
+    window.localStorage.setItem('nombre', city)
+    console.log(localStorage.getItem('nombre'))
+    dispatch(Action.getState(localStorage.getItem('nombre')));
   }
+
+  const saveData = () => {
+    localStorage.setItem('nombre', filterCity);
+  }
+
+  const getData = () => {
+    return localStorage.getItem('nombre')
+  }
+
+  useEffect (() => {
+     setFilterCity(getData());
+  }, []);
+  //----------------------------------------------------
+
 
   function handleDate(e) {
     e.preventDefault();
@@ -149,7 +170,7 @@ export function Selector() {
                 onChange={handleStates}
               >
                 <option value="All" key="All">Ciudades</option>
-                {cities?.map((item) => <option /* onClick={ saveData()} */ key={item} value={item}>{item}</option>)}
+                {cities?.map((item) => <option onClick={ saveData()} key={item} value={item}>{item}</option>)}
 
 
               </Form.Select>
