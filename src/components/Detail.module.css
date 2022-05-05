@@ -1,9 +1,19 @@
+.containerGral{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background:  hsl(195, 4%, 82%) ; 
+    height: 100%;
+    width: auto;
+}
+
 .container{
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background:  #d0d3d4 ; 
+    background:  hsl(195, 4%, 82%) ; 
     height: auto;
    
 }
@@ -13,7 +23,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background: #ecf0f1;
+    background: #979a9a;
     
     height: 100%;
     width: auto;
@@ -59,8 +69,11 @@
     width: 100%;
     display: flex;
     align-self: center;
-    background: rgba(148, 147, 147, 0.323);
+    background:  #f1c40fbc ;
+    border-radius: 5px;
     margin-top: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
     
 }
 
@@ -79,8 +92,10 @@
 
 
 
-.captionContainer{
+.caption{
     margin-top: 55px;
+    color: rgba(242, 242, 242, 0.982);
+    
 }
 
 .caption{
@@ -88,13 +103,15 @@
 }
 
 .caption h2{
-    font-size: 29px;
+    font-size: 25px;
     font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif
 }
 
 .caption p{
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif
 }
 
 .containerDate{
@@ -111,3 +128,8 @@
     font-size: 24px;
     font-weight: bolder;
 }
+
+.footer{
+    margin-top: 150px;
+  }
+  

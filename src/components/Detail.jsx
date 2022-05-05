@@ -8,6 +8,7 @@ import styles from "./Detail.module.css";
 import { Card, Button } from "react-bootstrap";
 
 import { LinkContainer } from "react-router-bootstrap";
+import Footer from "./Footer/Footer.js";
 
 import {
   Nav,
@@ -39,13 +40,16 @@ const Detail = () => {
     window.location.href = "/";
   };
   return (
-    <div>
-      {detalles ? (
+    <div className={styles.containerGral}>
+      <Container fluid >
+  <Row>
+    <Col >
+    {detalles ? (
         <div className={styles.container}>
           <NavTop />
           <Container
             className={styles.containerGrid}
-            style={{ background: "#ecf0f1", marginTop: "25px" }}
+            style={{ background: "#979a9a", marginTop: "25px" }}
           >
             <Row>
               <Col xl>
@@ -62,7 +66,7 @@ const Detail = () => {
               <Col xs={{ order: 12 }}>
                 <div
                   className={styles.container2}
-                  style={{ backGround: "black", height: "auto" }}
+                  style={{ backGround: "#979a9a", height: "auto" }}
                 >
                   <div className={styles.ticketContainer}>
                     <Container>
@@ -141,7 +145,7 @@ const Detail = () => {
                     <div>
                       <div>
                         {" "}
-                        <hr />
+                        <hr style={{color: " #f1c40f "}}/>
                       </div>
                       <div className={styles.caption}>
                         <>
@@ -151,7 +155,7 @@ const Detail = () => {
                           <p aria-hidden="false">
                             <p>{detalles.description}</p>
                           </p>{" "}
-                          <hr />
+                          <hr style={{color: " #f1c40f "}} />
                           <div className={styles.containerDate}>
                             <p aria-hidden="false">
                               <h4>Fecha : {detalles.date}</h4>
@@ -168,11 +172,17 @@ const Detail = () => {
               </Col>
             </Row>
           </Container>
-          <FooterPage />
+          <div className={styles.footer}>
+      <Footer />
+      </div>
         </div>
       ) : (
         <h1>error</h1>
-      )}
+      )}</Col>
+  </Row>
+</Container>
+      
+     
     </div>
   );
 };
