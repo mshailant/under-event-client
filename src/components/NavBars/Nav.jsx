@@ -21,7 +21,7 @@ import {
   Image,
 } from "react-bootstrap";
 import Logo from "../Logo.jsx";
-import { getAllEvent, byFilterDate, getAllCities } from "../../redux/actions/actions";
+import { getAllEvent, byFilterDate, getAllCities, getAllGeneros } from "../../redux/actions/actions";
 import Searchbar from "../Searchbar";
 import styles from "./Nav.module.css";
 import scrollHalf from "../ScrollButtom/scrollHalfButtom";
@@ -102,11 +102,13 @@ export function Selector() {
   const eventosBack = useSelector((state) => state.eventosBack);
   const filterDate = useSelector((state) => state.filterDate);
   const cities = useSelector((state) => state.allCities);
+  const generos = useSelector((state) => state.allGeneros);
 
   useEffect(() => {
     dispatch(getAllEvent());
     dispatch(byFilterDate());
-    dispatch(getAllCities())
+    dispatch(getAllCities());
+    dispatch(getAllGeneros())
   }, []);
 
   const dispatch = useDispatch();
@@ -182,6 +184,15 @@ export function Selector() {
                 size="sm"
                 onChange={handleEventType}
               >
+                <option value="All" key="All">Generos</option>
+                {generos?.map((item) => <option /* onClick={ saveData()} */ key={item} value={item}>{item}</option>)}
+                
+              </Form.Select>
+              {/* <Form.Select
+                style={{ width: "400px" }}
+                size="sm"
+                onChange={handleEventType}
+              >
                 <option value="All" key="All">
                   Generos
                 </option>
@@ -227,7 +238,7 @@ export function Selector() {
                 >
                   Ska
                 </option>
-              </Form.Select>
+              </Form.Select> */}
 
               {/* <Form.Select style={{ width: "400px" }} size="sm">
                 <option>Small select</option>

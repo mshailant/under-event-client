@@ -9,6 +9,7 @@ export const FILTER_DATE = "FILTER_DATE"
 export const GET_USER = "GET_USER";
 export const CREATE_USER = "CREATE_USER"
 export const GET_ALL_CITIES = "GET_ALL_CITIES";
+export const GET_ALL_GENEROS = "GET_ALL_GENEROS";
 
 
 
@@ -34,6 +35,20 @@ export function getAllCities(){
       return dispatch({
         type: GET_ALL_CITIES,
         payload: cities.data
+      })
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
+
+export function getAllGeneros(){
+  return async function (dispatch){
+    try {
+      const generos = await axios.get("http://localhost:3001/events/sologeneros");
+      return dispatch({
+        type: GET_ALL_GENEROS,
+        payload: generos.data
       })
     } catch (err) {
       console.log(err);
