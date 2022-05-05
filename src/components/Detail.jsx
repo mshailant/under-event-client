@@ -25,6 +25,10 @@ import {
 import NavTop from "./NavBars/Nav.jsx";
 import imagen from "../images/concert2.jpg";
 
+
+
+
+
 const Detail = () => {
   const dispatch = useDispatch();
   const detalles = useSelector((state) => state.detailEventos);

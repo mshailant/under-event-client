@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-
+import { connect } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { createEvent } from "../redux/actions/actions";
 import styles from "./CreateEvent.module.css";
@@ -40,7 +40,7 @@ let schema = Yup.object().shape({
 
 export default function CreateEvent() {
   const { user, isLoading } = useAuth0();
-  const dispatch = useDispatch();
+
   
   
   
@@ -282,3 +282,5 @@ export default function CreateEvent() {
     </div>
   );
 }
+
+

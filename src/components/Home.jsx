@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as Action from "../redux/actions/actions";
 import styles from "./Home.module.css";
 
+
 import Footer from "./Footer/Footer";
 import Carousely, { Carouse2 } from "./Carousel";
 import Cardi from "./Cardi";
