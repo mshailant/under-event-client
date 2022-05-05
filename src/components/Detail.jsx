@@ -24,7 +24,7 @@ import {
 
 import NavTop from "./NavBars/Nav.jsx";
 import imagen from "../images/concert2.jpg";
-import FooterPage from "./NewFooter.jsx";
+
 
 const Detail = () => {
   const dispatch = useDispatch();

@@ -11,7 +11,7 @@ import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import NavTop from "./NavBars/Nav";
 import imagen from '../images/pexels-darya-sannikova-3824763.jpg'
 import FormExample from "./FormBootstrap/FormBotstrap";
-import FooterPage from "./NewFooter";
+
 
 export function validate(input) {
   let errors = {};
