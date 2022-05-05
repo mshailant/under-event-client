@@ -33,6 +33,11 @@ function rootReducer(state = InitialState, action) {
         ...state,
       };
 
+      case Action.CREATE_USER:
+        return {
+          ...state,
+        };
+
     case Action.GET_DETAIL:
       return {
         ...state,

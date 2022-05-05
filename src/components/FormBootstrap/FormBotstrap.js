@@ -2,6 +2,11 @@
 import {Formik, } from "formik"
 import * as Yup from 'yup';
 import {Form, Row, Col, InputGroup, Button} from 'react-bootstrap'
+import {useDispatch} from "react-redux"
+import {useState} from "react"
+
+
+
 
 
 let schema = Yup.object().shape({
@@ -17,13 +22,15 @@ let schema = Yup.object().shape({
 
 
 export default  function FormExample() {
+
+
   return (
     <Formik
       validationSchema={schema}
       onSubmit={console.log}
       initialValues={{
-        firstName: 'Mark',
-        lastName: 'Otto',
+        firstName: '',
+        lastName: '',
         username: '',
         city: '',
         state: '',
@@ -42,6 +49,21 @@ export default  function FormExample() {
       }) => (
         <Form noValidate onSubmit={handleSubmit}>
           <Row className="mb-3">
+          <Form.Group
+                              className="mb-3"
+                              controlId="formBasicEmail"
+                            >
+                              <Form.Label> Tu Email: </Form.Label>
+                              <Form.Control
+                                name="username"
+                                value={values.username}
+                                type="email"
+                                placeholder="Enter email"
+                              />
+                              <Form.Text className="text-muted">
+                                We'll never share your email with anyone else.
+                              </Form.Text>
+                            </Form.Group>
             <Form.Group as={Col} md="4" controlId="validationFormik01">
               <Form.Label>Tu nombre: </Form.Label>
               <Form.Control

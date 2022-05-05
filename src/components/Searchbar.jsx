@@ -24,14 +24,14 @@ export default function Searchbar() {
     }
 
     return (
-<Container>
-  <Row>
-    <Col><Form onSubmit={(e) => handleSubmit(e)} className="d-flex">
-            <input style={{width: "auto", height: "31px", marginTop: "1px"}} onChange={handleInput} class="form-control" type="text" placeholder="Search" aria-label="Search"></input>
+        
+<Form onSubmit={(e) => handleSubmit(e)} className="d-flex">
+    <Form.Control style={{width: "auto", height: "31px", marginTop: "1px"}}
+    type="text"
+    
+  />
             <Button style={{ height: "30px", marginTop: "2px" }} type="submit" onClick={() => scrollToCards()}  variant="warning"><p style={{marginBottom: 5}}>Search</p></Button>
-        </Form></Col>
-  </Row>
-</Container>
+        </Form>
         
     )
 }

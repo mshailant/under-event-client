@@ -225,16 +225,26 @@ bg="secondary" variant="secondary"
     size="sm"
     onChange={handleDate}
   >
-    <option value="All" key="All">
-      Por mes
-    </option>
-    {filterDate?.map((e) => {
+    <option onClick={() => scrollHalf()} value="All" key="All">Por mes</option>
+    <option onClick={() => scrollHalf()} value="Enero">Enero de 2022</option>
+    <option onClick={() => scrollHalf()} value="Febrero">Febrero de 2022</option>
+    <option onClick={() => scrollHalf()} value="Marzo">Marzo de 2022</option>
+    <option onClick={() => scrollHalf()} value="Abril">Abril de 2022</option>
+    <option onClick={() => scrollHalf()} value="Mayo">Mayo de 2022</option>
+    <option onClick={() => scrollHalf()} value="Junio">Junio de 2022</option>
+    <option onClick={() => scrollHalf()} value="Julio">Julio de 2022</option>
+    <option onClick={() => scrollHalf()} value="Agosto">Agosto de 2022</option>
+    <option onClick={() => scrollHalf()} value="Septiembre">Septiembre de 2022</option>
+    <option onClick={() => scrollHalf()} value="Octubre">Octubre de 2022</option>
+    <option onClick={() => scrollHalf()} value="Noviembre">Noviembre de 2022</option>
+    <option onClick={() => scrollHalf()} value="Diciembre">Diciembre de 2022</option>
+    {/* {filterDate?.map((e) => {
       return (
         <option key={e.month} value={e.month}>
           {e.month[0] + e.month.slice(1)}
         </option>
       );
-    })}
+    })} */}
   </Form.Select>
 
   <Searchbar />

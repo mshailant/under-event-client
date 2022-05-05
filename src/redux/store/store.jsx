@@ -11,4 +11,4 @@ import rootReducer from "../reducer/reducer.jsx"
       reducer: rootReducer,
     })
     
-    export default store
+    export default store  
