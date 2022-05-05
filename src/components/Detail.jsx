@@ -42,6 +42,12 @@ const Detail = () => {
   const handleDirectToHomeFromDetail = () => {
     window.location.href = "/";
   };
+
+  const handleOnClick = (e) =>{
+    e.preventDefault();
+    alert("Event added succesfully")
+  }
+
   return (
     <div className={styles.containerGral}>
       <Container fluid >
@@ -136,7 +142,7 @@ const Detail = () => {
                         <Col xs></Col>
                         <Col xs={{ order: 12 }}></Col>
                         <Col style={{ marginLeft: "270px" }} xs={{ order: 1 }}>
-                          <Button variant="warning">Comprar</Button>
+                          <Button variant="warning" onClick={handleOnClick}>Comprar</Button>
                         </Col>
                       </Row>
                     </Container>

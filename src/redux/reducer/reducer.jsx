@@ -16,6 +16,8 @@ const InitialState = {
 
   users: [],
 
+  cart: [],
+  
   allCities: [],
 
   allGeneros: []

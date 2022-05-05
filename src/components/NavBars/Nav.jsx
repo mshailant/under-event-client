@@ -27,6 +27,7 @@ import styles from "./Nav.module.css";
 import scrollHalf from "../ScrollButtom/scrollHalfButtom";
 import scrollBottom from "../ScrollButtom/scrollBottom";
 import aboutUs from "../ScrollButtom/scrollAboutUs";
+import ShoppingCart from "../shopCart";
 
 export default function NavTop() {
   const dispatch = useDispatch();
@@ -54,6 +55,9 @@ export default function NavTop() {
               </LinkContainer>
             </Nav>
             <Nav>
+              <div>
+                <ShoppingCart/>
+              </div>
               <Nav.Link style={{ color: "white" }} eventKey={2}>
                 {!isAuthenticated && (
                   <Button
