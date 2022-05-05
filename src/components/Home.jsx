@@ -16,7 +16,6 @@ import { Selector } from "./NavBars/Nav";
 import NavTop from "./NavBars/Nav";
 import { Container, Col, Row } from "react-bootstrap";
 
-
 export default function Home() {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.eventosDb);

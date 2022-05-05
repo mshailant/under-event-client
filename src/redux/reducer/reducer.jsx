@@ -15,6 +15,8 @@ const InitialState = {
   userLogedin: {},
 
   users: [],
+
+  cart: [],
 };
 
 function rootReducer(state = InitialState, action) {

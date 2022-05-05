@@ -59,7 +59,7 @@ export default function Cardi({ id, title, imagen, description, date, place }) {
               style={{ width: "auto" }}
               variant="warning"
             >
-              <FaTicketAlt /> Buy
+              <FaTicketAlt /> Add to cart
             </Button>
           </LinkContainer>
         </Card>
