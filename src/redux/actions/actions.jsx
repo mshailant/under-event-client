@@ -8,6 +8,7 @@ export const GET_STATES = "GET_STATES";
 export const FILTER_DATE = "FILTER_DATE"
 export const GET_USER = "GET_USER";
 export const CREATE_USER = "CREATE_USER"
+export const GET_ALL_CITIES = "GET_ALL_CITIES";
 
 
 
@@ -20,6 +21,20 @@ export function getAllEvent() {
         type: GET_ALL_EVENTS_DB,
         payload: json.data,
       });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
+
+export function getAllCities(){
+  return async function (dispatch){
+    try {
+      const cities = await axios.get("http://localhost:3001/events/solocitys");
+      return dispatch({
+        type: GET_ALL_CITIES,
+        payload: cities.data
+      })
     } catch (err) {
       console.log(err);
     }
