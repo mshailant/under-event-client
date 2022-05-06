@@ -109,29 +109,58 @@ export function Selector() {
   const generos = useSelector((state) => state.allGeneros);
 
   const [filterCity, setFilterCity] = useState("");
+  const [filterGenero, setFilterGenero] = useState("");
+  const [filterActivo, setFilterActivo] = useState("sin filtro")
 
   useEffect(() => {
     dispatch(byFilterDate());
     dispatch(getAllCities());
     dispatch(getAllGeneros())
-
-    localStorage.getItem('nombre')? dispatch(Action.getState(localStorage.getItem('nombre'))) : dispatch(getAllEvent())
+    
+    if(localStorage.getItem('filtro') === "sin filtro" || localStorage.getItem('filtro') === null){
+      dispatch(getAllEvent())
+    }else if(localStorage.getItem('filtro') === "ciudad"){
+      dispatch(Action.getState(localStorage.getItem('nombre')))
+    }else if(localStorage.getItem('filtro') === "genero"){
+      dispatch(Action.byEventType(localStorage.getItem('genero')))
+    }
   }, []);
+
+    
 
   const dispatch = useDispatch();
 
+  //--------------------------------------------------------------------
+
   function handleEventType(e) {
     e.preventDefault();
-    dispatch(Action.byEventType(e.target.value));
+    const genero = e.target.value
+    setFilterGenero(genero)
+    window.localStorage.setItem('genero', genero)
+    dispatch(Action.byEventType(localStorage.getItem('genero')));
+    window.localStorage.setItem('filtro', "genero")
   }
+
+  const saveGenero = () => {
+    localStorage.setItem('genero', filterGenero);
+  }
+
+  const getGenero = () => {
+    return localStorage.getItem('genero')
+  }
+
+  useEffect (() => {
+    setFilterCity(getGenero());
+ }, []);
   // -----------------------------------------
   function handleStates(e) {
     e.preventDefault();
     const city = e.target.value
     setFilterCity(city)
     window.localStorage.setItem('nombre', city)
-    console.log(localStorage.getItem('nombre'))
+    /* console.log(localStorage.getItem('nombre')) */
     dispatch(Action.getState(localStorage.getItem('nombre')));
+    window.localStorage.setItem('filtro', "ciudad")
   }
 
   const saveData = () => {
@@ -210,7 +239,7 @@ export function Selector() {
                 onChange={handleEventType}
               >
                 <option value="All" key="All">Generos</option>
-                {generos?.map((item) => <option /* onClick={ saveData()} */ key={item} value={item}>{item}</option>)}
+                {generos?.map((item) => <option onClick={ getGenero()} key={item} value={item}>{item}</option>)}
                 
               </Form.Select>
               {/* <Form.Select
