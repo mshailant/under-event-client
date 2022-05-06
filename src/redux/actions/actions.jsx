@@ -7,9 +7,12 @@ export const GET_DETAIL = "GET_DETAIL";
 
 export const BY_EVENT_TYPE = "BY_EVENT_TYPE";
 export const GET_STATES = "GET_STATES";
-export const FILTER_DATE = "FILTER_DATE"
+export const FILTER_DATE = "FILTER_DATE";
 
 export const GET_USER = "GET_USER";
+export const CREATE_USER = "CREATE_USER";
+export const UPDATE_USER = "UPDATE_USER";
+export const ERROR = "ERROR";
 
 export function getAllEvent() {
   return async function (dispatch) {
@@ -79,23 +82,55 @@ export function getState(payload) {
   };
 }
 
-export function getUserByEmail(email) {
+export function createUser(payload) {
   return async (dispatch) => {
-    let json = await axios.get(
-      `http://localhost:3001/users/getUser?email=${email}`
-    );
+    try {
+      const json = await axios.post(
+        "http://localhost:3001/users/createUser",
+        payload
+      );
+      return dispatch({
+        type: CREATE_USER,
+        payload: json.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
+
+export function getUserByExternalId(externalId) {
+  return async (dispatch) => {
+    let json = await axios.get(`http://localhost:3001/users/${externalId}`);
     return dispatch({
       type: GET_USER,
       payload: json.data,
     });
   };
 }
+
+export function updateUser(payload, externalId) {
+  return async (dispatch) => {
+    try {
+      const json = await axios.put(
+        `http://localhost:3001/users/${externalId}`,
+        payload
+      );
+      return dispatch({
+        type: UPDATE_USER,
+        payload: json.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
+
 //filtrar por Date
 
 export function byFilterDate(payload) {
   return {
     type: FILTER_DATE,
-    payload
-  }
+    payload,
+  };
 }
-
