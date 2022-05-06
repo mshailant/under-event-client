@@ -12,7 +12,7 @@ const InitialState = {
 
   allEventState: [],
 
-  userLogedin: {},
+  userLoged: {},
 
   users: [],
 
@@ -94,7 +94,19 @@ function rootReducer(state = InitialState, action) {
     case Action.GET_USER:
       return {
         ...state,
-        userLogedin: action.payload,
+        userLoged: action.payload,
+      };
+
+    case Action.CREATE_USER:
+      return {
+        ...state,
+        userLoged: action.payload,
+      };
+
+    case Action.UPDATE_USER:
+      return {
+        ...state,
+        userLoged: action.payload,
       };
 
     case Action.FILTER_DATE:

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LinkContainer } from "react-router-bootstrap";
 import * as Action from "../../redux/actions/actions";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Container,
   Row,
@@ -20,6 +19,8 @@ import {
   Dropdown,
   Image,
 } from "react-bootstrap";
+import axios from "axios";
+
 import Logo from "../Logo.jsx";
 import { getAllEvent, byFilterDate, getAllCities, getAllGeneros } from "../../redux/actions/actions";
 import Searchbar from "../Searchbar";
@@ -31,8 +32,34 @@ import ShoppingCart from "../shopCart";
 
 export default function NavTop() {
   const dispatch = useDispatch();
-  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
+  const { user, isAuthenticated, loginWithRedirect, logout, isLoading } =
+    useAuth0();
+
+  const userLoged = useSelector((state) => state.userLoged);
+
+  useEffect(() => {
+    console.log("usefec");
+    if (isAuthenticated) {
+      console.log("user", userLoged);
+      console.log("user", user);
+      dispatch(Action.getUserByExternalId(user.sub));
+      if (!userLoged) {
+        dispatch(
+          Action.createUser({
+            externalId: user.sub,
+            name: user.given_name,
+            email: user.email,
+            picture: user.picture,
+            role: "User",
+            lastName: user.family_name,
+          })
+        );
+      }
+    }
+  }, [isAuthenticated, user]);
+
+  console.log("render navbar");
   return (
     <header className={styles.nav}>
       <Navbar collapseOnSelect expand="lg" bg="secondary" variant="secondary">
@@ -47,8 +74,8 @@ export default function NavTop() {
               <h2 className={styles.title}>UnderVentsApp</h2>
             </Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
+          <Navbar.Toggle bg="white" aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <LinkContainer to="/createEvent">
                 <Nav.Link style={{ color: "black" }}>Crear Eventos</Nav.Link>
@@ -74,11 +101,11 @@ export default function NavTop() {
                     <Dropdown.Toggle
                       as={Image}
                       roundedCircle={true}
-                      src={user.picture}
+                      src={userLoged?.picture}
                       width="45px"
                     ></Dropdown.Toggle>
                     <Dropdown.Menu>
-                      <Dropdown.Item>{user.name}</Dropdown.Item>
+                      <Dropdown.Item>{userLoged?.name}</Dropdown.Item>
                       <LinkContainer to="/profile">
                         <Dropdown.Item>Profile</Dropdown.Item>
                       </LinkContainer>
@@ -182,12 +209,14 @@ export function Selector() {
     dispatch(Action.byFilterDate(e.target.value));
   }
   return (
+
     <div className={styles.container}>
       <Container>
         <Row>
           <Col><Navbar
             style={{ width: "90%", marginBottom: "25px", marginLeft: "5%" }}
             bg="secondary" variant="secondary"
+
           >
             <Container>
               <Navbar.Brand
