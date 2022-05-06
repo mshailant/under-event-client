@@ -110,6 +110,7 @@ export function Selector() {
 
   const [filterCity, setFilterCity] = useState("");
   const [filterGenero, setFilterGenero] = useState("");
+  const [filtroMes, setFilterMes] = useState("")
   const [filterActivo, setFilterActivo] = useState("sin filtro")
 
   useEffect(() => {
@@ -125,12 +126,27 @@ export function Selector() {
       dispatch(Action.byEventType(localStorage.getItem('genero')))
     }else if(localStorage.getItem('filtro') === "searchbar"){
       dispatch(Action.getByTitle(localStorage.getItem('searchbar')))
+    }else if(localStorage.getItem('filtro') === "mes"){
+      dispatch(Action.byFilterDate(localStorage.getItem('mes')))
     }
   }, []);
 
     
 
   const dispatch = useDispatch();
+
+  function handleDate(e) {
+    e.preventDefault();
+    const mes = e.target.value;
+    setFilterMes(mes)
+    window.localStorage.setItem('mes', mes)
+    dispatch(Action.byFilterDate(localStorage.getItem('mes')/* e.target.value */));
+    window.localStorage.setItem('filtro','mes')
+  }
+
+  const getMes = () => {
+    return localStorage.getItem('mes')
+  }
 
   //--------------------------------------------------------------------
 
@@ -179,10 +195,10 @@ export function Selector() {
   //----------------------------------------------------
 
 
-  function handleDate(e) {
+  /* function handleDate(e) {
     e.preventDefault();
     dispatch(Action.byFilterDate(e.target.value));
-  }
+  } */
   return (
     <div className={styles.container}>
       <Container>
@@ -305,19 +321,19 @@ export function Selector() {
                 size="sm"
                 onChange={handleDate}
               >
-                <option onClick={() => scrollHalf()} value="All" key="All">Por mes</option>
-                <option onClick={() => scrollHalf()} value="Enero">Enero de 2022</option>
-                <option onClick={() => scrollHalf()} value="Febrero">Febrero de 2022</option>
-                <option onClick={() => scrollHalf()} value="Marzo">Marzo de 2022</option>
-                <option onClick={() => scrollHalf()} value="Abril">Abril de 2022</option>
-                <option onClick={() => scrollHalf()} value="Mayo">Mayo de 2022</option>
-                <option onClick={() => scrollHalf()} value="Junio">Junio de 2022</option>
-                <option onClick={() => scrollHalf()} value="Julio">Julio de 2022</option>
-                <option onClick={() => scrollHalf()} value="Agosto">Agosto de 2022</option>
-                <option onClick={() => scrollHalf()} value="Septiembre">Septiembre de 2022</option>
-                <option onClick={() => scrollHalf()} value="Octubre">Octubre de 2022</option>
-                <option onClick={() => scrollHalf()} value="Noviembre">Noviembre de 2022</option>
-                <option onClick={() => scrollHalf()} value="Diciembre">Diciembre de 2022</option>
+                <option /* onClick={() => scrollHalf()} */ onClick={ getMes()} value="All" key="All">Por mes</option>
+                <option /* onClick={() => scrollHalf()} */ onClick={ getMes()} value="Enero">Enero de 2022</option>
+                <option /* onClick={() => scrollHalf()} */ onClick={ getMes()} value="Febrero">Febrero de 2022</option>
+                <option /* onClick={() => scrollHalf()} */ onClick={ getMes()} value="Marzo">Marzo de 2022</option>
+                <option /* onClick={() => scrollHalf()} */ onClick={ getMes()} value="Abril">Abril de 2022</option>
+                <option /* onClick={() => scrollHalf()} */ onClick={ getMes()} value="Mayo">Mayo de 2022</option>
+                <option /* onClick={() => scrollHalf()} */ onClick={ getMes()} value="Junio">Junio de 2022</option>
+                <option /* onClick={() => scrollHalf()} */ onClick={ getMes()} value="Julio">Julio de 2022</option>
+                <option /* onClick={() => scrollHalf()} */ onClick={ getMes()} value="Agosto">Agosto de 2022</option>
+                <option /* onClick={() => scrollHalf()} */ onClick={ getMes()} value="Septiembre">Septiembre de 2022</option>
+                <option /* onClick={() => scrollHalf()} */ onClick={ getMes()} value="Octubre">Octubre de 2022</option>
+                <option /* onClick={() => scrollHalf()} */ onClick={ getMes()} value="Noviembre">Noviembre de 2022</option>
+                <option /* onClick={() => scrollHalf()} */ onClick={ getMes()} value="Diciembre">Diciembre de 2022</option>
                 {/* {filterDate?.map((e) => {
       return (
         <option key={e.month} value={e.month}>
