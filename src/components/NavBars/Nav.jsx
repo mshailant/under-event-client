@@ -123,6 +123,8 @@ export function Selector() {
       dispatch(Action.getState(localStorage.getItem('nombre')))
     }else if(localStorage.getItem('filtro') === "genero"){
       dispatch(Action.byEventType(localStorage.getItem('genero')))
+    }else if(localStorage.getItem('filtro') === "searchbar"){
+      dispatch(Action.getByTitle(localStorage.getItem('searchbar')))
     }
   }, []);
 
