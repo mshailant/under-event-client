@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LinkContainer } from "react-router-bootstrap";
 import * as Action from "../../redux/actions/actions";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Container,
   Row,
@@ -20,6 +19,8 @@ import {
   Dropdown,
   Image,
 } from "react-bootstrap";
+import axios from "axios";
+
 import Logo from "../Logo.jsx";
 import { getAllEvent, byFilterDate } from "../../redux/actions/actions";
 import Searchbar from "../Searchbar";
@@ -30,11 +31,37 @@ import aboutUs from "../ScrollButtom/scrollAboutUs";
 
 export default function NavTop() {
   const dispatch = useDispatch();
-  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
+  const { user, isAuthenticated, loginWithRedirect, logout, isLoading } =
+    useAuth0();
+
+  const userLoged = useSelector((state) => state.userLoged);
+
+  useEffect(() => {
+    console.log("usefec");
+    if (isAuthenticated) {
+      console.log("user", userLoged);
+      console.log("user", user);
+      dispatch(Action.getUserByExternalId(user.sub));
+      if (!userLoged) {
+        dispatch(
+          Action.createUser({
+            externalId: user.sub,
+            name: user.given_name,
+            email: user.email,
+            picture: user.picture,
+            role: "User",
+            lastName: user.family_name,
+          })
+        );
+      }
+    }
+  }, [isAuthenticated, user]);
+
+  console.log("render navbar");
   return (
     <header className={styles.nav}>
-      <Navbar collapseOnSelect expand="lg" bg="warning" variant="warning">
+      <Navbar expand="lg" bg="warning" variant="warning">
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand
@@ -46,8 +73,8 @@ export default function NavTop() {
               <h2 className={styles.title}>UnderVentsApp</h2>
             </Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
+          <Navbar.Toggle bg="white" aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <LinkContainer to="/createEvent">
                 <Nav.Link style={{ color: "black" }}>Crear Eventos</Nav.Link>
@@ -70,11 +97,11 @@ export default function NavTop() {
                     <Dropdown.Toggle
                       as={Image}
                       roundedCircle={true}
-                      src={user.picture}
+                      src={userLoged?.picture}
                       width="45px"
                     ></Dropdown.Toggle>
                     <Dropdown.Menu>
-                      <Dropdown.Item>{user.name}</Dropdown.Item>
+                      <Dropdown.Item>{userLoged?.name}</Dropdown.Item>
                       <LinkContainer to="/profile">
                         <Dropdown.Item>Profile</Dropdown.Item>
                       </LinkContainer>
@@ -146,17 +173,29 @@ export function Selector() {
               Ciudades
             </option>
 
-            <option onClick={() => scrollHalf()} value="Buenos Aires" key="Buenos Aires">
-            Buenos Aires
+            <option
+              onClick={() => scrollHalf()}
+              value="Buenos Aires"
+              key="Buenos Aires"
+            >
+              Buenos Aires
             </option>
-            <option onClick={() => scrollHalf()} value="Cordoba Capital" key="Cordoba Capital">
-            Cordoba Capital
+            <option
+              onClick={() => scrollHalf()}
+              value="Cordoba Capital"
+              key="Cordoba Capital"
+            >
+              Cordoba Capital
             </option>
             <option onClick={() => scrollHalf()} value="Cordoba" key="Cordoba">
-            Cordoba
+              Cordoba
             </option>
-            <option onClick={() => scrollHalf()} value="Mar del Plata" key="Mar del Plata">
-            Mar del Plata
+            <option
+              onClick={() => scrollHalf()}
+              value="Mar del Plata"
+              key="Mar del Plata"
+            >
+              Mar del Plata
             </option>
           </Form.Select>
 
@@ -169,11 +208,7 @@ export function Selector() {
             <option value="All" key="All">
               Generos
             </option>
-            <option
-              onClick={() => scrollHalf()}
-              value="Reggae"
-              key="Reggae"
-            >
+            <option onClick={() => scrollHalf()} value="Reggae" key="Reggae">
               Reggae
             </option>
             <option
@@ -183,11 +218,7 @@ export function Selector() {
             >
               Urbano latino
             </option>
-            <option
-              onClick={() => scrollHalf()}
-              value="Pop"
-              key="Pop"
-            >
+            <option onClick={() => scrollHalf()} value="Pop" key="Pop">
               Pop
             </option>
             <option
@@ -197,18 +228,10 @@ export function Selector() {
             >
               Rock Nacional
             </option>
-            <option
-              onClick={() => scrollHalf()}
-              value="Rock"
-              key="Rock"
-            >
+            <option onClick={() => scrollHalf()} value="Rock" key="Rock">
               Rock
             </option>
-            <option
-              onClick={() => scrollHalf()}
-              value="Ska"
-              key="Ska"
-            >
+            <option onClick={() => scrollHalf()} value="Ska" key="Ska">
               Ska
             </option>
           </Form.Select>
