@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as Action from "../redux/actions/actions";
 import styles from "./Home.module.css";
-import FooterPage from "./NewFooter";
 
+
+import Footer from "./Footer/Footer";
 import Carousely, { Carouse2 } from "./Carousel";
 import Cardi from "./Cardi";
 import Buttom from "./Button/ScrollButton";
@@ -13,6 +14,7 @@ import { Alert } from "react-bootstrap";
 import { SpinnerCircularFixed } from "spinners-react";
 import { Selector } from "./NavBars/Nav";
 import NavTop from "./NavBars/Nav";
+import { Container, Col, Row } from "react-bootstrap";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -21,13 +23,13 @@ export default function Home() {
   console.log(events);
 
   useEffect(() => {
-    dispatch(Action.getAllEvent()).then(() => setCarga(false));
+     dispatch(Action.getAllEvent()).then(() => setCarga(false));
   }, [dispatch]);
 
   if (carga) {
     return (
       <div className={styles.containerSpinner}>
-        <div style={{ background: "black", width: "2000px", height: "100vh" }}>
+        <div style={{ background: "white", width: "2000px", height: "100vh" }}>
           <SpinnerCircularFixed
             style={{
               marginLeft: "940px",
@@ -43,6 +45,10 @@ export default function Home() {
 
   return (
     <div className={styles.containerGeneral}>
+    <Container  fluid >
+  <Row>
+    <Col>
+   
       <NavTop />
 
       <Carousely />
@@ -56,7 +62,9 @@ export default function Home() {
         <div className={styles.infoContainer}></div>
         <div className={styles.cardsContainer}>
           <div className={styles.Date}></div>
-          <div className={styles.cards}>
+          <Container fluid>
+  <Row>
+    <Col><div className={styles.cards}>
             {Array.isArray(events) && events.length ? (
               events.map((e) => {
                 return (
@@ -94,16 +102,27 @@ export default function Home() {
                 </p>
               </Alert>
             )}
-          </div>
+          </div></Col>
+  </Row>
+</Container>
+          
           {/* <div className={styles.contactUS}>
             <ContactUs />
           </div> */}
         </div>
 
         <Buttom />
+      </div >
+         <div className={styles.footer}>
+      <Footer />
       </div>
-
-      <FooterPage />
-    </div>
+      
+   </Col>
+  </Row>
+</Container>
+</div>
   );
 }
+
+
+

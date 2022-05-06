@@ -1,9 +1,9 @@
 import React from "react";
 import { Carousel, Item, Caption } from "react-bootstrap";
-import image from "../images/concert1.jpg"
-import imagen from "../images/concert2.jpg"
+import image from "../images/1646431090104-null-04-2022-04-02-lvp-kbz-accesoya-1920x720.jpg"
+import imagen from "../images/DETALLE_CARRO_DE_COMPRAS_HOME.jpg"
 
-import imagenes from "../images/maxresdefault.jpg"
+import imagenes from "../images/1649175668524-null-cabecera_crowder.jpg"
 
 
 
@@ -15,7 +15,7 @@ export default function Carousely() {
           <img 
             
             className="d-block w-100"
-            src={imagen}
+            src={image}
             alt="First slide"
             style={{height: "85%", width: "auto", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundAttachment: "fixed"}}
           />

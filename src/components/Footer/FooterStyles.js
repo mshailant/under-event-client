@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Box = styled.div`
 
 padding: 60px 60px;
-background: rgb(36, 36, 36);
+background:   #7b7d7d ;
 position: relative;
 bottom: 0;
 width: 100%;
@@ -22,6 +22,7 @@ export const Container = styled.div`
 	justify-content: center;
 	max-width: 1000px;
 	margin: 0 auto;
+	
 	/* background: red; */
 `
 
@@ -30,6 +31,7 @@ display: flex;
 flex-direction: column;
 text-align: left;
 margin-left: 60px;
+
 `;
 
 export const Row = styled.div`
@@ -45,11 +47,12 @@ grid-gap: 20px;
 `;
 
 export const FooterLink = styled.a`
-color: #fff;
+color:  #f1c40f ;
 margin-bottom: 20px;
-font-size: 18px;
+font-size: 20px;
 text-decoration: none;
 font family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+font-weight: bolder;
 
 &:hover {
 	color: #391E46;

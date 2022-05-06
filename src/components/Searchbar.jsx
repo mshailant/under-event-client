@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { getByTitle } from "../redux/actions/actions";
 import scrollToCards from "./ScrollButtom/scrollToCars";
 
-import {  FormControl, Form, Button } from "react-bootstrap";
+import {  FormControl, Form, Button, Col, Container, Row } from "react-bootstrap";
 
 export default function Searchbar() {
     const [name, setName] = useState("");
@@ -24,10 +24,14 @@ export default function Searchbar() {
     }
 
     return (
-
-        <Form onSubmit={(e) => handleSubmit(e)} className="d-flex">
-            <input style={{width: "auto", height: "31px", marginTop: "1px"}} onChange={handleInput} class="form-control" type="text" placeholder="Search" aria-label="Search"></input>
-            <Button style={{ height: "30px", marginTop: "2px" }} type="submit" onClick={() => scrollToCards()}  variant="light"><p style={{marginBottom: 5}}>Search</p></Button>
+        
+<Form onSubmit={(e) => handleSubmit(e)} className="d-flex">
+    <Form.Control style={{width: "auto", height: "31px", marginTop: "1px"}}
+    type="text"
+    
+  />
+            <Button style={{ height: "30px", marginTop: "2px" }} type="submit" onClick={() => scrollToCards()}  variant="warning"><p style={{marginBottom: 5}}>Search</p></Button>
         </Form>
+        
     )
 }

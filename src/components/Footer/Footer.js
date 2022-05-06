@@ -11,37 +11,41 @@ Heading,
 
 const Footer = () => {
 return (
-	<Box>
-	<h1 style={{ color: "white",
+	<div >
+	<Box >
+	<h1 style={{ color: " #f1c40f ",
 				textAlign: "center",
-				marginTop: "-20px",
-                marginBottom: "25px" }}>
-		UnderEvents
+				marginTop: "-10px",
+                marginBottom: "25px",
+				fontWeight: "bold" }}>
+		UnderEventsApp
 	</h1>
 	<Container>
 		<Row>
 		<Column>
-			<Heading>About Us</Heading>
-			<FooterLink href="#">Aim</FooterLink>
+			<Heading>Acerca de nosotros</Heading>
+			
 			<FooterLink href="#">Vision</FooterLink>
-			<FooterLink href="#">Testimonials</FooterLink>
+			<FooterLink href="#">FeedBacks</FooterLink>
 		</Column>
 		<Column>
-			<Heading>Services</Heading>
-			<FooterLink href="#">Writing</FooterLink>
-			<FooterLink href="#">Internships</FooterLink>
-			<FooterLink href="#">Coding</FooterLink>
-			<FooterLink href="#">Teaching</FooterLink>
+			<Heading>Servicios</Heading>
+			<FooterLink href="#">Ventas de Tickets</FooterLink>
+			<FooterLink href="#">Publicitar artistas</FooterLink>
+			
 		</Column>
 		<Column>
-			<Heading>Contact Us</Heading>
-			<FooterLink href="#">Uttar Pradesh</FooterLink>
-			<FooterLink href="#">Ahemdabad</FooterLink>
-			<FooterLink href="#">Indore</FooterLink>
-			<FooterLink href="#">Mumbai</FooterLink>
+			<Heading>Contactenos</Heading>
+			<FooterLink href="#">Sebastian Rodriguez</FooterLink>
+			<FooterLink href="#">Sara Gismondi</FooterLink>
+			<FooterLink href="#">Damian Olmedo</FooterLink>
+			<FooterLink href="#">Franco Pirez</FooterLink>
+			<FooterLink href="#">Tomas Tagliaferri</FooterLink>
+			<FooterLink href="#">Lourdes Bonucci</FooterLink>
+			<FooterLink href="#">Martin Hailant</FooterLink>
 		</Column>
 		<Column>
-			<Heading>Social Media</Heading>
+			<Heading>Redes Sociales</Heading>
 			<FooterLink href="#">
 			<i className="fab fa-facebook-f">
 				<span style={{ marginLeft: "10px" }}>
@@ -74,6 +78,7 @@ return (
 		</Row>
 	</Container>
 	</Box>
+	</div>
 );
 };
 export default Footer;
