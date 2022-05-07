@@ -58,8 +58,8 @@ export function UserManagement() {
                       <td>{user.name}</td>
                       <td>{user.lastName}</td>
                       <td>{user.email}</td>
-                      <td>{user.role === "admin" ? "Admin" : "User"}</td>
-                      <td>{user.isBan ? "Banned" : "Active"}</td>
+                      <td>{user.roll === "Admin" ? "Admin" : "User"}</td>
+                      <td>{user.state ? "Banned" : "Active"}</td>
                       <td>
                         <FaUserEdit
                           size={"25px"}
@@ -95,7 +95,7 @@ function MyVerticallyCenteredModal(props) {
   }, [dispatch, props.user]);
 
   const handleChecked = (event) => {
-    dispatch(updateUser({ isBan: event.target.checked }, userData.externalId));
+    dispatch(updateUser({ state: event.target.checked }, userData.externalId));
     dispatch(banUser(userData.externalId, event.target.checked));
   };
 
@@ -135,7 +135,7 @@ function MyVerticallyCenteredModal(props) {
               <Form.Check
                 name="isBan"
                 color="yellow"
-                defaultChecked={props.user.isBan}
+                defaultChecked={props.user.state}
                 type="switch"
                 id="custom-switch"
                 onChange={handleChecked}
@@ -148,9 +148,9 @@ function MyVerticallyCenteredModal(props) {
             </Col>
             <Col md={5} border-right>
               <Form.Select
-                name="role"
+                name="roll"
                 variant={"warning"}
-                defaultValue={props.user.role}
+                defaultValue={props.user.roll}
                 onChange={handleChange}
               >
                 <option value="user">User</option>

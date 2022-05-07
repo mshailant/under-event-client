@@ -102,7 +102,7 @@ export default function NavTop() {
                       <LinkContainer to="/profile">
                         <Dropdown.Item>Profile</Dropdown.Item>
                       </LinkContainer>
-                      {userLoged?.role === "admin" && (
+                      {userLoged?.roll === "Admin" && (
                         <LinkContainer to="/userManagement">
                           <Dropdown.Item>User Management</Dropdown.Item>
                         </LinkContainer>
