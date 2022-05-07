@@ -15,7 +15,9 @@ import UserProfile from "./components/UserProfile";
 import UserManagement from "./components/UserManagement";
 import Detail from "./components/Detail";
 
+import NavTop from "./components/NavBars/Nav";
 import Pay from "./components/Payment";
+import Carrito from "./components/Carrito";
 function App() {
   const { isLoading } = useAuth0();
 
@@ -29,9 +31,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route exact path="/profile" element={<UserProfile />} />
         <Route exact path="/createEvent" element={<CreateEvent />} />
+        <Route exact path="/userManagement" element={<UserManagement />} />
         <Route exact path="/:id" element={<Detail />} />
         <Route exact path="/payment" element={<Pay />} />
-        <Route exact path="/userManagement" element={<UserManagement />} />
+        <Route exact path="/carrito" element={<Carrito />} />
       </Routes>
     </BrowserRouter>
   );
