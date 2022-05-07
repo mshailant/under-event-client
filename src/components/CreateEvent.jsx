@@ -13,6 +13,7 @@ import {
   InputGroup,
   SplitButton,
   Dropdown,
+  FormSelect,
 } from "react-bootstrap";
 import Footer from "./Footer/Footer";
 
@@ -21,29 +22,94 @@ import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import NavTop from "./NavBars/Nav";
 import imagen from "../images/pexels-darya-sannikova-3824763.jpg";
 import FormExample from "./FormBootstrap/FormBotstrap";
-import * as Yup from "yup";
-
-let schema = Yup.object().shape({
-  title: Yup.string().required(),
-  imagen: Yup.string().required(),
-  city: Yup.string().required(),
-  place: Yup.string().required(),
-  description: Yup.string().required(),
-  genero: Yup.string().required(),
-  startDate: Yup.string().required(),
-  endDate: Yup.string().required(),
-  time: Yup.string().required(),
-  stock: Yup.number().required(),
-  cost: Yup.string().required(),
-  month: Yup.string().required(),
-});
+import * as Action from "../redux/actions/actions";
 
 export default function CreateEvent() {
   const { user, isLoading } = useAuth0();
 
-  
-  
-  
+  const stateInitialForms = {
+    title: "",
+    imagen: "",
+    city: "",
+    place: "",
+    genero: "",
+    date: "",
+    time: "",
+    stock: "",
+    cost: "",
+    month: "",
+    address: "",
+    location: "",
+    description: "",
+    
+
+  };
+
+  const [input, setInput] = useState(stateInitialForms);
+  const dispatch = useDispatch();
+  const genres = useSelector((state) => state.allGeneros);
+  const cities = useSelector((state) => state.allCities);
+
+  useEffect(() => {
+    dispatch(Action.getAllCities());
+    dispatch(Action.getAllGeneros());
+  }, [dispatch]);
+
+  const handleInputChange = (e) => {
+    setInput({
+      ...input,
+
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSelect = (e) => {
+    setInput({
+      ...input,
+
+      genero: e.target.value
+    });
+  };
+
+  const handleCitySelect = (e) => {
+    setInput({
+      ...input,
+
+      city:  e.target.value
+    });
+  };
+
+  const [validated, setValidated] = useState(false);
+
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    dispatch(Action.createEvent(input))
+    alert("New event added successfully!");
+    setInput({
+      title: "",
+      imagen: "",
+      city: "",
+      place: "",
+      genero: "",
+      date: "",
+      time: "",
+      stock: "",
+      cost: "",
+      month: "",
+      address: "",
+      location: "",
+      description: "",
+   
+      
+      
+    });
+
+    setValidated(true);
+  };
 
   return (
     <div className={styles.container1}>
@@ -56,208 +122,273 @@ export default function CreateEvent() {
                 <Col xs>
                   <div className={styles.container1}>
                     <div style={{ marginTop: "85px" }}>
-                      <Formik
-                        validationSchema={schema}
-                        onSubmit={console.log}
-                        initialValues={{
-                          title: "",
-                          imagen: "",
-                          city: "",
-                          place: "",
-                          description: "",
-                          genero: "",
-                          startDate: "",
-                          endDate: "",
-                          time: "",
-                          stock: "",
-                          cost: "",
-                          month: "",
-                        }}
+                      <Form
+                        
+                        validated={validated}
+                        onSubmit={handleSubmit}
+                       
                       >
+                        <div>
+                          <h5>INGRESA LOS DATOS DE TU EVENTO</h5>
+                        </div>
 
-                      
-                        {({
-                          handleSubmit,
-                          handleChange,
+                        <>
+                        <Form.Group controlId="validationCustom01">
+                                  <Form.Label>Nombre de evento o Banda: </Form.Label>
+                                  <Form.Control
+                                    type="text"
+                                    name="title"
+                                    value={input.title}
+                                    required
+                                    onChange={handleInputChange}
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
 
-                          values,
-                          touched,
-                          isValid,
-                          errors,
-                        }) => (
-                          <Form noValidate onSubmit={handleSubmit} >
-                            <Form.Group
-                              className="mb-3"
-                              controlId="formBasicPassword"
-                            ></Form.Group>
-                            <Form.Group
-                              className="mb-3"
-                              controlId="formBasicCheckbox"
-                            ></Form.Group>
-
-                            <FormExample />
-                            <div>
-                              <h5>INGRESA LOS DATOS DE TU EVENTO</h5>
-                            </div>
-                            
+                          <Form.Group controlId="validationCustom02">
                             <Form.Label>Genero Musical</Form.Label>
-                            <Form.Select
-                              name="genero"
-                              value={values.genero}
-                              aria-label="Default select example"
-                            >
-                              <option>Selecciona tu Genero</option>
-                              <option value="1">Rock</option>
-                              <option value="2">Reggae</option>
-                              <option value="3">Pop</option>
-                              <option value="4">Otros</option>
-                            </Form.Select>
-                            <div>
-                              <Form.Text id="passwordHelpBlock" muted>
-                                Seleccion el tipo de genero con el que quieras
-                                mostrarte
-                              </Form.Text>
-                            </div>
+                            <FormSelect required onChange={(e) => handleSelect(e)}>
+                              {genres?.map((dl, i) => (
+                                <option key={i * 3} value={dl}>
+                                  {dl}
+                                </option>
+                              ))}
+                            </FormSelect>
+                            <Form.Control.Feedback type="invalid">
+                              Please choose a username.
+                            </Form.Control.Feedback>
+                          </Form.Group>
 
-                            <>
-                              <Form.Label>Nombre del evento</Form.Label>
-                              <Form.Control
-                                type="text"
-                                name="title"
-                                value={values.title}
-                              />
+                          <div>
+                            <Form.Text  muted>
+                              Seleccion el tipo de genero con el que quieras
+                              mostrarte
+                            </Form.Text>
+                          </div>
 
-                              <Form.Label htmlFor="inputPassword5">
-                                Artistas Participantes
-                              </Form.Label>
-                              <Form.Control type="text" />
-                              <Form.Label htmlFor="inputPassword5">
-                                Escribe detalle del evento
-                              </Form.Label>
-                              <InputGroup>
-                                <InputGroup.Text>With textarea</InputGroup.Text>
-                                <FormControl
-                                  as="textarea"
-                                  aria-label="With textarea"
-                                  name="description"
-                                  value={values.description}
-                                />
-                              </InputGroup>
-
-                              <div>
-                                <Container>
-                                  <Row>
-                                    <Form.Label htmlFor="inputPassword5">
-                                      Fecha de inicio de evento
-                                    </Form.Label>
-                                    <Form.Control
-                                      name="startDate"
-                                      value={values.startDate}
-                                      type="date"
-                                    />
-
-                                    <Form.Label htmlFor="inputPassword5">
-                                      Fecha de fin del evento
-                                    </Form.Label>
-                                    <Form.Control
-                                      name="endDate"
-                                      value={values.endDate}
-                                      type="date"
-                                    />
-                                  </Row>
-                                </Container>
-
-                                <Container>
-                                  <Row>
-                                    <Form.Label
-                                      name="description"
-                                      value={values.description}
-                                    >
-                                      Escribe detalle del evento
-                                    </Form.Label>
-                                  </Row>
-                                </Container>
-                              </div>
-
-                              <div>
-                               
-                                <div className={styles.direcction}>
-                                <Form.Label>Provincia de destino</Form.Label>
-                            <Form.Select
-                              name="city"
-                              value={values.city}
-                              aria-label="Default select example"
-                            >
-                              <option>Selecciona tu Ciudad</option>
-                              <option value="1">Cordoba</option>
-                              <option value="2">Buenos Aires</option>
-                              <option value="3">Tucson</option>
-                            </Form.Select>
-
-                                  <>
-                                    <Form.Label htmlFor="inputPassword5">
-                                      Direccion:{" "}
-                                    </Form.Label>
-                                    <Form.Control
-                                      type="text"
-                                      
-                                    />
-                                  </>
-
-                                  <>
-                                    <Form.Label htmlFor="inputPassword5">
-                                      Lugar del evento:{" "}
-                                    </Form.Label>
-                                    <Form.Control
-                                      type="text"
-                                      name="place"
-                                      value={values.place}
-                                    />
+                          <div>
+                            <Container>
+                              <Row>
+                                <Form.Group controlId="validationCustom03">
+                                  <Form.Label>
+                                    Fecha de inicio de evento
+                                  </Form.Label>
+                                  <Form.Control
+                                    required
+                                    name="date"
+                                    type="date"
+                                    value={input.date}
+                                    onChange={handleInputChange}
                                     
-                                      
+                                  />
+                                </Form.Group>
 
-                                    <InputGroup
-                                      style={{ marginTop: "17px" }}
-                                      className="mb-3"
-                                    >
-                                      <SplitButton
-                                        variant="outline-secondary"
-                                        title="Cargar Imagen"
-                                        id="segmented-button-dropdown-1"
-                                        type="file"
-                                      >
-                                        <Dropdown.Item href="#">
-                                          Action
-                                        </Dropdown.Item>
-                                        <Dropdown.Item href="#">
-                                          Another action
-                                        </Dropdown.Item>
-                                        <Dropdown.Item href="#">
-                                          Something else here
-                                        </Dropdown.Item>
-                                        <Dropdown.Divider />
-                                        <Dropdown.Item href="#">
-                                          Separated link
-                                        </Dropdown.Item>
-                                      </SplitButton>
-                                    </InputGroup>
-                                  </>
+                              
 
-                                  <div className="d-grid gap-2">
-                                    <Button
-                                      style={{ fontWeight: "bolder" }}
-                                      variant="warning"
-                                      size="lg"
-                                    >
-                                      Crea tu Evento
-                                    </Button>
-                                  </div>
-                                </div>
+                                <Form.Group controlId="validationCustom05">
+                                  <Form.Label>
+                                    Fecha de fin de evento
+                                  </Form.Label>
+                                  <Form.Control
+                                    name="time"
+                                    value={input.time}
+                                    type="time"
+                                    required
+                                    onChange={handleInputChange}
+                                  />
+                                </Form.Group>
+                              </Row>
+                            </Container>
+
+                            <Container>
+                              <Row>
+                                <Form.Group controlId="validationCustom06">
+                                  
+                                  <Form.Label >
+                                    Escribe detalle del evento
+                                  </Form.Label>
+
+                                  <InputGroup>
+                                    <InputGroup.Text>
+                                      With textarea
+                                    </InputGroup.Text>
+                                    <FormControl
+                                      as="textarea"
+                                      aria-label="With textarea"
+                                      name="description"
+                                      value={input.description}
+                                      required
+                                      onChange={handleInputChange}
+                                    />
+                                  </InputGroup>
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+                              </Row>
+                            </Container>
+                          </div>
+
+                          <div>
+                            <div className={styles.direcction}>
+                              <Form.Group controlId="validationCustomUsername">
+                                <Form.Label>Selecciona tu ciudad</Form.Label>
+                                <FormSelect
+                                 required onChange={(e) => handleCitySelect(e)}
+                                >
+                                  {cities?.map((dl, i) => (
+                                    <option key={i} value={dl}>
+                                      {dl}
+                                    </option>
+                                  ))}
+                                </FormSelect>
+                                <Form.Control.Feedback type="invalid">
+                                  Please choose a username.
+                                </Form.Control.Feedback>
+                              </Form.Group>
+
+                              <Form.Group controlId="validationCustom07">
+                                <Form.Label>Localidad: </Form.Label>
+                                <Form.Control
+                                  type="text"
+                                  name="location"
+                                  value={input.location}
+                                  required
+                                  onChange={handleInputChange}
+                                />
+                                 <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                              </Form.Group>
+                              <>
+                                <Form.Group controlId="validationCustom08">
+                                  <Form.Label>Direccion: </Form.Label>
+                                  <Form.Control
+                                    type="text"
+                                    name="address"
+                                    value={input.address}
+                                    required
+                                    onChange={handleInputChange}
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+
+                                <Form.Group controlId="validationCustom09">
+                                  <Form.Label>Lugar: </Form.Label>
+                                  <Form.Control
+                                    type="text"
+                                    name="place"
+                                    value={input.place}
+                                    required
+                                    onChange={handleInputChange}
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+
+                                <Form.Group controlId="validationCustom10">
+                                  <Form.Label>Imagen: </Form.Label>
+                                  <Form.Control
+                                    type="text"
+                                    name="imagen"
+                                    value={input.imagen}
+                                    required
+                                    onChange={handleInputChange}
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+
+                                <Form.Group controlId="validationCustom11">
+                                  <Form.Label>Costo: </Form.Label>
+                                  <Form.Control
+                                    type="number"
+                                    name="cost"
+                                    value={input.cost}
+                                    required
+                                    onChange={handleInputChange}
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+
+                                <Form.Group controlId="validationCustom12">
+                                  <Form.Label>Stock de entradas: </Form.Label>
+                                  <Form.Control
+                                    type="text"
+                                    name="stock"
+                                    value={input.stock}
+                                    required
+                                    onChange={handleInputChange}
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+{/* 
+                                <Form.Group controlId="validationCustom13">
+                                  <Form.Label>Lat: </Form.Label>
+                                  <Form.Control
+                                    type="text"
+                                    name="lat"
+                                    value={input.lat}
+                                    required
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+
+                                
+                                <Form.Group controlId="validationCustom14">
+                                  <Form.Label>Long: </Form.Label>
+                                  <Form.Control
+                                    type="text"
+                                    name="long"
+                                    value={input.long}
+                                    required
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group> */}
+
+                                <Form.Group controlId="validationCustom15">
+                                  <Form.Label>Mes: </Form.Label>
+                                  <Form.Control
+                                    type="text"
+                                    name="month"
+                                    value={input.month}
+                                    required
+                                    onChange={handleInputChange}
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+                              </>
+
+                              <div className="d-grid gap-2">
+                                <Button
+                                  style={{ fontWeight: "bolder", marginTop: "25px" }}
+                                  variant="warning"
+                                  size="lg"
+                                  type="submit"
+                                >
+                                  Crea tu Evento
+                                </Button>
                               </div>
-                            </>
-                          </Form>
-                        )}
-                      </Formik>
+                            </div>
+                          </div>
+                        </>
+                      </Form>
                     </div>
                   </div>
                 </Col>
@@ -282,5 +413,3 @@ export default function CreateEvent() {
     </div>
   );
 }
-
-
