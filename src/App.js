@@ -16,6 +16,7 @@ import Detail from "./components/Detail";
 
 import NavTop from "./components/NavBars/Nav";
 import Pay from './components/Payment'
+import Carrito from "./components/Carrito";
 function App() {
   const { isLoading, error } = useAuth0();
 
@@ -36,6 +37,7 @@ function App() {
         <Route exact path="/createEvent" element={<CreateEvent />} />
         <Route exact path="/:id" element={<Detail/>} />
         <Route exact path="/payment" element={<Pay/>} />
+        <Route exact path="/carrito" element={<Carrito/>}/>
       </Routes>
     </BrowserRouter>
   );
