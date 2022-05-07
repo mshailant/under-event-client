@@ -5,14 +5,14 @@ export const GET_BY_TITLE = "GET_BY_TITLE";
 export const GET_DETAIL = "GET_DETAIL";
 export const BY_EVENT_TYPE = "BY_EVENT_TYPE";
 export const GET_STATES = "GET_STATES";
-
-
 export const UPDATE_USER = "UPDATE_USER";
-export const FILTER_DATE = "FILTER_DATE"
+export const FILTER_DATE = "FILTER_DATE";
 export const GET_USER = "GET_USER";
-export const CREATE_USER = "CREATE_USER"
+export const CREATE_USER = "CREATE_USER";
 export const GET_ALL_CITIES = "GET_ALL_CITIES";
 export const GET_ALL_GENEROS = "GET_ALL_GENEROS";
+export const GET_USERS = "GET_USERS";
+export const BAN_USER = "BAN_USER";
 
 export function getAllEvent() {
   return async function (dispatch) {
@@ -28,28 +28,30 @@ export function getAllEvent() {
   };
 }
 
-export function getAllCities(){
-  return async function (dispatch){
+export function getAllCities() {
+  return async function (dispatch) {
     try {
       const cities = await axios.get("http://localhost:3001/events/solocitys");
       return dispatch({
         type: GET_ALL_CITIES,
-        payload: cities.data
-      })
+        payload: cities.data,
+      });
     } catch (err) {
       console.log(err);
     }
   };
 }
 
-export function getAllGeneros(){
-  return async function (dispatch){
+export function getAllGeneros() {
+  return async function (dispatch) {
     try {
-      const generos = await axios.get("http://localhost:3001/events/sologeneros");
+      const generos = await axios.get(
+        "http://localhost:3001/events/sologeneros"
+      );
       return dispatch({
         type: GET_ALL_GENEROS,
-        payload: generos.data
-      })
+        payload: generos.data,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -153,7 +155,35 @@ export function updateUser(payload, externalId) {
     }
   };
 }
-//filtrar por Date
+
+export function getUsers() {
+  return async (dispatch) => {
+    let json = await axios.get("http://localhost:3001/users");
+    console.log(json.data);
+    return dispatch({
+      type: GET_USERS,
+      payload: json.data,
+    });
+  };
+}
+
+export function banUser(externalId, block) {
+  return async (dispatch) => {
+    try {
+      const json = await axios.post(`http://localhost:3001/users/ban`, {
+        externalId,
+        block,
+      });
+
+      return dispatch({
+        type: BAN_USER,
+        payload: json.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
 
 export function byFilterDate(payload) {
   return {
