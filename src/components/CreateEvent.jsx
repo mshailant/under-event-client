@@ -3,6 +3,7 @@ import { connect } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { createEvent } from "../redux/actions/actions";
 import styles from "./CreateEvent.module.css";
+import Loading from "./Loading";
 import {
   Button,
   FormControl,
@@ -38,12 +39,8 @@ let schema = Yup.object().shape({
   month: Yup.string().required(),
 });
 
-export default function CreateEvent() {
+export function CreateEvent() {
   const { user, isLoading } = useAuth0();
-
-  
-  
-  
 
   return (
     <div className={styles.container1}>
@@ -74,8 +71,6 @@ export default function CreateEvent() {
                           month: "",
                         }}
                       >
-
-                      
                         {({
                           handleSubmit,
                           handleChange,
@@ -85,7 +80,7 @@ export default function CreateEvent() {
                           isValid,
                           errors,
                         }) => (
-                          <Form noValidate onSubmit={handleSubmit} >
+                          <Form noValidate onSubmit={handleSubmit}>
                             <Form.Group
                               className="mb-3"
                               controlId="formBasicPassword"
@@ -99,7 +94,7 @@ export default function CreateEvent() {
                             <div>
                               <h5>INGRESA LOS DATOS DE TU EVENTO</h5>
                             </div>
-                            
+
                             <Form.Label>Genero Musical</Form.Label>
                             <Form.Select
                               name="genero"
@@ -180,28 +175,24 @@ export default function CreateEvent() {
                               </div>
 
                               <div>
-                               
                                 <div className={styles.direcction}>
-                                <Form.Label>Provincia de destino</Form.Label>
-                            <Form.Select
-                              name="city"
-                              value={values.city}
-                              aria-label="Default select example"
-                            >
-                              <option>Selecciona tu Ciudad</option>
-                              <option value="1">Cordoba</option>
-                              <option value="2">Buenos Aires</option>
-                              <option value="3">Tucson</option>
-                            </Form.Select>
+                                  <Form.Label>Provincia de destino</Form.Label>
+                                  <Form.Select
+                                    name="city"
+                                    value={values.city}
+                                    aria-label="Default select example"
+                                  >
+                                    <option>Selecciona tu Ciudad</option>
+                                    <option value="1">Cordoba</option>
+                                    <option value="2">Buenos Aires</option>
+                                    <option value="3">Tucson</option>
+                                  </Form.Select>
 
                                   <>
                                     <Form.Label htmlFor="inputPassword5">
                                       Direccion:{" "}
                                     </Form.Label>
-                                    <Form.Control
-                                      type="text"
-                                      
-                                    />
+                                    <Form.Control type="text" />
                                   </>
 
                                   <>
@@ -213,8 +204,6 @@ export default function CreateEvent() {
                                       name="place"
                                       value={values.place}
                                     />
-                                    
-                                      
 
                                     <InputGroup
                                       style={{ marginTop: "17px" }}
@@ -268,6 +257,7 @@ export default function CreateEvent() {
                       src={imagen}
                       width="620px"
                       height="auto"
+                      alt="imagen"
                     />
                   </div>
                 </Col>
@@ -283,4 +273,6 @@ export default function CreateEvent() {
   );
 }
 
-
+export default withAuthenticationRequired(CreateEvent, {
+  onRedirecting: () => <Loading />,
+});

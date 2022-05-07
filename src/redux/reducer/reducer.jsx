@@ -17,10 +17,10 @@ const InitialState = {
   users: [],
 
   cart: [],
-  
+
   allCities: [],
 
-  allGeneros: []
+  allGeneros: [],
 };
 
 function rootReducer(state = InitialState, action) {
@@ -38,19 +38,13 @@ function rootReducer(state = InitialState, action) {
       return {
         ...state,
         allCities: action.payload,
-
       };
     case Action.GET_ALL_GENEROS:
       return {
         ...state,
         allGeneros: action.payload,
-
       };
     case Action.CREATE_EVENT:
-      return {
-        ...state,
-      };
-    case Action.CREATE_USER:
       return {
         ...state,
       };
@@ -106,7 +100,12 @@ function rootReducer(state = InitialState, action) {
     case Action.UPDATE_USER:
       return {
         ...state,
-        userLoged: action.payload,
+      };
+
+    case Action.GET_USERS:
+      return {
+        ...state,
+        users: action.payload,
       };
 
     case Action.FILTER_DATE:
@@ -120,6 +119,11 @@ function rootReducer(state = InitialState, action) {
         ...state,
 
         eventosDb: dateFilter,
+      };
+
+    case Action.BAN_USER:
+      return {
+        ...state,
       };
 
     default:
