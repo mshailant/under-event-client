@@ -29,10 +29,7 @@ export function UserProfile() {
       event.stopPropagation();
     } else {
       dispatch(updateUser(userData, userLoged.externalId));
-
       dispatch(getUserByExternalId(user.sub));
-      console.log("user", userLoged);
-      console.log("userData", userData);
       setShowToast(true);
       event.preventDefault();
       event.stopPropagation();
@@ -41,12 +38,10 @@ export function UserProfile() {
   };
 
   const handleChange = (event) => {
-    console.log("event", event.target.name, event.target.value);
     setUserData({
       ...userData,
       [event.target.name]: event.target.value,
     });
-    console.log("userData", userData);
   };
 
   return (
@@ -91,6 +86,7 @@ export function UserProfile() {
               <div class="d-flex justify-content-center align-items-center mb-3">
                 <h4 class="text-right">Profile Settings</h4>
               </div>
+
               <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Row className="mb-3">
                   <Form.Group as={Col} controlId="validationCustom01">
