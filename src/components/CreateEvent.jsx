@@ -115,7 +115,7 @@ export function CreateEvent() {
                 <Col xs>
                   <div className={styles.container1}>
                     <div style={{ marginTop: "85px" }}>
-                      <Form   validated={validated} onSubmit={handleSubmit}>
+                      <Form  validated={validated} onSubmit={handleSubmit}>
                         <div>
                           <h5>INGRESA LOS DATOS DE TU EVENTO</h5>
                         </div>
