@@ -25,6 +25,7 @@ import {
 export default function Home() {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.eventosDb);
+  console.log(events)
   const [carga, setCarga] = useState(true);
   const { isLoading, error, user, isAuthenticated } = useAuth0();
   const [showToast, setShowToast] = useState(false);

@@ -4,12 +4,15 @@ import image from "../images/1646431090104-null-04-2022-04-02-lvp-kbz-accesoya-1
 import imagen from "../images/DETALLE_CARRO_DE_COMPRAS_HOME.jpg"
 
 import imagenes from "../images/1649175668524-null-cabecera_crowder.jpg"
-
+import {Col, Row, Container} from "react-bootstrap"
 
 
 export default function Carousely() {
   return (
-    <div   >
+    <Container fluid>
+  <Row>
+    <Col>  <div>
+
       <Carousel  style={{height: "476px",   width: "auto",  }} >
         <Carousel.Item style={{marginTop: 0, height: "580px",   width: "80%", marginLeft: "10%"   }}>
           <img 
@@ -44,14 +47,20 @@ export default function Carousely() {
          
         </Carousel.Item>
       </Carousel>
-    </div>
+    </div></Col>
+  </Row>
+</Container>
+  
   );
 }
 
 export function Carouse2(){
   return (
     <div>
-         <Carousel variant="warning" style={{width: "85%", marginLeft: "6%"}}> 
+
+<Container fluid>
+  <Row>
+    <Col> <Carousel variant="warning" style={{width: "85%", marginLeft: "6%"}}> 
   <Carousel.Item style={{height: "250px" , width: "50%", marginLeft: "25%"}} >
     <img
       className="d-block w-100"
@@ -79,7 +88,10 @@ export function Carouse2(){
     />
   
   </Carousel.Item>
-</Carousel>
+</Carousel></Col>
+  </Row>
+</Container>
+        
     </div>
   )
 }

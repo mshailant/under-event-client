@@ -115,7 +115,7 @@ function rootReducer(state = InitialState, action) {
       const dateFilter =
         action.payload === "All"
           ? allDate
-          : allDate.filter((g) => g.month?.includes(action.payload));
+          : allDate.filter((g) => g.month === action.payload );
       console.log("filtradoMeses", dateFilter);
       return {
         ...state,

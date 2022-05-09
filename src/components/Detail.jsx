@@ -28,6 +28,7 @@ import imagen from "../images/concert2.jpg";
 const Detail = () => {
   const dispatch = useDispatch();
   const detalles = useSelector((state) => state.detailEventos);
+  const tickets = useSelector((state) => state.tickets)
   console.log(detalles, "detalles") // {data full} // necesito sacar id  de aca // 
  
   const { id } = useParams();
@@ -35,17 +36,23 @@ const Detail = () => {
   const [comprar, setComprar] = useState("");
 
   const [canti, setCanti] = useState(0);
+  
 
   useEffect(() => {
     dispatch(getDetail(id));
+    dispatch(getTickets(id))
    
    
     ;
   }, []);
 
+  console.log(tickets, "tickets")
+
   const handleDirectToHomeFromDetail = () => {
     window.location.href = "/";
   };
+
+
 
   
 
@@ -128,30 +135,17 @@ const Detail = () => {
                         <div className={styles.ticketContainer}>
                           <Container>
                             <Row>
-                              <Col xs>Tipo de Ticket</Col>
-                              <Col xs={{ order: 12 }}>Valor</Col>
+                              <Col xs><h3  style={{fontSize: "21px"}}> Tipo de Ticket </h3></Col>
+                              <Col xs={{ order: 12 }}><h3  style={{fontSize: "21px"}}> Valor </h3></Col>
                             </Row>
                           </Container>
                         </div>
                         <div className={styles.ticketContainer}>
                           <Container>
                             <Row>
-                              <Col xs>Cuota {detalles.title}</Col>
-                              <Col xs={{ order: 12 }}>$ 3500 </Col>
-                              {/* <select onChange={handleTicket(detalles.id)}
-                                className={styles.dietss}
-                                
-                              >
-                                {ticketsDisponibles.map((dl, i) => (
-                                  <option
-                                   
-                                    key={i}
-                                    value={dl}
-                                  >
-                                    {dl}
-                                  </option>
-                                ))}
-                              </select> */}
+                              <Col xs><h3  style={{fontSize: "21px"}}> {detalles.title}</h3></Col>
+                              <Col  xs={{ order: 12 }}>  <h3  style={{fontSize: "21px"}}> ${detalles.cost}.00</h3> </Col>
+                             
                             </Row>
                           </Container>{" "}
                         </div>
@@ -177,7 +171,7 @@ const Detail = () => {
                           </Container>
                         </div>
                         <Figure.Caption>
-                          <div>hola aca pone el calendario!!!</div>
+                          
                         </Figure.Caption>
                         <Figure.Caption>
                           <div>
