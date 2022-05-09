@@ -56,6 +56,7 @@ export default function Home() {
 
   return (
     <>
+        <div className={styles.containerGeneral}>
       <ToastContainer className="p-3 py-5 mt-5" position={"bottom-end"}>
         <Toast
           bg={"danger"}
@@ -75,10 +76,7 @@ export default function Home() {
           <Toast.Body>{error?.message}</Toast.Body>
         </Toast>
       </ToastContainer>
-      <div className={styles.containerGeneral}>
-        <Container fluid>
-          <Row>
-            <Col>
+      
               <NavTop />
 
               <Carousely />
@@ -100,6 +98,7 @@ export default function Home() {
                             events.map((e) => {
                               return (
                                 <div key={e.id}>
+                                  
                                   <Cardi
                                     title={e.title}
                                     imagen={e.imagen}
@@ -111,6 +110,7 @@ export default function Home() {
                                     key={e.id}
                                     month={e.month}
                                   />
+                                
                                 </div>
                               );
                             })
@@ -154,9 +154,7 @@ export default function Home() {
               <div className={styles.footer}>
                 <Footer />
               </div>
-            </Col>
-          </Row>
-        </Container>
+         
       </div>
     </>
   );

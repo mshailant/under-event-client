@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getDetail } from "../redux/actions/actions.jsx";
+import { getDetail, getTickets } from "../redux/actions/actions.jsx";
 import { useParams } from "react-router";
 import styles from "./Detail.module.css";
 
@@ -25,85 +25,83 @@ import {
 import NavTop from "./NavBars/Nav.jsx";
 import imagen from "../images/concert2.jpg";
 
-
-
-
-
 const Detail = () => {
   const dispatch = useDispatch();
   const detalles = useSelector((state) => state.detailEventos);
+  console.log(detalles, "detalles") // {data full} // necesito sacar id  de aca // 
+ 
   const { id } = useParams();
-  console.log(detalles, "detallaso");
 
   const [comprar, setComprar] = useState("");
-  /*  const [carritoVisual, setCarritoVisual] = useState(0) */
-  const [canti, setCanti] = useState(0)
+
+  const [canti, setCanti] = useState(0);
 
   useEffect(() => {
     dispatch(getDetail(id));
+   
+   
+    ;
   }, []);
 
   const handleDirectToHomeFromDetail = () => {
     window.location.href = "/";
   };
 
-  const handleOnClick = (e) => {
+  
 
+  const handleOnClick = (e) => {
     e.preventDefault();
-    alert("Event added succesfully")
+    alert("Event added succesfully");
     const compraras = e.target.value;
-    setComprar(compraras)
+    setComprar(compraras);
     /* console.log(comprar) */
     /* localStorage.setItem('carrito', JSON.stringify(detalles)) */
 
     // -------------------------------------------------------
     //const localStorageContent = localStorage.getItem('carti')
-    
-    let data = [];
-  let w = JSON.parse(localStorage.getItem('carrito'));
-  
-  if (w != null) {
-    for (let i=0; i<w.length; i++) {
-     if(w[i].id !== id) {
-      data.push(w[i]);
-     }
-    }
-  }
-  
-  data.push(detalles)
-  localStorage.setItem('carrito', JSON.stringify(data));
-  
- 
 
-    
+    let data = [];
+    let w = JSON.parse(localStorage.getItem("carrito"));
+
+    if (w != null) {
+      for (let i = 0; i < w.length; i++) {
+        if (w[i].id !== id) {
+          data.push(w[i]);
+        }
+      }
+    }
+
+    data.push(detalles);
+    localStorage.setItem("carrito", JSON.stringify(data));
 
     //----------------------------------------------------------
 
-    let contador = JSON.parse(localStorage.getItem('carrito'))
+    let contador = JSON.parse(localStorage.getItem("carrito"));
 
-    
+    localStorage.setItem("carrito visual", parseInt(contador.length));
 
-    localStorage.setItem('carrito visual', parseInt(contador.length))
+    var cantidad = parseInt(localStorage.getItem("carrito visual"));
 
-    var cantidad = parseInt(localStorage.getItem('carrito visual'))
-
-    setCanti(cantidad)
-    
+    setCanti(cantidad);
+  };
 
 
 
-  }
+  
+
+  
 
   return (
     <div className={styles.containerGral}>
-      <Container fluid >
-        <Row>
-          <Col >
+      
             {detalles ? (
+              
+               
               <div className={styles.container}>
+                
                 <div>
+                 
                   <NavTop />
-                  
                 </div>
 
                 <Container
@@ -132,7 +130,6 @@ const Detail = () => {
                             <Row>
                               <Col xs>Tipo de Ticket</Col>
                               <Col xs={{ order: 12 }}>Valor</Col>
-                              <Col xs={{ order: 1 }}>Cantidad</Col>
                             </Row>
                           </Container>
                         </div>
@@ -141,47 +138,20 @@ const Detail = () => {
                             <Row>
                               <Col xs>Cuota {detalles.title}</Col>
                               <Col xs={{ order: 12 }}>$ 3500 </Col>
-                              <Col xs={{ order: 1 }}>
-                                <Form.Select aria-label="Default select example">
-                                  <option>0</option>
-                                  <option value="1">One</option>
-                                  <option value="2">Two</option>
-                                  <option value="3">Three</option>
-                                </Form.Select>
-                              </Col>
-                            </Row>
-                          </Container>{" "}
-                        </div>
-                        <div className={styles.ticketContainer}>
-                          <Container>
-                            <Row>
-                              <Col xs>First, but unordered</Col>
-                              <Col xs={{ order: 12 }}>Second, but last</Col>
-                              <Col xs={{ order: 1 }}>
-                                <Form.Select aria-label="Default select example">
-                                  <option>0</option>
-                                  <option value="1">One</option>
-                                  <option value="2">Two</option>
-                                  <option value="3">Three</option>
-                                </Form.Select>
-                              </Col>
-                            </Row>
-                          </Container>{" "}
-                        </div>
-
-                        <div className={styles.ticketContainer}>
-                          <Container>
-                            <Row>
-                              <Col xs>First, but unordered</Col>
-                              <Col xs={{ order: 12 }}>Second, but last</Col>
-                              <Col xs={{ order: 1 }}>
-                                <Form.Select aria-label="Default select example">
-                                  <option>0</option>
-                                  <option value="1">One</option>
-                                  <option value="2">Two</option>
-                                  <option value="3">Three</option>
-                                </Form.Select>
-                              </Col>
+                              {/* <select onChange={handleTicket(detalles.id)}
+                                className={styles.dietss}
+                                
+                              >
+                                {ticketsDisponibles.map((dl, i) => (
+                                  <option
+                                   
+                                    key={i}
+                                    value={dl}
+                                  >
+                                    {dl}
+                                  </option>
+                                ))}
+                              </select> */}
                             </Row>
                           </Container>{" "}
                         </div>
@@ -191,17 +161,23 @@ const Detail = () => {
                             <Row>
                               <Col xs></Col>
                               <Col xs={{ order: 12 }}></Col>
-                              <Col style={{ marginLeft: "270px" }} xs={{ order: 1 }}>
-                                <Button variant="warning" value={detalles} onClick={(e) => handleOnClick(e)}>Comprar</Button>
+                              <Col
+                                style={{ marginLeft: "270px" }}
+                                xs={{ order: 1 }}
+                              >
+                                <Button
+                                  variant="warning"
+                                  value={detalles}
+                                  onClick={(e) => handleOnClick(e)}
+                                >
+                                  Comprar
+                                </Button>
                               </Col>
                             </Row>
                           </Container>
                         </div>
                         <Figure.Caption>
-                          <div>
-                           
-                            hola aca pone el calendario!!!
-                          </div>
+                          <div>hola aca pone el calendario!!!</div>
                         </Figure.Caption>
                         <Figure.Caption>
                           <div>
@@ -240,11 +216,8 @@ const Detail = () => {
               </div>
             ) : (
               <h1>error</h1>
-            )}</Col>
-        </Row>
-      </Container>
-
-
+            )}
+         
     </div>
   );
 };

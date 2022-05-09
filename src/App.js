@@ -35,6 +35,7 @@ function App() {
         <Route exact path="/:id" element={<Detail />} />
         <Route exact path="/payment" element={<Pay />} />
         <Route exact path="/carrito" element={<Carrito />} />
+      
       </Routes>
     </BrowserRouter>
   );
