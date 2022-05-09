@@ -11,13 +11,12 @@ import {
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import style from "./Card.module.css";
-import img from "../images/logo.png";
+
 import { FaCalendar, FaSearchLocation, FaTicketAlt } from "react-icons/fa";
+import img from "../images/pexels-darya-sannikova-3824763.jpg"
 
 export default function Cardi({ id, title, imagen, description, date, place }) {
-  const handleClickDirectiontoDetail = () => {
-    window.location.href = "/" + id;
-  };
+ 
   return (
     <Container>
       <Row>

@@ -14,6 +14,7 @@ import * as Action from "../redux/actions/actions";
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { getTickets } from "../redux/actions/actions";
 
 // ----- ------- -- - -- - - -- - - ///
 
@@ -22,9 +23,13 @@ const MySwal = withReactContent(Swal);
 function Carrito() {
   const dispatch = useDispatch();
   const ticketsDisponibles = useSelector((state) => state.tickets);
+
   const [comprar, setComprar] = useState("");
 
   const { id } = useParams();
+  useEffect(()=>{
+    dispatch(getTickets(id))
+  })
 
 
 
