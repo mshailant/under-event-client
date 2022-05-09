@@ -22,24 +22,23 @@ import { Formik } from "formik";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import NavTop from "./NavBars/Nav";
 import imagen from "../images/pexels-darya-sannikova-3824763.jpg";
-import FormExample from "./FormBootstrap/FormBotstrap";
-import * as Yup from "yup";
+
 
 export function CreateEvent() {
   const stateInitialForms = {
-    title: "",
-    genero: "",
-    date: "",
-    time: "",
-    description: "",
-    location: "",
-    address: "",
-    place: "",
-    imagen: "",
-    cost: "",
-    stock: "",
-    month: "",
-    city: "",
+        title: "",
+        imagen: "",
+        city: "",
+        place: "",
+        description: "",
+        genero: "",
+        date: "",
+        time: "",
+        stock: "",
+        cost: "",
+        month: "",
+        address: "",
+        location: ""
   };
 
   const { user, isLoading } = useAuth0();
@@ -87,18 +86,18 @@ export function CreateEvent() {
     alert("New event added successfully!");
     setInput({
       title: "",
+      imagen: "",
+      city: "",
+      place: "",
+      description: "",
       genero: "",
       date: "",
       time: "",
-      description: "",
-      location: "",
-      address: "",
-      place: "",
-      imagen: "",
-      cost: "",
       stock: "",
+      cost: "",
       month: "",
-      city: "",
+      address: "",
+      location: ""
     });
 
     setValidated(true);
@@ -106,9 +105,7 @@ export function CreateEvent() {
 
   return (
     <div className={styles.container1}>
-      <Container fluid>
-        <Row>
-          <Col>
+      
             <NavTop />
             <Container>
               <Row>
@@ -135,6 +132,7 @@ export function CreateEvent() {
 
                           <Form.Label>Genero Musical</Form.Label>
                           <Form.Select required onChange={(e) => handleSelect(e)}>
+                          <option>Seleccion tu Genero</option>
                             {genres?.map((dl) => (
                               <option value={dl}>{dl}</option>
                             ))}
@@ -155,7 +153,7 @@ export function CreateEvent() {
                           <Form.Group controlId="validationCustom03">
                             <Form.Label>Escribe detalle del evento</Form.Label>
                             <InputGroup>
-                              <InputGroup.Text>With textarea</InputGroup.Text>
+                             
                               <FormControl
                                 as="textarea"
                                 aria-label="With textarea"
@@ -240,7 +238,9 @@ export function CreateEvent() {
                                 controlId="validationCustom07"
                               >
                                 <Form.Label>Provincia</Form.Label>
+                              
                                 <Form.Select required onChange={(e) => handleCitySelect(e)}>
+                                <option>Selecciona tu Provincia</option>
                                   {city?.map((dl) => (
                                     <option value={dl}>{dl}</option>
                                   ))}
@@ -383,9 +383,7 @@ export function CreateEvent() {
             <div className={styles.footer}>
               <Footer />
             </div>
-          </Col>
-        </Row>
-      </Container>
+        
     </div>
   );
 }

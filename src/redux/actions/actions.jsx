@@ -13,6 +13,7 @@ export const GET_ALL_CITIES = "GET_ALL_CITIES";
 export const GET_ALL_GENEROS = "GET_ALL_GENEROS";
 export const GET_USERS = "GET_USERS";
 export const BAN_USER = "BAN_USER";
+export const GET_TICKETS = "GET_TICKETS"
 
 export function getAllEvent() {
   return async function (dispatch) {
@@ -62,7 +63,7 @@ export function createEvent(payload) {
   return async (dispatch) => {
     try {
       const json = await axios.post(
-        "http://localhost:3001/events/createEvent",
+        "http://localhost:3001/events/createEvent/",
         payload
       );
       return dispatch({
@@ -189,5 +190,17 @@ export function byFilterDate(payload) {
   return {
     type: FILTER_DATE,
     payload,
+  };
+}
+
+
+export function getTickets(id) {
+  return async (dispatch) => {
+    let json = await axios.get(`http://localhost:3001/events/getTiketsDisponibles${id}`);
+
+    return dispatch({
+      type: GET_TICKETS,
+      payload: json.data,
+    });
   };
 }

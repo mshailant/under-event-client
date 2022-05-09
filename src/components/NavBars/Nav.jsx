@@ -61,7 +61,7 @@ export default function NavTop() {
                 fontFamily: "font-family: 'Rubik Glitch', cursive;",
               }}
             >
-              <h2 className={styles.title}>UnderVentsApp</h2>
+              <h2 className={styles.title}>UnderEventsApp</h2>
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle bg="white" aria-controls="basic-navbar-nav" />

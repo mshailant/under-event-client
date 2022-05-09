@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import {Col, Row, Container} from 'react-bootstrap'
+import styles from './Payment.module.css'
 
 const MySwal = withReactContent(Swal);
 
@@ -50,7 +52,10 @@ const MySwal = withReactContent(Swal);
   };
 
   return (
-    <div >
+    <Container className={styles.container} fluid>
+  <Row>
+    <Col>
+    <div  >
       <h2>Complete React & Stripe payment integration</h2>
       <p>
         <span>Product: </span>
@@ -59,6 +64,7 @@ const MySwal = withReactContent(Swal);
       <p>
         <span>Price: </span>${product.price}
       </p>
+      
       <StripeCheckout
         stripeKey={publishableKey}
         label="Pay Now"
@@ -69,7 +75,10 @@ const MySwal = withReactContent(Swal);
         description={`Your total is $${product.price}`}
         token={payNow}
       />
-    </div>
+    </div></Col>
+  </Row>
+</Container>
+    
   );
 }
 
