@@ -14,6 +14,8 @@ import * as Action from "../redux/actions/actions";
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import CartitaDeCarrito from "./CartitaDeCarrito";
+import SumaTotalTotal from "./SumaTotalTotal";
 
 // ----- ------- -- - -- - - -- - - ///
 
@@ -46,7 +48,7 @@ function Carrito() {
 
   useEffect(() => {
     
-    setAmount(cantidad)
+    setAmount(amount)
   }, []);
 
   
@@ -63,29 +65,19 @@ function Carrito() {
     setRender(temp);
   }
 
-  // function increaseItems() {
-  //   var quantity = 1
-  //   var suma = 0;
-  //   var items = JSON.parse(localStorage.getItem("carrito"));
-
-  //   for (var i = 0; i < items.length; i++) {
-  //     suma += (items.price * quantity )
-      
-  //   }
-  //   return suma;
-  //   setSum(suma)
-  // }
+  
 
 
   const handleAddOnClick = (e) => {
+
+
     
     alert("Event added succesfully");
     const compraras = e.target.value;
     setComprar(compraras);
    
    
-    /* console.log(comprar) */
-    /* localStorage.setItem('carrito', JSON.stringify(detalles)) */
+
 
     // -------------------------------------------------------
     //const localStorageContent = localStorage.getItem('carti')
@@ -110,7 +102,8 @@ function Carrito() {
 
     localStorage.setItem("carrito visual counter", parseInt(contador.length));
 
-   ;
+    //-----------------------------------------------------------------------
+    setAmount(parseInt(localStorage.getItem("carrito visual counter")))
 
     
     
@@ -204,7 +197,23 @@ function Carrito() {
                     <th scope="col">Remover</th>
                   </tr>
                 </thead>
-                <tbody>
+                
+                {render.map((i,index) =>
+                  <CartitaDeCarrito 
+                  numerito={index+1} 
+                  titulo={i.title} 
+                  precio={i.cost} 
+                  stock={i.stock} 
+                  imagen={i.imagen}
+                  id={i.id}
+                  removeItemFromCart ={ () => removeItemFromCart(i.id)}
+                  
+                  />,
+
+                <button>Delete</button>
+                )}
+
+                {/* <tbody>
                   {render.map((i, index) => (
                     <tr key={i.id}>
                       <th scope="row">{index + 1}</th>
@@ -244,10 +253,10 @@ function Carrito() {
                       </td>
                     </tr>
                   ))}
-                </tbody>
+                </tbody> */}
               </table>
             </div>
-            <div className="row">
+            {/* <div className="row">
               <div className="col text-center">
                 <h4>TOTAL: {sum}</h4>{" "}
                 <StripeCheckout
@@ -261,7 +270,9 @@ function Carrito() {
                   token={payNow}
                 />
               </div>
-            </div>
+            </div> */}
+            <SumaTotalTotal/>
+
           </div>
         </Col>
       </Row>
