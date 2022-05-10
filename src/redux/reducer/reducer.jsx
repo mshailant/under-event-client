@@ -22,7 +22,9 @@ const InitialState = {
 
   allGeneros: [],
 
-  tickets : []
+  tickets : [], 
+
+  orderDetail : {},
 };
 
 function rootReducer(state = InitialState, action) {
@@ -131,6 +133,11 @@ function rootReducer(state = InitialState, action) {
       return{
         ...state,
         tickets: action.payload
+      }
+    case Action.GET_ORDER_DETAIL:
+      return{
+        ...state,
+        orderDetail: action.payload
       }
     default:
       return {
