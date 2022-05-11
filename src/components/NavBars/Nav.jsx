@@ -168,7 +168,7 @@ export function Selector() {
     setFilterMes(mes);
     window.localStorage.setItem("mes", mes);
     dispatch(
-      Action.byFilterDate(localStorage.getItem("mes") /* e.target.value */)
+      Action.byFilterDate(/* localStorage.getItem("mes") */ e.target.value)
     );
     window.localStorage.setItem("filtro", "mes");
   }

@@ -13,7 +13,8 @@ export const GET_ALL_CITIES = "GET_ALL_CITIES";
 export const GET_ALL_GENEROS = "GET_ALL_GENEROS";
 export const GET_USERS = "GET_USERS";
 export const BAN_USER = "BAN_USER";
-export const GET_TICKETS = "GET_TICKETS";
+export const GET_TICKETS = "GET_TICKETS"
+export const GET_ORDER_DETAIL = "GET_ORDER_DETAIL";
 
 const API_URL = "http://localhost:3001";
 
@@ -191,4 +192,18 @@ export function getTickets(id) {
       payload: json.data,
     });
   };
+<<<<<<< HEAD
 }
+=======
+};
+// RUTA PARA TRAERME EL ORDEL DETAIL DE UN EVENTO
+export function getOrderDetail(id) {
+  return async (dispatch) => {
+    let json = await axios.get(`http://localhost:3001/users/getOrder${id}`);
+    return dispatch({
+      type: GET_ORDER_DETAIL,
+      payload: json.data,
+    });
+  };
+};
+>>>>>>> dev
