@@ -204,7 +204,7 @@ export default function OrderDetail() {
 
       <Carousely/>
       </div>
-      <div style={{ marginTop: "25px" }}>
+      <div style={{ marginTop: "26px" }}>
         <Footer />
       </div>
     </div>
