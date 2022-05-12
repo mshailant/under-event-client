@@ -13,7 +13,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import style from "./Card.module.css";
 
 import { FaCalendar, FaSearchLocation, FaTicketAlt } from "react-icons/fa";
-import img from "../images/pexels-darya-sannikova-3824763.jpg";
+
 import Foo from "./StartsComponent";
 import ReactStars from "react-rating-stars-component";
 

@@ -276,7 +276,7 @@ const Detail = () => {
           </div>
         </div>
       ) : (
-        <h1>error</h1>
+        <h1></h1>
       )}
     </div>
   );

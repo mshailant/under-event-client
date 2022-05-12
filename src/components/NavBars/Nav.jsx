@@ -77,8 +77,7 @@ export default function NavTop() {
               <Dropdown.ItemText>  <LinkContainer to="/orderDetail">
                   <Nav.Link style={{ color: "black" }}>Detalles de Orden</Nav.Link>
                 </LinkContainer></Dropdown.ItemText>
-              <Dropdown.Item as="button">Action</Dropdown.Item>
-              <Dropdown.Item as="button">Another action</Dropdown.Item>
+             
               <Dropdown.Item as="button">
                 {" "}
                 <LinkContainer to="/createEvent">
@@ -244,14 +243,12 @@ export function Selector() {
   } */
   return (
     <div className={styles.container}>
-      <Container>
-        <Row>
-          <Col>
+      
             <Navbar
               style={{ width: "90%", marginBottom: "25px", marginLeft: "5%" }}
               bg="secondary"
               variant="secondary"
-              expand="xxl"
+              expand="lg"
             >
               <Container>
                 <Navbar.Brand
@@ -347,9 +344,7 @@ export function Selector() {
                 <Searchbar />
               </Container>
             </Navbar>
-          </Col>
-        </Row>
-      </Container>
+        
     </div>
   );
 }
