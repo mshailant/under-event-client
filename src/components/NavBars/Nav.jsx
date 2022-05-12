@@ -24,6 +24,7 @@ import {
 import Searchbar from "../Searchbar";
 import styles from "./Nav.module.css";
 import ShoppingCart from "../shopCart";
+import Calendario from "../Calendario"
 
 export default function NavTop() {
   const dispatch = useDispatch();
@@ -280,7 +281,6 @@ export function Selector() {
                     </option>
                   ))}
                 </Form.Select>
-            
 
                 <Form.Select
                   style={{ width: "400px" }}
@@ -368,6 +368,8 @@ export function Selector() {
                   </option>
      
                 </Form.Select>
+
+                <Calendario/>
 
                 <Searchbar />
               </Container>
