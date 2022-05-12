@@ -15,6 +15,8 @@ export const GET_USERS = "GET_USERS";
 export const BAN_USER = "BAN_USER";
 export const GET_TICKETS = "GET_TICKETS"
 export const GET_ORDER_DETAIL = "GET_ORDER_DETAIL";
+export const GET_ALL_DATE = "GET_ALL_DATE";
+export const FILTER_CALENDER = "FILTER_CALENDER"
 
 export function getAllEvent() {
   return async function (dispatch) {
@@ -29,7 +31,28 @@ export function getAllEvent() {
     }
   };
 }
+// PARA EL CALENDARIO ---------------------------------------------------------------------
+export function getAllDate() {   //ME TRAE UN ARRAY CON LAS FECHAS DE LOS EVENTOS
+  return async function (dispatch) {
+    try {
+      const date = await axios.get("http://localhost:3001/events/getDates/");
+      return dispatch({
+        type: GET_ALL_DATE,
+        payload: date.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
 
+export function FilterCalender(payload) {  //PARA FILTRAR LOS EVENTOS POR UNA FECHA EN PARTICULAR
+  return {
+    type: FILTER_CALENDER,
+    payload,
+  };
+}
+// --------------------------------------------------------------------------------------------
 export function getAllCities() {
   return async function (dispatch) {
     try {
