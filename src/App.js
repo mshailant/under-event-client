@@ -20,6 +20,7 @@ import Pay from "./components/Payment";
 import Carrito from "./components/Carrito";
 import OrderDetail from "./components/OrderDetail";
 
+
 function App() {
   const { isLoading } = useAuth0();
 
@@ -37,7 +38,7 @@ function App() {
         <Route exact path="/:id" element={<Detail />} />
         <Route exact path="/payment" element={<Pay />} />
         <Route exact path="/carrito" element={<Carrito />} />
-        <Route path="/orderDetail/:id" element={<OrderDetail />} />
+        <Route exact path="/orderDetail" element={<OrderDetail />} />
       </Routes>
     </BrowserRouter>
   );

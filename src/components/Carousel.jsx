@@ -13,14 +13,14 @@ export default function Carousely() {
   <Row>
     <Col>  <div>
 
-      <Carousel  style={{height: "476px",   width: "auto",  }} >
+      <Carousel  style={{height: "300px",   width: "70%", marginLeft: "15%"  }} >
         <Carousel.Item style={{marginTop: 0, height: "580px",   width: "80%", marginLeft: "10%"   }}>
           <img 
             
             className="d-block w-100"
             src={image}
             alt="First slide"
-            style={{height: "85%", width: "auto", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundAttachment: "fixed"}}
+            style={{height: "50%", width: "auto", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundAttachment: "fixed"}}
           />
          
         </Carousel.Item>
@@ -29,18 +29,18 @@ export default function Carousely() {
             className="d-block w-100"
             src={imagen}
             alt="Second slide"
-            style={{height: "85%", width: "400px"}}
+            style={{height: "50%", width: "auto", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundAttachment: "fixed"}}
           />
         
 
          
         </Carousel.Item>
-        <Carousel.Item style={{marginTop: 0, height: "580px",   width: "80%", marginLeft: "10%"  }}>
+        <Carousel.Item style={{marginTop: 0, height: "580px",   width: "80%", marginLeft: "10%"   }}>
           <img 
             className="d-block w-100"
             src={imagenes}
             alt="Third slide"
-            style={{height: "85%", width: "400px"}}
+            style={{height: "50%", width: "auto", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundAttachment: "fixed"}}
             
           />
 
@@ -58,9 +58,9 @@ export function Carouse2(){
   return (
     <div>
 
-<Container fluid>
+<Container  fluid>
   <Row>
-    <Col> <Carousel variant="warning" style={{width: "85%", marginLeft: "6%"}}> 
+    <Col> <Carousel variant="warning" style={{width: "85%", marginLeft: "6%", marginTop: "15px"}}> 
   <Carousel.Item style={{height: "250px" , width: "50%", marginLeft: "25%"}} >
     <img
       className="d-block w-100"
