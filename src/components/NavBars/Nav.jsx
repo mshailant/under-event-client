@@ -13,6 +13,7 @@ import {
   Button,
   Dropdown,
   Image,
+  DropdownButton,
 } from "react-bootstrap";
 
 import {
@@ -24,6 +25,7 @@ import {
 import Searchbar from "../Searchbar";
 import styles from "./Nav.module.css";
 import ShoppingCart from "../shopCart";
+import Calendario from "../Calendario"
 
 export default function NavTop() {
   const dispatch = useDispatch();
@@ -67,9 +69,22 @@ export default function NavTop() {
           <Navbar.Toggle bg="white" aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <LinkContainer to="/createEvent">
+              {/* <LinkContainer to="/createEvent">
                 <Nav.Link style={{ color: "black" }}>Crear Eventos</Nav.Link>
-              </LinkContainer>
+              </LinkContainer> */}
+           
+            <DropdownButton variant="warning" id="dropdown-item-button" title="Mas Info">
+              <Dropdown.ItemText>  <LinkContainer to="/orderDetail">
+                  <Nav.Link style={{ color: "black" }}>Detalles de Orden</Nav.Link>
+                </LinkContainer></Dropdown.ItemText>
+             
+              <Dropdown.Item as="button">
+                {" "}
+                <LinkContainer to="/createEvent">
+                  <Nav.Link style={{ color: "black" }}>Crear Eventos</Nav.Link>
+                </LinkContainer>
+              </Dropdown.Item>
+            </DropdownButton>
             </Nav>
             <Nav>
               <div>
@@ -168,7 +183,7 @@ export function Selector() {
     setFilterMes(mes);
     window.localStorage.setItem("mes", mes);
     dispatch(
-      Action.byFilterDate(localStorage.getItem("mes") /* e.target.value */)
+      Action.byFilterDate(/* localStorage.getItem("mes") */ e.target.value)
     );
     window.localStorage.setItem("filtro", "mes");
   }
@@ -228,14 +243,12 @@ export function Selector() {
   } */
   return (
     <div className={styles.container}>
-      <Container>
-        <Row>
-          <Col>
+      
             <Navbar
               style={{ width: "90%", marginBottom: "25px", marginLeft: "5%" }}
               bg="secondary"
               variant="secondary"
-              expand="xxl"
+              expand="lg"
             >
               <Container>
                 <Navbar.Brand
@@ -258,13 +271,12 @@ export function Selector() {
                     Ciudades
                   </option>
                   {cities?.map((item) => (
-                    <option  onClick={saveData()} key={item} value={item}>
+                    <option onClick={saveData()} key={item} value={item}>
                       {item}
                     </option>
                   ))}
                 </Form.Select>
 
-     
                 <br />
                 <Form.Select
                   style={{ width: "400px" }}
@@ -280,101 +292,59 @@ export function Selector() {
                     </option>
                   ))}
                 </Form.Select>
-            
 
                 <Form.Select
                   style={{ width: "400px" }}
                   size="sm"
                   onChange={handleDate}
                 >
-                  <option
-                     onClick={() => getMes()}
-                    value="All"
-                    key="All"
-                  >
+                  <option onClick={() => getMes()} value="All" key="All">
                     Por mes
                   </option>
-                  <option
-                     onClick={() => getMes()}
-                    value="Enero"
-                  >
+                  <option onClick={() => getMes()} value="Enero">
                     Enero de 2022
                   </option>
-                  <option
-                     onClick={() => getMes()}
-                    value="Febrero"
-                  >
+                  <option onClick={() => getMes()} value="Febrero">
                     Febrero de 2022
                   </option>
-                  <option
-                   onClick={() => getMes()}
-                    value="Marzo"
-                  >
+                  <option onClick={() => getMes()} value="Marzo">
                     Marzo de 2022
                   </option>
-                  <option
-                    onClick={() => getMes()}
-                    value="Abril"
-                  >
+                  <option onClick={() => getMes()} value="Abril">
                     Abril de 2022
                   </option>
-                  <option
-                    onClick={() => getMes()}
-                    value="Mayo"
-                  >
+                  <option onClick={() => getMes()} value="Mayo">
                     Mayo de 2022
                   </option>
-                  <option
-                    onClick={() => getMes()}
-                    value="Junio"
-                  >
+                  <option onClick={() => getMes()} value="Junio">
                     Junio de 2022
                   </option>
-                  <option
-                     onClick={() => getMes()}
-                    value="Julio"
-                  >
+                  <option onClick={() => getMes()} value="Julio">
                     Julio de 2022
                   </option>
-                  <option
-                    onClick={() => getMes()}
-                    value="Agosto"
-                  >
+                  <option onClick={() => getMes()} value="Agosto">
                     Agosto de 2022
                   </option>
-                  <option
-                     onClick={() => getMes()}
-                    value="Septiembre"
-                  >
+                  <option onClick={() => getMes()} value="Septiembre">
                     Septiembre de 2022
                   </option>
-                  <option
-                     onClick={() => getMes()}
-                    value="Octubre"
-                  >
+                  <option onClick={() => getMes()} value="Octubre">
                     Octubre de 2022
                   </option>
-                  <option
-                    onClick={() => getMes()}
-                    value="Noviembre"
-                  >
+                  <option onClick={() => getMes()} value="Noviembre">
                     Noviembre de 2022
                   </option>
-                  <option
-                   onClick={() => getMes()}
-                    value="Diciembre"
-                  >
+                  <option onClick={() => getMes()} value="Diciembre">
                     Diciembre de 2022
                   </option>
-     
                 </Form.Select>
+
+                <Calendario/>
 
                 <Searchbar />
               </Container>
             </Navbar>
-          </Col>
-        </Row>
-      </Container>
+        
     </div>
   );
 }

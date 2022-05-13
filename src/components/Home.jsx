@@ -13,6 +13,9 @@ import Buttom from "./Button/ScrollButton";
 import { SpinnerCircularFixed } from "spinners-react";
 import { Selector } from "./NavBars/Nav";
 import NavTop from "./NavBars/Nav";
+import CalendarioMejorado from "./CalendarioMejorado"
+
+
 import {
   Container,
   Col,
@@ -86,6 +89,8 @@ export default function Home() {
                 <Selector />
               </div>
               <Carouse2 />
+
+              <CalendarioMejorado/>
 
               <div className={styles.background}>
                 <div className={styles.infoContainer}></div>

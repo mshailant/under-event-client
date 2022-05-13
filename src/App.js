@@ -20,6 +20,8 @@ import AboutUs from "./components/AboutUs";
 import NavTop from "./components/NavBars/Nav";
 import Pay from "./components/Payment";
 import Carrito from "./components/Carrito";
+import OrderDetail from "./components/OrderDetail";
+
 
 function App() {
   const { isLoading } = useAuth0();
@@ -40,6 +42,7 @@ function App() {
         <Route exact path="/carrito" element={<Carrito />} />
         <Route exact path="/contactUs" element={<ContactUs />} />
         <Route exact path="/aboutUs" element={<AboutUs />} />
+        <Route exact path="/orderDetail" element={<OrderDetail />} />
       </Routes>
     </BrowserRouter>
   );
