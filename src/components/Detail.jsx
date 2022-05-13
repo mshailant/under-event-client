@@ -9,16 +9,39 @@ import { Button } from "react-bootstrap";
 
 import Footer from "./Footer/Footer.js";
 
-import { Container, Row, Col, Figure } from "react-bootstrap";
+import { FaCalendar, FaSearchLocation, FaTicketAlt } from "react-icons/fa";
+import { GoLocation } from "react-icons/go";
+import ReactStars from "react-stars";
+
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import { ImLocation } from "react-icons/im";
+
+import {
+  Nav,
+  Navbar,
+  NavDropdown,
+  Container,
+  Row,
+  Col,
+  Card,
+  Figure,
+  Form,
+  Placeholder,
+  ListGroup,
+  ListGroupItem,
+} from "react-bootstrap";
 
 import NavTop from "./NavBars/Nav.jsx";
+
+// [lat, long] = detalles{lat, long}
 
 const Detail = () => {
   const dispatch = useDispatch();
   const detalles = useSelector((state) => state.detailEventos);
   const tickets = useSelector((state) => state.tickets);
 
-  const { addItem, items, cartTotal, emptyCart } = useCart();
+  const { addItem } = useCart();
   const { id } = useParams();
 
   useEffect(() => {
@@ -28,10 +51,12 @@ const Detail = () => {
     });
   }, []);
 
-
-
   const handleDirectToHomeFromDetail = () => {
     window.location.href = "/";
+  };
+
+  const RatingChanged = (newRating) => {
+    console.log(newRating);
   };
 
   return (
@@ -42,114 +67,165 @@ const Detail = () => {
             <NavTop />
           </div>
 
-          <Container
-            className={styles.containerGrid}
-            style={{ background: "#979a9a", marginTop: "25px" }}
-          >
+          <Container>
             <Row>
-              <Col xl>
-                <Figure>
-                  <Figure.Image
-                    className={styles.cardImg}
-                    width={620}
-                    height={700}
-                    alt="171x250"
-                    src={detalles.imagen}
-                  />
-                </Figure>
-              </Col>
-              <Col xs={{ order: 12 }}>
-                <div
-                  className={styles.container2}
-                  style={{ backGround: "#979a9a", height: "auto" }}
+              <Col>
+                <Card
+                  style={{ width: "44rem", height: "850px", marginTop: "15px" }}
                 >
-                  <div className={styles.ticketContainer}>
-                    <Container>
-                      <Row>
-                        <Col xs>
-                          <h3 style={{ fontSize: "21px" }}> Tipo de Ticket </h3>
-                        </Col>
-                        <Col xs={{ order: 12 }}>
-                          <h3 style={{ fontSize: "21px" }}> Valor </h3>
-                        </Col>
-                      </Row>
-                    </Container>
-                  </div>
-                  <div className={styles.ticketContainer}>
-                    <Container>
-                      <Row>
-                        <Col xs>
-                          <h3 style={{ fontSize: "21px" }}>
-                            {" "}
-                            {detalles.title}
-                          </h3>
-                        </Col>
-                        <Col xs={{ order: 12 }}>
-                          {" "}
-                          <h3 style={{ fontSize: "21px" }}>
-                            {" "}
-                            ${detalles.cost}.00
-                          </h3>{" "}
-                        </Col>
-                      </Row>
-                    </Container>{" "}
-                  </div>
+                  <Card.Body>
+                    <Card.Title>
+                      <Container>
+                        <Row>
+                          <Col xs>
+                            <h5>Tickets</h5>
+                          </Col>
+                          <Col xs={{ order: 12 }}>
+                            <h5>Valor</h5>
+                          </Col>
+                          <Col>
+                            <h5>Cantidad</h5>
+                          </Col>
+                          <hr />
+                        </Row>
+                      </Container>
+                      <br />{" "}
+                    </Card.Title>
+                    <Card.Text>
+                      <Container>
+                        <Row>
+                          <Col xs>
+                            <h5 style={{ maringTop: "25px" }}>
+                              {detalles.title}
+                            </h5>
+                          </Col>
+                          <Col xs={{ order: 12 }}>
+                            <h5> $ {detalles.cost}.00</h5>
+                          </Col>
+                          <Col>
+                            <h5>{detalles.stock}</h5>
+                          </Col>
+                          <hr />
+                        </Row>
+                      </Container>
+                    </Card.Text>
+                  </Card.Body>
+                  <ListGroup className="list-group-flush">
+                    <ListGroupItem
+                      style={{ height: "380px", marginBottom: "20px" }}
+                    >
+                      <MapContainer
+                        style={{ height: "100%", width: "100wh" }}
+                        center={[detalles.lat, detalles.long]}
+                        zoom={13}
+                        scrollWheelZoom={false}
+                      >
+                        <TileLayer
+                          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
+                        <Marker position={[detalles.lat, detalles.long]}>
+                          <Popup>
+                            A pretty CSS3 popup. <br /> Easily customizable.
+                          </Popup>
+                        </Marker>
+                      </MapContainer>
+                    </ListGroupItem>
+                    <ListGroupItem>
+                      Evento solo para Mayores de 18 Años. Rayos Laser se
+                      presentará por primera vez en Niceto el 12 de mayo.
+                      Despidiendo su último albúm "El Reflejo" y adelantando
+                      algunas canciones de lo que será su nuevo álbum a
+                      estrenarse en septiembre de 2022. Además harán un repaso
+                      por su discografía y contarán con invitados sorpresa.
+                    </ListGroupItem>
 
-                  <div className={styles.ticketContainerBuy}>
-                    <Container>
-                      <Row>
-                        <Col xs></Col>
-                        <Col xs={{ order: 12 }}></Col>
-                        <Col style={{ marginLeft: "270px" }} xs={{ order: 1 }}>
-                          <Button
-                            variant="warning"
-                            value={detalles}
-                            onClick={() => {
-                              addItem(
-                                {
-                                  id: detalles.id,
-                                  name: detalles.title,
-                                  price: Number(detalles.cost.replace(".", "")),
-                                  image: detalles.imagen,
-                                },
-                                1
-                              );
-                            }}
-                          >
-                            Comprar
-                          </Button>
-                        </Col>
-                      </Row>
-                    </Container>
-                  </div>
-                  <Figure.Caption></Figure.Caption>
-                  <Figure.Caption>
-                    <div>
-                      <div>
+                    <ListGroupItem style={{ marginTop: "15px" }}>
+                      <p style={{ fontSize: "12px" }}>
+                        Los comentarios y/o textos ingresados son de exclusiva
+                        responsabilidad del Productor y/o Organizador del
+                        Evento. Passline no se hace responsable por
+                        declaraciones emitidas por estos en lo relativo a los
+                        Eventos. El Productor/Organizador es el único y
+                        exclusivo responsable de la producción y organización
+                        del Evento, en forma oportuna y en conformidad a la ley.
+                      </p>
+                    </ListGroupItem>
+                  </ListGroup>
+                  <Card.Body>
+                    <Card.Link href="#"></Card.Link>
+                    <Card.Link href="#"></Card.Link>
+                  </Card.Body>
+                </Card>
+
+                <Button
+                  variant="warning"
+                  value={detalles}
+                  onClick={() => {
+                    addItem(
+                      {
+                        id: detalles.id,
+                        name: detalles.title,
+                        price: Number(detalles.cost.replace(".", "")),
+                        image: detalles.imagen,
+                      },
+                      1
+                    );
+                  }}
+                >
+                  Comprar
+                </Button>
+              </Col>
+
+              <Col xs={{ order: 5 }}>
+                {" "}
+                <div className={styles.firstContainer}>
+                  <Card style={{ width: "35rem" }}>
+                    <Card.Img variant="top" src={detalles.imagen} />
+                    <Card.Body>
+                      <Card.Title
+                        style={{ fontSize: "19px", fontWeight: "Bolder" }}
+                      >
+                        {detalles.title}
+                      </Card.Title>
+                      <hr />
+                      <Card.Text
+                        style={{ fontSize: "17px", fontWeight: "Bolder" }}
+                      >
+                        {detalles.description}
+                      </Card.Text>
+                    </Card.Body>
+                    <ListGroup className="list-group-flush">
+                      <ListGroupItem
+                        style={{ fontSize: "18px", fontWeight: "Bold" }}
+                      >
                         {" "}
-                        <hr style={{ color: " #f1c40f " }} />
-                      </div>
-                      <div className={styles.caption}>
-                        <>
-                          <p aria-hidden="false">
-                            <h2>{detalles.title}</h2>
-                          </p>
-                          <p aria-hidden="false">
-                            <p>{detalles.description}</p>
-                          </p>{" "}
-                          <hr style={{ color: " #f1c40f " }} />
-                          <div className={styles.containerDate}>
-                            <p aria-hidden="false">
-                              <h4>Fecha : {detalles.date}</h4>
-                            </p>
-                            <p aria-hidden="false">
-                              <h5>Horario : {detalles.time}</h5>
-                            </p>
-                          </div>
-                        </>
-                      </div>
-                    </div>
-                  </Figure.Caption>
+                        <FaCalendar /> {detalles.date}
+                      </ListGroupItem>
+                      <ListGroupItem
+                        style={{ fontSize: "16px", fontWeight: "Bold" }}
+                      >
+                        <GoLocation /> {detalles.place}
+                      </ListGroupItem>
+                      <ListGroupItem
+                        style={{ fontSize: "16px", fontWeight: "Bold" }}
+                      >
+                        <GoLocation /> {detalles.address}
+                      </ListGroupItem>
+                      <ListGroupItem>
+                        {" "}
+                        <ReactStars
+                          count={5}
+                          onChange={RatingChanged}
+                          size={30}
+                          activeColor="#ffd700"
+                        />
+                        ,
+                      </ListGroupItem>
+                    </ListGroup>
+                    <Card.Img src={detalles.imagen} />
+                    <ListGroupItem></ListGroupItem>
+                  </Card>
                 </div>
               </Col>
             </Row>
@@ -159,7 +235,7 @@ const Detail = () => {
           </div>
         </div>
       ) : (
-        <h1>error</h1>
+        <h1></h1>
       )}
     </div>
   );

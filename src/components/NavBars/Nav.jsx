@@ -13,6 +13,7 @@ import {
   Button,
   Dropdown,
   Image,
+  DropdownButton,
 } from "react-bootstrap";
 
 import {
@@ -24,6 +25,7 @@ import {
 import Searchbar from "../Searchbar";
 import styles from "./Nav.module.css";
 import ShoppingCart from "../shopCart";
+import Calendario from "../Calendario";
 
 export default function NavTop() {
   const dispatch = useDispatch();
@@ -74,9 +76,33 @@ export default function NavTop() {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav className="me-auto">
-              <LinkContainer style={{ color: "white" }} to="/createEvent">
-                <Nav.Link>Crear Eventos</Nav.Link>
-              </LinkContainer>
+              {/* <LinkContainer to="/createEvent">
+                <Nav.Link style={{ color: "black" }}>Crear Eventos</Nav.Link>
+              </LinkContainer> */}
+
+              <DropdownButton
+                variant="warning"
+                id="dropdown-item-button"
+                title="Mas Info"
+              >
+                <Dropdown.ItemText>
+                  {" "}
+                  <LinkContainer to="/orderDetail">
+                    <Nav.Link style={{ color: "black" }}>
+                      Detalles de Orden
+                    </Nav.Link>
+                  </LinkContainer>
+                </Dropdown.ItemText>
+
+                <Dropdown.Item as="button">
+                  {" "}
+                  <LinkContainer to="/createEvent">
+                    <Nav.Link style={{ color: "black" }}>
+                      Crear Eventos
+                    </Nav.Link>
+                  </LinkContainer>
+                </Dropdown.Item>
+              </DropdownButton>
             </Nav>
             <Nav>
               <ShoppingCart />
@@ -234,110 +260,106 @@ export function Selector() {
   } */
   return (
     <div className={styles.container}>
-      <Container>
-        <Row>
-          <Col>
-            <Navbar
-              style={{ width: "90%", marginBottom: "25px", marginLeft: "5%" }}
-              bg="secondary"
-              variant="secondary"
-              expand="xxl"
-            >
-              <Container>
-                <Navbar.Brand
-                  style={{
-                    marginLeft: "auto",
-                    color: "rgb(226, 181, 0)",
-                    fontWeight: "bold",
-                  }}
-                  href="#"
-                >
-                  UnderEventsApp
-                </Navbar.Brand>
+      <Navbar
+        style={{ width: "90%", marginBottom: "25px", marginLeft: "5%" }}
+        bg="secondary"
+        variant="secondary"
+        expand="lg"
+      >
+        <Container>
+          <Navbar.Brand
+            style={{
+              marginLeft: "auto",
+              color: "rgb(226, 181, 0)",
+              fontWeight: "bold",
+            }}
+            href="#"
+          >
+            UnderEventsApp
+          </Navbar.Brand>
 
-                <Form.Select
-                  style={{ width: "400px" }}
-                  size="sm"
-                  onChange={handleStates}
-                >
-                  <option value="All" key="All">
-                    Ciudades
-                  </option>
-                  {cities?.map((item) => (
-                    <option onClick={saveData()} key={item} value={item}>
-                      {item}
-                    </option>
-                  ))}
-                </Form.Select>
+          <Form.Select
+            style={{ width: "400px" }}
+            size="sm"
+            onChange={handleStates}
+          >
+            <option value="All" key="All">
+              Ciudades
+            </option>
+            {cities?.map((item) => (
+              <option onClick={saveData()} key={item} value={item}>
+                {item}
+              </option>
+            ))}
+          </Form.Select>
 
-                <br />
-                <Form.Select
-                  style={{ width: "400px" }}
-                  size="sm"
-                  onChange={handleEventType}
-                >
-                  <option value="All" key="All">
-                    Generos
-                  </option>
-                  {generos?.map((item) => (
-                    <option onClick={getGenero()} key={item} value={item}>
-                      {item}
-                    </option>
-                  ))}
-                </Form.Select>
+          <br />
+          <Form.Select
+            style={{ width: "400px" }}
+            size="sm"
+            onChange={handleEventType}
+          >
+            <option value="All" key="All">
+              Generos
+            </option>
+            {generos?.map((item) => (
+              <option onClick={getGenero()} key={item} value={item}>
+                {item}
+              </option>
+            ))}
+          </Form.Select>
 
-                <Form.Select
-                  style={{ width: "400px" }}
-                  size="sm"
-                  onChange={handleDate}
-                >
-                  <option onClick={() => getMes()} value="All" key="All">
-                    Por mes
-                  </option>
-                  <option onClick={() => getMes()} value="Enero">
-                    Enero de 2022
-                  </option>
-                  <option onClick={() => getMes()} value="Febrero">
-                    Febrero de 2022
-                  </option>
-                  <option onClick={() => getMes()} value="Marzo">
-                    Marzo de 2022
-                  </option>
-                  <option onClick={() => getMes()} value="Abril">
-                    Abril de 2022
-                  </option>
-                  <option onClick={() => getMes()} value="Mayo">
-                    Mayo de 2022
-                  </option>
-                  <option onClick={() => getMes()} value="Junio">
-                    Junio de 2022
-                  </option>
-                  <option onClick={() => getMes()} value="Julio">
-                    Julio de 2022
-                  </option>
-                  <option onClick={() => getMes()} value="Agosto">
-                    Agosto de 2022
-                  </option>
-                  <option onClick={() => getMes()} value="Septiembre">
-                    Septiembre de 2022
-                  </option>
-                  <option onClick={() => getMes()} value="Octubre">
-                    Octubre de 2022
-                  </option>
-                  <option onClick={() => getMes()} value="Noviembre">
-                    Noviembre de 2022
-                  </option>
-                  <option onClick={() => getMes()} value="Diciembre">
-                    Diciembre de 2022
-                  </option>
-                </Form.Select>
+          <Form.Select
+            style={{ width: "400px" }}
+            size="sm"
+            onChange={handleDate}
+          >
+            <option onClick={() => getMes()} value="All" key="All">
+              Por mes
+            </option>
+            <option onClick={() => getMes()} value="Enero">
+              Enero de 2022
+            </option>
+            <option onClick={() => getMes()} value="Febrero">
+              Febrero de 2022
+            </option>
+            <option onClick={() => getMes()} value="Marzo">
+              Marzo de 2022
+            </option>
+            <option onClick={() => getMes()} value="Abril">
+              Abril de 2022
+            </option>
+            <option onClick={() => getMes()} value="Mayo">
+              Mayo de 2022
+            </option>
+            <option onClick={() => getMes()} value="Junio">
+              Junio de 2022
+            </option>
+            <option onClick={() => getMes()} value="Julio">
+              Julio de 2022
+            </option>
+            <option onClick={() => getMes()} value="Agosto">
+              Agosto de 2022
+            </option>
+            <option onClick={() => getMes()} value="Septiembre">
+              Septiembre de 2022
+            </option>
+            <option onClick={() => getMes()} value="Octubre">
+              Octubre de 2022
+            </option>
+            <option onClick={() => getMes()} value="Noviembre">
+              Noviembre de 2022
+            </option>
+            <option onClick={() => getMes()} value="Diciembre">
+              Diciembre de 2022
+            </option>
+          </Form.Select>
 
-                <Searchbar />
-              </Container>
-            </Navbar>
-          </Col>
-        </Row>
-      </Container>
+          <Calendario />
+
+          <Searchbar />
+        </Container>
+      </Navbar>
     </div>
   );
 }

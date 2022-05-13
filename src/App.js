@@ -15,6 +15,7 @@ import Carrito from "./components/Carrito";
 import OrderDetail from "./components/OrderDetail";
 import Cart from "./components/Cart";
 
+
 function App() {
   const user = useSelector((state) => state.userLoged);
 
@@ -41,7 +42,7 @@ function App() {
         <Route exact path="/:id" element={<Detail />} />
         <Route exact path="/payment" element={<Pay />} />
         <Route exact path="/carrito" element={<Carrito />} />
-        <Route path="/orderDetail/:id" element={<OrderDetail />} />
+        <Route exact path="/orderDetail" element={<OrderDetail />} />
       </Routes>
     </BrowserRouter>
   );
