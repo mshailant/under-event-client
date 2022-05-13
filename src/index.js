@@ -9,6 +9,7 @@ import store from "../src/redux/store/store.jsx";
 import history from "./utils/history.js";
 import { getConfig } from "./config.js";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { CartProvider } from "react-use-cart";
 
 const onRedirectCallback = (appState) => {
   history.push(
@@ -23,17 +24,21 @@ const providerConfig = {
   clientId: config.clientId,
   ...(config.audience ? { audience: config.audience } : null),
   redirectUri: window.location.origin,
+  useRefreshTokens: true,
   onRedirectCallback,
+  cacheLocation: "localstorage",
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Auth0Provider {...providerConfig}>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </Auth0Provider>
+    <CartProvider>
+      <Auth0Provider {...providerConfig}>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </Auth0Provider>
+    </CartProvider>
   </React.StrictMode>
 );
 
