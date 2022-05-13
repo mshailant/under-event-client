@@ -10,8 +10,8 @@ import styles from './Payment.module.css'
 const MySwal = withReactContent(Swal);
 
  function Pay() {
-  const publishableKey =
-    'pk_test_51KvlTQHwDnX61oxPneyVni7ZRgrqiES6zRfCmO9DcJfFhyl88cSThCuvMeGTJQjFmCoZuBm5aAaWJgMmtAORW5jN00zPIhj54b';
+  const publishableKey = "pk_test_Dt4ZBItXSZT1EzmOd8yCxonL"
+
   const [product, setProduct] = useState({
     name: 'Headphone',
     price: 5,
@@ -40,8 +40,10 @@ const MySwal = withReactContent(Swal);
         data: {
           amount: product.price * 100,
           token,
+          orderId: 3,
         },
       });
+      console.log(response, "hola soy la respuesta");
       if (response.status === 200) {
         handleSuccess();
       }
@@ -83,4 +85,3 @@ const MySwal = withReactContent(Swal);
 }
 
 export default Pay;
-
