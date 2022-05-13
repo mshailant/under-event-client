@@ -39,7 +39,7 @@ export default function Cardi({ id, title, imagen, description, date, place }) {
           <Card.Img
             style={{ height: "220px" }}
             variant="top"
-            src={imagen ? imagen : img}
+            src={imagen}
           />
           <Card.Body style={{ width: "400px", height: "auto"}}>
             <Card.Title>{title}</Card.Title>
