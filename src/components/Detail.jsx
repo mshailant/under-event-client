@@ -92,12 +92,6 @@ const Detail = () => {
     setCanti(cantidad);
   };
 
-
-
-  
-
-  
-
   return (
     <div className={styles.containerGral}>
       
@@ -137,6 +131,7 @@ const Detail = () => {
                             <Row>
                               <Col xs><h3  style={{fontSize: "21px"}}> Tipo de Ticket </h3></Col>
                               <Col xs={{ order: 12 }}><h3  style={{fontSize: "21px"}}> Valor </h3></Col>
+                              <Col xs={{ order: 12 }}><h3  style={{fontSize: "21px"}}> Stock </h3></Col>
                             </Row>
                           </Container>
                         </div>
@@ -145,7 +140,7 @@ const Detail = () => {
                             <Row>
                               <Col xs><h3  style={{fontSize: "21px"}}> {detalles.title}</h3></Col>
                               <Col  xs={{ order: 12 }}>  <h3  style={{fontSize: "21px"}}> ${detalles.cost}.00</h3> </Col>
-                             
+                              <Col  xs={{ order: 12 }}>  <h3  style={{fontSize: "21px"}}> {detalles.stock}</h3> </Col>
                             </Row>
                           </Container>{" "}
                         </div>

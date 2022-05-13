@@ -18,7 +18,7 @@ export const GET_TICKETS = "GET_TICKETS"
 export function getAllEvent() {
   return async function (dispatch) {
     try {
-      const json = await axios.get("http://localhost:3001/events/getAll");
+      const json = await axios.get("http://localhost:3001/events/getAll/");
       return dispatch({
         type: GET_ALL_EVENTS_DB,
         payload: json.data,
@@ -32,7 +32,7 @@ export function getAllEvent() {
 export function getAllCities() {
   return async function (dispatch) {
     try {
-      const cities = await axios.get("http://localhost:3001/events/solocitys");
+      const cities = await axios.get("http://localhost:3001/events/solocitys/");
       return dispatch({
         type: GET_ALL_CITIES,
         payload: cities.data,
@@ -47,7 +47,7 @@ export function getAllGeneros() {
   return async function (dispatch) {
     try {
       const generos = await axios.get(
-        "http://localhost:3001/events/sologeneros"
+        "http://localhost:3001/events/sologeneros/"
       );
       return dispatch({
         type: GET_ALL_GENEROS,
@@ -159,7 +159,7 @@ export function updateUser(payload, externalId) {
 
 export function getUsers() {
   return async (dispatch) => {
-    let json = await axios.get("http://localhost:3001/users");
+    let json = await axios.get("http://localhost:3001/users/");
     console.log(json.data);
     return dispatch({
       type: GET_USERS,
@@ -196,7 +196,7 @@ export function byFilterDate(payload) {
 
 export function getTickets(id) {
   return async (dispatch) => {
-    let json = await axios.get(`http://localhost:3001/events/getTiketsDisponibles${id}`);
+    let json = await axios.get(`http://localhost:3001/events/getTiketsDisponibles/${id}/`);
 
     return dispatch({
       type: GET_TICKETS,

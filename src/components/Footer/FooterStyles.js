@@ -6,7 +6,7 @@ padding: 60px 60px;
 background:   #7b7d7d ;
 position: relative;
 bottom: 0;
-width: 100%;
+width: 100%;	
 
 
 
