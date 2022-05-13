@@ -25,7 +25,7 @@ import {
 export default function Home() {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.eventosDb);
-  console.log(events)
+  // console.log(events)
   const [carga, setCarga] = useState(true);
   const { isLoading, error, user, isAuthenticated } = useAuth0();
   const [showToast, setShowToast] = useState(false);
@@ -49,7 +49,6 @@ export default function Home() {
               marginTop: "250px",
             }}
           />
-          ;
         </div>
       </div>
     );
@@ -57,105 +56,101 @@ export default function Home() {
 
   return (
     <>
-        <div className={styles.containerGeneral}>
-      <ToastContainer className="p-3 py-5 mt-5" position={"bottom-end"}>
-        <Toast
-          bg={"danger"}
-          onClose={() => setShowToast(false)}
-          show={showToast}
-          delay={3000}
-          autohide
-        >
-          <Toast.Header>
-            <img
-              src="holder.js/20x20?text=%20"
-              className="rounded me-2"
-              alt=""
-            />
-            <strong className="me-auto">Error</strong>
-          </Toast.Header>
-          <Toast.Body>{error?.message}</Toast.Body>
-        </Toast>
-      </ToastContainer>
-      
-              <NavTop />
+      <div className={styles.containerGeneral}>
+        <ToastContainer className="p-3 py-5 mt-5" position={"bottom-end"}>
+          <Toast
+            bg={"danger"}
+            onClose={() => setShowToast(false)}
+            show={showToast}
+            delay={3000}
+            autohide
+          >
+            <Toast.Header>
+              <img
+                src="holder.js/20x20?text=%20"
+                className="rounded me-2"
+                alt=""
+              />
+              <strong className="me-auto">Error</strong>
+            </Toast.Header>
+            <Toast.Body>{error?.message}</Toast.Body>
+          </Toast>
+        </ToastContainer>
+        <NavTop />
 
-              <Carousely />
+        <Carousely />
 
-              <div className={styles.navegation}>
-                <Selector />
-              </div>
-              <Carouse2 />
+        <div className={styles.navegation}>
+          <Selector />
+        </div>
+        <Carouse2 />
 
-              <div className={styles.background}>
-                <div className={styles.infoContainer}></div>
-                <div className={styles.cardsContainer}>
-                  <div className={styles.Date}></div>
-                  <Container fluid>
-                    <Row>
-                      <Col>
-                        <div className={styles.cards}>
-                          {Array.isArray(events) && events.length ? (
-                            events.map((e) => {
-                              return (
-                                <div key={e.id}>
-                                  
-                                  <Cardi
-                                    title={e.title}
-                                    imagen={e.imagen}
-                                    date={e.date}
-                                    id={e.id}
-                                    eventType={e.eventType}
-                                    state={e.state}
-                                    place={e.place}
-                                    key={e.id}
-                                    month={e.month}
-                                  />
-                                
-                                </div>
-                              );
-                            })
-                          ) : (
-                            <Alert
-                              style={{
-                                width: "850px",
-                                height: "350px",
-                                marginLeft: "75%",
-                              }}
-                              variant="light"
-                            >
-                              <Alert.Heading>
-                                Ups... Something went wrong
-                              </Alert.Heading>
-                              <p>
-                                Aww yeah, you successfully read this important
-                                alert message. This example text is going to run
-                                a bit longer so that you can see how spacing
-                                within an alert works with this kind of content.
-                              </p>
-                              <hr />
-                              <p className="mb-0">
-                                Whenever you need to, be sure to use margin
-                                utilities to keep things nice and tidy.
-                              </p>
-                            </Alert>
-                          )}
-                        </div>
-                      </Col>
-                    </Row>
-                  </Container>
+        <div className={styles.background}>
+          <div className={styles.infoContainer}></div>
+          <div className={styles.cardsContainer}>
+            <div className={styles.Date}></div>
+            <Container fluid>
+              <Row>
+                <Col>
+                  <div className={styles.cards}>
+                    {Array.isArray(events) && events.length ? (
+                      events.map((e) => {
+                        return (
+                          <div key={e.id}>
+                            <Cardi
+                              title={e.title}
+                              imagen={e.imagen}
+                              date={e.date}
+                              id={e.id}
+                              eventType={e.eventType}
+                              state={e.state}
+                              place={e.place}
+                              key={e.id}
+                              month={e.month}
+                            />
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <Alert
+                        style={{
+                          width: "850px",
+                          height: "350px",
+                          marginLeft: "75%",
+                        }}
+                        variant="light"
+                      >
+                        <Alert.Heading>
+                          Ups... Something went wrong
+                        </Alert.Heading>
+                        <p>
+                          Aww yeah, you successfully read this important alert
+                          message. This example text is going to run a bit
+                          longer so that you can see how spacing within an alert
+                          works with this kind of content.
+                        </p>
+                        <hr />
+                        <p className="mb-0">
+                          Whenever you need to, be sure to use margin utilities
+                          to keep things nice and tidy.
+                        </p>
+                      </Alert>
+                    )}
+                  </div>
+                </Col>
+              </Row>
+            </Container>
 
-                  {/* <div className={styles.contactUS}>
+            {/* <div className={styles.contactUS}>
             <ContactUs />
           </div> */}
-                </div>
+          </div>
 
-                <Buttom />
-              </div>
-              <div className={styles.footer}>
-                <Footer />
-              </div>
-         
+          <Buttom />
+        </div>
+        <div className={styles.footer}>
+          <Footer />
+        </div>
       </div>
     </>
   );
