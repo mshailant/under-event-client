@@ -31,7 +31,6 @@ export default function NavTop() {
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   const userLoged = useSelector((state) => state.userLoged);
-  const [userFound, setUserFound] = useState(false);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -48,11 +47,19 @@ export default function NavTop() {
         );
       }
     }
-  }, [isAuthenticated, userFound]);
+  }, [isAuthenticated]);
+
+  const handleLogin = async () => {
+    loginWithRedirect({
+      appState: {
+        targetUrl: window.location.pathname,
+      },
+    });
+  };
 
   return (
-    <header className={styles.nav}>
-      <Navbar collapseOnSelect expand="lg" bg="secondary" variant="secondary">
+    <>
+      <Navbar bg="secondary" variant="secondary">
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand
@@ -64,24 +71,23 @@ export default function NavTop() {
               <h2 className={styles.title}>UnderEventsApp</h2>
             </Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle bg="white" aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Toggle />
+          <Navbar.Collapse className="justify-content-end">
             <Nav className="me-auto">
-              <LinkContainer to="/createEvent">
-                <Nav.Link style={{ color: "black" }}>Crear Eventos</Nav.Link>
+              <LinkContainer style={{ color: "white" }} to="/createEvent">
+                <Nav.Link>Crear Eventos</Nav.Link>
               </LinkContainer>
             </Nav>
             <Nav>
-              <div>
-                <ShoppingCart />
-              </div>
+              <ShoppingCart />
+            </Nav>
+            <Nav>
               <Nav.Link style={{ color: "white" }} eventKey={2}>
                 {!isAuthenticated && (
                   <Button
                     style={{ color: "white" }}
-                    className="m-2"
                     variant="outline-warning"
-                    onClick={() => loginWithRedirect()}
+                    onClick={handleLogin}
                   >
                     Log In
                   </Button>
@@ -124,7 +130,7 @@ export default function NavTop() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </header>
+    </>
   );
 }
 
@@ -258,13 +264,12 @@ export function Selector() {
                     Ciudades
                   </option>
                   {cities?.map((item) => (
-                    <option  onClick={saveData()} key={item} value={item}>
+                    <option onClick={saveData()} key={item} value={item}>
                       {item}
                     </option>
                   ))}
                 </Form.Select>
 
-     
                 <br />
                 <Form.Select
                   style={{ width: "400px" }}
@@ -280,93 +285,51 @@ export function Selector() {
                     </option>
                   ))}
                 </Form.Select>
-            
 
                 <Form.Select
                   style={{ width: "400px" }}
                   size="sm"
                   onChange={handleDate}
                 >
-                  <option
-                     onClick={() => getMes()}
-                    value="All"
-                    key="All"
-                  >
+                  <option onClick={() => getMes()} value="All" key="All">
                     Por mes
                   </option>
-                  <option
-                     onClick={() => getMes()}
-                    value="Enero"
-                  >
+                  <option onClick={() => getMes()} value="Enero">
                     Enero de 2022
                   </option>
-                  <option
-                     onClick={() => getMes()}
-                    value="Febrero"
-                  >
+                  <option onClick={() => getMes()} value="Febrero">
                     Febrero de 2022
                   </option>
-                  <option
-                   onClick={() => getMes()}
-                    value="Marzo"
-                  >
+                  <option onClick={() => getMes()} value="Marzo">
                     Marzo de 2022
                   </option>
-                  <option
-                    onClick={() => getMes()}
-                    value="Abril"
-                  >
+                  <option onClick={() => getMes()} value="Abril">
                     Abril de 2022
                   </option>
-                  <option
-                    onClick={() => getMes()}
-                    value="Mayo"
-                  >
+                  <option onClick={() => getMes()} value="Mayo">
                     Mayo de 2022
                   </option>
-                  <option
-                    onClick={() => getMes()}
-                    value="Junio"
-                  >
+                  <option onClick={() => getMes()} value="Junio">
                     Junio de 2022
                   </option>
-                  <option
-                     onClick={() => getMes()}
-                    value="Julio"
-                  >
+                  <option onClick={() => getMes()} value="Julio">
                     Julio de 2022
                   </option>
-                  <option
-                    onClick={() => getMes()}
-                    value="Agosto"
-                  >
+                  <option onClick={() => getMes()} value="Agosto">
                     Agosto de 2022
                   </option>
-                  <option
-                     onClick={() => getMes()}
-                    value="Septiembre"
-                  >
+                  <option onClick={() => getMes()} value="Septiembre">
                     Septiembre de 2022
                   </option>
-                  <option
-                     onClick={() => getMes()}
-                    value="Octubre"
-                  >
+                  <option onClick={() => getMes()} value="Octubre">
                     Octubre de 2022
                   </option>
-                  <option
-                    onClick={() => getMes()}
-                    value="Noviembre"
-                  >
+                  <option onClick={() => getMes()} value="Noviembre">
                     Noviembre de 2022
                   </option>
-                  <option
-                   onClick={() => getMes()}
-                    value="Diciembre"
-                  >
+                  <option onClick={() => getMes()} value="Diciembre">
                     Diciembre de 2022
                   </option>
-     
                 </Form.Select>
 
                 <Searchbar />

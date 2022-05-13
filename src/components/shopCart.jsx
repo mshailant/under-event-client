@@ -1,33 +1,42 @@
-import React,  {useState} from "react"
-import { useDispatch } from "react-redux"
-import { FaTicketAlt } from "react-icons/fa"
-import { LinkContainer } from "react-router-bootstrap"
-import styles from "./ShopCart.module.css"
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { FaTicketAlt } from "react-icons/fa";
+import { LinkContainer } from "react-router-bootstrap";
+import { Button } from "react-bootstrap";
+import { useCart } from "react-use-cart";
 
+export default function ShoppingCart() {
+  const [totalItems, setTotalItems] = useState(0);
+  const { items } = useCart();
 
+  useEffect(() => {
+    setTotalItems(
+      items.reduce(function (prev, next) {
+        return prev + Number(next.quantity);
+      }, 0)
+    );
+  }, [items]);
 
-
-export default function ShoppingCart(){
-
-    const [cantidad, setCantidad] = useState(0)
-    console.log(cantidad, 'holiiiii')
-    useDispatch(() => {
-        setCantidad(cantidades)
-    }, [])
-
-    
-    
-    let cantidades = parseInt(localStorage.getItem('carrito visual'))
-
-  
-    return(
-        <LinkContainer to="/carrito">
-            <div className={styles.add}>
-                <FaTicketAlt size={30}/>
-                <h5>{cantidades}</h5>
-            </div>
-        </LinkContainer> 
-    )
-
-
-    }
+  return (
+    <div
+      style={{
+        display: "flex",
+        color: "#ffc107",
+        marginRight: "10px",
+        cursor: "pointer",
+      }}
+    >
+      <h5>{totalItems > 0 ? totalItems : ""}</h5>
+      <Link
+        style={{
+          color: "#ffc107",
+          textDecoration: "none",
+        }}
+        to="/cart"
+      >
+        <FaTicketAlt size={35} />
+      </Link>
+    </div>
+  );
+}
