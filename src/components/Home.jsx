@@ -9,7 +9,7 @@ import Footer from "./Footer/Footer";
 import Carousely, { Carouse2 } from "./Carousel";
 import Cardi from "./Cardi";
 import Buttom from "./Button/ScrollButton";
-//import ContactUs from "./ContactUs";
+import imag from '../images/Crea tu propio evento (1).jpg'
 import { SpinnerCircularFixed } from "spinners-react";
 import { Selector } from "./NavBars/Nav";
 import NavTop from "./NavBars/Nav";
@@ -59,7 +59,7 @@ export default function Home() {
   }
 
   return (
-    <>
+    
         <div className={styles.containerGeneral}>
       <ToastContainer className="p-3 py-5 mt-5" position={"bottom-end"}>
         <Toast
@@ -82,20 +82,38 @@ export default function Home() {
       </ToastContainer>
       
               <NavTop />
+              <div style={{marginTop: "15px"}} >
 
               <Carousely />
 
+
+
+
+
+
+
               <div className={styles.navegation}>
                 <Selector />
+
               </div>
-              <Carouse2 />
+
+             
+             
 
               <CalendarioMejorado/>
 
               <div className={styles.background}>
-                <div className={styles.infoContainer}></div>
+
+              
+             
+                <div className={styles.infoContainer}>
+                  
+                </div>
                 <div className={styles.cardsContainer}>
-                  <div className={styles.Date}></div>
+                  
+                  <div className={styles.Date}>
+                    
+                  </div>
                   <Container fluid>
                     <Row>
                       <Col>
@@ -147,8 +165,10 @@ export default function Home() {
                           )}
                         </div>
                       </Col>
+                     
                     </Row>
                   </Container>
+                
 
                   {/* <div className={styles.contactUS}>
             <ContactUs />
@@ -162,6 +182,6 @@ export default function Home() {
               </div>
          
       </div>
-    </>
+      </div>
   );
 }

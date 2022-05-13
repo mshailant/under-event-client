@@ -43,7 +43,7 @@ import imagen from "../images/concert2.jpg";
 const Detail = () => {
   const dispatch = useDispatch();
   const detalles = useSelector((state) => state.detailEventos);
-  const tickets = useSelector((state) => state.tickets);
+  // const tickets = useSelector((state) => state.tickets);
 
   console.log(detalles, "detalles"); // {data full} // necesito sacar id  de aca //
 
@@ -58,7 +58,7 @@ const Detail = () => {
     dispatch(getTickets(id));
   }, []);
 
-  console.log(tickets, "tickets");
+
 
   const handleDirectToHomeFromDetail = () => {
     window.location.href = "/";
@@ -161,10 +161,10 @@ const Detail = () => {
                     <ListGroupItem
                       style={{ height: "380px", marginBottom: "20px" }}
                     >
-                      <MapContainer
+                       <MapContainer
                         style={{ height: "100%", width: "100wh" }}
                         center={[detalles.lat, detalles.long]}
-                        zoom={13}
+                        zoom={10}
                         scrollWheelZoom={false}
                       >
                         <TileLayer
@@ -176,7 +176,7 @@ const Detail = () => {
                             A pretty CSS3 popup. <br /> Easily customizable.
                           </Popup>
                         </Marker>
-                      </MapContainer>
+                      </MapContainer> 
 
 
                     </ListGroupItem>
@@ -208,11 +208,12 @@ const Detail = () => {
                 </Card>
 
                 <Button
-                  style={{ width: "700px", marginTop: "20px" }}
+                  style={{ width: "600px", marginTop: "20px", marginLeft: "7%", fontWeight: "bold" }}
                   variant="warning"
                   size="lg"
                   value={detalles}
                   onClick={(e) => handleOnClick(e)}
+                  className={styles.btn}
                 >
                   Comprar
                 </Button>
@@ -221,7 +222,7 @@ const Detail = () => {
               <Col xs={{ order: 5 }}>
                 {" "}
                 <div className={styles.firstContainer}>
-                  <Card style={{ width: "35rem" }}>
+                  <Card style={{ width: "35rem", marginTop: "15px" }}>
                     <Card.Img variant="top" src={detalles.imagen} />
                     <Card.Body>
                       <Card.Title
