@@ -17,7 +17,7 @@ function Calendario(/* { handleDate, detailsDates } */) {
     const dispatch = useDispatch()
 
     const date = useSelector(state => state.allDateEvents)
-    console.log(date)
+    /* console.log(date) */
 
 
     useEffect(() => {
@@ -44,11 +44,11 @@ function Calendario(/* { handleDate, detailsDates } */) {
 
 
     const handleClick = (date) => {
-        dispatch(FilterCalender(formatDate(date/* startDate */)))
-		console.log(formatDate(date/* startDate */), "soy el transformado");
+        dispatch(FilterCalender(formatDate(date)))
+		console.log(formatDate(date), "soy el transformado");
 
     }
-    console.log(startDate)
+    
 
 	
 	return (
