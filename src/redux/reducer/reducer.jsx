@@ -43,7 +43,7 @@ function rootReducer(state = InitialState, action) {
         filterDate: action.payload,
       };
     // PARA EL CALENDARIO ------------------------------------------------------
-    case Action.GET_ALL_DATE: 
+    case Action.GET_ALL_DATE:
       return {
         ...state,
         allDateEvents: action.payload,
@@ -58,13 +58,28 @@ function rootReducer(state = InitialState, action) {
           : eventitos.filter((g) => g.date === action.payload);
       return {
         ...state,
-
         eventosDb: FilterEventitos,
       };
-      /* return {
+
+    case Action.FILTER_CALENDER_NUEVO:        // para el calendario nuevo (filtra un rango de fechas)
+      const eventitosNuevo = state.allEventState;
+      
+      let coleccion=[]
+
+      for (let i = 0; i < eventitosNuevo.length; i++) {
+        /* console.log(eventitosNuevo,"soy eventito nuevo") */
+        for (let j = 0; j < action.payload.length; j++) {
+          /* console.log(action.payload, "soy el action payload") */
+          if (eventitosNuevo[i].date == action.payload[j]){
+            coleccion.push(eventitosNuevo[i])
+          }
+        }
+      }
+      return {
         ...state,
-        allDateEvents: action.payload,
-      }; */
+        eventosDb: coleccion,
+      };
+
     // --------------------------------------------------------------------------
     case Action.GET_ALL_CITIES:
       return {

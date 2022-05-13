@@ -16,9 +16,14 @@ export const BAN_USER = "BAN_USER";
 export const GET_TICKETS = "GET_TICKETS"
 export const GET_ORDER_DETAIL = "GET_ORDER_DETAIL";
 export const GET_ALL_DATE = "GET_ALL_DATE";
-export const FILTER_CALENDER = "FILTER_CALENDER"
-export const ADD_REVIEW = "ADD_REVIEW"
+
+export const FILTER_CALENDER = "FILTER_CALENDER";
+export const ADD_REVIEW = "ADD_REVIEW";
 export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
+
+
+export const FILTER_CALENDER_NUEVO = "FILTER_CALENDER_NUEVO"
+
 
 export function getAllEvent() {
   return async function (dispatch) {
@@ -51,6 +56,13 @@ export function getAllDate() {   //ME TRAE UN ARRAY CON LAS FECHAS DE LOS EVENTO
 export function FilterCalender(payload) {  //PARA FILTRAR LOS EVENTOS POR UNA FECHA EN PARTICULAR
   return {
     type: FILTER_CALENDER,
+    payload,
+  };
+}
+
+export function FilterCalenderNuevo(payload){ //PARA FILTRAR LOS EVENTOS POR UN RANGO DE FECHAS
+  return{
+    type: FILTER_CALENDER_NUEVO,
     payload,
   };
 }

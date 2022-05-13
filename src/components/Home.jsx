@@ -13,6 +13,7 @@ import imag from '../images/Crea tu propio evento (1).jpg'
 import { SpinnerCircularFixed } from "spinners-react";
 import { Selector } from "./NavBars/Nav";
 import NavTop from "./NavBars/Nav";
+import CalendarioMejorado from "./CalendarioMejorado"
 
 
 import {
@@ -88,6 +89,9 @@ export default function Home() {
 
 
 
+
+
+
               <div className={styles.navegation}>
                 <Selector />
 
@@ -95,6 +99,8 @@ export default function Home() {
 
              
              
+
+              <CalendarioMejorado/>
 
               <div className={styles.background}>
 
