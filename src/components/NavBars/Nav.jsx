@@ -339,7 +339,7 @@ export function Selector() {
                   </option>
                 </Form.Select>
 
-                <Calendario/>
+                {/* <Calendario/> */}
 
                 <Searchbar />
               </Container>

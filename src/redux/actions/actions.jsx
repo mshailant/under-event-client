@@ -19,10 +19,19 @@ export const GET_ALL_DATE = "GET_ALL_DATE";
 
 export const FILTER_CALENDER = "FILTER_CALENDER";
 
-export const FILTER_CALENDER_NUEVO = "FILTER_CALENDER_NUEVO";
-export const GET_ALL_ORDENES = "GET_ALL_ORDENES"
 
-export const ADD_REVIEW = "ADD_REVIEW";
+export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
+
+
+export const FILTER_CALENDER_NUEVO = "FILTER_CALENDER_NUEVO"
+export const ADD_REVIEWS = "ADD_REVIEWS"
+export const CLEAN_DETAIL = "CLEAN_DETAIL"
+
+
+
+
+
+
 
 
 
@@ -259,48 +268,55 @@ export function getOrderDetail(id) {
 };
 
 
+
+
 // RUTA QUE ME TRAE TODAS LAS ORDENES HECHAS (PARA METRICAS)
-export function getAllOrder() {
+
+
+
+
+
+
+export function getAllOrders() {
   return async function (dispatch) {
     try {
-      const ordenes = await axios.get("http://localhost:3001/users/getAllOrders");
+      const orders = await axios.get(
+        "http://localhost:3001/users/getAllOrders"
+      );
       return dispatch({
-        type: GET_ALL_ORDENES,
-        payload: ordenes.data,
+        type: GET_ALL_ORDERS,
+        payload: orders.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-export function createReview(payload) {
+}
+
+
+
+export function addReviews(payload, id) {
   return async (dispatch) => {
     try {
       const json = await axios.post(
-        "http://localhost:3001/events/addReviews",
+        `http://localhost:3001/users/createReview/${id}/`, 
         payload
       );
       return dispatch({
-        type: ADD_REVIEW,
+        type: ADD_REVIEWS,
         payload: json.data,
       });
     } catch (err) {
       console.log(err);
     }
   };
+
+
 }
 
-
-export function getAllOrders() {
-  return async function (dispatch) {
-    try {
-      const generos = await axios.get(
-        "http://localhost:3001/users/getAllOrders"
-      );
-      return dispatch({
-        type: GET_ALL_ORDERS,
-        payload: generos.data,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
+export function detailClean (){
+  return{
+      type:CLEAN_DETAIL
+  }
 }
-}
-

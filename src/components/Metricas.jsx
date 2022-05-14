@@ -1,7 +1,7 @@
 import { enIE } from "date-fns/locale";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllOrder } from "../redux/actions/actions";
+import { getAllOrders } from "../redux/actions/actions";
 
 export default function Metricas() {
     const dispatch = useDispatch();
@@ -9,7 +9,7 @@ export default function Metricas() {
     const orders = useSelector((state) => state.allOrders);
 
     useEffect(() => {
-        dispatch(getAllOrder());
+        dispatch(getAllOrders());
     }, [dispatch]);
 
     console.log(orders, "soy las ordenes")

@@ -185,18 +185,27 @@ function rootReducer(state = InitialState, action) {
       }
 
     //PARA LAS METRICAS------------------------------------------------------------------
-    case Action.GET_ALL_ORDENES:
-      return {
-        ...state,
-        allOrders: action.payload
-      }
-    //-----------------------------------------------------------------------------------
-
+    
     case Action.GET_ALL_ORDERS: 
     return {
       ...state,
       allOrders: action.payload
     }  
+    //-----------------------------------------------------------------------------------
+
+
+
+    case Action.ADD_REVIEWS:
+      return {
+        ...state,
+      };
+
+      case Action.CLEAN_DETAIL:
+        return{
+            ...state,
+            detailEventos: []
+        }
+
 
     default:
       return {

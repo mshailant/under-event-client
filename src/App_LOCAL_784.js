@@ -14,8 +14,6 @@ import CreateEvent from "./components/CreateEvent";
 import UserProfile from "./components/UserProfile";
 import UserManagement from "./components/UserManagement";
 import Detail from "./components/Detail";
-import ContactUs from "./components/ContactUs";
-import AboutUs from "./components/AboutUs";
 
 import NavTop from "./components/NavBars/Nav";
 import Pay from "./components/Payment";
@@ -42,12 +40,7 @@ function App() {
         <Route exact path="/payment" element={<Pay />} />
         <Route exact path="/carrito" element={<Carrito />} />
         <Route exact path="/orderDetail" element={<OrderDetail />} />
-
         <Route exact path="/reviews:id" element={<ModalFormulario/>} />
-
-        <Route exact path="/contactUs" element={<ContactUs />} />
-        <Route exact path="/aboutUs" element={<AboutUs />} />
-
       </Routes>
     </BrowserRouter>
   );

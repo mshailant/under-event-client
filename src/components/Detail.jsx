@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getDetail, getTickets } from "../redux/actions/actions.jsx";
+import { getDetail, getTickets, detailClean } from "../redux/actions/actions.jsx";
 import { useParams } from "react-router";
 import styles from "./Detail.module.css";
 import { useContext, useRef } from "react";
@@ -35,10 +35,10 @@ import {
 
 import NavTop from "./NavBars/Nav.jsx";
 import imagen from "../images/concert2.jpg";
-
+import ModalForm from "./ModalForm.jsx";
+import { Link } from "react-router-dom";
 
 // [lat, long] = detalles{lat, long}
- 
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -55,10 +55,9 @@ const Detail = () => {
 
   useEffect(() => {
     dispatch(getDetail(id));
-    dispatch(getTickets(id));
+    dispatch(getTickets(id))
+    dispatch(detailClean());
   }, []);
-
-
 
   const handleDirectToHomeFromDetail = () => {
     window.location.href = "/";
@@ -67,29 +66,12 @@ const Detail = () => {
   const handleOnClick = (e) => {
     e.preventDefault();
     alert("Event added succesfully");
-    // const compraras = e.target.value;
-    // setComprar(compraras);
-    /* console.log(comprar) */
-    /* localStorage.setItem('carrito', JSON.stringify(detalles)) */
 
-    // -------------------------------------------------------
-    //const localStorageContent = localStorage.getItem('carti')
+    JSON.parse(localStorage.getItem("id-evento"));
 
-    let data = [];
-    let w = JSON.parse(localStorage.getItem("carrito"));
+    localStorage.setItem("id-evento", JSON.stringify(id));
 
-    if (w != null) {
-      for (let i = 0; i < w.length; i++) {
-        if (w[i].id !== id) {
-          data.push(w[i]);
-        }
-      }
-    }
-
-    data.push(detalles);
-    localStorage.setItem("carrito", JSON.stringify(data));
-
-    //----------------------------------------------------------
+    //----------------------------------------------------------//
 
     let contador = JSON.parse(localStorage.getItem("carrito"));
 
@@ -161,9 +143,9 @@ const Detail = () => {
                     <ListGroupItem
                       style={{ height: "380px", marginBottom: "20px" }}
                     >
-                       <MapContainer
+                      <MapContainer
                         style={{ height: "100%", width: "100wh" }}
-                        center={[detalles.lat, detalles.long]}
+                        center={[35.67, 139.65]}
                         zoom={10}
                         scrollWheelZoom={false}
                       >
@@ -171,14 +153,12 @@ const Detail = () => {
                           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
-                        <Marker position={[detalles.lat, detalles.long]}>
+                        <Marker position={[35.67, 139.65]}>
                           <Popup>
                             A pretty CSS3 popup. <br /> Easily customizable.
                           </Popup>
                         </Marker>
-                      </MapContainer> 
-
-
+                      </MapContainer>
                     </ListGroupItem>
                     <ListGroupItem>
                       Evento solo para Mayores de 18 Años. Rayos Laser se
@@ -208,7 +188,12 @@ const Detail = () => {
                 </Card>
 
                 <Button
-                  style={{ width: "600px", marginTop: "20px", marginLeft: "7%", fontWeight: "bold" }}
+                  style={{
+                    width: "600px",
+                    marginTop: "20px",
+                    marginLeft: "7%",
+                    fontWeight: "bold",
+                  }}
                   variant="warning"
                   size="lg"
                   value={detalles}
@@ -254,19 +239,14 @@ const Detail = () => {
                       >
                         <GoLocation /> {detalles.address}
                       </ListGroupItem>
-                      <ListGroupItem>
-                        {" "}
-                        <ReactStars
-                          count={5}
-                          onChange={RatingChanged}
-                          size={30}
-                          activeColor="#ffd700"
-                        />
-                        ,
-                      </ListGroupItem>
                     </ListGroup>
                     <Card.Img src={detalles.imagen} />
                     <ListGroupItem></ListGroupItem>
+                    <LinkContainer to={`/reviews${detalles.id}`}>
+                      <Button style={{ width: "auto",  fontWeight: "bold"}} variant="warning">
+                        Deja tu Reseña 
+                      </Button>
+                    </LinkContainer>
                   </Card>
                 </div>
               </Col>

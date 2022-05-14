@@ -11,6 +11,7 @@ import Footer from "./Footer/Footer";
 import styles from "./OrderDetail.module.css";
 import { Link } from "react-router-dom";
 import Carousely from "./Carousel";
+import { ajaxUpload } from "rsuite/esm/utils";
 
 
 export default function OrderDetail() {
@@ -18,26 +19,26 @@ const allOrders = useSelector(state => state.allOrders)
 console.log(allOrders, "orders")
 const dispatch = useDispatch()
 
-  const ticketsito = allOrders.orders.map(e => e.Tickets)
-  console.log(ticketsito, "orders"); // tickets 
-  console.log(ticketsito.map(e => e.id), "ssssss")
+  // const ticketsito = allOrders.orders.map(e => e.Tickets)
+  // console.log(ticketsito, "tickesito"); // tickets 
+  //  console.log(ticketsito.map(e => e.id), "sssssssssss")
 
-  function aa (){
+  // function aa (){
 
-    let ids;
-    let aaa = []
-      for(let i = 0; i < ticketsito.length; i++){
-        ids = ticketsito[i].map(e => e.id)
+  //   let ids;
+  //   let aaa = []
+  //     for(let i = 0; i < ticketsito.length; i++){
+  //       ids = ticketsito[i].map(e => e.id)
     
-       aaa.push(ids) 
+  //      aaa.push(ids) 
     
      
+  //   console.log(aaa, "resultado")
+  //     }
+  //     // console.log(aaa.join(', ').split(','), 'sfsafasfsafsa')
     
-      }
-      // console.log(aaa.join(', ').split(','), 'sfsafasfsafsa')
-    
-    return aaa.join(',').split(' ')
-  }
+  //   return aaa.join(',').split(' ')
+  // }
 
 useEffect(()=>{
   dispatch(getAllOrders())
@@ -129,7 +130,7 @@ useEffect(()=>{
                   <th scope="row">
                     <img  style={{ width: "4rem" }} />
                   </th>
-                  <td>{aa()}</td>
+                  <td>{}</td>
                   <td> </td>
                   <td> {order.orderRes.date}</td>
                   <td> {order.orderRes.quantity}</td>
