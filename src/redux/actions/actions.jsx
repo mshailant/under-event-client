@@ -18,11 +18,16 @@ export const GET_ORDER_DETAIL = "GET_ORDER_DETAIL";
 export const GET_ALL_DATE = "GET_ALL_DATE";
 
 export const FILTER_CALENDER = "FILTER_CALENDER";
+
+export const FILTER_CALENDER_NUEVO = "FILTER_CALENDER_NUEVO";
+export const GET_ALL_ORDENES = "GET_ALL_ORDENES"
+
 export const ADD_REVIEW = "ADD_REVIEW";
-export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
 
 
-export const FILTER_CALENDER_NUEVO = "FILTER_CALENDER_NUEVO"
+
+
+
 
 
 export function getAllEvent() {
@@ -198,7 +203,7 @@ export function updateUser(payload, externalId) {
 export function getUsers() {
   return async (dispatch) => {
     let json = await axios.get("http://localhost:3001/users");
-    console.log(json.data);
+    /* console.log(json.data); */
     return dispatch({
       type: GET_USERS,
       payload: json.data,
@@ -253,6 +258,16 @@ export function getOrderDetail(id) {
   };
 };
 
+
+// RUTA QUE ME TRAE TODAS LAS ORDENES HECHAS (PARA METRICAS)
+export function getAllOrder() {
+  return async function (dispatch) {
+    try {
+      const ordenes = await axios.get("http://localhost:3001/users/getAllOrders");
+      return dispatch({
+        type: GET_ALL_ORDENES,
+        payload: ordenes.data,
+
 export function createReview(payload) {
   return async (dispatch) => {
     try {
@@ -285,4 +300,7 @@ export function getAllOrders() {
       console.log(err);
     }
   };
+
 }
+}
+
