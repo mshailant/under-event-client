@@ -1,11 +1,7 @@
 .contactUs {
-   
-    background-color: #000000;
+    background-color: rgb(180, 140, 10);
     width: 100%;
-    margin-top:60px ;
-    margin-bottom: 45px;
     height: 100%;
-    padding-bottom: 25px;
 }
   
 .contactUs .contactUsContent{
@@ -27,4 +23,10 @@
 
 .emailPlace{
     background-color: black;
+}
+
+.btn{
+    position:relative;
+    padding-top: 0px;
+    color: red;
 }

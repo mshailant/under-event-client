@@ -29,6 +29,7 @@ const InitialState = {
   allDateEvents: [],  //ME GUARDA UN ARRAY CON LOS FECHAS DE LOS EVENTOS EN STRING
 
   allOrders:[]
+
 };
 
 function rootReducer(state = InitialState, action) {
@@ -182,6 +183,7 @@ function rootReducer(state = InitialState, action) {
         ...state,
         orderDetail: action.payload
       }
+
     //PARA LAS METRICAS------------------------------------------------------------------
     case Action.GET_ALL_ORDENES:
       return {
@@ -189,6 +191,13 @@ function rootReducer(state = InitialState, action) {
         allOrders: action.payload
       }
     //-----------------------------------------------------------------------------------
+
+    case Action.GET_ALL_ORDERS: 
+    return {
+      ...state,
+      allOrders: action.payload
+    }  
+
     default:
       return {
         state,

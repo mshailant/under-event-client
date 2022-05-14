@@ -5,7 +5,9 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import emailjs from 'emailjs-com';
 import styles from "./ContactUs.module.css"
 import Swal from "sweetalert2"
-
+import { LinkContainer } from 'react-router-bootstrap';
+import BackButton from './Button/BackButton';
+import Footer from "./Footer/Footer";
 
 export default class ContactUs extends Component {
     render() {
@@ -29,7 +31,12 @@ export default class ContactUs extends Component {
         return (
          
                 <div className={styles.contactUs} >
-                    <h1 className={styles.contactUsTitle}>Contact Us</h1>
+                    <div>
+                        <BackButton/>
+                    </div>
+                    <div>
+                        <h1 className={styles.contactUsTitle}>Contact Us</h1>
+                    </div>
                     <div className={styles.contactUsContent}>
                         <Form style={{color: "white"}} onSubmit={sendEmail}>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -45,12 +52,13 @@ export default class ContactUs extends Component {
                                 <Form.Control as="textarea" rows={3} />
                             </Form.Group>
                             <div className="d-grid gap-2">
-                                <Button type='submit' variant="primary" size="lg" onClick={handleOnClick} >
+                                <Button type='submit' variant="dark" size="lg" onClick={handleOnClick} >
                                     Send comment
                                 </Button>
                             </div>
                         </Form>
                     </div>
+                    <Footer />
                 </div>
                
         )

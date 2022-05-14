@@ -24,9 +24,7 @@ return (
 		<Row>
 		<Column>
 			<Heading>Acerca de nosotros</Heading>
-			
-			<FooterLink href="#">Vision</FooterLink>
-			<FooterLink href="#">FeedBacks</FooterLink>
+			<FooterLink href="/aboutUs">About us</FooterLink>
 		</Column>
 		<Column>
 			<Heading>Servicios</Heading>
@@ -36,13 +34,13 @@ return (
 		</Column>
 		<Column>
 			<Heading>Contactenos</Heading>
-			<FooterLink href="#">Sebastian Rodriguez</FooterLink>
-			<FooterLink href="#">Sara Gismondi</FooterLink>
+			<FooterLink href="/contactUs">Contact Us</FooterLink>
+			{/* <FooterLink href="#">Sara Gismondi</FooterLink>
 			<FooterLink href="#">Damian Olmedo</FooterLink>
 			<FooterLink href="#">Franco Pirez</FooterLink>
 			<FooterLink href="#">Tomas Tagliaferri</FooterLink>
 			<FooterLink href="#">Lourdes Bonucci</FooterLink>
-			<FooterLink href="#">Martin Hailant</FooterLink>
+			<FooterLink href="#">Martin Hailant</FooterLink> */}
 		</Column>
 		<Column>
 			<Heading>Redes Sociales</Heading>

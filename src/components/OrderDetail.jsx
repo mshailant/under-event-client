@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getOrderDetail } from "../redux/actions/actions";
+import { getAllOrders } from "../redux/actions/actions";
 import { useEffect } from "react";
 import { Container, Row, Col, Card, ListGroup, Alert } from "react-bootstrap";
 import imagen from "../images/Crea tu propio evento (1).jpg";
@@ -12,14 +12,36 @@ import styles from "./OrderDetail.module.css";
 import { Link } from "react-router-dom";
 import Carousely from "./Carousel";
 
-export default function OrderDetail() {
-  // const { id} = useParams();
-  // const order = useSelector(state => state.orderDetail);
-  // const dispatch = useDispatch();
 
-  //     useEffect(() => {
-  //         dispatch(getOrderDetail(id));
-  //     }, []);
+export default function OrderDetail() {
+const allOrders = useSelector(state => state.allOrders)
+console.log(allOrders, "orders")
+const dispatch = useDispatch()
+
+  const ticketsito = allOrders.orders.map(e => e.Tickets)
+  console.log(ticketsito, "orders"); // tickets 
+  console.log(ticketsito.map(e => e.id), "ssssss")
+
+  function aa (){
+
+    let ids;
+    let aaa = []
+      for(let i = 0; i < ticketsito.length; i++){
+        ids = ticketsito[i].map(e => e.id)
+    
+       aaa.push(ids) 
+    
+     
+    
+      }
+      // console.log(aaa.join(', ').split(','), 'sfsafasfsafsa')
+    
+    return aaa.join(',').split(' ')
+  }
+
+useEffect(()=>{
+  dispatch(getAllOrders())
+}, [dispatch])
 
   const order = {
     msg: "Orden Creada",
@@ -69,144 +91,188 @@ export default function OrderDetail() {
   // export default OrderDetail;
 
   return (
-    <div className={styles.Container}>
-      <NavTop />
-      <Container>
-          
-        <Row>
-          <Col xs>
-            {" "}
-            {order ? (
-              <Card style={{ width: "50rem", marginTop: "20px" }}>
-              
-                <ListGroup variant="flush">
-                  <ListGroup.Item>
-                    <h2>{order.msg}</h2>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    {" "}
-                    <h3>Estado de la orden: {order.orderRes.status}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <h3>Fecha: {order.orderRes.date}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <h3>Cantidad: {order.orderRes.quantity}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <h3>Precio Total: {order.orderRes.totalPrice}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    {" "}
-                    <h3>Fecha de creacion de orden: {order.orderRes.createdAt}</h3>
-                  </ListGroup.Item>
-                 
-                  <ListGroup.Item>
-                    <h3>Codigo de Usuario: {order.orderRes.UserId}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <h3> Codigo de Ticket: {order.orderRes.Tickets[0].id}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    {" "}
-                    <h3> Estado del ticket: {order.orderRes.Tickets[0].status}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <h3> Creacion de Ticket: {order.orderRes.Tickets[0].createdAt}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <h3> Cantidad de Ordenes: {order.orderRes.Tickets[0].OrderId}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <h3> Codigo de Evento: {order.orderRes.Tickets[0].EventId}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <h3>Codigo del Usuario: {order.orderRes.User.id}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    {" "}
-                    <h3>Usuario : {order.orderRes.User.externalId}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <h3>Nombre de Usuario: {order.orderRes.User.name}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    {" "}
-                    <h3>Apellido de Usuario: {order.orderRes.User.lastName}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    {" "}
-                    <h3>Email de Usuario{order.orderRes.User.email}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    {" "}
-                    <h3>Roll: {order.orderRes.User.roll}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <h3>Imagen de Usuario: {order.orderRes.User.picture}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <h3>{order.orderRes.User.city}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <h3>{order.orderRes.User.state}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <h3>{order.orderRes.User.createdAt}</h3>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <h3>{order.orderRes.User.updatedAt}</h3>
-                  </ListGroup.Item>
-                </ListGroup>
-              </Card>
-            ) : (
-              <Alert
-                style={{
-                  width: "850px",
-                  height: "350px",
-                  marginLeft: "75%",
-                }}
-                variant="light"
-              >
-                <Alert.Heading>Ups... Something went wrong</Alert.Heading>
-                <p>
-                  Aww yeah, you successfully read this important alert message.
-                  This example text is going to run a bit longer so that you can
-                  see how spacing within an alert works with this kind of
-                  content.
-                </p>
-                <hr />
-                <p className="mb-0">
-                  Whenever you need to, be sure to use margin utilities to keep
-                  things nice and tidy.
-                </p>
-              </Alert>
-            )}
-          </Col>
-         
-          <Col xs={{ order: 1 }}>
-            {" "}
-            <Link to = "/createEvent">
-            <div className={styles.divImg}>
-              <img
-                className={styles.img}
-                src={imagen}
-                width="370px"
-                height="670px"
-                alt="imagen"
-              />
-            </div>
-            </Link>
-          </Col>
-        </Row>
-      </Container>
-      <div style={{marginTop: "35px"}}>
+    <div>
+      <NavTop/>
+    
+    <div>
+    <div  className="container mt-3 ">
+            <div className="row justify-content-center"></div>
 
-      <Carousely/>
-      </div>
-      <div style={{ marginTop: "26px" }}>
-        <Footer />
-      </div>
-    </div>
+            <div className="row mt-3">
+              <table className="table  text-center">
+                <thead>
+                  <tr>
+                    
+                    <th scope="col">Id </th>
+                    <th scope="col">Status </th>
+                    <th scope="col">ID </th>
+                    <th scope="col">Estado  </th>
+                    <th scope="col">Fecha  </th>
+                    <th scope="col">Cantidad  </th>
+                    <th scope="col">Precio Total  </th>
+                    <th scope="col">Usuario  </th>
+                    <th scope="col">Apellido  </th>
+                    <th scope="col">Email  </th>
+                    <th scope="col">Ticket ID  </th>
+                    
+                    
+                  </tr>
+                </thead>
+                
+              
+      
+            
+                <tbody>
+                  
+                <tr >
+                  <th scope="row"></th>
+                  <th scope="row">
+                    <img  style={{ width: "4rem" }} />
+                  </th>
+                  <td>{aa()}</td>
+                  <td> </td>
+                  <td> {order.orderRes.date}</td>
+                  <td> {order.orderRes.quantity}</td>
+                  <td>$ {order.orderRes.totalPrice}</td>
+                  <td>{order.orderRes.User.name}</td>
+                  <td> {order.orderRes.User.lastName}</td>
+                  <td> {order.orderRes.User.email}</td>
+                  <td>  </td>
+
+                
+               
+                 
+                </tr>
+
+              
+            </tbody> 
+         
+            </table>
+            </div>
+            </div>
+            </div>
+            <Container fluid>
+  <Row>
+    <Col style={{marginTop: "370px"}}> <Carousely/></Col>
+  </Row>
+</Container>
+  
+   <Footer/>
+
+</div>
   );
 }
+
+
+{/* <div  className="container mt-2">
+            <div className="row justify-content-center"></div>
+
+            <div className="row mt-3">
+              <table className="table  text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Nombre del Producto</th>
+                    <th scope="col">Precio </th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Remover</th>
+                  </tr>
+                </thead>
+                
+              
+
+               
+              </table>
+            </div>
+            </div>
+
+ */}
+
+
+
+
+
+
+            // <Card style={{ width: "50rem", marginTop: "20px" }}>
+              
+            //     <ListGroup variant="flush">
+            //       <ListGroup.Item>
+            //         <h2>{order.msg}</h2>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         {" "}
+            //         <h3>Estado de la orden: {order.orderRes.status}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         <h3>Fecha: {order.orderRes.date}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         <h3>Cantidad: {order.orderRes.quantity}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         <h3>Precio Total: {order.orderRes.totalPrice}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         {" "}
+            //         <h3>Fecha de creacion de orden: {order.orderRes.createdAt}</h3>
+            //       </ListGroup.Item>
+                 
+            //       <ListGroup.Item>
+            //         <h3>Codigo de Usuario: {order.orderRes.UserId}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         <h3> Codigo de Ticket: {order.orderRes.Tickets[0].id}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         {" "}
+            //         <h3> Estado del ticket: {order.orderRes.Tickets[0].status}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         <h3> Creacion de Ticket: {order.orderRes.Tickets[0].createdAt}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         <h3> Cantidad de Ordenes: {order.orderRes.Tickets[0].OrderId}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         <h3> Codigo de Evento: {order.orderRes.Tickets[0].EventId}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         <h3>Codigo del Usuario: {order.orderRes.User.id}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         {" "}
+            //         <h3>Usuario : {order.orderRes.User.externalId}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         <h3>Nombre de Usuario: {order.orderRes.User.name}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         {" "}
+            //         <h3>Apellido de Usuario: {order.orderRes.User.lastName}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         {" "}
+            //         <h3>Email de Usuario{order.orderRes.User.email}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         {" "}
+            //         <h3>Roll: {order.orderRes.User.roll}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         <h3>Imagen de Usuario: {order.orderRes.User.picture}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         <h3>{order.orderRes.User.city}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         <h3>{order.orderRes.User.state}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         <h3>{order.orderRes.User.createdAt}</h3>
+            //       </ListGroup.Item>
+            //       <ListGroup.Item>
+            //         <h3>{order.orderRes.User.updatedAt}</h3>
+            //       </ListGroup.Item>
+            //     </ListGroup>
+            //   </Card>

@@ -16,9 +16,19 @@ export const BAN_USER = "BAN_USER";
 export const GET_TICKETS = "GET_TICKETS"
 export const GET_ORDER_DETAIL = "GET_ORDER_DETAIL";
 export const GET_ALL_DATE = "GET_ALL_DATE";
+
 export const FILTER_CALENDER = "FILTER_CALENDER";
+
 export const FILTER_CALENDER_NUEVO = "FILTER_CALENDER_NUEVO";
 export const GET_ALL_ORDENES = "GET_ALL_ORDENES"
+
+export const ADD_REVIEW = "ADD_REVIEW";
+
+
+
+
+
+
 
 export function getAllEvent() {
   return async function (dispatch) {
@@ -248,6 +258,7 @@ export function getOrderDetail(id) {
   };
 };
 
+
 // RUTA QUE ME TRAE TODAS LAS ORDENES HECHAS (PARA METRICAS)
 export function getAllOrder() {
   return async function (dispatch) {
@@ -256,9 +267,40 @@ export function getAllOrder() {
       return dispatch({
         type: GET_ALL_ORDENES,
         payload: ordenes.data,
+
+export function createReview(payload) {
+  return async (dispatch) => {
+    try {
+      const json = await axios.post(
+        "http://localhost:3001/events/addReviews",
+        payload
+      );
+      return dispatch({
+        type: ADD_REVIEW,
+        payload: json.data,
       });
     } catch (err) {
       console.log(err);
     }
   };
 }
+
+
+export function getAllOrders() {
+  return async function (dispatch) {
+    try {
+      const generos = await axios.get(
+        "http://localhost:3001/users/getAllOrders"
+      );
+      return dispatch({
+        type: GET_ALL_ORDERS,
+        payload: generos.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+}
+}
+
