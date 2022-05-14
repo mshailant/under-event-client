@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getDetail, getTickets } from "../redux/actions/actions.jsx";
+import { getDetail, getTickets, detailClean } from "../redux/actions/actions.jsx";
 import { useParams } from "react-router";
 import styles from "./Detail.module.css";
 import { useContext, useRef } from "react";
@@ -55,7 +55,8 @@ const Detail = () => {
 
   useEffect(() => {
     dispatch(getDetail(id));
-    dispatch(getTickets(id));
+    dispatch(getTickets(id))
+    dispatch(detailClean());
   }, []);
 
   const handleDirectToHomeFromDetail = () => {

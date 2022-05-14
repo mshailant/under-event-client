@@ -200,6 +200,12 @@ function rootReducer(state = InitialState, action) {
         ...state,
       };
 
+      case Action.CLEAN_DETAIL:
+        return{
+            ...state,
+            detailEventos: []
+        }
+
 
     default:
       return {
