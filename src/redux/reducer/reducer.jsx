@@ -28,7 +28,8 @@ const InitialState = {
 
   allDateEvents: [],  //ME GUARDA UN ARRAY CON LOS FECHAS DE LOS EVENTOS EN STRING
 
-  allOrders: []
+  allOrders:[]
+
 };
 
 function rootReducer(state = InitialState, action) {
@@ -183,11 +184,20 @@ function rootReducer(state = InitialState, action) {
         orderDetail: action.payload
       }
 
+    //PARA LAS METRICAS------------------------------------------------------------------
+    case Action.GET_ALL_ORDENES:
+      return {
+        ...state,
+        allOrders: action.payload
+      }
+    //-----------------------------------------------------------------------------------
+
     case Action.GET_ALL_ORDERS: 
     return {
       ...state,
       allOrders: action.payload
     }  
+
     default:
       return {
         state,

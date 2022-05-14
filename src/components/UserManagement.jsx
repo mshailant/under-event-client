@@ -14,6 +14,8 @@ import {
 import { banUser, getUsers, updateUser } from "../redux/actions/actions";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 
+import Metricas from "./Metricas"
+
 export function UserManagement() {
   const dispatch = useDispatch();
   const [modalShow, setModalShow] = useState(false);
@@ -82,6 +84,8 @@ export function UserManagement() {
           onHide={() => setModalShow(false)}
         />
       </Container>
+
+      <Metricas/>
     </>
   );
 }
