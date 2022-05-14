@@ -19,11 +19,23 @@ export const GET_ALL_DATE = "GET_ALL_DATE";
 
 export const FILTER_CALENDER = "FILTER_CALENDER";
 
+
 export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
 
 
 export const FILTER_CALENDER_NUEVO = "FILTER_CALENDER_NUEVO"
 export const ADD_REVIEWS = "ADD_REVIEWS"
+
+
+
+
+export const ADD_REVIEW = "ADD_REVIEW";
+
+
+
+
+
+
 
 
 export function getAllEvent() {
@@ -199,7 +211,7 @@ export function updateUser(payload, externalId) {
 export function getUsers() {
   return async (dispatch) => {
     let json = await axios.get("http://localhost:3001/users");
-    console.log(json.data);
+    /* console.log(json.data); */
     return dispatch({
       type: GET_USERS,
       payload: json.data,
@@ -257,6 +269,28 @@ export function getOrderDetail(id) {
 
 
 
+// RUTA QUE ME TRAE TODAS LAS ORDENES HECHAS (PARA METRICAS)
+
+
+export function createReview(payload) {
+  return async (dispatch) => {
+    try {
+      const json = await axios.post(
+        "http://localhost:3001/events/addReviews",
+        payload
+      );
+      return dispatch({
+        type: ADD_REVIEW,
+        payload: json.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
+
+
+
 export function getAllOrders() {
   return async function (dispatch) {
     try {
@@ -271,7 +305,9 @@ export function getAllOrders() {
       console.log(err);
     }
   };
+
 }
+
 
 
 export function addReviews(payload, id) {
@@ -289,5 +325,7 @@ export function addReviews(payload, id) {
       console.log(err);
     }
   };
+
+
 }
 
