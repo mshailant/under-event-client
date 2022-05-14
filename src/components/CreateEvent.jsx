@@ -38,7 +38,8 @@ export function CreateEvent() {
         cost: "",
         month: "",
         address: "",
-        location: ""
+        location: "",
+        
   };
 
   const { user, isLoading } = useAuth0();
@@ -97,7 +98,9 @@ export function CreateEvent() {
       cost: "",
       month: "",
       address: "",
-      location: ""
+      location: "",
+     
+      
     });
 
     setValidated(true);

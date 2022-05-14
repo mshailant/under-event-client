@@ -241,7 +241,7 @@ const Detail = () => {
                     </ListGroup>
                     <Card.Img src={detalles.imagen} />
                     <ListGroupItem></ListGroupItem>
-                    <LinkContainer to={`/reviews${id}`}>
+                    <LinkContainer to={`/reviews${detalles.id}`}>
                       <Button style={{ width: "auto",  fontWeight: "bold"}} variant="warning">
                         Deja tu Reseña 
                       </Button>
