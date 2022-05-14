@@ -188,6 +188,11 @@ function rootReducer(state = InitialState, action) {
       ...state,
       allOrders: action.payload
     }  
+
+    case Action.ADD_REVIEWS:
+      return {
+        ...state,
+      };
     default:
       return {
         state,

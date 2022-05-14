@@ -18,11 +18,12 @@ export const GET_ORDER_DETAIL = "GET_ORDER_DETAIL";
 export const GET_ALL_DATE = "GET_ALL_DATE";
 
 export const FILTER_CALENDER = "FILTER_CALENDER";
-export const ADD_REVIEW = "ADD_REVIEW";
+
 export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
 
 
 export const FILTER_CALENDER_NUEVO = "FILTER_CALENDER_NUEVO"
+export const ADD_REVIEWS = "ADD_REVIEWS"
 
 
 export function getAllEvent() {
@@ -253,22 +254,7 @@ export function getOrderDetail(id) {
   };
 };
 
-export function createReview(payload) {
-  return async (dispatch) => {
-    try {
-      const json = await axios.post(
-        "http://localhost:3001/events/addReviews",
-        payload
-      );
-      return dispatch({
-        type: ADD_REVIEW,
-        payload: json.data,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-}
+
 
 
 export function getAllOrders() {
@@ -286,3 +272,22 @@ export function getAllOrders() {
     }
   };
 }
+
+
+export function addReviews(payload, id) {
+  return async (dispatch) => {
+    try {
+      const json = await axios.post(
+        `http://localhost:3001/users/createReview/${id}/`, 
+        payload
+      );
+      return dispatch({
+        type: ADD_REVIEWS,
+        payload: json.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
+

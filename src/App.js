@@ -19,6 +19,7 @@ import NavTop from "./components/NavBars/Nav";
 import Pay from "./components/Payment";
 import Carrito from "./components/Carrito";
 import OrderDetail from "./components/OrderDetail";
+import ModalForm, { ModalFormulario } from "./components/ModalForm";
 
 
 function App() {
@@ -33,12 +34,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route exact path="/profile" element={<UserProfile />} />
-        <Route exact path="/createEvent" element={<CreateEvent />} />
+        <Route exact path="/createEvent/" element={<CreateEvent />} />
         <Route exact path="/userManagement" element={<UserManagement />} />
         <Route exact path="/:id" element={<Detail />} />
         <Route exact path="/payment" element={<Pay />} />
         <Route exact path="/carrito" element={<Carrito />} />
         <Route exact path="/orderDetail" element={<OrderDetail />} />
+        <Route exact path="/reviews:id" element={<ModalFormulario/>} />
       </Routes>
     </BrowserRouter>
   );

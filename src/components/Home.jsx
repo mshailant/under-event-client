@@ -14,6 +14,8 @@ import { SpinnerCircularFixed } from "spinners-react";
 import { Selector } from "./NavBars/Nav";
 import NavTop from "./NavBars/Nav";
 import CalendarioMejorado from "./CalendarioMejorado"
+import img from "../images/pexels-darya-sannikova-3824763.jpg"
+
 
 
 import {
@@ -23,6 +25,9 @@ import {
   ToastContainer,
   Toast,
   Alert,
+  Card,
+  ListGroupItem,
+  Button
 } from "react-bootstrap";
 
 export default function Home() {
@@ -82,10 +87,9 @@ export default function Home() {
       </ToastContainer>
       
               <NavTop />
-              <div style={{marginTop: "15px"}} >
+              <div  >
 
               <Carousely />
-
 
 
 
@@ -100,7 +104,7 @@ export default function Home() {
              
              
 
-              <CalendarioMejorado/>
+              
 
               <div className={styles.background}>
 
@@ -114,10 +118,11 @@ export default function Home() {
                   <div className={styles.Date}>
                     
                   </div>
-                  <Container fluid>
-                    <Row>
-                      <Col>
-                        <div className={styles.cards}>
+                  
+              <Container>
+  <Row >
+   
+    <Col style={{width: "100wh"}} fluid>  <div className={styles.cards}>
                           {Array.isArray(events) && events.length ? (
                             events.map((e) => {
                               return (
@@ -163,11 +168,48 @@ export default function Home() {
                               </p>
                             </Alert>
                           )}
-                        </div>
-                      </Col>
-                     
-                    </Row>
-                  </Container>
+                        </div></Col>
+    <Col style={{marginTop: "120px"}} md="auto"><div className={styles.calendarContainer} style={{marginLeft: "5%", maringTop: "5px"}}><CalendarioMejorado/></div>
+    <Card style={{ width: "17rem", marginTop: "15px" }}>
+                    <Card.Img variant="top" src={img} />
+                    <Card.Body>
+                      <Card.Title
+                        style={{ fontSize: "19px", fontWeight: "Bolder" }}
+                      >
+                        fsafasfsafsa
+                      </Card.Title>
+                      <hr />
+                      <Card.Text
+                        style={{ fontSize: "17px", fontWeight: "Bolder" }}
+                      >
+                       fsasaaaaaaaaaaaaaaaaa
+                      </Card.Text>
+                    </Card.Body>
+                  
+                    <Carouse2/>
+                    <ListGroupItem>
+                    
+                      <Card.Title
+                        style={{ fontSize: "19px", fontWeight: "Bolder" }}
+                      >
+                        fsafasfsafsa
+                      </Card.Title>
+                      <hr />
+                      <Card.Text
+                        style={{ fontSize: "17px", fontWeight: "Bolder" }}
+                      >
+                       fsasaaaaaaaaaaaaaaaaa
+                      </Card.Text>
+                    </ListGroupItem>
+                  
+                  </Card></Col>
+   
+  </Row>
+</Container>
+
+                  
+                      
+                    
                 
 
                   {/* <div className={styles.contactUS}>

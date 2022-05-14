@@ -66,6 +66,7 @@ function Calendario(/* { handleDate, detailsDates } */) {
 				maxDate={new Date().setMonth(
 					new Date().getMonth() + 2
 				)} */
+				
 			/>
 		</div>
 	);
