@@ -24,23 +24,17 @@ return (
 		<Row>
 		<Column>
 			<Heading>Acerca de nosotros</Heading>
-			<FooterLink href="/aboutUs">About us</FooterLink>
+			<FooterLink href="/aboutUs">Acerca de nosotros</FooterLink>
 		</Column>
 		<Column>
 			<Heading>Servicios</Heading>
 			<FooterLink href="#">Ventas de Tickets</FooterLink>
-			<FooterLink href="#">Publicitar artistas</FooterLink>
+			<FooterLink href="/createEvent">Publicitar artistas</FooterLink>
 			
 		</Column>
 		<Column>
 			<Heading>Contactenos</Heading>
-			<FooterLink href="/contactUs">Contact Us</FooterLink>
-			{/* <FooterLink href="#">Sara Gismondi</FooterLink>
-			<FooterLink href="#">Damian Olmedo</FooterLink>
-			<FooterLink href="#">Franco Pirez</FooterLink>
-			<FooterLink href="#">Tomas Tagliaferri</FooterLink>
-			<FooterLink href="#">Lourdes Bonucci</FooterLink>
-			<FooterLink href="#">Martin Hailant</FooterLink> */}
+			<FooterLink href="/contactUs">Contactanos</FooterLink>
 		</Column>
 		<Column>
 			<Heading>Redes Sociales</Heading>

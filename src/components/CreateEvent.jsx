@@ -22,7 +22,7 @@ import { Formik } from "formik";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import NavTop from "./NavBars/Nav";
 import imagen from "../images/pexels-darya-sannikova-3824763.jpg";
-
+import BackButton from "./Button/BackButton";
 
 export function CreateEvent() {
   const stateInitialForms = {
@@ -107,6 +107,7 @@ export function CreateEvent() {
     <div className={styles.container1}>
       
             <NavTop />
+            <BackButton />
             <Container>
               <Row>
                 <Col xs>

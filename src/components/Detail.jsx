@@ -16,8 +16,10 @@ import { GoLocation } from "react-icons/go";
 import ReactStars from "react-stars";
 
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { ImLocation } from "react-icons/im";
+import BackButton from "./Button/BackButton.jsx";
 
 import {
   Nav,
@@ -52,6 +54,11 @@ const Detail = () => {
   const [comprar, setComprar] = useState("");
 
   const [canti, setCanti] = useState(0);
+
+  const leafletIcon = L.icon({
+    iconUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+    iconSize:[20,30]
+  })
 
   useEffect(() => {
     dispatch(getDetail(id));
@@ -113,7 +120,7 @@ const Detail = () => {
           <div>
             <NavTop />
           </div>
-
+        <BackButton />
           <Container>
             <Row>
               <Col>
@@ -171,9 +178,9 @@ const Detail = () => {
                           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
-                        <Marker position={[detalles.lat, detalles.long]}>
+                        <Marker position={[detalles.lat, detalles.long]} icon={leafletIcon}>
                           <Popup>
-                            A pretty CSS3 popup. <br /> Easily customizable.
+                           La rrrrenga
                           </Popup>
                         </Marker>
                       </MapContainer> 
@@ -262,7 +269,6 @@ const Detail = () => {
                           size={30}
                           activeColor="#ffd700"
                         />
-                        ,
                       </ListGroupItem>
                     </ListGroup>
                     <Card.Img src={detalles.imagen} />

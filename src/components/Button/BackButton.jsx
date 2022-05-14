@@ -6,7 +6,7 @@ export default function BackButton(){
     return(
         <div>
             <LinkContainer to="/">
-                <Button variant="outline-warning">Back</Button>
+                <Button variant="outline-warning">Volver</Button>
             </LinkContainer>
         </div>
     )

@@ -35,25 +35,25 @@ export default class ContactUs extends Component {
                         <BackButton/>
                     </div>
                     <div>
-                        <h1 className={styles.contactUsTitle}>Contact Us</h1>
+                        <h1 className={styles.contactUsTitle}>Contáctanos</h1>
                     </div>
                     <div className={styles.contactUsContent}>
                         <Form style={{color: "white"}} onSubmit={sendEmail}>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Label style={{color: "white"}} >Email address</Form.Label>
+                                <Form.Label style={{color: "white"}} >Dirección de email</Form.Label>
                                 <Form.Control type="email" placeholder="name@example.com" />
                             </Form.Group>
                             <Form.Group className="mb-3">
-                                <Form.Label style={{color: "white"}}>Name</Form.Label>
+                                <Form.Label style={{color: "white"}}>Nombre</Form.Label>
                                 <Form.Control rows={3} />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                                <Form.Label style={{color: "white"}}>Comments</Form.Label>
+                                <Form.Label style={{color: "white"}}>Comentario</Form.Label>
                                 <Form.Control as="textarea" rows={3} />
                             </Form.Group>
                             <div className="d-grid gap-2">
                                 <Button type='submit' variant="dark" size="lg" onClick={handleOnClick} >
-                                    Send comment
+                                    Enviar comentario
                                 </Button>
                             </div>
                         </Form>

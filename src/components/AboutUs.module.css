@@ -1,5 +1,5 @@
 .body{
-    background-color: rgb(180, 140, 10);
+    background-color: #d0d3d4  ;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -10,10 +10,9 @@
 .containerCards{
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(auto-fill, 800px);
-    padding: 45px;
-    gap: 35px;
-    margin-top: 65px;
+    grid-template-columns: repeat(auto-fill, 500px);
+    padding: 150px;
+    gap: 200px;
     text-decoration: none;
 }
 
@@ -22,7 +21,6 @@
     height: 250px;
     width: 100%;
     padding-left: 20px;
-    padding-top:  50px;
 }
 
 .title{

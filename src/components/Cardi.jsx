@@ -62,7 +62,6 @@ export default function Cardi({ id, title, imagen, description, date, place }) {
                 size={30}
                 activeColor="#ffd700"
               />
-              ,
             </ListGroupItem>
           </ListGroup>
           <Card.Body></Card.Body>
