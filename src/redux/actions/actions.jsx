@@ -16,7 +16,8 @@ export const BAN_USER = "BAN_USER";
 export const GET_TICKETS = "GET_TICKETS";
 export const GET_ORDER_DETAIL = "GET_ORDER_DETAIL";
 export const GET_ALL_DATE = "GET_ALL_DATE";
-export const FILTER_CALENDER = "FILTER_CALENDER"
+export const FILTER_CALENDER = "FILTER_CALENDER";
+export const CREATE_ORDER = "CREATE_ORDER";
 
 const API_URL = "http://localhost:3001";
 
@@ -34,7 +35,8 @@ export function getAllEvent() {
   };
 }
 // PARA EL CALENDARIO ---------------------------------------------------------------------
-export function getAllDate() {   //ME TRAE UN ARRAY CON LAS FECHAS DE LOS EVENTOS
+export function getAllDate() {
+  //ME TRAE UN ARRAY CON LAS FECHAS DE LOS EVENTOS
   return async function (dispatch) {
     try {
       const date = await axios.get("http://localhost:3001/events/getDates/");
@@ -48,7 +50,8 @@ export function getAllDate() {   //ME TRAE UN ARRAY CON LAS FECHAS DE LOS EVENTO
   };
 }
 
-export function FilterCalender(payload) {  //PARA FILTRAR LOS EVENTOS POR UNA FECHA EN PARTICULAR
+export function FilterCalender(payload) {
+  //PARA FILTRAR LOS EVENTOS POR UNA FECHA EN PARTICULAR
   return {
     type: FILTER_CALENDER,
     payload,
@@ -225,5 +228,19 @@ export function getOrderDetail(id) {
       type: GET_ORDER_DETAIL,
       payload: json.data,
     });
+  };
+}
+
+export function createOrder(payload) {
+  return async (dispatch) => {
+    try {
+      const json = await axios.post(`${API_URL}/users/newOrder`, payload);
+      return dispatch({
+        type: CREATE_ORDER,
+        payload: json.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 }

@@ -26,7 +26,9 @@ const InitialState = {
 
   orderDetail: {},
 
-  allDateEvents: []  //ME GUARDA UN ARRAY CON LOS FECHAS DE LOS EVENTOS EN STRING
+  orderCreated: {},
+
+  allDateEvents: [], //ME GUARDA UN ARRAY CON LOS FECHAS DE LOS EVENTOS EN STRING
 };
 
 function rootReducer(state = InitialState, action) {
@@ -41,12 +43,11 @@ function rootReducer(state = InitialState, action) {
         filterDate: action.payload,
       };
     // PARA EL CALENDARIO ------------------------------------------------------
-    case Action.GET_ALL_DATE: 
+    case Action.GET_ALL_DATE:
       return {
         ...state,
         allDateEvents: action.payload,
       };
-
 
     case Action.FILTER_CALENDER:
       const eventitos = state.allEventState;
@@ -59,7 +60,7 @@ function rootReducer(state = InitialState, action) {
 
         eventosDb: FilterEventitos,
       };
-      /* return {
+    /* return {
         ...state,
         allDateEvents: action.payload,
       }; */
@@ -158,13 +159,19 @@ function rootReducer(state = InitialState, action) {
     case Action.GET_TICKETS:
       return {
         ...state,
-        tickets: action.payload
-      }
+        tickets: action.payload,
+      };
     case Action.GET_ORDER_DETAIL:
       return {
         ...state,
-        orderDetail: action.payload
-      }
+        orderDetail: action.payload,
+      };
+
+    case Action.CREATE_ORDER:
+      return {
+        ...state,
+        orderCreated: action.payload,
+      };
     default:
       return {
         state,
