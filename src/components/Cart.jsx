@@ -5,18 +5,17 @@ import { useCart } from "react-use-cart";
 import CartItem from "./CartItem";
 import NavTop from "./NavBars/Nav";
 import { useAuth0 } from "@auth0/auth0-react";
+import * as Action from "../redux/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
+import Payment from "./Payment";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [totalItems, setTotalItems] = useState(0);
   const { user, isAuthenticated, loginWithPopup } = useAuth0();
-  const {
-    addItem,
-    removeItem,
-    updateItemQuantity,
-    items,
-    cartTotal,
-    emptyCart,
-  } = useCart();
+  const { items, cartTotal } = useCart();
 
   useEffect(() => {
     setTotalItems(
@@ -26,18 +25,29 @@ export default function Cart() {
     );
   }, [items]);
 
-  console.log("cart ", items);
-  console.log(cartTotal, "cartTotal");
-
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleClick = () => {
-    isAuthenticated ? handleShow() : loginWithPopup();
-    // handleShow(true);
+    !isAuthenticated
+      ? loginWithPopup()
+      : dispatch(
+          Action.createOrder({
+            email: user.email,
+            eventos: items.map((item) => {
+              return { id: item.id, cantidad: item.quantity };
+            }),
+            quantity: totalItems,
+            totalPrice: cartTotal,
+          })
+        ).then((order) => {
+          console.log(order);
+          navigate("/payment");
+        });
   };
+
   return (
     <div
       style={{
@@ -99,7 +109,16 @@ export default function Cart() {
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+          {JSON.stringify({
+            email: user.email,
+            eventos: items.map((item) => {
+              return { id: item.id, cantidad: item.quantity };
+            }),
+            quantity: totalItems,
+            total: cartTotal,
+          })}
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

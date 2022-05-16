@@ -1,45 +1,55 @@
+import StripeCheckout from "react-stripe-checkout";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { Col, Row, Container } from "react-bootstrap";
+import styles from "./Payment.module.css";
+import { useSelector } from "react-redux";
 
-import StripeCheckout from 'react-stripe-checkout';
-import React, { useState } from 'react';
-import axios from 'axios';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
-import {Col, Row, Container} from 'react-bootstrap'
-import styles from './Payment.module.css'
+const API_URL = "http://localhost:3001/events/payment";
 
 const MySwal = withReactContent(Swal);
 
- function Pay() {
+function Pay() {
   const publishableKey =
-    'pk_test_51KvlTQHwDnX61oxPneyVni7ZRgrqiES6zRfCmO9DcJfFhyl88cSThCuvMeGTJQjFmCoZuBm5aAaWJgMmtAORW5jN00zPIhj54b';
-  const [product, setProduct] = useState({
-    name: 'Headphone',
-    price: 5,
-  });
-  const priceForStripe = product.price * 100;
+    "pk_test_51KvehVGJ6earutDK1a1AVoXZQWqbwpdHDV7NBvEPnSP1w8IxXkDaVltQOMwsixWtUaYHgOJSCrzlarO3ghGsZfIs00cRkKkzoE";
+  const orderCreated = useSelector((state) => state.orderCreated);
+  const [product, setProduct] = useState({});
+  const [priceForStripe, setpriceForStripe] = useState(0);
+
+  useEffect(() => {
+    if (orderCreated) {
+      setProduct(orderCreated.orderRes);
+      setpriceForStripe(orderCreated.orderRes.totalPrice * 100);
+    }
+  }, []);
+
+  console.log("product", product);
 
   const handleSuccess = () => {
     MySwal.fire({
-      icon: 'success',
-      title: 'Payment was successful',
+      icon: "success",
+      title: "Payment was successful",
       time: 4000,
     });
   };
   const handleFailure = () => {
     MySwal.fire({
-      icon: 'error',
-      title: 'Payment was not successful',
+      icon: "error",
+      title: "Payment was not successful",
       time: 4000,
     });
   };
-  const payNow = async token => {
+  const payNow = async (token) => {
     try {
       const response = await axios({
-        url: 'http://localhost:3001/events/payment',
-        method: 'post',
+        url: API_URL,
+        method: "post",
         data: {
-          amount: product.price * 100,
+          amount: product.totalPrice,
           token,
+          orderId: product.id,
         },
       });
       if (response.status === 200) {
@@ -53,34 +63,24 @@ const MySwal = withReactContent(Swal);
 
   return (
     <Container className={styles.container} fluid>
-  <Row>
-    <Col>
-    <div  >
-      <h2>Complete React & Stripe payment integration</h2>
-      <p>
-        <span>Product: </span>
-        {product.name}
-      </p>
-      <p>
-        <span>Price: </span>${product.price}
-      </p>
-      
-      <StripeCheckout
-        stripeKey={publishableKey}
-        label="Pay Now"
-        name="Pay With Credit Card"
-        billingAddress
-        shippingAddress
-        amount={priceForStripe}
-        description={`Your total is $${product.price}`}
-        token={payNow}
-      />
-    </div></Col>
-  </Row>
-</Container>
-    
+      <Row>
+        <Col>
+          <div>
+            <StripeCheckout
+              stripeKey={publishableKey}
+              label="Pay Now"
+              name="Pay With Credit Card"
+              billingAddress
+              shippingAddress
+              amount={priceForStripe}
+              description={`Your total is $${product.totalPrice}`}
+              token={payNow}
+            />
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
 export default Pay;
-

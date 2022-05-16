@@ -41,9 +41,11 @@ export function CreateEvent() {
   };
 
   const { user, isLoading } = useAuth0();
+
   const [input, setInput] = useState(stateInitialForms);
   const [validated, setValidated] = useState(false);
   const dispatch = useDispatch();
+  const userLoged = useSelector((state) => state.userLoged);
   const genres = useSelector((state) => state.allGeneros);
   const city = useSelector((state) => state.allCities);
 
@@ -81,7 +83,7 @@ export function CreateEvent() {
       event.stopPropagation();
     }
 
-    dispatch(Action.createEvent(input));
+    dispatch(Action.createEvent({ ...input, userEmail: userLoged.email }));
     alert("New event added successfully!");
     setInput({
       title: "",
@@ -221,6 +223,7 @@ export function CreateEvent() {
                             onChange={(e) => handleCitySelect(e)}
                           >
                             <option>Selecciona tu Provincia</option>
+                            <option value={"Chubut"}>Chubut</option>
                             {city?.map((dl) => (
                               <option value={dl}>{dl}</option>
                             ))}
