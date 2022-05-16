@@ -29,6 +29,8 @@ const InitialState = {
   orderCreated: {},
 
   allDateEvents: [], //ME GUARDA UN ARRAY CON LOS FECHAS DE LOS EVENTOS EN STRING
+
+  allOrders: [],
 };
 
 function rootReducer(state = InitialState, action) {
@@ -57,13 +59,28 @@ function rootReducer(state = InitialState, action) {
           : eventitos.filter((g) => g.date === action.payload);
       return {
         ...state,
-
         eventosDb: FilterEventitos,
       };
-    /* return {
+
+    case Action.FILTER_CALENDER_NUEVO: // para el calendario nuevo (filtra un rango de fechas)
+      const eventitosNuevo = state.allEventState;
+
+      let coleccion = [];
+
+      for (let i = 0; i < eventitosNuevo.length; i++) {
+        /* console.log(eventitosNuevo,"soy eventito nuevo") */
+        for (let j = 0; j < action.payload.length; j++) {
+          /* console.log(action.payload, "soy el action payload") */
+          if (eventitosNuevo[i].date == action.payload[j]) {
+            coleccion.push(eventitosNuevo[i]);
+          }
+        }
+      }
+      return {
         ...state,
-        allDateEvents: action.payload,
-      }; */
+        eventosDb: coleccion,
+      };
+
     // --------------------------------------------------------------------------
     case Action.GET_ALL_CITIES:
       return {
@@ -170,8 +187,29 @@ function rootReducer(state = InitialState, action) {
     case Action.CREATE_ORDER:
       return {
         ...state,
-        orderCreated: action.payload,
+        orderDetail: action.payload,
       };
+
+    //PARA LAS METRICAS------------------------------------------------------------------
+
+    case Action.GET_ALL_ORDERS:
+      return {
+        ...state,
+        allOrders: action.payload,
+      };
+    //-----------------------------------------------------------------------------------
+
+    case Action.ADD_REVIEWS:
+      return {
+        ...state,
+      };
+
+    case Action.CLEAN_DETAIL:
+      return {
+        ...state,
+        detailEventos: [],
+      };
+
     default:
       return {
         state,

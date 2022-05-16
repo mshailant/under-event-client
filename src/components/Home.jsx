@@ -9,10 +9,12 @@ import Footer from "./Footer/Footer";
 import Carousely, { Carouse2 } from "./Carousel";
 import Cardi from "./Cardi";
 import Buttom from "./Button/ScrollButton";
-//import ContactUs from "./ContactUs";
+import imag from "../images/Crea tu propio evento (1).jpg";
 import { SpinnerCircularFixed } from "spinners-react";
 import { Selector } from "./NavBars/Nav";
 import NavTop from "./NavBars/Nav";
+import CalendarioMejorado from "./CalendarioMejorado";
+import img from "../images/pexels-darya-sannikova-3824763.jpg";
 
 import {
   Container,
@@ -21,12 +23,14 @@ import {
   ToastContainer,
   Toast,
   Alert,
+  Card,
+  ListGroupItem,
+  Button,
 } from "react-bootstrap";
 
 export default function Home() {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.eventosDb);
-  // console.log(events)
   const [carga, setCarga] = useState(true);
   const { isLoading, error, user, isAuthenticated } = useAuth0();
   const [showToast, setShowToast] = useState(false);

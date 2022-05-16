@@ -1,12 +1,16 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getDetail, getTickets } from "../redux/actions/actions.jsx";
+import {
+  getDetail,
+  getTickets,
+  detailClean,
+} from "../redux/actions/actions.jsx";
 import { useParams } from "react-router";
 import styles from "./Detail.module.css";
 import { useCart } from "react-use-cart";
 import { Button } from "react-bootstrap";
-
+import { LinkContainer } from "react-router-bootstrap";
 import Footer from "./Footer/Footer.js";
 
 import { FaCalendar, FaSearchLocation, FaTicketAlt } from "react-icons/fa";
@@ -39,7 +43,7 @@ import NavTop from "./NavBars/Nav.jsx";
 const Detail = () => {
   const dispatch = useDispatch();
   const detalles = useSelector((state) => state.detailEventos);
-  const tickets = useSelector((state) => state.tickets);
+  // const tickets = useSelector((state) => state.tickets);
 
   const { addItem } = useCart();
   const { id } = useParams();
@@ -116,15 +120,15 @@ const Detail = () => {
                     >
                       <MapContainer
                         style={{ height: "100%", width: "100wh" }}
-                        center={[detalles.lat, detalles.long]}
-                        zoom={13}
+                        center={[35.67, 139.65]}
+                        zoom={10}
                         scrollWheelZoom={false}
                       >
                         <TileLayer
                           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
-                        <Marker position={[detalles.lat, detalles.long]}>
+                        <Marker position={[35.67, 139.65]}>
                           <Popup>
                             A pretty CSS3 popup. <br /> Easily customizable.
                           </Popup>
@@ -180,7 +184,7 @@ const Detail = () => {
               <Col xs={{ order: 5 }}>
                 {" "}
                 <div className={styles.firstContainer}>
-                  <Card style={{ width: "35rem" }}>
+                  <Card style={{ width: "35rem", marginTop: "15px" }}>
                     <Card.Img variant="top" src={detalles.imagen} />
                     <Card.Body>
                       <Card.Title
@@ -212,19 +216,17 @@ const Detail = () => {
                       >
                         <GoLocation /> {detalles.address}
                       </ListGroupItem>
-                      <ListGroupItem>
-                        {" "}
-                        <ReactStars
-                          count={5}
-                          onChange={RatingChanged}
-                          size={30}
-                          activeColor="#ffd700"
-                        />
-                        ,
-                      </ListGroupItem>
                     </ListGroup>
                     <Card.Img src={detalles.imagen} />
                     <ListGroupItem></ListGroupItem>
+                    <LinkContainer to={`/reviews${detalles.id}`}>
+                      <Button
+                        style={{ width: "auto", fontWeight: "bold" }}
+                        variant="warning"
+                      >
+                        Deja tu Reseña
+                      </Button>
+                    </LinkContainer>
                   </Card>
                 </div>
               </Col>

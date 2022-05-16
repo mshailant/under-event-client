@@ -52,6 +52,7 @@ function Pay() {
           orderId: product.id,
         },
       });
+      console.log(response, "hola soy la respuesta");
       if (response.status === 200) {
         handleSuccess();
       }

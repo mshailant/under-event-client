@@ -62,16 +62,17 @@ export default function Cardi({ id, title, imagen, description, date, place }) {
               ,
             </ListGroupItem>
           </ListGroup>
-          <Card.Body></Card.Body>
-          <LinkContainer to={`/${id}`}>
-            <Button
-              className={style.btn}
-              style={{ width: "auto" }}
-              variant="warning"
-            >
-              <FaTicketAlt /> Ver detalle del evento
-            </Button>
-          </LinkContainer>
+          <Card.Body>
+            <LinkContainer to={`/${id}`}>
+              <Button
+                className={style.btn}
+                style={{ width: "800px", marginLeft: "20px" }}
+                variant="warning"
+              >
+                <FaTicketAlt /> Ver detalle del evento
+              </Button>
+            </LinkContainer>
+          </Card.Body>
         </Card>
       </Row>
     </Container>

@@ -19,7 +19,25 @@ export const GET_ALL_DATE = "GET_ALL_DATE";
 export const FILTER_CALENDER = "FILTER_CALENDER";
 export const CREATE_ORDER = "CREATE_ORDER";
 
+export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
+
+
+export const FILTER_CALENDER_NUEVO = "FILTER_CALENDER_NUEVO"
+export const ADD_REVIEWS = "ADD_REVIEWS"
+export const CLEAN_DETAIL = "CLEAN_DETAIL"
+
+
+
+
 const API_URL = "http://localhost:3001";
+
+
+
+
+
+
+
+
 
 export function getAllEvent() {
   return async function (dispatch) {
@@ -54,6 +72,13 @@ export function FilterCalender(payload) {
   //PARA FILTRAR LOS EVENTOS POR UNA FECHA EN PARTICULAR
   return {
     type: FILTER_CALENDER,
+    payload,
+  };
+}
+
+export function FilterCalenderNuevo(payload){ //PARA FILTRAR LOS EVENTOS POR UN RANGO DE FECHAS
+  return{
+    type: FILTER_CALENDER_NUEVO,
     payload,
   };
 }
@@ -243,4 +268,60 @@ export function createOrder(payload) {
       console.log(err);
     }
   };
+
+
+}
+
+
+
+
+// RUTA QUE ME TRAE TODAS LAS ORDENES HECHAS (PARA METRICAS)
+
+
+
+
+
+
+export function getAllOrders() {
+  return async function (dispatch) {
+    try {
+      const orders = await axios.get(
+        "http://localhost:3001/users/getAllOrders"
+      );
+      return dispatch({
+        type: GET_ALL_ORDERS,
+        payload: orders.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+}
+
+
+
+export function addReviews(payload, id) {
+  return async (dispatch) => {
+    try {
+      const json = await axios.post(
+        `http://localhost:3001/users/createReview/${id}/`, 
+        payload
+      );
+      return dispatch({
+        type: ADD_REVIEWS,
+        payload: json.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+}
+
+export function detailClean (){
+  return{
+      type:CLEAN_DETAIL
+  }
 }
