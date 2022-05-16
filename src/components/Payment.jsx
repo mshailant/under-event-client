@@ -14,7 +14,7 @@ const MySwal = withReactContent(Swal);
 function Pay() {
   const publishableKey =
     "pk_test_51KvehVGJ6earutDK1a1AVoXZQWqbwpdHDV7NBvEPnSP1w8IxXkDaVltQOMwsixWtUaYHgOJSCrzlarO3ghGsZfIs00cRkKkzoE";
-  const orderCreated = useSelector((state) => state.orderCreated);
+  const orderCreated = useSelector((state) => state.orderDetail);
   const [product, setProduct] = useState({});
   const [priceForStripe, setpriceForStripe] = useState(0);
 
@@ -71,8 +71,8 @@ function Pay() {
               stripeKey={publishableKey}
               label="Pay Now"
               name="Pay With Credit Card"
-              billingAddress
-              shippingAddress
+              billingAddress={false}
+              shippingAddress={false}
               amount={priceForStripe}
               description={`Your total is $${product.totalPrice}`}
               token={payNow}

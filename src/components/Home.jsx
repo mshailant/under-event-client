@@ -15,6 +15,7 @@ import { Selector } from "./NavBars/Nav";
 import NavTop from "./NavBars/Nav";
 import CalendarioMejorado from "./CalendarioMejorado";
 import img from "../images/pexels-darya-sannikova-3824763.jpg";
+import imagen from "../images/pexels-wendy-wei-1918159.jpg";
 
 import {
   Container,
@@ -54,49 +55,52 @@ export default function Home() {
               marginTop: "250px",
             }}
           />
+          ;
         </div>
       </div>
     );
   }
 
   return (
-    <>
-      <div className={styles.containerGeneral}>
-        <ToastContainer className="p-3 py-5 mt-5" position={"bottom-end"}>
-          <Toast
-            bg={"danger"}
-            onClose={() => setShowToast(false)}
-            show={showToast}
-            delay={3000}
-            autohide
-          >
-            <Toast.Header>
-              <img
-                src="holder.js/20x20?text=%20"
-                className="rounded me-2"
-                alt=""
-              />
-              <strong className="me-auto">Error</strong>
-            </Toast.Header>
-            <Toast.Body>{error?.message}</Toast.Body>
-          </Toast>
-        </ToastContainer>
-        <NavTop />
+    <div className={styles.containerGeneral}>
+      <ToastContainer className="p-3 py-5 mt-5" position={"bottom-end"}>
+        <Toast
+          bg={"danger"}
+          onClose={() => setShowToast(false)}
+          show={showToast}
+          delay={3000}
+          autohide
+        >
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              className="rounded me-2"
+              alt=""
+            />
+            <strong className="me-auto">Error</strong>
+          </Toast.Header>
+          <Toast.Body>{error?.message}</Toast.Body>
+        </Toast>
+      </ToastContainer>
 
+      <NavTop />
+      <div style={{marginTop: "15px"}}>
         <Carousely />
 
         <div className={styles.navegation}>
           <Selector />
+          
         </div>
-        <Carouse2 />
-
+      
         <div className={styles.background}>
           <div className={styles.infoContainer}></div>
           <div className={styles.cardsContainer}>
             <div className={styles.Date}></div>
-            <Container fluid>
+
+            <Container fluid style={{ width: "100wh" }}>
               <Row>
-                <Col>
+                <Col style={{ width: "100wh" }} >
+                  {" "}
                   <div className={styles.cards}>
                     {Array.isArray(events) && events.length ? (
                       events.map((e) => {
@@ -143,6 +147,45 @@ export default function Home() {
                     )}
                   </div>
                 </Col>
+                <Col style={{ marginTop: "120px", float: "rigth" }} md="auto">
+                  <div
+                    className={styles.calendarContainer}
+                    style={{ marginLeft: "5%", maringTop: "5px" }}
+                  >
+                    <CalendarioMejorado />
+                  </div>
+                  <Card  style={{ width: "17rem", marginTop: "15px", background: "#1C2833 " }}>
+                    <Card.Img variant="top" src={img} />
+                    <Card.Body>
+                      <Card.Title
+                        style={{ fontSize: "19px", fontWeight: "Bolder" }}
+                      >
+                       
+                      </Card.Title>
+                      
+                      <Card.Text
+                        style={{ fontSize: "17px", fontWeight: "Bolder" }}
+                      >
+                        
+                      </Card.Text>
+                    </Card.Body>
+
+                    <Card.Img src={imagen} />
+                    <ListGroupItem style={{ fontSize: "19px", fontWeight: "Bolder", background: "#1C2833 "  }}  >
+                      <Card.Title
+                        style={{ fontSize: "19px", fontWeight: "Bolder", background: "#1C2833 "  }}
+                      >
+                      
+                      </Card.Title>
+                      <hr />
+                      <Card.Text
+                        style={{ fontSize: "17px", fontWeight: "Bolder", background: "#1C2833 "  }}
+                      >
+                        
+                      </Card.Text>
+                    </ListGroupItem>
+                  </Card>
+                </Col>
               </Row>
             </Container>
 
@@ -157,6 +200,6 @@ export default function Home() {
           <Footer />
         </div>
       </div>
-    </>
+    </div>
   );
 }

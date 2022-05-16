@@ -25,6 +25,7 @@ export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
 export const FILTER_CALENDER_NUEVO = "FILTER_CALENDER_NUEVO"
 export const ADD_REVIEWS = "ADD_REVIEWS"
 export const CLEAN_DETAIL = "CLEAN_DETAIL"
+export const GET_REVIEWS = "GET_REVIEWS"
 
 
 
@@ -317,6 +318,23 @@ export function addReviews(payload, id) {
     }
   };
 
+
+}
+
+export function getReviews(id) {
+  return async function (dispatch) {
+    try {
+      const orders = await axios.get(
+        `http://localhost:3001/users/getReviews/${id}/`
+      );
+      return dispatch({
+        type: GET_REVIEWS,
+        payload: orders.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
 }
 

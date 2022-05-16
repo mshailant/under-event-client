@@ -3,10 +3,11 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background:  hsl(195, 4%, 82%) ; 
-    height: 100%;
-    width: auto;
-    
+    background-image: 
+      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+      url('../images/pexels-thibault-trillet-167636.jpg');
+      
+    height: 100%;   ;
    
 }
 
@@ -103,5 +104,3 @@
 .footer{
     margin-top: 75px;
 }
-
-

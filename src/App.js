@@ -19,6 +19,7 @@ import Pay from "./components/Payment";
 import Carrito from "./components/Carrito";
 import OrderDetail from "./components/OrderDetail";
 import ModalForm, { ModalFormulario } from "./components/ModalForm";
+import Reviews from "./components/Reviews";
 
 function App() {
   const user = useSelector((state) => state.userLoged);
@@ -52,6 +53,7 @@ function App() {
 
         <Route exact path="/contactUs" element={<ContactUs />} />
         <Route exact path="/aboutUs" element={<AboutUs />} />
+        <Route exact path="/reviews" element={<Reviews />} />
       </Routes>
     </BrowserRouter>
   );

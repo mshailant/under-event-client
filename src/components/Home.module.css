@@ -1,10 +1,5 @@
 .containerGeneral{
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background:  hsl(195, 4%, 82%) ; 
-  height: 100%;
+ 
   
   
 }
@@ -24,7 +19,17 @@
 
 .containerGeneral{
   height: 100%;
-  background:       #d0d3d4;
+  background:       #D0D3D4;
+  background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+
+height: 100%;   ;
+
+background-image: 
+  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+  url('../images/pexels-thibault-trillet-167636.jpg');
   
   
   
@@ -40,10 +45,15 @@
   /* background-image: 
 linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
 url('../images/pexels-wendy-wei-1916821\(1\).jpg');  */
-background-size: cover;
+background-attachment: fixed;
+background-position: center;
 background-repeat: no-repeat;
-background-attachment: fixed; 
-background:       #d0d3d4       ;
+background-size: cover;
+background-image: 
+  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+  url('../images/pexels-thibault-trillet-167636.jpg');
+  
+height: 100%;   ;
 
 
 }
@@ -61,10 +71,10 @@ margin-right: 60px;
 display: grid;
 
 justify-content: center;
-grid-template-columns: repeat(auto-fill, 350px);
+grid-template-columns: repeat(auto-fill, 300px);
 padding: 45px;
 gap: 35px;
-margin-top: 65px;
+margin-top: 7px;
 text-decoration: none;
 
 

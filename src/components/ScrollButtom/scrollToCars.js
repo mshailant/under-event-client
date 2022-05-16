@@ -1,3 +1,3 @@
 export default function scrollToCards(){
-    window.scrollTo(0, document.body.scrollHeight / 2.6);
+    window.scrollTo(0, document.body.scrollHeight / 4.6);
   }

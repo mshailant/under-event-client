@@ -106,252 +106,296 @@ export function CreateEvent() {
 
   return (
     <div className={styles.container1}>
-      <NavTop />
-      <Container>
-        <Row>
-          <Col xs>
-            <div className={styles.container1}>
-              <div style={{ marginTop: "85px" }}>
-                <Form validated={validated} onSubmit={handleSubmit}>
-                  <div>
-                    <h5>INGRESA LOS DATOS DE TU EVENTO</h5>
-                  </div>
+      
+            <NavTop />
+            <Container>
+              <Row>
+                <Col xs>
+                  <div className={styles.container1}>
+                    <div style={{ marginTop: "85px" }}>
+                      <Form  validated={validated} onSubmit={handleSubmit}>
+                        <div>
+                          <h5   style={{ color:  " #f7dc6f " , borderColor: "black", fontWeight:"bold"}}>INGRESA LOS DATOS DE TU EVENTO</h5>
+                        </div>
 
-                  <Form.Group controlId="validationCustom01">
-                    <Form.Label>Nombre del evento</Form.Label>
-                    <Form.Control
-                      required
-                      type="text"
-                      name="title"
-                      value={input.title}
-                      onChange={(e) => handleInputChange(e)}
-                    />
-                  </Form.Group>
-
-                  <Form.Group controlId="validationCustom02">
-                    <Form.Label>Genero Musical</Form.Label>
-                    <Form.Select required onChange={(e) => handleSelect(e)}>
-                      <option>Seleccion tu Genero</option>
-                      {genres?.map((dl) => (
-                        <option value={dl}>{dl}</option>
-                      ))}
-                    </Form.Select>
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                  </Form.Group>
-
-                  <div>
-                    <Form.Text muted>
-                      Seleccion el tipo de genero con el que quieras mostrarte
-                    </Form.Text>
-                  </div>
-
-                  <>
-                    <Form.Group controlId="validationCustom03">
-                      <Form.Label>Escribe detalle del evento</Form.Label>
-                      <InputGroup>
-                        <FormControl
-                          as="textarea"
-                          aria-label="With textarea"
-                          name="description"
-                          value={input.description}
-                          onChange={(e) => handleInputChange(e)}
+                        <Form.Group controlId="validationCustom01">
+                          <Form.Label  style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}}>Nombre del evento</Form.Label>
+                          <Form.Control
                           required
-                        />
-                      </InputGroup>
-                      <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                    </Form.Group>
+                            type="text"
+                            name="title"
+                            value={input.title}
+                            onChange={(e) => handleInputChange(e)}
+                            style={{ background:  " #f7dc6f " , borderColor: "black"}}
+                          />
+                        </Form.Group>
 
-                    <div>
-                      <Container>
-                        <Row>
-                          <Form.Group controlId="validationCustom04">
-                            <Form.Label>Fecha de inicio de evento</Form.Label>
-                            <Form.Control
-                              name="date"
-                              value={input.date}
-                              type="date"
-                              onChange={(e) => handleInputChange(e)}
-                              required
-                            />
-                            <Form.Control.Feedback>
-                              Looks good!
-                            </Form.Control.Feedback>
-                          </Form.Group>
-                        </Row>
-                      </Container>
+                        <Form.Group controlId="validationCustom02">
 
-                      <Container>
-                        <Row>
-                          <Form.Group controlId="validationCustom05">
-                            <Form.Label>Fecha de inicio de evento</Form.Label>
-                            <Form.Control
-                              name="time"
-                              value={input.time}
-                              type="time"
-                              onChange={(e) => handleInputChange(e)}
-                              required
-                            />
-                            <Form.Control.Feedback>
-                              Looks good!
-                            </Form.Control.Feedback>
-                          </Form.Group>
-
-                          <Form.Group controlId="validationCustom06">
-                            <Form.Label>Mes de Evento</Form.Label>
-                            <Form.Control
-                              name="month"
-                              value={input.month}
-                              type="text"
-                              onChange={(e) => handleInputChange(e)}
-                              required
-                            />
-                            <Form.Control.Feedback>
-                              Looks good!
-                            </Form.Control.Feedback>
-                          </Form.Group>
-                        </Row>
-                      </Container>
-                    </div>
-
-                    <div>
-                      <div className={styles.direcction}>
-                        <Form.Group controlId="validationCustom07">
-                          <Form.Label>Provincia</Form.Label>
-
-                          <Form.Select
-                            required
-                            onChange={(e) => handleCitySelect(e)}
-                          >
-                            <option>Selecciona tu Provincia</option>
-                            <option value={"Chubut"}>Chubut</option>
-                            {city?.map((dl) => (
+                          <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >Genero Musical</Form.Label>
+                          <Form.Select  style={{ background:  " #f7dc6f " , borderColor: "black"}} required onChange={(e) => handleSelect(e)}>
+                          <option>Seleccion tu Genero</option>
+                            {genres?.map((dl) => (
                               <option value={dl}>{dl}</option>
                             ))}
                           </Form.Select>
-
                           <Form.Control.Feedback>
-                            Looks good!
-                          </Form.Control.Feedback>
+                              Looks good!
+                            </Form.Control.Feedback>
                         </Form.Group>
 
-                        <Form.Group controlId="validationCustom08">
-                          <Form.Label>Localidad</Form.Label>
-                          <Form.Control
-                            name="location"
-                            value={input.location}
-                            type="text"
-                            onChange={(e) => handleInputChange(e)}
-                            required
-                          />
-                          <Form.Control.Feedback>
-                            Looks good!
-                          </Form.Control.Feedback>
-                        </Form.Group>
+                        <div>
+                          <Form.Text style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"8px"}}  muted>
+                            Seleccion el tipo de genero con el que quieras
+                            mostrarte
+                          </Form.Text>
+                        </div>
 
                         <>
-                          <Form.Group controlId="validationCustom09">
-                            <Form.Label>Direccion</Form.Label>
-                            <Form.Control
-                              name="address"
-                              value={input.address}
-                              type="text"
-                              onChange={(e) => handleInputChange(e)}
-                              required
-                            />
+                          <Form.Group controlId="validationCustom03">
+                            <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >Escribe detalle del evento</Form.Label>
+                            <InputGroup>
+                             
+                              <FormControl
+                                as="textarea"
+                                aria-label="With textarea"
+                                name="description"
+                                value={input.description}
+                                onChange={(e) => handleInputChange(e)}
+                                required
+                                style={{ background:  " #f7dc6f " , borderColor: "black"}}
+                              />
+                            </InputGroup>
                             <Form.Control.Feedback>
                               Looks good!
                             </Form.Control.Feedback>
                           </Form.Group>
 
-                          <Form.Group controlId="validationCustom10">
-                            <Form.Label>Lugar del evento</Form.Label>
-                            <Form.Control
-                              name="place"
-                              value={input.place}
-                              type="text"
-                              onChange={(e) => handleInputChange(e)}
-                              required
-                            />
-                            <Form.Control.Feedback>
-                              Looks good!
-                            </Form.Control.Feedback>
-                          </Form.Group>
+                          <div>
+                            <Container>
+                              <Row>
+                                <Form.Group controlId="validationCustom04">
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}}  >
+                                    Fecha de inicio de evento
+                                  </Form.Label>
+                                  <Form.Control
+                                    name="date"
+                                    value={input.date}
+                                    type="date"
+                                    onChange={(e) => handleInputChange(e)}
+                                    required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+                              </Row>
+                            </Container>
 
-                          <Form.Group controlId="validationCustom11">
-                            <Form.Label>Imagen</Form.Label>
-                            <Form.Control
-                              name="imagen"
-                              value={input.imagen}
-                              type="text"
-                              onChange={(e) => handleInputChange(e)}
-                              required
-                            />
-                            <Form.Control.Feedback>
-                              Looks good!
-                            </Form.Control.Feedback>
-                          </Form.Group>
+                            <Container>
+                              <Row>
+                                <Form.Group controlId="validationCustom05">
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
+                                    Fecha de inicio de evento
+                                  </Form.Label>
+                                  <Form.Control
+                                    name="time"
+                                    value={input.time}
+                                    type="time"
+                                    onChange={(e) => handleInputChange(e)}
+                                    required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
 
-                          <Form.Group controlId="validationCustom12">
-                            <Form.Label>Cost</Form.Label>
-                            <Form.Control
-                              name="cost"
-                              value={input.cost}
-                              type="text"
-                              onChange={(e) => handleInputChange(e)}
-                              required
-                            />
-                            <Form.Control.Feedback>
-                              Looks good!
-                            </Form.Control.Feedback>
-                          </Form.Group>
+                                <Form.Group controlId="validationCustom06">
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
+                                    Mes de Evento
+                                  </Form.Label>
+                                  <Form.Control
+                                    name="month"
+                                    value={input.month}
+                                    type="text"
+                                    onChange={(e) => handleInputChange(e)}
+                                    required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                  
+                                </Form.Group>
 
-                          <Form.Group controlId="validationCustom13">
-                            <Form.Label>Stock</Form.Label>
-                            <Form.Control
-                              name="stock"
-                              value={input.stock}
-                              type="text"
-                              onChange={(e) => handleInputChange(e)}
-                              required
-                            />
-                            <Form.Control.Feedback>
+                                
+                              </Row>
+                            </Container>
+
+                            
+                          </div>
+
+                          <div>
+                            <div className={styles.direcction}>
+                              <Form.Group
+                                
+                                controlId="validationCustom07"
+                              >
+                                <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >Provincia</Form.Label>
+                              
+                                <Form.Select   style={{ background:  " #f7dc6f " , borderColor: "black"}} required onChange={(e) => handleCitySelect(e)}>
+                                <option>Selecciona tu Provincia</option>
+                                  {city?.map((dl) => (
+                                    <option value={dl}>{dl}</option>
+                                  ))}
+                                </Form.Select>
+
+                                <Form.Control.Feedback>
                               Looks good!
                             </Form.Control.Feedback>
-                          </Form.Group>
+                              </Form.Group>
+
+                              <Form.Group controlId="validationCustom08">
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
+                                    Localidad
+                                  </Form.Label>
+                                  <Form.Control
+                                    name="location"
+                                    value={input.location}
+                                    type="text"
+                                    onChange={(e) => handleInputChange(e)}
+                                    required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+                                
+                              <>
+                              <Form.Group controlId="validationCustom09">
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
+                                    Direccion
+                                  </Form.Label>
+                                  <Form.Control
+                                    name="address"
+                                    value={input.address}
+                                    type="text"
+                                    onChange={(e) => handleInputChange(e)}
+                                    required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+
+                                <Form.Group controlId="validationCustom10">
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
+                                    Lugar del evento
+                                  </Form.Label>
+                                  <Form.Control
+                                    name="place"
+                                    value={input.place}
+                                    type="text"
+                                    onChange={(e) => handleInputChange(e)}
+                                    required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+
+                                <Form.Group controlId="validationCustom11">
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
+                                    Imagen
+                                  </Form.Label>
+                                  <Form.Control
+                                    name="imagen"
+                                    value={input.imagen}
+                                    type="text"
+                                    onChange={(e) => handleInputChange(e)}
+                                    required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+
+                                <Form.Group controlId="validationCustom12">
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
+                                    Cost
+                                  </Form.Label>
+                                  <Form.Control
+                                    name="cost"
+                                    value={input.cost}
+                                    type="text"
+                                    onChange={(e) => handleInputChange(e)}
+                                    required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+
+                                <Form.Group controlId="validationCustom13">
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
+                                    Stock
+                                  </Form.Label>
+                                  <Form.Control
+                                    name="stock"
+                                    value={input.stock}
+                                    type="text"
+                                    onChange={(e) => handleInputChange(e)}
+                                    required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
+                                  />
+                                  <Form.Control.Feedback>
+                                    Looks good!
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+                               
+                              </>
+
+                              <div className="d-grid gap-2">
+                                <Button
+                                  style={{ fontWeight: "bolder", marginTop: "25px" }}
+                                  variant="outline-warning"
+                                  size="lg"
+                                  type="submit"
+                                >
+                                  Crea tu Evento
+                                </Button>
+                              </div>
+                            </div>
+                          </div>
                         </>
-                        <div className="d-grid gap-2">
-                          <Button
-                            style={{ fontWeight: "bolder", marginTop: "25px" }}
-                            variant="warning"
-                            size="lg"
-                            type="submit"
-                          >
-                            Crea tu Evento
-                          </Button>
-                        </div>
-                      </div>
+                      </Form>
                     </div>
-                  </>
-                </Form>
-              </div>
+                  </div>
+                </Col>
+                <Col xs={{ order: 12 }}>
+                  <div className={styles.divImg}>
+                    <img
+                      className={styles.img}
+                      src={imagen}
+                      width="620px"
+                      height="auto"
+                      alt="imagen"
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+            <div className={styles.footer}>
+              <Footer />
             </div>
-          </Col>
-          <Col xs={{ order: 12 }}>
-            <div className={styles.divImg}>
-              <img
-                className={styles.img}
-                src={imagen}
-                width="620px"
-                height="auto"
-                alt="imagen"
-              />
-            </div>
-          </Col>
-        </Row>
-      </Container>
-      <div className={styles.footer}>
-        <Footer />
-      </div>
+        
     </div>
   );
 }
