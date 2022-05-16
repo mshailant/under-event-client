@@ -13,12 +13,11 @@ export const GET_ALL_CITIES = "GET_ALL_CITIES";
 export const GET_ALL_GENEROS = "GET_ALL_GENEROS";
 export const GET_USERS = "GET_USERS";
 export const BAN_USER = "BAN_USER";
-export const GET_TICKETS = "GET_TICKETS"
+export const GET_TICKETS = "GET_TICKETS";
 export const GET_ORDER_DETAIL = "GET_ORDER_DETAIL";
 export const GET_ALL_DATE = "GET_ALL_DATE";
-
 export const FILTER_CALENDER = "FILTER_CALENDER";
-
+export const CREATE_ORDER = "CREATE_ORDER";
 
 export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
 
@@ -30,6 +29,7 @@ export const CLEAN_DETAIL = "CLEAN_DETAIL"
 
 
 
+const API_URL = "http://localhost:3001";
 
 
 
@@ -42,7 +42,7 @@ export const CLEAN_DETAIL = "CLEAN_DETAIL"
 export function getAllEvent() {
   return async function (dispatch) {
     try {
-      const json = await axios.get("http://localhost:3001/events/getAll");
+      const json = await axios.get(`${API_URL}/events/getAll`);
       return dispatch({
         type: GET_ALL_EVENTS_DB,
         payload: json.data,
@@ -53,7 +53,8 @@ export function getAllEvent() {
   };
 }
 // PARA EL CALENDARIO ---------------------------------------------------------------------
-export function getAllDate() {   //ME TRAE UN ARRAY CON LAS FECHAS DE LOS EVENTOS
+export function getAllDate() {
+  //ME TRAE UN ARRAY CON LAS FECHAS DE LOS EVENTOS
   return async function (dispatch) {
     try {
       const date = await axios.get("http://localhost:3001/events/getDates/");
@@ -67,7 +68,8 @@ export function getAllDate() {   //ME TRAE UN ARRAY CON LAS FECHAS DE LOS EVENTO
   };
 }
 
-export function FilterCalender(payload) {  //PARA FILTRAR LOS EVENTOS POR UNA FECHA EN PARTICULAR
+export function FilterCalender(payload) {
+  //PARA FILTRAR LOS EVENTOS POR UNA FECHA EN PARTICULAR
   return {
     type: FILTER_CALENDER,
     payload,
@@ -84,7 +86,7 @@ export function FilterCalenderNuevo(payload){ //PARA FILTRAR LOS EVENTOS POR UN 
 export function getAllCities() {
   return async function (dispatch) {
     try {
-      const cities = await axios.get("http://localhost:3001/events/solocitys");
+      const cities = await axios.get(`${API_URL}/events/solocitys`);
       return dispatch({
         type: GET_ALL_CITIES,
         payload: cities.data,
@@ -98,9 +100,7 @@ export function getAllCities() {
 export function getAllGeneros() {
   return async function (dispatch) {
     try {
-      const generos = await axios.get(
-        "http://localhost:3001/events/sologeneros"
-      );
+      const generos = await axios.get(`${API_URL}/events/sologeneros`);
       return dispatch({
         type: GET_ALL_GENEROS,
         payload: generos.data,
@@ -114,10 +114,7 @@ export function getAllGeneros() {
 export function createEvent(payload) {
   return async (dispatch) => {
     try {
-      const json = await axios.post(
-        "http://localhost:3001/events/createEvent/",
-        payload
-      );
+      const json = await axios.post(`${API_URL}/events/createEvent/`, payload);
       return dispatch({
         type: CREATE_EVENT,
         payload: json.data,
@@ -130,18 +127,17 @@ export function createEvent(payload) {
 
 export function getByTitle(title) {
   return async (dispatch) => {
-    let obtener = await axios.get(
-      `http://localhost:3001/events/getTitle?title=${title}`
-    );
+    let obtener = await axios.get(`${API_URL}/events/getTitle?title=${title}`);
     return dispatch({
       type: GET_BY_TITLE,
       payload: obtener.data,
     });
   };
 }
+
 export function getDetail(id) {
   return async (dispatch) => {
-    let json = await axios.get("http://localhost:3001/events/" + id);
+    let json = await axios.get(`${API_URL}/events/` + id);
 
     return dispatch({
       type: GET_DETAIL,
@@ -168,10 +164,7 @@ export function getState(payload) {
 export function createUser(payload) {
   return async (dispatch) => {
     try {
-      const json = await axios.post(
-        "http://localhost:3001/users/createUser",
-        payload
-      );
+      const json = await axios.post(`${API_URL}/users/createUser`, payload);
       return dispatch({
         type: CREATE_USER,
         payload: json.data,
@@ -184,7 +177,7 @@ export function createUser(payload) {
 
 export function getUserByExternalId(externalId) {
   return async (dispatch) => {
-    let json = await axios.get(`http://localhost:3001/users/${externalId}`);
+    let json = await axios.get(`${API_URL}/users/${externalId}`);
     return dispatch({
       type: GET_USER,
       payload: json.data,
@@ -195,10 +188,7 @@ export function getUserByExternalId(externalId) {
 export function updateUser(payload, externalId) {
   return async (dispatch) => {
     try {
-      const json = await axios.put(
-        `http://localhost:3001/users/${externalId}`,
-        payload
-      );
+      const json = await axios.put(`${API_URL}/users/${externalId}`, payload);
       return dispatch({
         type: UPDATE_USER,
         payload: json.data,
@@ -211,8 +201,8 @@ export function updateUser(payload, externalId) {
 
 export function getUsers() {
   return async (dispatch) => {
-    let json = await axios.get("http://localhost:3001/users");
-    /* console.log(json.data); */
+    let json = await axios.get(`${API_URL}/users`);
+    console.log(json.data);
     return dispatch({
       type: GET_USERS,
       payload: json.data,
@@ -223,7 +213,7 @@ export function getUsers() {
 export function banUser(externalId, block) {
   return async (dispatch) => {
     try {
-      const json = await axios.post(`http://localhost:3001/users/ban`, {
+      const json = await axios.post(`${API_URL}/users/ban`, {
         externalId,
         block,
       });
@@ -245,27 +235,42 @@ export function byFilterDate(payload) {
   };
 }
 
-
 export function getTickets(id) {
   return async (dispatch) => {
-    let json = await axios.get(`http://localhost:3001/events/getTiketsDisponibles/${id}/`);
+    let json = await axios.get(`${API_URL}/events/getTiketsDisponibles/${id}`);
 
     return dispatch({
       type: GET_TICKETS,
       payload: json.data,
     });
   };
-};
+}
 // RUTA PARA TRAERME EL ORDEL DETAIL DE UN EVENTO
 export function getOrderDetail(id) {
   return async (dispatch) => {
-    let json = await axios.get(`http://localhost:3001/users/getOrder${id}`);
+    let json = await axios.get(`${API_URL}/users/getOrder${id}`);
     return dispatch({
       type: GET_ORDER_DETAIL,
       payload: json.data,
     });
   };
-};
+}
+
+export function createOrder(payload) {
+  return async (dispatch) => {
+    try {
+      const json = await axios.post(`${API_URL}/users/newOrder`, payload);
+      return dispatch({
+        type: CREATE_ORDER,
+        payload: json.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+}
 
 
 

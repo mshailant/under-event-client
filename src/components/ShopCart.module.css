@@ -2,6 +2,8 @@
     position: absolute;
     margin-top: 20px;
     margin-left: 100px;
+    background: transparent;
+    background-color: transparent;
 }
 
 .add :hover{

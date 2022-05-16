@@ -1,17 +1,8 @@
 
-.nav {
-	position:sticky;
-	top:0;
-    z-index: 1000;
-	color:aliceblue
-}
 .title{
 	color: white;
 }
 
-#navbarScrollingDropdown{
-	color: white;
-}
 
 .title{
 	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
