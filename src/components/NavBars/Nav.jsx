@@ -14,6 +14,7 @@ import {
   Dropdown,
   Image,
   DropdownButton,
+  NavDropdown
 } from "react-bootstrap";
 
 import {
@@ -26,6 +27,8 @@ import Searchbar from "../Searchbar";
 import styles from "./Nav.module.css";
 import ShoppingCart from "../shopCart";
 import Calendario from "../Calendario"
+import { Select, CaretIcon, ModalCloseButton } from 'react-responsive-select';
+import imagen from '../../images/1649175668524-null-cabecera_crowder.jpg'
 
 export default function NavTop() {
   const dispatch = useDispatch();
@@ -54,46 +57,29 @@ export default function NavTop() {
 
   return (
     <header className={styles.nav}>
-      <Navbar collapseOnSelect expand="lg" bg="secondary" variant="secondary">
-        <Container>
-          <LinkContainer to="/">
-            <Navbar.Brand
-              style={{
-                color: "#f1c40f",
-                fontFamily: "font-family: 'Rubik Glitch', cursive;",
-              }}
-            >
-              <h2 className={styles.title}>UnderEventsApp</h2>
-            </Navbar.Brand>
-          </LinkContainer>
-          <Navbar.Toggle bg="white" aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              {/* <LinkContainer to="/createEvent">
-                <Nav.Link style={{ color: "black" }}>Crear Eventos</Nav.Link>
-              </LinkContainer> */}
-           
-            <DropdownButton variant="warning" id="dropdown-item-button" title="Mas Info">
-              <Dropdown.ItemText>  <LinkContainer to="/orderDetail">
-                  <Nav.Link style={{ color: "black" }}>Detalles de Orden</Nav.Link>
-                </LinkContainer></Dropdown.ItemText>
-             
-              <Dropdown.Item as="button">
-                {" "}
-                <LinkContainer to="/createEvent">
-                  <Nav.Link style={{ color: "black" }}>Crear Eventos</Nav.Link>
-                </LinkContainer>
-              </Dropdown.Item>
-            </DropdownButton>
-            </Nav>
-            <Nav>
-              <div>
-                <ShoppingCart />
-              </div>
-              <Nav.Link style={{ color: "white" }} eventKey={2}>
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+  <Container>
+  {/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand> */}
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse id="responsive-navbar-nav">
+    <Nav.Link style={{color:"yellow", fontSize: "22px", fontWeight: "bold"}} bg='warning' href="/">UnderEventsApp</Nav.Link>
+    <Nav className="me-auto">
+     
+      
+      <NavDropdown variant="warning" bg="waring" style={{color:"yellow", fontSize: "15px", fontWeight: "bold"}} title="Dropdown" id="collasible-nav-dropdown">
+        <NavDropdown.Item href="/createEvent"> Crea tu Evento </NavDropdown.Item>
+       
+       
+        <NavDropdown.Divider />
+        <NavDropdown.Item href="/detailOrden">Ordenes</NavDropdown.Item>
+      </NavDropdown>
+    </Nav>
+    <Nav>
+      
+      <Nav.Link style={{ color: "white" }} eventKey={2}>
                 {!isAuthenticated && (
                   <Button
-                    style={{ color: "white" }}
+                    style={{ color: "white", height: "15px" }}
                     className="m-2"
                     variant="outline-warning"
                     onClick={() => loginWithRedirect()}
@@ -135,10 +121,10 @@ export default function NavTop() {
                   </Dropdown>
                 )}
               </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+    </Nav>
+  </Navbar.Collapse>
+  </Container>
+</Navbar>
     </header>
   );
 }
@@ -240,30 +226,25 @@ export function Selector() {
   /* function handleDate(e) {
     e.preventDefault();
     dispatch(Action.byFilterDate(e.target.value));
+
+    
   } */
+  
   return (
     <div className={styles.container}>
-      
-            <Navbar
-              style={{ width: "90%", marginBottom: "25px", marginLeft: "5%" }}
-              bg="secondary"
-              variant="secondary"
-              expand="lg"
-            >
-              <Container>
-                <Navbar.Brand
-                  style={{
-                    marginLeft: "auto",
-                    color: "rgb(226, 181, 0)",
-                    fontWeight: "bold",
-                  }}
-                  href="#"
-                >
-                  UnderEventsApp
-                </Navbar.Brand>
-
-                <Form.Select
-                  style={{ width: "400px" }}
+      <Container >
+  <Row>
+    <Col>
+    <Navbar style={{width: "auto"}} bg="dark" variant="dark">
+    <Container>
+    <Navbar.Brand bg= "warning" variant = "warning" style={{color: " #f4d03f", fontWeight: "bold"}}>UnderEventsApp</Navbar.Brand>
+    <Nav style={{gap: "10px"}} className="me-auto">
+    
+    <Form.Select
+    
+                  variant= "warning"
+                  bg="warning"
+                  style={{ width: "120px", height: "37px", background: "#B7950B" , borderColor: "black" }}
                   size="sm"
                   onChange={handleStates}
                 >
@@ -276,10 +257,8 @@ export function Selector() {
                     </option>
                   ))}
                 </Form.Select>
-
-                <br />
                 <Form.Select
-                  style={{ width: "400px" }}
+                  style={{ width: "120px", height: "37px", background: "#B7950B", borderColor: "black"}}
                   size="sm"
                   onChange={handleEventType}
                 >
@@ -292,9 +271,9 @@ export function Selector() {
                     </option>
                   ))}
                 </Form.Select>
-
+             
                 <Form.Select
-                  style={{ width: "400px" }}
+                  style={{width: "120px", height: "37px", background: "#B7950B", borderColor: "black" }}
                   size="sm"
                   onChange={handleDate}
                 >
@@ -338,13 +317,20 @@ export function Selector() {
                     Diciembre de 2022
                   </option>
                 </Form.Select>
+                <div style={{marginLeft: "380px"}}>
 
-                {/* <Calendario/> */}
-
-                <Searchbar />
-              </Container>
-            </Navbar>
-        
+                <Searchbar/>
+                </div>
+    </Nav>
+    </Container>
+  </Navbar>
+    <hr  style={{color: " #f7dc6f", fontSize: "10px"}} />
+               
+        </Col>
+  </Row>
+</Container>
+      
+            
     </div>
   );
 }

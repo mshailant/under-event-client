@@ -1,7 +1,11 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getDetail, getTickets, detailClean } from "../redux/actions/actions.jsx";
+import {
+  getDetail,
+  getTickets,
+  detailClean,
+} from "../redux/actions/actions.jsx";
 import { useParams } from "react-router";
 import styles from "./Detail.module.css";
 import { useContext, useRef } from "react";
@@ -18,6 +22,7 @@ import ReactStars from "react-stars";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { ImLocation } from "react-icons/im";
+import Example from "./Modal";
 
 import {
   Nav,
@@ -31,12 +36,15 @@ import {
   Placeholder,
   ListGroup,
   ListGroupItem,
+  Modal
 } from "react-bootstrap";
+import { render } from "react-dom";
 
 import NavTop from "./NavBars/Nav.jsx";
 import imagen from "../images/concert2.jpg";
 import ModalForm from "./ModalForm.jsx";
 import { Link } from "react-router-dom";
+import L from "leaflet";
 
 // [lat, long] = detalles{lat, long}
 
@@ -53,11 +61,16 @@ const Detail = () => {
 
   const [canti, setCanti] = useState(0);
 
+  const leafletIcon = L.icon({
+    iconUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+    iconSize: [20, 30],
+  });
+
   useEffect(() => {
     dispatch(getDetail(id));
-    dispatch(getTickets(id))
-    dispatch(detailClean());
-  }, []);
+    dispatch(getTickets(id));
+    
+  }, [dispatch]);
 
   const handleDirectToHomeFromDetail = () => {
     window.location.href = "/";
@@ -99,21 +112,31 @@ const Detail = () => {
           <Container>
             <Row>
               <Col>
-                <Card
-                  style={{ width: "44rem", height: "850px", marginTop: "15px" }}
+              {[
+    
+    'Dark ',
+  ].map((variant) => (
+    <Card
+    bg={variant.toLowerCase()}
+    key={variant}
+    text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
+    style={{ width: '18rem', width: "44rem", height: "850px", marginTop: "15px"  }}
+    className="mb-2"
+    border="warning"
+                  
                 >
-                  <Card.Body>
-                    <Card.Title>
+                  <Card.Body bg= "waring" variant= "warning">
+                    <Card.Title bg= "waring" variant= "warning" >
                       <Container>
                         <Row>
-                          <Col xs>
-                            <h5>Tickets</h5>
+                          <Col  xs>
+                            <h5  style={{ maringTop: "25px", color: "#f4d03f", fontSize: "22px", fontWeight: "bold" }} >Tickets</h5>
                           </Col>
                           <Col xs={{ order: 12 }}>
-                            <h5>Valor</h5>
+                            <h5 style={{ maringTop: "25px", color: "#f4d03f", fontSize: "22px", fontWeight: "bold" }} >Valor</h5>
                           </Col>
                           <Col>
-                            <h5>Cantidad</h5>
+                            <h5 style={{ maringTop: "25px", color: "#f4d03f", fontSize: "22px", fontWeight: "bold" }} >Cantidad</h5>
                           </Col>
                           <hr />
                         </Row>
@@ -124,15 +147,15 @@ const Detail = () => {
                       <Container>
                         <Row>
                           <Col xs>
-                            <h5 style={{ maringTop: "25px" }}>
+                            <h5 style={{ maringTop: "25px", color: "#f4d03f" }}>
                               {detalles.title}
                             </h5>
                           </Col>
                           <Col xs={{ order: 12 }}>
-                            <h5> $ {detalles.cost}.00</h5>
+                            <h5 style={{color: "#f4d03f"}}> $ {detalles.cost}.00</h5>
                           </Col>
                           <Col>
-                            <h5>{detalles.stock}</h5>
+                            <h5 style={{color: "#f4d03f"}} >{detalles.stock}</h5>
                           </Col>
                           <hr />
                         </Row>
@@ -143,9 +166,10 @@ const Detail = () => {
                     <ListGroupItem
                       style={{ height: "380px", marginBottom: "20px" }}
                     >
+                     
                       <MapContainer
                         style={{ height: "100%", width: "100wh" }}
-                        center={[35.67, 139.65]}
+                        center={[detalles.lat, detalles.long]}
                         zoom={10}
                         scrollWheelZoom={false}
                       >
@@ -153,14 +177,14 @@ const Detail = () => {
                           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
-                        <Marker position={[35.67, 139.65]}>
+                        <Marker icon={leafletIcon} position={[detalles.lat, detalles.long]}>
                           <Popup>
                             A pretty CSS3 popup. <br /> Easily customizable.
                           </Popup>
                         </Marker>
                       </MapContainer>
                     </ListGroupItem>
-                    <ListGroupItem>
+                    <ListGroupItem bg= "waring" variant= "warning" style={{color: "black"}} >
                       Evento solo para Mayores de 18 Años. Rayos Laser se
                       presentará por primera vez en Niceto el 12 de mayo.
                       Despidiendo su último albúm "El Reflejo" y adelantando
@@ -169,7 +193,7 @@ const Detail = () => {
                       por su discografía y contarán con invitados sorpresa.
                     </ListGroupItem>
 
-                    <ListGroupItem style={{ marginTop: "15px" }}>
+                    <ListGroupItem bg= "waring" variant= "warning" style={{ marginTop: "15px", color: "black" }}>
                       <p style={{ fontSize: "12px" }}>
                         Los comentarios y/o textos ingresados son de exclusiva
                         responsabilidad del Productor y/o Organizador del
@@ -186,6 +210,8 @@ const Detail = () => {
                     <Card.Link href="#"></Card.Link>
                   </Card.Body>
                 </Card>
+  ))}
+                
 
                 <Button
                   style={{
@@ -207,47 +233,56 @@ const Detail = () => {
               <Col xs={{ order: 5 }}>
                 {" "}
                 <div className={styles.firstContainer}>
-                  <Card style={{ width: "35rem", marginTop: "15px" }}>
-                    <Card.Img variant="top" src={detalles.imagen} />
-                    <Card.Body>
-                      <Card.Title
-                        style={{ fontSize: "19px", fontWeight: "Bolder" }}
-                      >
-                        {detalles.title}
-                      </Card.Title>
-                      <hr />
-                      <Card.Text
-                        style={{ fontSize: "17px", fontWeight: "Bolder" }}
-                      >
-                        {detalles.description}
-                      </Card.Text>
-                    </Card.Body>
-                    <ListGroup className="list-group-flush">
-                      <ListGroupItem
-                        style={{ fontSize: "18px", fontWeight: "Bold" }}
-                      >
-                        {" "}
-                        <FaCalendar /> {detalles.date}
-                      </ListGroupItem>
-                      <ListGroupItem
-                        style={{ fontSize: "16px", fontWeight: "Bold" }}
-                      >
-                        <GoLocation /> {detalles.place}
-                      </ListGroupItem>
-                      <ListGroupItem
-                        style={{ fontSize: "16px", fontWeight: "Bold" }}
-                      >
-                        <GoLocation /> {detalles.address}
-                      </ListGroupItem>
-                    </ListGroup>
-                    <Card.Img src={detalles.imagen} />
-                    <ListGroupItem></ListGroupItem>
-                    <LinkContainer to={`/reviews${detalles.id}`}>
-                      <Button style={{ width: "auto",  fontWeight: "bold"}} variant="warning">
-                        Deja tu Reseña 
-                      </Button>
-                    </LinkContainer>
-                  </Card>
+                {[
+   
+    'Dark',
+  ].map((variant) => (
+    <Card  bg={variant.toLowerCase()}
+    key={variant}
+    text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
+    
+    className="mb-2"
+    style={{ width: "35rem", marginTop: "15px" }}>
+    <Card.Img variant="top" src={detalles.imagen} />
+    <Card.Body>
+      <Card.Title
+        style={{ fontSize: "22px", fontWeight: "Bolder", color: "#f4d03f" }}
+      >
+        {detalles.title}
+      </Card.Title>
+      <hr />
+      <Card.Text
+        style={{ fontSize: "17px", fontWeight: "Bolder", color: "#f4d03f" }}
+      >
+        {detalles.description}
+      </Card.Text>
+    </Card.Body>
+    <ListGroup className="list-group-flush">
+      <ListGroupItem bg="dark" variant="warning"
+        style={{ fontSize: "18px", fontWeight: "Bold" }}
+      >
+        {" "}
+        <FaCalendar /> {detalles.date}
+      </ListGroupItem>
+      <ListGroupItem  bg="dark" variant="warning"
+        style={{ fontSize: "16px", fontWeight: "Bold" }}
+      >
+        <GoLocation /> {detalles.place}
+      </ListGroupItem>
+      <ListGroupItem  bg="dark" variant="warning" 
+        style={{ fontSize: "16px", fontWeight: "Bold" }}
+      >
+        <GoLocation /> {detalles.address}
+      </ListGroupItem>
+    </ListGroup>
+    <Card.Img src={detalles.imagen} />
+    <ListGroupItem  bg="dark" variant="warning" ></ListGroupItem>
+    
+     <Example/>
+   
+  </Card>
+  ))}
+               
                 </div>
               </Col>
             </Row>
@@ -263,4 +298,5 @@ const Detail = () => {
   );
 };
 
-export default Detail;
+export default Detail
+
