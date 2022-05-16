@@ -84,7 +84,7 @@ export default function Home() {
       </ToastContainer>
 
       <NavTop />
-      <div>
+      <div style={{marginTop: "15px"}}>
         <Carousely />
 
         <div className={styles.navegation}>
@@ -99,7 +99,7 @@ export default function Home() {
 
             <Container fluid style={{ width: "100wh" }}>
               <Row>
-                <Col style={{ width: "100wh" }} fluid>
+                <Col style={{ width: "100wh" }} >
                   {" "}
                   <div className={styles.cards}>
                     {Array.isArray(events) && events.length ? (

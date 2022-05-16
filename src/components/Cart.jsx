@@ -9,6 +9,8 @@ import * as Action from "../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Payment from "./Payment";
 import { useNavigate } from "react-router-dom";
+import styles from './Cart.module.css'
+import { Carouse2 } from "./Carousel";
 
 export default function Cart() {
   const navigate = useNavigate();
@@ -50,15 +52,23 @@ export default function Cart() {
 
   return (
     <div
+      className={styles.container}
       style={{
         width: "100%",
         height: "100vh",
-        background: "hsl(195, 4%, 82%)",
+        backgroundAttachment:" fixed",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        
+          
+        height: "100vh"  
+        
       }}
     >
       <NavTop />
       <section class="pt-5 pb-5">
-        <div style={{ background: "hsl(195, 4%, 82%)" }} class="container">
+        <div style={{ background: "rgba(244, 208, 63, 0.638)", boxShadow:"0 0 9px rgb(225, 174, 7), 0 0 12px rgb(119, 118, 119)- 0 0 3px rgb(17, 15, 15), 0 0 6px rgb(193, 193, 193)" }} class="container">
           <div class="row w-100">
             <div class="col-lg-12 col-md-12 col-12">
               <h3 class="display-5 mb-2 text-center">Shopping Cart</h3>
@@ -71,12 +81,12 @@ export default function Cart() {
                 class="table table-condensed table-responsive"
               >
                 <thead>
-                  <tr>
+                  <tr style={{color: "black"}}>
                     <th style={{ width: "55%" }}>Product</th>
                     <th style={{ width: "18%" }}>Price</th>
                     <th style={{ width: "12%" }}>Quantity</th>
                     <th style={{ width: "5%" }}></th>
-                  </tr>
+                  </tr >
                 </thead>
                 <tbody>
                   <CartItem />
@@ -91,10 +101,12 @@ export default function Cart() {
           <div class="row mt-4 d-flex align-items-center">
             <div class=" order-md-2 text-right">
               <Button
-                variant="primary"
+               variant="dark"
                 style={{
                   display: "block",
                   margin: "auto",
+                  width: "150px",
+                  marginBottom: "10px"
                 }}
                 disabled={items.length === 0 ? true : false}
                 onClick={handleClick}
@@ -104,30 +116,13 @@ export default function Cart() {
             </div>
           </div>
         </div>
+       
       </section>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {JSON.stringify({
-            email: user.email,
-            eventos: items.map((item) => {
-              return { id: item.id, cantidad: item.quantity };
-            }),
-            quantity: totalItems,
-            total: cartTotal,
-          })}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+     
+      <div>
+      <Carouse2/>
+      </div>
+     
     </div>
   );
 }

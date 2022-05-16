@@ -47,7 +47,7 @@ export default function Cardi({ id, title, imagen, description, date, place }) {
       src={imagen}
     />
     <Card.Body border = "warning" style={{ width: "425px", height: "50px"}}>
-      <Card.Title variant="warning" bg='warning'>{title}</Card.Title>
+      <Card.Title variant="warning" style={{fontWeight: "bold", color: "#ffcc5c"}}  >{title}</Card.Title>
     </Card.Body>
     <ListGroup
       style={{ background: "   #1c2833  " }}
@@ -57,7 +57,7 @@ export default function Cardi({ id, title, imagen, description, date, place }) {
       <ListGroupItem style={{ background: "     #171717   ", width: "auto" }}  variant="warning">
         <FaCalendar /> {date}
       </ListGroupItem>
-      <ListGroupItem variant="warning" style={{ background: "     #171717   ", height: "65px" }}>
+      <ListGroupItem variant="warning" style={{ background: "     #171717   ", height: "57px" }}>
         <FaSearchLocation /> {place}
       </ListGroupItem>
       <ListGroupItem variant="warning" style={{ background: "     #171717    ", height: "50px" }}>

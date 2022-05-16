@@ -60,7 +60,7 @@ export function Carouse2(){
 
 <Container fluid>
   <Row>
-    <Col> <Carousel variant="warning" style={{width: "85%", marginLeft: "6%"}}> 
+    <Col> <Carousel variant="warning" style={{width: "85%", marginLeft: "8%"}}> 
   <Carousel.Item style={{height: "250px" , width: "50%", marginLeft: "25%"}} >
     <img
       className="d-block w-100"
@@ -84,7 +84,7 @@ export function Carouse2(){
       className="d-block w-100"
       src={imagen}
       alt="Third slide"
-      style={{height: "250px"}}
+      style={{height: "250px", width: "400px"}}
     />
   
   </Carousel.Item>

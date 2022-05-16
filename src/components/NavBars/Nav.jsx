@@ -30,6 +30,7 @@ import Calendario from "../Calendario"
 import { Select, CaretIcon, ModalCloseButton } from 'react-responsive-select';
 import imagen from '../../images/1649175668524-null-cabecera_crowder.jpg'
 
+
 export default function NavTop() {
   const dispatch = useDispatch();
 
@@ -82,6 +83,9 @@ export default function NavTop() {
           <NavDropdown.Item href="/detailOrden">Ordenes</NavDropdown.Item>
         </NavDropdown>
       </Nav>
+      <Nav>
+              <ShoppingCart />
+            </Nav>
       <Nav>
         
         <Nav.Link style={{ color: "white" }} eventKey={2}>
