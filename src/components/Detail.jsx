@@ -1,13 +1,15 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getDetail, getTickets, detailClean } from "../redux/actions/actions.jsx";
+import {
+  getDetail,
+  getTickets,
+  detailClean,
+} from "../redux/actions/actions.jsx";
 import { useParams } from "react-router";
 import styles from "./Detail.module.css";
-import { useContext, useRef } from "react";
-
-import { Card, Button } from "react-bootstrap";
-
+import { useCart } from "react-use-cart";
+import { Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import Footer from "./Footer/Footer.js";
 
@@ -26,6 +28,7 @@ import {
   Container,
   Row,
   Col,
+  Card,
   Figure,
   Form,
   Placeholder,
@@ -34,9 +37,6 @@ import {
 } from "react-bootstrap";
 
 import NavTop from "./NavBars/Nav.jsx";
-import imagen from "../images/concert2.jpg";
-import ModalForm from "./ModalForm.jsx";
-import { Link } from "react-router-dom";
 
 // [lat, long] = detalles{lat, long}
 
@@ -45,48 +45,23 @@ const Detail = () => {
   const detalles = useSelector((state) => state.detailEventos);
   // const tickets = useSelector((state) => state.tickets);
 
-  console.log(detalles, "detalles"); // {data full} // necesito sacar id  de aca //
-
+  const { addItem } = useCart();
   const { id } = useParams();
-
-  const [comprar, setComprar] = useState("");
-
-  const [canti, setCanti] = useState(0);
 
   useEffect(() => {
     dispatch(getDetail(id));
-    dispatch(getTickets(id))
-    dispatch(detailClean());
+    dispatch(getTickets(id)).then((tickets) => {
+      console.log(tickets);
+    });
   }, []);
 
   const handleDirectToHomeFromDetail = () => {
     window.location.href = "/";
   };
 
-  const handleOnClick = (e) => {
-    e.preventDefault();
-    alert("Event added succesfully");
-
-    JSON.parse(localStorage.getItem("id-evento"));
-
-    localStorage.setItem("id-evento", JSON.stringify(id));
-
-    //----------------------------------------------------------//
-
-    let contador = JSON.parse(localStorage.getItem("carrito"));
-
-    localStorage.setItem("carrito visual", parseInt(contador.length));
-
-    var cantidad = parseInt(localStorage.getItem("carrito visual"));
-
-    setCanti(cantidad);
-  };
-
   const RatingChanged = (newRating) => {
     console.log(newRating);
   };
-
-  // ------------------------------------------------------------------------------------//
 
   return (
     <div className={styles.containerGral}>
@@ -188,17 +163,19 @@ const Detail = () => {
                 </Card>
 
                 <Button
-                  style={{
-                    width: "600px",
-                    marginTop: "20px",
-                    marginLeft: "7%",
-                    fontWeight: "bold",
-                  }}
                   variant="warning"
-                  size="lg"
                   value={detalles}
-                  onClick={(e) => handleOnClick(e)}
-                  className={styles.btn}
+                  onClick={() => {
+                    addItem(
+                      {
+                        id: detalles.id,
+                        name: detalles.title,
+                        price: Number(detalles.cost.replace(".", "")),
+                        image: detalles.imagen,
+                      },
+                      1
+                    );
+                  }}
                 >
                   Comprar
                 </Button>
@@ -243,8 +220,11 @@ const Detail = () => {
                     <Card.Img src={detalles.imagen} />
                     <ListGroupItem></ListGroupItem>
                     <LinkContainer to={`/reviews${detalles.id}`}>
-                      <Button style={{ width: "auto",  fontWeight: "bold"}} variant="warning">
-                        Deja tu Reseña 
+                      <Button
+                        style={{ width: "auto", fontWeight: "bold" }}
+                        variant="warning"
+                      >
+                        Deja tu Reseña
                       </Button>
                     </LinkContainer>
                   </Card>

@@ -26,10 +26,11 @@ const InitialState = {
 
   orderDetail: {},
 
-  allDateEvents: [],  //ME GUARDA UN ARRAY CON LOS FECHAS DE LOS EVENTOS EN STRING
+  orderCreated: {},
 
-  allOrders:[]
+  allDateEvents: [], //ME GUARDA UN ARRAY CON LOS FECHAS DE LOS EVENTOS EN STRING
 
+  allOrders: [],
 };
 
 function rootReducer(state = InitialState, action) {
@@ -50,7 +51,6 @@ function rootReducer(state = InitialState, action) {
         allDateEvents: action.payload,
       };
 
-
     case Action.FILTER_CALENDER:
       const eventitos = state.allEventState;
       const FilterEventitos =
@@ -62,17 +62,17 @@ function rootReducer(state = InitialState, action) {
         eventosDb: FilterEventitos,
       };
 
-    case Action.FILTER_CALENDER_NUEVO:        // para el calendario nuevo (filtra un rango de fechas)
+    case Action.FILTER_CALENDER_NUEVO: // para el calendario nuevo (filtra un rango de fechas)
       const eventitosNuevo = state.allEventState;
-      
-      let coleccion=[]
+
+      let coleccion = [];
 
       for (let i = 0; i < eventitosNuevo.length; i++) {
         /* console.log(eventitosNuevo,"soy eventito nuevo") */
         for (let j = 0; j < action.payload.length; j++) {
           /* console.log(action.payload, "soy el action payload") */
-          if (eventitosNuevo[i].date == action.payload[j]){
-            coleccion.push(eventitosNuevo[i])
+          if (eventitosNuevo[i].date == action.payload[j]) {
+            coleccion.push(eventitosNuevo[i]);
           }
         }
       }
@@ -176,36 +176,39 @@ function rootReducer(state = InitialState, action) {
     case Action.GET_TICKETS:
       return {
         ...state,
-        tickets: action.payload
-      }
+        tickets: action.payload,
+      };
     case Action.GET_ORDER_DETAIL:
       return {
         ...state,
-        orderDetail: action.payload
-      }
+        orderDetail: action.payload,
+      };
+
+    case Action.CREATE_ORDER:
+      return {
+        ...state,
+        orderDetail: action.payload,
+      };
 
     //PARA LAS METRICAS------------------------------------------------------------------
-    
-    case Action.GET_ALL_ORDERS: 
-    return {
-      ...state,
-      allOrders: action.payload
-    }  
+
+    case Action.GET_ALL_ORDERS:
+      return {
+        ...state,
+        allOrders: action.payload,
+      };
     //-----------------------------------------------------------------------------------
-
-
 
     case Action.ADD_REVIEWS:
       return {
         ...state,
       };
 
-      case Action.CLEAN_DETAIL:
-        return{
-            ...state,
-            detailEventos: []
-        }
-
+    case Action.CLEAN_DETAIL:
+      return {
+        ...state,
+        detailEventos: [],
+      };
 
     default:
       return {

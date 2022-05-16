@@ -30,18 +30,13 @@ export default function Cardi({ id, title, imagen, description, date, place }) {
         <Card
           className={style.cards}
           style={{
-            
-            width: "750px",
-            height: "500px",
+            width: "700px",
+            height: "600px",
             background: "#979a9a",
           }}
         >
-          <Card.Img
-            style={{ height: "220px" }}
-            variant="top"
-            src={imagen}
-          />
-          <Card.Body style={{ width: "400px", height: "auto"}}>
+          <Card.Img style={{ height: "220px" }} variant="top" src={imagen} />
+          <Card.Body style={{ width: "400px", height: "auto" }}>
             <Card.Title>{title}</Card.Title>
           </Card.Body>
           <ListGroup
@@ -55,7 +50,9 @@ export default function Cardi({ id, title, imagen, description, date, place }) {
             <ListGroupItem style={{ background: "  #979a9a  " }}>
               <FaSearchLocation /> {place}
             </ListGroupItem>
-            <ListGroupItem style={{ background: "  #979a9a  ", height: "50px" }}>
+            <ListGroupItem
+              style={{ background: "  #979a9a  ", height: "100px" }}
+            >
               <ReactStars
                 count={5}
                 onChange={RatingChanged}
@@ -66,17 +63,16 @@ export default function Cardi({ id, title, imagen, description, date, place }) {
             </ListGroupItem>
           </ListGroup>
           <Card.Body>
-          <LinkContainer to={`/${id}`}>
-            <Button
-              className={style.btn}
-              style={{ width: "800px", marginLeft: "20px" }}
-              variant="warning"
-            >
-              <FaTicketAlt /> Ver detalle del evento
-            </Button>
-          </LinkContainer>
+            <LinkContainer to={`/${id}`}>
+              <Button
+                className={style.btn}
+                style={{ width: "800px", marginLeft: "20px" }}
+                variant="warning"
+              >
+                <FaTicketAlt /> Ver detalle del evento
+              </Button>
+            </LinkContainer>
           </Card.Body>
-         
         </Card>
       </Row>
     </Container>
