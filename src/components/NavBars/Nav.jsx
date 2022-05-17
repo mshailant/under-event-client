@@ -35,24 +35,26 @@ export default function NavTop() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { user, isAuthenticated, loginWithRedirect, logout, loginWithPopup } =
+    useAuth0();
 
   const userLoged = useSelector((state) => state.userLoged);
 
   useEffect(() => {
     if (isAuthenticated) {
-      dispatch(Action.getUserByExternalId(user.sub));
-      if (!userLoged) {
-        dispatch(
-          Action.createUser({
-            externalId: user.sub,
-            name: user.given_name,
-            email: user.email,
-            picture: user.picture,
-            lastName: user.family_name,
-          })
-        );
-      }
+      dispatch(Action.getUserByExternalId(user.sub)).then((data) => {
+        if (data.payload === null) {
+          dispatch(
+            Action.createUser({
+              externalId: user.sub,
+              name: user.given_name,
+              email: user.email,
+              picture: user.picture,
+              lastName: user.family_name,
+            })
+          );
+        }
+      });
     }
   }, [isAuthenticated]);
 
@@ -113,10 +115,10 @@ export default function NavTop() {
               <Nav.Link style={{ color: "white" }} eventKey={2}>
                 {!isAuthenticated && (
                   <Button
-                    style={{ color: "white", height: "15px" }}
+                    style={{ color: "white" }}
                     className="m-2"
                     variant="outline-warning"
-                    onClick={() => loginWithRedirect()}
+                    onClick={() => loginWithPopup()}
                   >
                     Log In
                   </Button>
