@@ -2,14 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "react-use-cart";
 import { FaTrash } from "react-icons/fa";
-import { Image } from "react-bootstrap";
+import { Image, Form } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 export default function CartItem() {
-  const { addItem, removeItem, updateItemQuantity, items, totalItems } =
+  const { addItem, removeItem, updateItemQuantity, items, totalUniqueItems } =
     useCart();
-  console.log("totalItems ", totalItems);
-
+  console.log(items);
   return (
     <>
       {items.map((item) => {
@@ -42,11 +41,16 @@ export default function CartItem() {
                 type="number"
                 class="form-control form-control-lg text-center"
                 defaultValue={item.quantity}
+                min="1"
+                max={item.stock}
                 value={item.quantity}
                 onChangeCapture={(e) => {
                   updateItemQuantity(item.id, e.target.value);
                 }}
               />
+              <Form.Text style={{ color: "black" }} className="text">
+                {item.stock} available
+              </Form.Text>
             </td>
             <td class="actions" data-th="">
               <div style={{ verticalAlign: "center" }}>

@@ -45,11 +45,17 @@ import DetailCard from "./DetailReviewsCard.jsx";
 const Detail = () => {
   const dispatch = useDispatch();
   const detalles = useSelector((state) => state.detailEventos);
+<<<<<<< HEAD
   console.log(detalles)
   
  
  
  
+=======
+  const stock = useSelector((state) => state.tickets);
+  const detallesReviews = useSelector((state) => state.detailReviews);
+  console.log(detallesReviews, "holi");
+>>>>>>> dev
 
   const initialState = {
     name: "",
@@ -215,9 +221,7 @@ const Detail = () => {
                               </h5>
                             </Col>
                             <Col>
-                              <h5 style={{ color: "#f4d03f" }}>
-                                {detalles.stock}
-                              </h5>
+                              <h5 style={{ color: "#f4d03f" }}>{stock}</h5>
                             </Col>
                             <hr />
                           </Row>
@@ -295,6 +299,7 @@ const Detail = () => {
                         name: detalles.title,
                         price: Number(detalles.cost.replace(".", "")),
                         image: detalles.imagen,
+                        stock: stock,
                       },
                       1
                     );
