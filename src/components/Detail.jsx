@@ -236,11 +236,7 @@ const Detail = () => {
                             <Marker
                               icon={leafletIcon}
                               position={[detalles.lat, detalles.long]}
-                            >
-                              <Popup>
-                                A pretty CSS3 popup. <br /> Easily customizable.
-                              </Popup>
-                            </Marker>
+                            ></Marker>
                           </MapContainer>
                         </ListGroupItem>
                         <ListGroupItem
