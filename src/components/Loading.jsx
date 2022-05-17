@@ -1,5 +1,4 @@
 import React from "react";
-import loading from "../assets/loading.svg";
 import Spinner from "react-bootstrap/Spinner";
 
 const Loading = () => {

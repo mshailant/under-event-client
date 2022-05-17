@@ -9,14 +9,13 @@ import Footer from "./Footer/Footer";
 import Carousely, { Carouse2 } from "./Carousel";
 import Cardi from "./Cardi";
 import Buttom from "./Button/ScrollButton";
-import imag from '../images/Crea tu propio evento (1).jpg'
+import imag from "../images/Crea tu propio evento (1).jpg";
 import { SpinnerCircularFixed } from "spinners-react";
 import { Selector } from "./NavBars/Nav";
 import NavTop from "./NavBars/Nav";
-import CalendarioMejorado from "./CalendarioMejorado"
-import img from "../images/pexels-darya-sannikova-3824763.jpg"
-
-
+import CalendarioMejorado from "./CalendarioMejorado";
+import img from "../images/pexels-darya-sannikova-3824763.jpg";
+import imagen from "../images/pexels-wendy-wei-1918159.jpg";
 
 import {
   Container,
@@ -27,7 +26,7 @@ import {
   Alert,
   Card,
   ListGroupItem,
-  Button
+  Button,
 } from "react-bootstrap";
 
 export default function Home() {
@@ -63,8 +62,7 @@ export default function Home() {
   }
 
   return (
-    
-        <div className={styles.containerGeneral}>
+    <div className={styles.containerGeneral}>
       <ToastContainer className="p-3 py-5 mt-5" position={"bottom-end"}>
         <Toast
           bg={"danger"}
@@ -84,145 +82,124 @@ export default function Home() {
           <Toast.Body>{error?.message}</Toast.Body>
         </Toast>
       </ToastContainer>
+
+      <NavTop />
+      <div style={{marginTop: "15px"}}>
+        <Carousely />
+
+        <div className={styles.navegation}>
+          <Selector />
+          
+        </div>
       
-              <NavTop />
-              <div  >
+        <div className={styles.background}>
+          <div className={styles.infoContainer}></div>
+          <div className={styles.cardsContainer}>
+            <div className={styles.Date}></div>
 
-              <Carousely />
-
-
-
-
-
-
-              <div className={styles.navegation}>
-                <Selector />
-
-              </div>
-
-             
-             
-
-              
-
-              <div className={styles.background}>
-
-              
-             
-                <div className={styles.infoContainer}>
-                  
-                </div>
-                <div className={styles.cardsContainer}>
-                  
-                  <div className={styles.Date}>
-                    
+            <Container fluid style={{ width: "100wh" }}>
+              <Row>
+                <Col style={{ width: "100wh" }} >
+                  {" "}
+                  <div className={styles.cards}>
+                    {Array.isArray(events) && events.length ? (
+                      events.map((e) => {
+                        return (
+                          <div key={e.id}>
+                            <Cardi
+                              title={e.title}
+                              imagen={e.imagen}
+                              date={e.date}
+                              id={e.id}
+                              eventType={e.eventType}
+                              state={e.state}
+                              place={e.place}
+                              key={e.id}
+                              month={e.month}
+                            />
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <Alert
+                        style={{
+                          width: "850px",
+                          height: "350px",
+                          marginLeft: "75%",
+                        }}
+                        variant="light"
+                      >
+                        <Alert.Heading>
+                          Ups... Something went wrong
+                        </Alert.Heading>
+                        <p>
+                          Aww yeah, you successfully read this important alert
+                          message. This example text is going to run a bit
+                          longer so that you can see how spacing within an alert
+                          works with this kind of content.
+                        </p>
+                        <hr />
+                        <p className="mb-0">
+                          Whenever you need to, be sure to use margin utilities
+                          to keep things nice and tidy.
+                        </p>
+                      </Alert>
+                    )}
                   </div>
-                  
-              <Container>
-  <Row >
-   
-    <Col style={{width: "100wh"}} fluid>  <div className={styles.cards}>
-                          {Array.isArray(events) && events.length ? (
-                            events.map((e) => {
-                              return (
-                                <div key={e.id}>
-                                  
-                                  <Cardi
-                                    title={e.title}
-                                    imagen={e.imagen}
-                                    date={e.date}
-                                    id={e.id}
-                                    eventType={e.eventType}
-                                    state={e.state}
-                                    place={e.place}
-                                    key={e.id}
-                                    month={e.month}
-                                  />
-                                
-                                </div>
-                              );
-                            })
-                          ) : (
-                            <Alert
-                              style={{
-                                width: "850px",
-                                height: "350px",
-                                marginLeft: "75%",
-                              }}
-                              variant="light"
-                            >
-                              <Alert.Heading>
-                                Ups... Something went wrong
-                              </Alert.Heading>
-                              <p>
-                                Aww yeah, you successfully read this important
-                                alert message. This example text is going to run
-                                a bit longer so that you can see how spacing
-                                within an alert works with this kind of content.
-                              </p>
-                              <hr />
-                              <p className="mb-0">
-                                Whenever you need to, be sure to use margin
-                                utilities to keep things nice and tidy.
-                              </p>
-                            </Alert>
-                          )}
-                        </div></Col>
-    <Col style={{marginTop: "120px"}} md="auto"><div className={styles.calendarContainer} style={{marginLeft: "5%", maringTop: "5px"}}><CalendarioMejorado/></div>
-    <Card style={{ width: "17rem", marginTop: "15px" }}>
+                </Col>
+                <Col style={{ marginTop: "120px", float: "rigth" }} md="auto">
+                  <div
+                    className={styles.calendarContainer}
+                    style={{ marginLeft: "5%", maringTop: "5px" }}
+                  >
+                    <CalendarioMejorado />
+                  </div>
+                  <Card  style={{ width: "17rem", marginTop: "15px", background: "#1C2833 " }}>
                     <Card.Img variant="top" src={img} />
                     <Card.Body>
                       <Card.Title
                         style={{ fontSize: "19px", fontWeight: "Bolder" }}
                       >
-                        fsafasfsafsa
+                       
                       </Card.Title>
-                      <hr />
+                      
                       <Card.Text
                         style={{ fontSize: "17px", fontWeight: "Bolder" }}
                       >
-                       fsasaaaaaaaaaaaaaaaaa
+                        
                       </Card.Text>
                     </Card.Body>
-                  
-                    <Carouse2/>
-                    <ListGroupItem>
-                    
+
+                    <Card.Img src={imagen} />
+                    <ListGroupItem style={{ fontSize: "19px", fontWeight: "Bolder", background: "#1C2833 "  }}  >
                       <Card.Title
-                        style={{ fontSize: "19px", fontWeight: "Bolder" }}
+                        style={{ fontSize: "19px", fontWeight: "Bolder", background: "#1C2833 "  }}
                       >
-                        fsafasfsafsa
+                      
                       </Card.Title>
                       <hr />
                       <Card.Text
-                        style={{ fontSize: "17px", fontWeight: "Bolder" }}
+                        style={{ fontSize: "17px", fontWeight: "Bolder", background: "#1C2833 "  }}
                       >
-                       fsasaaaaaaaaaaaaaaaaa
+                        
                       </Card.Text>
                     </ListGroupItem>
-                  
-                  </Card></Col>
-   
-  </Row>
-</Container>
+                  </Card>
+                </Col>
+              </Row>
+            </Container>
 
-                  
-                      
-                    
-                
-
-                  {/* <div className={styles.contactUS}>
+            {/* <div className={styles.contactUS}>
             <ContactUs />
           </div> */}
-                </div>
+          </div>
 
-                <Buttom />
-              </div>
-              <div className={styles.footer}>
-                <Footer />
-              </div>
-         
+          <Buttom />
+        </div>
+        <div className={styles.footer}>
+          <Footer />
+        </div>
       </div>
-      </div>
+    </div>
   );
 }

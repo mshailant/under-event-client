@@ -13,34 +13,34 @@ export default function Carousely() {
   <Row>
     <Col>  <div>
 
-      <Carousel  style={{height: "400px",   width: "100%",   }} >
-        <Carousel.Item style={{marginTop: 0, height: "850px",   width: "100%",   }}>
+      <Carousel  style={{height: "350px",   width: "auto",  }} >
+        <Carousel.Item style={{marginTop: 0, height: "420px",   width: "75%", marginLeft: "12%"   }}>
           <img 
             
             className="d-block w-100"
             src={image}
             alt="First slide"
-            style={{height: "50%", width: "auto", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundAttachment: "fixed"}}
+            style={{height: "85%", width: "auto", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundAttachment: "fixed"}}
           />
          
         </Carousel.Item>
-        <Carousel.Item style={{marginTop: 0, height: "850px",   width: "100%",   }}>
+        <Carousel.Item style={{marginTop: 0, height: "420px",   width: "75%", marginLeft: "12%"   }}>
           <img 
             className="d-block w-100"
             src={imagen}
             alt="Second slide"
-            style={{height: "50%", width: "auto", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundAttachment: "fixed"}}
+            style={{height: "85%", width: "400px"}}
           />
         
 
          
         </Carousel.Item>
-        <Carousel.Item style={{marginTop: 0, height: "850px",   width: "100%",    }}>
+        <Carousel.Item style={{marginTop: 0, height: "420px",   width: "75%", marginLeft: "12%"  }}>
           <img 
             className="d-block w-100"
             src={imagenes}
             alt="Third slide"
-            style={{height: "50%", width: "auto", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundAttachment: "fixed"}}
+            style={{height: "85%", width: "400px"}}
             
           />
 
@@ -58,17 +58,19 @@ export function Carouse2(){
   return (
     <div>
 
- <Carousel variant="warning" style={{width: "auto"}}> 
-  <Carousel.Item style={{height: "250px" , width: "100wh",  marginRight: "25px"}} >
+<Container fluid>
+  <Row>
+    <Col> <Carousel variant="warning" style={{width: "85%", marginLeft: "8%"}}> 
+  <Carousel.Item style={{height: "250px" , width: "50%", marginLeft: "25%"}} >
     <img
       className="d-block w-100"
       src={imagenes}
       alt="First slide"
-      style={{height: "250px", width: "400px"  }}
+      style={{height: "250px", width: "400px"}}
     />
    
   </Carousel.Item>
-  <Carousel.Item style={{height: "250px" , width: "100wh",}} >
+  <Carousel.Item style={{height: "250px" , width: "50%", marginLeft: "25%"}} >
     <img
       className="d-block w-100"
       src={image}
@@ -77,16 +79,19 @@ export function Carouse2(){
     />
    
   </Carousel.Item>
-  <Carousel.Item style={{height: "250px" , width: "100wh", }} >
+  <Carousel.Item style={{height: "250px" , width: "50%", marginLeft: "25%"}} >
     <img
       className="d-block w-100"
       src={imagen}
       alt="Third slide"
-      style={{height: "250px"}}
+      style={{height: "250px", width: "400px"}}
     />
   
   </Carousel.Item>
-</Carousel>
+</Carousel></Col>
+  </Row>
+</Container>
+        
     </div>
   )
 }

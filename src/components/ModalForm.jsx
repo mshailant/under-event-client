@@ -95,13 +95,12 @@ export function ModalFormulario() {
   
   return (
     <div className={styles.container1}>
-      <NavTop />
-      <Carouse2/>
+     
       <Container >
         <Row>
           <Col xs style={{marginRight: "85px"}}>
               
-          <Card.Img style={{marginTop: "30px"}} src={img} />
+         
             <div className={styles.container1}>
                 
               <div style={{ marginTop: "85px" }}>
@@ -185,52 +184,10 @@ export function ModalFormulario() {
               </div>
             </div>
           </Col>
-          <Col xs={{ order: 12 }}>
-          <div className={styles.firstContainer}>
-                  <Card style={{ width: "35rem", marginTop: "15px" }}>
-                    <Card.Img variant="top" src={detalles.imagen} />
-                    <Card.Body>
-                      <Card.Title
-                        style={{ fontSize: "19px", fontWeight: "Bolder" }}
-                      >
-                        {detalles.title}
-                      </Card.Title>
-                      <hr />
-                      <Card.Text
-                        style={{ fontSize: "17px", fontWeight: "Bolder" }}
-                      >
-                        {detalles.description}
-                      </Card.Text>
-                    </Card.Body>
-                    <ListGroup className="list-group-flush">
-                      <ListGroupItem
-                        style={{ fontSize: "18px", fontWeight: "Bold" }}
-                      >
-                        {" "}
-                        <FaCalendar /> {detalles.date}
-                      </ListGroupItem>
-                      <ListGroupItem
-                        style={{ fontSize: "16px", fontWeight: "Bold" }}
-                      >
-                        <GoLocation /> {detalles.place}
-                      </ListGroupItem>
-                      <ListGroupItem
-                        style={{ fontSize: "16px", fontWeight: "Bold" }}
-                      >
-                        <GoLocation /> {detalles.address}
-                      </ListGroupItem>
-                    </ListGroup>
-                    <Card.Img src={detalles.imagen} />
-                    <ListGroupItem></ListGroupItem>
-                   
-                  </Card>
-                </div>
-          </Col>
+          
         </Row>
       </Container>
-      <div className={styles.footer}>
-        <Footer />
-      </div>
+      
     </div>
   );
 }

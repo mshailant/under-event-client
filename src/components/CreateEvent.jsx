@@ -23,29 +23,29 @@ import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import NavTop from "./NavBars/Nav";
 import imagen from "../images/pexels-darya-sannikova-3824763.jpg";
 
-
 export function CreateEvent() {
   const stateInitialForms = {
-        title: "",
-        imagen: "",
-        city: "",
-        place: "",
-        description: "",
-        genero: "",
-        date: "",
-        time: "",
-        stock: "",
-        cost: "",
-        month: "",
-        address: "",
-        location: "",
-        
+    title: "",
+    imagen: "",
+    city: "",
+    place: "",
+    description: "",
+    genero: "",
+    date: "",
+    time: "",
+    stock: "",
+    cost: "",
+    month: "",
+    address: "",
+    location: "",
   };
 
   const { user, isLoading } = useAuth0();
+
   const [input, setInput] = useState(stateInitialForms);
   const [validated, setValidated] = useState(false);
   const dispatch = useDispatch();
+  const userLoged = useSelector((state) => state.userLoged);
   const genres = useSelector((state) => state.allGeneros);
   const city = useSelector((state) => state.allCities);
 
@@ -83,7 +83,7 @@ export function CreateEvent() {
       event.stopPropagation();
     }
 
-    dispatch(Action.createEvent(input));
+    dispatch(Action.createEvent({ ...input, userEmail: userLoged.email }));
     alert("New event added successfully!");
     setInput({
       title: "",
@@ -99,8 +99,6 @@ export function CreateEvent() {
       month: "",
       address: "",
       location: "",
-     
-      
     });
 
     setValidated(true);
@@ -117,24 +115,25 @@ export function CreateEvent() {
                     <div style={{ marginTop: "85px" }}>
                       <Form  validated={validated} onSubmit={handleSubmit}>
                         <div>
-                          <h5>INGRESA LOS DATOS DE TU EVENTO</h5>
+                          <h5   style={{ color:  " #f7dc6f " , borderColor: "black", fontWeight:"bold"}}>INGRESA LOS DATOS DE TU EVENTO</h5>
                         </div>
 
                         <Form.Group controlId="validationCustom01">
-                          <Form.Label>Nombre del evento</Form.Label>
+                          <Form.Label  style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}}>Nombre del evento</Form.Label>
                           <Form.Control
                           required
                             type="text"
                             name="title"
                             value={input.title}
                             onChange={(e) => handleInputChange(e)}
+                            style={{ background:  " #f7dc6f " , borderColor: "black"}}
                           />
                         </Form.Group>
 
                         <Form.Group controlId="validationCustom02">
 
-                          <Form.Label>Genero Musical</Form.Label>
-                          <Form.Select required onChange={(e) => handleSelect(e)}>
+                          <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >Genero Musical</Form.Label>
+                          <Form.Select  style={{ background:  " #f7dc6f " , borderColor: "black"}} required onChange={(e) => handleSelect(e)}>
                           <option>Seleccion tu Genero</option>
                             {genres?.map((dl) => (
                               <option value={dl}>{dl}</option>
@@ -146,7 +145,7 @@ export function CreateEvent() {
                         </Form.Group>
 
                         <div>
-                          <Form.Text muted>
+                          <Form.Text style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"8px"}}  muted>
                             Seleccion el tipo de genero con el que quieras
                             mostrarte
                           </Form.Text>
@@ -154,7 +153,7 @@ export function CreateEvent() {
 
                         <>
                           <Form.Group controlId="validationCustom03">
-                            <Form.Label>Escribe detalle del evento</Form.Label>
+                            <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >Escribe detalle del evento</Form.Label>
                             <InputGroup>
                              
                               <FormControl
@@ -164,6 +163,7 @@ export function CreateEvent() {
                                 value={input.description}
                                 onChange={(e) => handleInputChange(e)}
                                 required
+                                style={{ background:  " #f7dc6f " , borderColor: "black"}}
                               />
                             </InputGroup>
                             <Form.Control.Feedback>
@@ -175,7 +175,7 @@ export function CreateEvent() {
                             <Container>
                               <Row>
                                 <Form.Group controlId="validationCustom04">
-                                  <Form.Label>
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}}  >
                                     Fecha de inicio de evento
                                   </Form.Label>
                                   <Form.Control
@@ -184,6 +184,7 @@ export function CreateEvent() {
                                     type="date"
                                     onChange={(e) => handleInputChange(e)}
                                     required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
                                   />
                                   <Form.Control.Feedback>
                                     Looks good!
@@ -195,7 +196,7 @@ export function CreateEvent() {
                             <Container>
                               <Row>
                                 <Form.Group controlId="validationCustom05">
-                                  <Form.Label>
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
                                     Fecha de inicio de evento
                                   </Form.Label>
                                   <Form.Control
@@ -204,6 +205,7 @@ export function CreateEvent() {
                                     type="time"
                                     onChange={(e) => handleInputChange(e)}
                                     required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
                                   />
                                   <Form.Control.Feedback>
                                     Looks good!
@@ -211,7 +213,7 @@ export function CreateEvent() {
                                 </Form.Group>
 
                                 <Form.Group controlId="validationCustom06">
-                                  <Form.Label>
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
                                     Mes de Evento
                                   </Form.Label>
                                   <Form.Control
@@ -220,6 +222,7 @@ export function CreateEvent() {
                                     type="text"
                                     onChange={(e) => handleInputChange(e)}
                                     required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
                                   />
                                   <Form.Control.Feedback>
                                     Looks good!
@@ -240,9 +243,9 @@ export function CreateEvent() {
                                 
                                 controlId="validationCustom07"
                               >
-                                <Form.Label>Provincia</Form.Label>
+                                <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >Provincia</Form.Label>
                               
-                                <Form.Select required onChange={(e) => handleCitySelect(e)}>
+                                <Form.Select   style={{ background:  " #f7dc6f " , borderColor: "black"}} required onChange={(e) => handleCitySelect(e)}>
                                 <option>Selecciona tu Provincia</option>
                                   {city?.map((dl) => (
                                     <option value={dl}>{dl}</option>
@@ -255,7 +258,7 @@ export function CreateEvent() {
                               </Form.Group>
 
                               <Form.Group controlId="validationCustom08">
-                                  <Form.Label>
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
                                     Localidad
                                   </Form.Label>
                                   <Form.Control
@@ -264,6 +267,7 @@ export function CreateEvent() {
                                     type="text"
                                     onChange={(e) => handleInputChange(e)}
                                     required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
                                   />
                                   <Form.Control.Feedback>
                                     Looks good!
@@ -272,7 +276,7 @@ export function CreateEvent() {
                                 
                               <>
                               <Form.Group controlId="validationCustom09">
-                                  <Form.Label>
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
                                     Direccion
                                   </Form.Label>
                                   <Form.Control
@@ -281,6 +285,7 @@ export function CreateEvent() {
                                     type="text"
                                     onChange={(e) => handleInputChange(e)}
                                     required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
                                   />
                                   <Form.Control.Feedback>
                                     Looks good!
@@ -288,7 +293,7 @@ export function CreateEvent() {
                                 </Form.Group>
 
                                 <Form.Group controlId="validationCustom10">
-                                  <Form.Label>
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
                                     Lugar del evento
                                   </Form.Label>
                                   <Form.Control
@@ -297,6 +302,7 @@ export function CreateEvent() {
                                     type="text"
                                     onChange={(e) => handleInputChange(e)}
                                     required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
                                   />
                                   <Form.Control.Feedback>
                                     Looks good!
@@ -304,7 +310,7 @@ export function CreateEvent() {
                                 </Form.Group>
 
                                 <Form.Group controlId="validationCustom11">
-                                  <Form.Label>
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
                                     Imagen
                                   </Form.Label>
                                   <Form.Control
@@ -313,6 +319,7 @@ export function CreateEvent() {
                                     type="text"
                                     onChange={(e) => handleInputChange(e)}
                                     required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
                                   />
                                   <Form.Control.Feedback>
                                     Looks good!
@@ -320,7 +327,7 @@ export function CreateEvent() {
                                 </Form.Group>
 
                                 <Form.Group controlId="validationCustom12">
-                                  <Form.Label>
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
                                     Cost
                                   </Form.Label>
                                   <Form.Control
@@ -329,6 +336,7 @@ export function CreateEvent() {
                                     type="text"
                                     onChange={(e) => handleInputChange(e)}
                                     required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
                                   />
                                   <Form.Control.Feedback>
                                     Looks good!
@@ -336,7 +344,7 @@ export function CreateEvent() {
                                 </Form.Group>
 
                                 <Form.Group controlId="validationCustom13">
-                                  <Form.Label>
+                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
                                     Stock
                                   </Form.Label>
                                   <Form.Control
@@ -345,6 +353,7 @@ export function CreateEvent() {
                                     type="text"
                                     onChange={(e) => handleInputChange(e)}
                                     required
+                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
                                   />
                                   <Form.Control.Feedback>
                                     Looks good!
@@ -356,7 +365,7 @@ export function CreateEvent() {
                               <div className="d-grid gap-2">
                                 <Button
                                   style={{ fontWeight: "bolder", marginTop: "25px" }}
-                                  variant="warning"
+                                  variant="outline-warning"
                                   size="lg"
                                   type="submit"
                                 >

@@ -183,6 +183,7 @@ function Carrito() {
   // - - - - - - - - - - - - - - - - - - - - - - - - -
 // Funciones relacionado a Stripe
 
+/// MIRA ACA, SI LO VES, ESTAS EN EL CORRECTO ////
   return (
     <Container className="div" style={{ backGround: "black" }} fluid>
       <Row>
