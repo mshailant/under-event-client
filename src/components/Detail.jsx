@@ -4,39 +4,28 @@ import { useEffect, useState } from "react";
 import {
   getDetail,
   getTickets,
-  detailClean,
   addReviews,
   getReviews,
 } from "../redux/actions/actions.jsx";
 import { useParams } from "react-router";
 import styles from "./Detail.module.css";
-import { useContext, useRef } from "react";
 
 import { Card, Button } from "react-bootstrap";
 import { useCart } from "react-use-cart";
-import { LinkContainer } from "react-router-bootstrap";
+
 import Footer from "./Footer/Footer.js";
 
 import { FaCalendar, FaSearchLocation, FaTicketAlt } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
-import ReactStars from "react-stars";
 
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-import Example from "./Modal";
-import { ImLocation } from "react-icons/im";
-
 import {
-  Nav,
-  Navbar,
-  NavDropdown,
   Container,
   Row,
   Col,
-  Figure,
   Form,
-  Placeholder,
   ListGroup,
   ListGroupItem,
   Modal,
@@ -49,14 +38,18 @@ import ModalForm from "./ModalForm.jsx";
 import { Link } from "react-router-dom";
 import L from "leaflet";
 import { RiStarSFill } from "react-icons/ri";
+import DetailCard from "./DetailReviewsCard.jsx";
 
 // [lat, long] = detalles{lat, long}
 
 const Detail = () => {
   const dispatch = useDispatch();
   const detalles = useSelector((state) => state.detailEventos);
-  const detallesReviews = useSelector((state) => state.detailReviews);
-  console.log(detallesReviews, "holi");
+  console.log(detalles)
+  
+ 
+ 
+ 
 
   const initialState = {
     name: "",
@@ -76,12 +69,17 @@ const Detail = () => {
 
   useEffect(() => {
     dispatch(getDetail(id));
-
+    
     dispatch(getTickets(id)).then((tickets) => {
       console.log(tickets);
     });
-    //dispatch(getReviews(id))
+    
+    
+
+    
   }, []);
+
+
 
   const handleDirectToHomeFromDetail = () => {
     window.location.href = "/";
@@ -131,6 +129,7 @@ const Detail = () => {
   // ------------------------------------------------------------------------------------//
 
   return (
+   <div> 
     <div className={styles.containerGral}>
       {detalles ? (
         <div className={styles.container}>
@@ -266,16 +265,9 @@ const Detail = () => {
                         variant="warning"
                         style={{ marginTop: "15px", color: "black" }}
                       >
-                        <p style={{ fontSize: "12px" }}>
-                          Los comentarios y/o textos ingresados son de exclusiva
-                          responsabilidad del Productor y/o Organizador del
-                          Evento. Passline no se hace responsable por
-                          declaraciones emitidas por estos en lo relativo a los
-                          Eventos. El Productor/Organizador es el único y
-                          exclusivo responsable de la producción y organización
-                          del Evento, en forma oportuna y en conformidad a la
-                          ley.
-                        </p>
+
+{detalles.Reviews.map(e => e.description)}
+             
                       </ListGroupItem>
                     </ListGroup>
                     <Card.Body>
@@ -402,7 +394,7 @@ const Detail = () => {
                                 autoFocus
                                 name="name"
                                 value={input.name}
-                                onChange={(e) => handleInputChange(e)}
+                                onChange={handleInputChange}
                               />
                             </Form.Group>
                             <Form.Group
@@ -415,14 +407,14 @@ const Detail = () => {
                                 value={input.description}
                                 as="textarea"
                                 rows={3}
-                                onChange={(e) => handleInputChange(e)}
+                                onChange={handleInputChange}
                               />
                             </Form.Group>
 
                             <Form.Select
                               name="rating"
                               value={input.rating}
-                              onChange={(e) => handleSelect(e)}
+                              onChange={handleSelect}
                               aria-label="Default select example"
                             >
                               <option>Open this select menu</option>
@@ -445,12 +437,6 @@ const Detail = () => {
                           <Button variant="secondary" onClick={handleClose}>
                             Close
                           </Button>
-                          <Button
-                            value={detalles.id}
-                            onClick={(e) => handleOnClick(e)}
-                          >
-                            Guardar Id
-                          </Button>
                         </Modal.Footer>
                       </Modal>
                     </Card>
@@ -466,6 +452,7 @@ const Detail = () => {
       ) : (
         <h1></h1>
       )}
+    </div>
     </div>
   );
 };
