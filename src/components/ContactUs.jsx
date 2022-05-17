@@ -5,7 +5,6 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import emailjs from 'emailjs-com';
 import styles from "./ContactUs.module.css"
 import Swal from "sweetalert2"
-import { LinkContainer } from 'react-router-bootstrap';
 import BackButton from './Button/BackButton';
 import Footer from "./Footer/Footer";
 
@@ -28,6 +27,7 @@ export default class ContactUs extends Component {
                 timer: 1500
               })
         }
+
         return (
          
                 <div className={styles.contactUs} >
