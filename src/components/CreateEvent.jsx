@@ -4,11 +4,21 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createEvent } from "../redux/actions/actions";
 import styles from "./CreateEvent.module.css";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMapEvents,
+} from "react-leaflet";
 import Loading from "./Loading";
+
+import L from "leaflet";
 import {
   Button,
   FormControl,
   Col,
+  ListGroupItem,
   Row,
   Container,
   Form,
@@ -19,7 +29,6 @@ import {
 import Footer from "./Footer/Footer";
 import * as Action from "../redux/actions/actions";
 
-import { Formik } from "formik";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import NavTop from "./NavBars/Nav";
 import imagen from "../images/pexels-darya-sannikova-3824763.jpg";
@@ -41,9 +50,8 @@ export function CreateEvent() {
     location: "",
   };
   const navigate = useNavigate();
-
+  const [pos, setPos] = useState(null);
   const { user, isLoading } = useAuth0();
-
   const [input, setInput] = useState(stateInitialForms);
   const [validated, setValidated] = useState(false);
   const dispatch = useDispatch();
@@ -74,15 +82,18 @@ export function CreateEvent() {
     dispatch(Action.getAllCities());
   }, [dispatch]);
 
+  // const leafletIcon = L.icon({
+  //   iconUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+  //   iconSize: [20, 30],
+  // });
+
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
-      console.log("formulario no valido");
       event.preventDefault();
       event.stopPropagation();
     } else {
       dispatch(createEvent(eventData, userLoged.externalId)).then((res) => {
-        console.log("asdasdasd", res);
         navigate(`/${res.payload.newEvent.id}`);
       });
       event.preventDefault();
@@ -97,7 +108,16 @@ export function CreateEvent() {
       ...eventData,
       [event.target.name]: event.target.value,
     });
-    console.log(eventData);
+    console.log("data", eventData);
+  };
+
+  const handleChangePoint = (pos) => {
+    setEventData({
+      ...eventData,
+      lat: pos.lat,
+      long: pos.lng,
+    });
+    console.log("data", eventData);
   };
 
   const date = new Date();
@@ -200,6 +220,98 @@ export function CreateEvent() {
                     </Form.Control.Feedback>
                   </Form.Group>
 
+                  <Row style={{ alignItems: "center" }}>
+                    <Form.Group controlId="validationCustom04">
+                      <Form.Label
+                        style={{
+                          color: " #f7dc6f ",
+                          fontWeight: "bold",
+                          marginTop: "18px",
+                        }}
+                      >
+                        Seleccione ubicacion del evento
+                      </Form.Label>
+                      <ListGroupItem
+                        style={{
+                          height: "380px",
+                          width: "100%",
+                          marginLeft: "auto",
+                          marginRight: "auto",
+                          marginBottom: "20px",
+                          borderColor: "black",
+                          borderWidth: "4px",
+                          background: " #f7dc6f ",
+                        }}
+                      >
+                        <MapContainer
+                          style={{ height: "100%", width: "100wh" }}
+                          center={[-38.169114135560854, -65.75208708742923]}
+                          zoom={5}
+                          scrollWheelZoom={false}
+                        >
+                          <TileLayer
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                          />
+                          <LocationMarker
+                            handleChange={handleChangePoint}
+                            setPos={setPos}
+                          />
+                        </MapContainer>
+                      </ListGroupItem>
+                    </Form.Group>
+                  </Row>
+                  <Row className="mb-3">
+                    <Form.Group as={Col} controlId="validationCustom01">
+                      <Form.Label
+                        style={{
+                          color: " #f7dc6f ",
+                          fontWeight: "bold",
+                          marginTop: "18px",
+                        }}
+                      >
+                        Latitude
+                      </Form.Label>
+                      <Form.Control
+                        type="number"
+                        name="lat"
+                        required
+                        value={pos?.lat}
+                        placeholder="Latitude"
+                        defaultValue={""}
+                        onChangeCapture={handleChange}
+                        disabled={true}
+                        style={{
+                          background: " #f7dc6f ",
+                          borderColor: "black",
+                        }}
+                      />
+                    </Form.Group>
+                    <Form.Group as={Col} controlId="validationCustom02">
+                      <Form.Label
+                        style={{
+                          color: " #f7dc6f ",
+                          fontWeight: "bold",
+                          marginTop: "18px",
+                        }}
+                      >
+                        Longitude
+                      </Form.Label>
+                      <Form.Control
+                        name="long"
+                        required
+                        type="number"
+                        placeholder="Longitude"
+                        value={pos?.lng}
+                        onChange={handleChange}
+                        disabled={true}
+                        style={{
+                          background: " #f7dc6f ",
+                          borderColor: "black",
+                        }}
+                      />
+                    </Form.Group>
+                  </Row>
                   <Row>
                     <Form.Group controlId="validationCustom04">
                       <Form.Label
@@ -510,6 +622,30 @@ export function CreateEvent() {
         <Footer />
       </div>
     </div>
+  );
+}
+
+function LocationMarker({ setPos, handleChange }) {
+  const [position, setPosition] = useState(null);
+
+  const map = useMapEvents({
+    click(e) {
+      setPosition(e.latlng);
+      handleChange(e.latlng);
+      setPos(e.latlng);
+    },
+  });
+
+  return position === null ? null : (
+    <Marker
+      icon={L.icon({
+        iconUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+        iconSize: [25, 35],
+      })}
+      position={position}
+    >
+      <Popup>You are here</Popup>
+    </Marker>
   );
 }
 
