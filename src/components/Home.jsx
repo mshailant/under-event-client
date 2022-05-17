@@ -55,7 +55,7 @@ export default function Home() {
               marginTop: "250px",
             }}
           />
-          ;
+          
         </div>
       </div>
     );

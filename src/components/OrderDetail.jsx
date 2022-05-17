@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getAllOrders } from "../redux/actions/actions";
+import { getAllOrders, getAllEvent } from "../redux/actions/actions";
 import { useEffect } from "react";
 import { Container, Row, Col, Card, ListGroup, Alert } from "react-bootstrap";
 import imagen from "../images/Crea tu propio evento (1).jpg";
@@ -17,33 +17,111 @@ import { User } from "@auth0/auth0-react";
 
 export default function OrderDetail() {
   const allOrders = useSelector((state) => state.allOrders);
-  console.log(allOrders, "orders");
+  console.log(allOrders, 'ordenes')
+  const events = useSelector((state) => state.eventosBack)
+ console.log(events)
+
   const dispatch = useDispatch();
   const [idTicket, setIdTicket] = useState();
   useEffect(() => {
     dispatch(getAllOrders());
+    dispatch(getAllEvent())
   }, [dispatch]);
 
  
  try {
-  const obj = allOrders?.orders?.map((e) => e.User);
+  var obj = allOrders.orders?.map((e) => e.User);
+  console.log(obj, "soy el obj") // un arreglo de un objeto de info de usuario // 
+  // var names = allOrders.orderes?.map((e) => e.name)
+  // var lastName = allOrders.orderes?.map((e) => e.lastName)
+
+  var setNames = [...new Set(allOrders.orders.map(e => e.User.name))]
+ 
+   var setLastNames =  [...new Set(allOrders.orders.map(e => e.User.lastName))]
+  var setObj = [...new Set(obj.map(e => e.email))]
+  var setPrice = [...new Set(allOrders.orders.map(e => e.totalPrice))]
   
-  console.log(arregloGeneral, "obj1");
+ 
+  
+  
 
   const ticketsito = allOrders?.orders?.map((e) => e.Tickets);
   
-  console.log(ticketsito, "tickets")
+ 
+  var data = []
+  
    let ids; 
   for (let j = 0; j < ticketsito.length; j++) {
-    ids = ticketsito[j].map((e) => e);
+    ids = ticketsito[j]?.map((e) => e.EventId);
+    
+    data.push(ids)
 
+   
+    console.log(data, "EventIdssssssss")
+  }
     
 
-    console.log(ids, "resultado");
-    var arregloGeneral= [...obj, ...ids]
-  }
+//tengo los ids de los eventos pero ahora quiero el nombre
+let nombres = []
+let fechas = []
 
-  console.log(arregloGeneral, "generalTodo")
+
+for (let n = 0; n < events.length; n++) {
+    for (let p = 0; p < data.length; p++) {
+        if (events[n].id === data[p]) {
+            nombres.push(events[n].title)
+            fechas.push(events[n].date)
+            
+        
+            
+        }
+    }
+}
+
+
+var nombresNuevos = [nombres.join(' ,').split(' ,')]
+var fechasHoy = [fechas.join(' ,').split(' ,')]
+console.log(nombresNuevos, "nombres nuevos")
+ var unicosElementos = []
+        var almacenadorDeVecesRepetidas = []
+
+        var unicosElementosFechas = []
+        var  almacenadorDeVecesRepetidasFechas = []
+
+
+        
+
+        let contador = 1
+
+        for (let i = 0; i < nombresNuevos.length; i++) {
+            if (nombresNuevos[i + 1] === nombresNuevos[i]) {
+                //console.log(coleccionConSort[i], "soy la vez")
+                contador++
+            } else {
+                unicosElementos.push(nombresNuevos[i])
+                almacenadorDeVecesRepetidas.push(contador)
+                contador = 1
+                console.log(unicosElementos, "nombres")
+            }
+        }
+
+        
+        let contadores = 1
+
+        for (let i = 0; i <  fechasHoy.length; i++) {
+            if ( fechasHoy[i + 1] ===  fechasHoy[i]) {
+                // console.log(coleccionConSort[i], "soy la vez")
+                contadores++
+            } else {
+                unicosElementosFechas.push(fechasHoy[i])
+                almacenadorDeVecesRepetidasFechas.push(contadores)
+                contadores = 1
+            }
+        }
+        console.log(unicosElementosFechas, "soy unicos elementos fechas")
+        console.log(almacenadorDeVecesRepetidas, "soy almacenador de veces repetidas") 
+
+  
  } catch (error) {
    console.log(error)
    
@@ -81,20 +159,24 @@ export default function OrderDetail() {
                       <tr>
                         <th scope="col"> </th>
                         <th scope="col"></th>
-                        <th scope="col">Ticket ID </th>
-                        <th scope="col">Id de Usuario </th>
+                        <th scope="col">Email </th>
+                        
+                        
                         <th scope="col">Fecha </th>
-                        <th scope="col">Cantidad </th>
                         <th scope="col">Precio Total </th>
-                        <th scope="col">Estado </th>
+                        <th scope="col">Cantidad </th>
                         <th scope="col">Nombre </th>
                         <th scope="col">Apellido </th>
+                        <th scope="col">Estado </th>
+                        <th scope="col">Ticket ID </th>
+                        <th scope="col">Id de evento </th>
+                        <th scope="col">Id de evento </th>
                      
                        
                         
                       </tr>
                     </thead>
-                    {arregloGeneral ? arregloGeneral?.map( e =>  (
+                    { allOrders ? (
                     <tbody>
                       <tr>
                         <th scope="row"></th>
@@ -114,23 +196,25 @@ export default function OrderDetail() {
                         <td>{allOrders.orders?.map((e) => e.status + " ")}</td>
                         <td> {allOrders.orders[1]?.User?.name}</td>
                         <td> {allOrders.orders[1]?.User?.lastName}</td> */}
+
+                      
                         
-                        <td> {e.externalId}</td>  
-                        <td> {e.name}</td>
-                        <td> {e.EventId}</td>
-                        <td> {e.lastName}</td>
-                        <td>{e.email} </td>
+                         <td> {setObj}</td> 
+                         <td>{unicosElementosFechas} </td> 
+                         
+                         <td>  {setPrice}.00</td> 
+                         <td> {allOrders.orders?.map(e => e.quantity)}</td>
+                         <td> {setNames}</td>  
+                         <td> {setLastNames}</td> 
+                         <td></td> 
+                         <td> {unicosElementos}</td> 
+                         <td> {almacenadorDeVecesRepetidas}</td>
                        
-                        <td> {e.totalPrice}</td>
                       </tr>
                     </tbody>
-                      )) : (
-                        <Alert variant="success">
-                          <Alert.Heading>No hay ordenes de Tickets</Alert.Heading>
-              
-                          <p className="mb-0">Parece que no hay ninguna orden de Tickets</p>
-                        </Alert>
-                      )}
+                      
+                        
+                      ):<h1>error</h1>}
                   </table>
                 </div>
               </Col>
