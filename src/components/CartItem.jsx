@@ -31,11 +31,11 @@ export default function CartItem() {
 
                 <div class="col-md-9 text-left mt-sm-2">
                   <h4>{item.name}</h4>
-                  <p class="font-weight-light">Entrada General</p>
+                  <p style={{fontWeight: "bold"}} class="font-weight-light">Entrada General</p>
                 </div>
               </div>
             </td>
-            <td data-th="Price">${item.itemTotal}</td>
+            <td style={{fontWeight: "bold"}} data-th="Price">${item.itemTotal}</td>
             <td data-th="Quantity">
               <input
                 type="number"
@@ -48,7 +48,7 @@ export default function CartItem() {
                   updateItemQuantity(item.id, e.target.value);
                 }}
               />
-              <Form.Text style={{ color: "black" }} className="text">
+              <Form.Text style={{ color: "black", fontWeight: "bold" }} className="text">
                 {item.stock} available
               </Form.Text>
             </td>

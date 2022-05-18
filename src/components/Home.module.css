@@ -88,8 +88,10 @@ text-decoration: none;
   box-shadow: 0 0 3px rgb(190, 190, 190), 0 0 6px rgb(193, 193, 193),
   0 0 9px rgb(225, 174, 7), 0 0 12px rgb(119, 118, 119),
   0 0 15px rgb(77, 77, 78), 0 0 18px rgb(225, 174, 7);
-  margin-right: 6px;
-  margin-top: 5px;
+  margin-right: 29px;
+  margin-bottom: 10px;
+  height: 248px;
+
 }
 
 .parallax{
@@ -273,6 +275,19 @@ color: rgb(238, 238, 238);
     background: rgb(0, 0, 0);
     color: rgb(238, 238, 238);
   
+}
+
+.cardSecondContainer{
+  border-style:double;
+  border-color: #d8a602;
+  border-width: 5px;
+  box-shadow: 0 0 3px rgb(190, 190, 190), 0 0 6px rgb(193, 193, 193),
+  0 0 9px rgb(225, 174, 7), 0 0 12px rgb(119, 118, 119),
+  0 0 15px rgb(77, 77, 78), 0 0 18px rgb(225, 174, 7);
+  margin-right: 15px;
+  margin-top: 10px;
+  height: auto;
+
 }
 
 

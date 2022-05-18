@@ -32,7 +32,7 @@ import * as Action from "../redux/actions/actions";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import NavTop from "./NavBars/Nav";
 import imagen from "../images/pexels-darya-sannikova-3824763.jpg";
-
+import UploadImg from "./UploadImg/UploadImg";
 export function CreateEvent() {
   const stateInitialForms = {
     title: "",
@@ -58,6 +58,7 @@ export function CreateEvent() {
   const userLoged = useSelector((state) => state.userLoged);
   const genres = useSelector((state) => state.allGeneros);
   const city = useSelector((state) => state.allCities);
+  const [urlImg, setUrlImg] = useState("");
   const [eventData, setEventData] = useState({
     title: "",
     imagen: "",

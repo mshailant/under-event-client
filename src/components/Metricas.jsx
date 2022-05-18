@@ -269,18 +269,18 @@ export default function Metricas() {
         console.log(promedio)
 
         return (
-            <div>
-                <Container bg="white" mt={5} mb={5}>
+            <div style={{background: "#1C2833 "}} >
+                <Container  bg="white" mt={5} mb={5}>
                     <div>
-                        <h2>Ranking de los eventos mas vendidos</h2>
+                        <h2 style={{color: "#f0ad4e "}} >Ranking de los eventos mas vendidos</h2>
                     </div>
                     <Row>
-                        <Col>
+                        <Col style={{background: "#f0ad4e "}}  >
                             {/* <div className="p-1 py-5"> */}
                             <Table striped hover>
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
+                                <thead >
+                                    <tr  >
+                                        <th >#</th>
                                         <th>Id del evento</th>
                                         <th>Nombre del evento</th>
                                         <th>Cantidad de entradas</th>
@@ -309,7 +309,7 @@ export default function Metricas() {
                         </Col>
                     </Row>
                 </Container>
-
+                        <div style={{marginTop: "75px"}}>
                 <>
                     {[
                         'Primary',
@@ -318,7 +318,7 @@ export default function Metricas() {
                             bg={variant.toLowerCase()}
                             key={variant}
                             text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
-                            style={{ width: '18rem' }}
+                            style={{ width: '100%', maringTop: "50px" }}
                             className="mb-2"
                         >
                             <Card.Header>Evento Estrella</Card.Header>
@@ -341,7 +341,7 @@ export default function Metricas() {
                             bg={variant.toLowerCase()}
                             key={variant}
                             text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
-                            style={{ width: '18rem' }}
+                            style={{ width: '100%', maringTop: "50px" }}
                             className="mb-2"
                         >
                             <Card.Header>Facturación máxima</Card.Header>
@@ -366,7 +366,7 @@ export default function Metricas() {
                             bg={variant.toLowerCase()}
                             key={variant}
                             text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
-                            style={{ width: '18rem' }}
+                            style={{ width: '100%', maringTop: "50px" }}
                             className="mb-2"
                         >
                             <Card.Header>Facturación promedio</Card.Header>
@@ -389,7 +389,7 @@ export default function Metricas() {
                             bg={variant.toLowerCase()}
                             key={variant}
                             text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
-                            style={{ width: '18rem' }}
+                            style={{ width: '100%', maringTop: "50px" }}
                             className="mb-2"
                         >
                             <Card.Header>Ganancia promedio</Card.Header>
@@ -403,15 +403,16 @@ export default function Metricas() {
                         </Card>
                     ))}
                 </>
+                </div>
 
                 <div className="p-1 py-5">
 
                 </div>
 
 
-                <Container bg="white" mt={5} mb={5}>
+                <Container style={{background: "#f0ad4e "}}bg="white" mt={5} mb={5}>
                     <div>
-                        <h2>Ranking de los meses con mas ventas</h2>
+                        <h2 style={{color: "black "}} >Ranking de los meses con mas ventas</h2>
                     </div>
 
                     <Table striped hover>
@@ -439,7 +440,7 @@ export default function Metricas() {
                     </Table>
                 </Container>
 
-                <div /* style={width='50%', heigth='500px'} */>
+                <div  >
                     <App options={options} data={data} />
                 </div>
 

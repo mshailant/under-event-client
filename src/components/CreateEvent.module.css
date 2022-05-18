@@ -8,6 +8,7 @@
       url('../images/pexels-thibault-trillet-167636.jpg');
       
     height: 100%;   ;
+    width: auto
    
 }
 
@@ -19,7 +20,7 @@
     background: #ecf0f1;
     
     height: 100%;
-    width: auto;
+    
     
    
    
@@ -34,6 +35,19 @@
     
 }
 
+.containerForm{
+ height: 100%;
+ width: 750px;
+ background: #f0ac4eea ;
+ border-style:double;
+ border-color: #d8a602;
+ border-width: 5px;
+ box-shadow: 0 0 3px rgb(190, 190, 190), 0 0 6px rgb(193, 193, 193),
+ 0 0 9px rgb(225, 174, 7), 0 0 12px rgb(119, 118, 119),
+ 0 0 15px rgb(77, 77, 78), 0 0 18px rgb(225, 174, 7);
+ margin-left: 20%;
+
+}
 .containerInput {
     display: flex;
     background: rgba(210, 210, 210, 0.529);
@@ -93,7 +107,9 @@
 }
 
 .divImg{
- margin-left: 75px;
+ margin-left: 180px;
+
+ 
 }
 
 
@@ -102,5 +118,5 @@
 }
 
 .footer{
-    margin-top: 75px;
+    margin-top: 150px;
 }
