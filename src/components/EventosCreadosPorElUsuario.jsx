@@ -15,6 +15,7 @@ import Footer from "./Footer/Footer";
 
 
 export function EventosCreadosPorElUsuario() {
+    const objetos = useSelector((state) => state.eventosBack);
     const dispatch = useDispatch();
 
     /* let MyUserId = "0630dcbd-136a-4045-98e8-5a473b8175ba"; */
@@ -27,16 +28,17 @@ export function EventosCreadosPorElUsuario() {
 
     // me haria falta el id del usuario LOGUEADO-------------------------------------------------------
     let usuario = useSelector((state) => state.userLoged);
-    console.log(usuario.email, "soy el usuario logueado")
+  
     // pero encima no esta en este estado, ¿de donde lo puedo sacar?----------|
     //----------------------------------------------------------------------- |
     //                                                                        |
     // aqui me traigo todos los usuarios de la pagina [{...}] <--- de aqui lo puedo sacar
     let allUser = useSelector((state) => state.users);
-    console.log(allUser, "soy todos los usuarios")
+   // console.log(allUser, "soy todos los usuarios")
 
     // tomare solo el mail de los usuarios -----------> por que es lo unico que no se puede repetir entre usuarios
     // y con ello podre descubrir el id del usuario logueado
+    try{
     let soloEmails = allUser.map(e => e.email)
     console.log(soloEmails, "soy solo los mails")
 
@@ -56,10 +58,8 @@ export function EventosCreadosPorElUsuario() {
 
 
 
-    try{
 
         //aqui me traigo los eventos
-        const objetos = useSelector((state) => state.eventosBack);
         /* console.log(objetos, "soy los eventos") */
 
         //quiero recorrerlos
