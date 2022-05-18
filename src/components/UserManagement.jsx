@@ -32,9 +32,10 @@ export function UserManagement() {
   };
 
   return (
+    <div style={{background: "#1C2833 "}} >
     <>
       <NavTop />
-      <Container bg="white" mt={5} mb={5}>
+      <Container style={{background: "#f0ad4e"}} bg="white" mt={5} mb={5}>
         <Row>
           <Col>
             <div className="p-1 py-5">
@@ -85,8 +86,9 @@ export function UserManagement() {
         />
       </Container>
 
-      <Metricas/>
+      <div style={{marginTop: "45px"}}><Metricas/></div>
     </>
+      </div>
   );
 }
 

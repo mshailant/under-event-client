@@ -16,6 +16,7 @@ import NavTop from "./NavBars/Nav";
 import CalendarioMejorado from "./CalendarioMejorado";
 import img from "../images/pexels-darya-sannikova-3824763.jpg";
 import imagen from "../images/pexels-wendy-wei-1918159.jpg";
+import altaImage from "../images/3a0a91fa-5eee-4c96-bd33-78ad5ef6c1c4.jpg";
 
 import {
   Container,
@@ -47,7 +48,7 @@ export default function Home() {
   if (carga) {
     return (
       <div className={styles.containerSpinner}>
-        <div style={{ background: "white", width: "2000px", height: "100vh" }}>
+        <div style={{ background: "#1C2833 ", width: "2000px", height: "100vh" }}>
           <SpinnerCircularFixed
             style={{
               marginLeft: "940px",
@@ -83,14 +84,19 @@ export default function Home() {
       </ToastContainer>
 
       <NavTop />
-      <div style={{marginTop: "15px"}}>
+      <div style={{ marginTop: "15px" }}>
         <Carousely />
+        <Container fluid>
+          <Row>
+            <Col>
+              {" "}
+              <div className={styles.navegation}>
+                <Selector />
+              </div>
+            </Col>
+          </Row>
+        </Container>
 
-        <div className={styles.navegation}>
-          <Selector />
-          
-        </div>
-      
         <div className={styles.background}>
           <div className={styles.infoContainer}></div>
           <div className={styles.cardsContainer}>
@@ -98,7 +104,7 @@ export default function Home() {
 
             <Container fluid style={{ width: "100wh" }}>
               <Row>
-                <Col style={{ width: "100wh" }} >
+                <Col style={{ width: "100wh" }}>
                   {" "}
                   <div className={styles.cards}>
                     {Array.isArray(events) && events.length ? (
@@ -147,41 +153,54 @@ export default function Home() {
                 <Col style={{ marginTop: "120px", float: "rigth" }} md="auto">
                   <div
                     className={styles.calendarContainer}
-                    style={{ marginLeft: "5%", maringTop: "5px" }}
+                    style={{ marginLeft: "6%" }}
                   >
                     <CalendarioMejorado />
                   </div>
-                  <Card  style={{ width: "17rem", marginTop: "15px", background: "#1C2833 " }}>
-                    <Card.Img variant="top" src={img} />
-                    <Card.Body>
-                      <Card.Title
-                        style={{ fontSize: "19px", fontWeight: "Bolder" }}
-                      >
-                       
-                      </Card.Title>
-                      
-                      <Card.Text
-                        style={{ fontSize: "17px", fontWeight: "Bolder" }}
-                      >
-                        
-                      </Card.Text>
-                    </Card.Body>
+                  <div
+                    style={{ marginTop: "120px" }}
+                    className={styles.cardSecondContainer}
+                  >
+                    <Card style={{ width: "17rem", background: "#292b2c " }}>
+                      <Card.Img variant="top" src={img} />
+                      <Card.Body>
+                        <Card.Title
+                          style={{ fontSize: "19px", fontWeight: "Bolder" }}
+                        ></Card.Title>
 
-                    <Card.Img src={imagen} />
-                    <ListGroupItem style={{ fontSize: "19px", fontWeight: "Bolder", background: "#1C2833 "  }}  >
-                      <Card.Title
-                        style={{ fontSize: "19px", fontWeight: "Bolder", background: "#1C2833 "  }}
+                        <Card.Text
+                          style={{ fontSize: "17px", fontWeight: "Bolder" }}
+                        ></Card.Text>
+                      </Card.Body>
+
+                      <Card.Img src={imagen} />
+                      <ListGroupItem
+                        style={{
+                          fontSize: "19px",
+                          fontWeight: "Bolder",
+                          background: "#292b2c ",
+                        }}
                       >
-                      
-                      </Card.Title>
-                      <hr />
-                      <Card.Text
-                        style={{ fontSize: "17px", fontWeight: "Bolder", background: "#1C2833 "  }}
-                      >
-                        
-                      </Card.Text>
-                    </ListGroupItem>
-                  </Card>
+                        <Card.Title
+                          style={{
+                            fontSize: "19px",
+                            fontWeight: "Bolder",
+                            background: "#292b2c ",
+                          }}
+                        ></Card.Title>
+                        <hr />
+                        <Card.Text
+                          style={{
+                            fontSize: "17px",
+                            fontWeight: "Bolder",
+                            background: "#292b2c ",
+                          }}
+                        >
+                          <Card.Img src={altaImage} />
+                        </Card.Text>
+                      </ListGroupItem>
+                    </Card>
+                  </div>
                 </Col>
               </Row>
             </Container>
