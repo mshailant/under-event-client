@@ -16,6 +16,7 @@ import {
   Image,
   DropdownButton,
   NavDropdown,
+  FormControl
 } from "react-bootstrap";
 
 import {
@@ -86,8 +87,10 @@ export default function NavTop() {
             >
               UnderEventsApp
             </Nav.Link>
-            <Nav style={{background: "#f0ad4e", color: "black"}}  className="me-auto">
-         
+            <Nav
+              style={{ background: "#f0ad4e", color: "black" }}
+              className="me-auto"
+            >
               <NavDropdown
                 variant="warning"
                 bg="waring"
@@ -95,29 +98,35 @@ export default function NavTop() {
                   color: "black",
                   fontSize: "15px",
                   fontWeight: "bold",
-                  backgroundColor:'#f0ad4e'
-                  
+                  backgroundColor: "#f0ad4e",
                 }}
                 title="Menu"
                 id="collasible-nav-dropdown"
-              > 
-
-                <NavDropdown.Item style={{background: "#f0ad4e"}} name={"createEvent"} onClick={handleMenu}>
+              >
+                <NavDropdown.Item
+                  
+                  name={"createEvent"}
+                  onClick={handleMenu}
+                >
                   Crea tu Evento
                 </NavDropdown.Item>
 
                 <NavDropdown.Divider />
-                <NavDropdown.Item style={{background: "#f0ad4e"}}  name={"orderDetail"} onClick={handleMenu}>
+                <NavDropdown.Item
+                 
+                  name={"orderDetail"}
+                  onClick={handleMenu}
+                >
                   Ordenes
                 </NavDropdown.Item>
               </NavDropdown>
-             
             </Nav>
             <Nav>
               <ShoppingCart />
             </Nav>
             <Nav>
               <Nav.Link style={{ color: "#f0ad4e" }} eventKey={2}>
+               
                 {!isAuthenticated && (
                   <Button
                     style={{ color: "#f0ad4e" }}
@@ -129,14 +138,20 @@ export default function NavTop() {
                   </Button>
                 )}
                 {isAuthenticated && (
-                  <Dropdown  align="end" className="m-1">
+                  <Dropdown align="end" className="m-1">
                     <Dropdown.Toggle
                       as={Image}
                       roundedCircle={true}
                       src={userLoged?.picture}
                       width="45px"
                     ></Dropdown.Toggle>
-                    <Dropdown.Menu style={{background: "#f0ad4e", color: "black", fontWeight: "bold"}} >
+                    <Dropdown.Menu
+                      style={{
+                        background: "#f0ad4e",
+                        color: "black",
+                        fontWeight: "bold",
+                      }}
+                    >
                       <Dropdown.Item show={false}>
                         {userLoged?.name}
                       </Dropdown.Item>
@@ -272,23 +287,26 @@ export function Selector() {
     } */
 
   return (
-    
-      <Container fluid>
-        <Row>
-          <Col>
-            <Navbar style={{ width: "auto", height: "auto" }} bg="dark" variant="dark">
-              <Container style={{ width: "auto" }}>
-                <Navbar.Brand
-                  bg="warning"
-                  variant="warning"
-                  style={{ color: " #f0ad4e", fontWeight: "bold", width: "auto" }}
-                >
-                  UnderEventsApp
-                </Navbar.Brand>
-                <Nav style={{ gap: "5px",  width: "auto" }} className="me-auto">
-                <Container fluid>
+    <Container >
   <Row>
-    <Col Container style={{ width: "auto" }}> <Form.Select
+    <Col> <Navbar bg="dark" expand="lg">
+      <Container fluid>
+        <Navbar.Brand
+          bg="warning"
+          variant="warning"
+          style={{ color: " #f0ad4e", fontWeight: "bold", width: "auto" }}
+        >
+          {" "}
+          UnderEventsApp
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: "100px" }}
+            navbarScroll
+          >
+            <Form.Select
                     variant="warning"
                     bg="warning"
                     style={{
@@ -297,110 +315,173 @@ export function Selector() {
                       background: "#f0ad4e",
                       borderColor: "black",
                       fontWeight: "bold",
-                      cursor: "pointer"
+                      cursor: "pointer",
                     }}
                     size="sm"
                     onChange={handleStates}
                   >
-                    <option style={{fontWeight: "bolder", fontSize: "14px"}} value="All" key="All">
+                    <option
+                      style={{ fontWeight: "bolder", fontSize: "14px" }}
+                      value="All"
+                      key="All"
+                    >
                       Ciudades
                     </option>
                     {cities?.map((item) => (
-                      <option style={{fontWeight: "bolder",  fontSize: "12px"}} onClick={saveData()} key={item} value={item}>
+                      <option
+                        style={{ fontWeight: "bolder", fontSize: "12px" }}
+                        onClick={saveData()}
+                        key={item}
+                        value={item}
+                      >
                         {item}
                       </option>
                     ))}
                   </Form.Select>
-                 
-
-                 
-                  
-                  </Col>
-                  <Col> <Form.Select
+                  <Form.Select
                     style={{
                       width: "150px",
                       height: "37px",
                       background: "#f0ad4e",
                       borderColor: "black",
                       fontWeight: "bold",
-                      cursor: "pointer"
+                      cursor: "pointer",
                     }}
                     size="sm"
                     onChange={handleEventType}
                   >
-                    <option style={{fontWeight: "bolder", fontSize: "14px"}} value="All" key="All">
+                    <option
+                      style={{ fontWeight: "bolder", fontSize: "14px" }}
+                      value="All"
+                      key="All"
+                    >
                       Generos
                     </option>
                     {generos?.map((item) => (
-                      <option style={{fontWeight: "bolder",  fontSize: "12px"}} onClick={getGenero()} key={item} value={item}>
+                      <option
+                        style={{ fontWeight: "bolder", fontSize: "12px" }}
+                        onClick={getGenero()}
+                        key={item}
+                        value={item}
+                      >
                         {item}
                       </option>
                     ))}
-                  </Form.Select></Col>
-                  <Col> <Form.Select
+                  </Form.Select>
+                     <Form.Select
                     style={{
                       width: "150px",
                       height: "37px",
                       background: "#f0ad4e",
                       borderColor: "black",
                       fontWeight: "bold",
-                      cursor: "pointer"
+                      cursor: "pointer",
                     }}
                     size="sm"
                     onChange={handleDate}
                   >
-                    <option style={{fontWeight: "bolder", fontSize: "14px"}} onClick={() => getMes()} value="All" key="All">
+                    <option
+                      style={{ fontWeight: "bolder", fontSize: "14px" }}
+                      onClick={() => getMes()}
+                      value="All"
+                      key="All"
+                    >
                       Por mes
                     </option>
-                    <option style={{fontWeight: "bolder",  fontSize: "12px"}}  onClick={() => getMes()} value="Enero">
+                    <option
+                      style={{ fontWeight: "bolder", fontSize: "12px" }}
+                      onClick={() => getMes()}
+                      value="Enero"
+                    >
                       Enero de 2022
                     </option>
-                    <option style={{fontWeight: "bolder",  fontSize: "12px"}} onClick={() => getMes()} value="Febrero">
+                    <option
+                      style={{ fontWeight: "bolder", fontSize: "12px" }}
+                      onClick={() => getMes()}
+                      value="Febrero"
+                    >
                       Febrero de 2022
                     </option>
-                    <option style={{fontWeight: "bolder",  fontSize: "12px"}} onClick={() => getMes()} value="Marzo">
+                    <option
+                      style={{ fontWeight: "bolder", fontSize: "12px" }}
+                      onClick={() => getMes()}
+                      value="Marzo"
+                    >
                       Marzo de 2022
                     </option>
-                    <option style={{fontWeight: "bolder",  fontSize: "12px"}} onClick={() => getMes()} value="Abril">
+                    <option
+                      style={{ fontWeight: "bolder", fontSize: "12px" }}
+                      onClick={() => getMes()}
+                      value="Abril"
+                    >
                       Abril de 2022
                     </option>
-                    <option style={{fontWeight: "bolder",  fontSize: "12px"}} onClick={() => getMes()} value="Mayo">
+                    <option
+                      style={{ fontWeight: "bolder", fontSize: "12px" }}
+                      onClick={() => getMes()}
+                      value="Mayo"
+                    >
                       Mayo de 2022
                     </option>
-                    <option style={{fontWeight: "bolder",  fontSize: "12px"}} onClick={() => getMes()} value="Junio">
+                    <option
+                      style={{ fontWeight: "bolder", fontSize: "12px" }}
+                      onClick={() => getMes()}
+                      value="Junio"
+                    >
                       Junio de 2022
                     </option>
-                    <option style={{fontWeight: "bolder",  fontSize: "12px"}} onClick={() => getMes()} value="Julio">
+                    <option
+                      style={{ fontWeight: "bolder", fontSize: "12px" }}
+                      onClick={() => getMes()}
+                      value="Julio"
+                    >
                       Julio de 2022
                     </option>
-                    <option style={{fontWeight: "bolder",  fontSize: "12px"}} onClick={() => getMes()} value="Agosto">
+                    <option
+                      style={{ fontWeight: "bolder", fontSize: "12px" }}
+                      onClick={() => getMes()}
+                      value="Agosto"
+                    >
                       Agosto de 2022
                     </option>
-                    <option style={{fontWeight: "bolder",  fontSize: "12px"}} onClick={() => getMes()} value="Septiembre">
+                    <option
+                      style={{ fontWeight: "bolder", fontSize: "12px" }}
+                      onClick={() => getMes()}
+                      value="Septiembre"
+                    >
                       Septiembre de 2022
                     </option>
-                    <option style={{fontWeight: "bolder",  fontSize: "12px"}}onClick={() => getMes()} value="Octubre">
+                    <option
+                      style={{ fontWeight: "bolder", fontSize: "12px" }}
+                      onClick={() => getMes()}
+                      value="Octubre"
+                    >
                       Octubre de 2022
                     </option>
-                    <option style={{fontWeight: "bolder",  fontSize: "12px"}} onClick={() => getMes()} value="Noviembre">
+                    <option
+                      style={{ fontWeight: "bolder", fontSize: "12px" }}
+                      onClick={() => getMes()}
+                      value="Noviembre"
+                    >
                       Noviembre de 2022
                     </option>
-                    <option style={{fontWeight: "bolder",  fontSize: "12px"}} onClick={() => getMes()} value="Diciembre">
+                    <option
+                      style={{ fontWeight: "bolder", fontSize: "12px" }}
+                      onClick={() => getMes()}
+                      value="Diciembre"
+                    >
                       Diciembre de 2022
                     </option>
-                  </Form.Select></Col>
-                  <Col ><div style={{marginLeft: "200px"}}><Searchbar/></div></Col>
-  </Row>
-  
-</Container>
-                 
-                </Nav>
-              </Container>
-            </Navbar>
-            <hr style={{ color: " #f7dc6f", fontSize: "10px" }} />
-          </Col>
-        </Row>
+                  </Form.Select>
+         
+          </Nav>
+         <Searchbar/>
+        </Navbar.Collapse>
       </Container>
+    </Navbar></Col>
+  </Row>
+</Container>
    
   );
 }
+

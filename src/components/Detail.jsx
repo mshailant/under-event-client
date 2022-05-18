@@ -45,7 +45,7 @@ import DetailCard from "./DetailReviewsCard.jsx";
 const Detail = () => {
   const dispatch = useDispatch();
   const detalles = useSelector((state) => state.detailEventos);
-  console.log(detalles);
+  console.log(detalles, "detalles");
 
   const initialState = {
     name: "",
@@ -106,7 +106,7 @@ const Detail = () => {
     setInput({
       name: "",
       description: "",
-      rating: "",
+      // rating: "",
     });
   }
 
@@ -257,7 +257,7 @@ const Detail = () => {
                             fontSize: "18px",
                             fontWeight: "bolder",
                             background: "#292b2c",
-                            color: "#f0ad4e",
+                            color: "#292b2c",
                           }}
                         >
                          Comentarios:
@@ -268,7 +268,7 @@ const Detail = () => {
                           variant="warning"
                           style={{
                             marginTop: "15px",
-                            color: "black",
+                            color: "#292b2c ",
                             background: "#292b2c",
                             height: "auto",
                             gap: "10px"
@@ -433,7 +433,7 @@ const Detail = () => {
                                 />
                               </Form.Group>
 
-                              {/* <Form.Select
+                               {/* <Form.Select
                                 name="rating"
                                 value={input.rating}
                                 onChange={handleSelect}
@@ -445,7 +445,7 @@ const Detail = () => {
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                                 <option value="5">5</option>
-                              </Form.Select> */}
+                              </Form.Select>  */}
                               <Button
                                 type="submit"
                                 variant="outline-warning"
