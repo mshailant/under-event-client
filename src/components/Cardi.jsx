@@ -18,6 +18,7 @@ import Foo from "./StartsComponent";
 import ReactStars from "react-rating-stars-component";
 
 import { render } from "react-dom";
+import img from "../images/pexels-alena-darmel-7715762.jpg"
 
 
 export default function Cardi({ id, title, imagen, description, date, place }) {
@@ -46,21 +47,21 @@ export default function Cardi({ id, title, imagen, description, date, place }) {
       variant="top"
       src={imagen}
     />
-    <Card.Body border = "warning" style={{ width: "425px", height: "50px"}}>
-      <Card.Title variant="warning" style={{fontWeight: "bold", color: "#ffcc5c"}}  >{title}</Card.Title>
+    <Card.Body border = "warning" style={{  height: "50px",  width: "auto"}}>
+      <Card.Title variant="warning" style={{fontWeight: "bold", color: "#f0ad4e", width: "auto"}}  >{title}</Card.Title>
     </Card.Body>
     <ListGroup
       style={{ background: "   #1c2833  " }}
       className="list-group-flush"
     >
      
-      <ListGroupItem style={{ background: "     #171717   ", width: "auto" }}  variant="warning">
+      <ListGroupItem style={{ background: "     #292b2c   ", width: "auto", color: "#f0ad4e", fontWeight: "bold"}}  variant="warning">
         <FaCalendar /> {date}
       </ListGroupItem>
-      <ListGroupItem variant="warning" style={{ background: "     #171717   ", height: "57px" }}>
+      <ListGroupItem variant="warning" style={{ background: "     #292b2c   ", height: "57px", color: "#f0ad4e", fontWeight: "bold" }}>
         <FaSearchLocation /> {place}
       </ListGroupItem>
-      <ListGroupItem variant="warning" style={{ background: "     #171717    ", height: "50px" }}>
+      {/* <ListGroupItem variant="warning" style={{ background: "     #292b2c   ", height: "50px", color: "#f0ad4e", fontWeight: "bold" }}>
         <ReactStars
           count={5}
           onChange={RatingChanged}
@@ -68,7 +69,7 @@ export default function Cardi({ id, title, imagen, description, date, place }) {
           activeColor="#ffd700"
         />
         
-      </ListGroupItem>
+      </ListGroupItem> */}
     </ListGroup>
     <Card.Body>
     

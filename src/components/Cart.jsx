@@ -11,6 +11,7 @@ import Payment from "./Payment";
 import { useNavigate } from "react-router-dom";
 import styles from "./Cart.module.css";
 import { Carouse2 } from "./Carousel";
+import Footer from "./Footer/Footer";
 
 export default function Cart() {
   const navigate = useNavigate();
@@ -32,28 +33,30 @@ export default function Cart() {
       className={styles.container}
       style={{
         width: "100%",
-        height: "100vh",
+        height: "100%",
         backgroundAttachment: " fixed",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
 
-        height: "100vh",
+        
       }}
     >
       <NavTop />
+      <div className={styles.container}>
       <section class="pt-5 pb-5">
-        <div
+        <div 
           style={{
-            background: "rgba(244, 208, 63, 0.638)",
-            boxShadow:
-              "0 0 9px rgb(225, 174, 7), 0 0 12px rgb(119, 118, 119)- 0 0 3px rgb(17, 15, 15), 0 0 6px rgb(193, 193, 193)",
+            background: "#f0ad4e",
+            boxShadow: " 0 0 9px rgb(225, 174, 7), 0 0 12px rgb(119, 118, 119) "  
+           
+              
           }}
           class="container"
         >
           <div class="row w-100">
             <div class="col-lg-12 col-md-12 col-12">
-              <h3 class="display-5 mb-2 text-center">Shopping Cart</h3>
+              <h3 style={{fontWeight: "bolder"}} class="display-5 mb-2 text-center">Shopping Cart</h3>
               <p class="mb-5 text-center">
                 <i class="text-danger font-weight-bold">{totalItems}</i> items
                 in your cart
@@ -75,8 +78,8 @@ export default function Cart() {
                 </tbody>
               </table>
               <div class="float-right text-right">
-                <h4>Subtotal:</h4>
-                <h1>${cartTotal}</h1>
+                <h4 style={{fontWeight: "bold"}}>Subtotal:</h4>
+                <h1>${cartTotal}.00</h1>
               </div>
             </div>
           </div>
@@ -116,10 +119,14 @@ export default function Cart() {
           </div>
         </div>
       </section>
+      
 
-      <div>
+      <div style={{marginTop: "75px"}}>
         <Carouse2 />
       </div>
+      </div>
+
+      <div style={{marginTop: "50px"}}><Footer/></div>
     </div>
   );
 }

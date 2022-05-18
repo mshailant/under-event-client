@@ -15,7 +15,7 @@ const Footer = () => {
 return (
 	<div >
 	<Box >
-	<h1 style={{ color: " #f1c40f ",
+	<h1 style={{ color: " #f0ad4e ",
 				textAlign: "center",
 				marginTop: "-10px",
                 marginBottom: "25px",

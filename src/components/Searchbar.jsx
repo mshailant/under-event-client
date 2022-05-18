@@ -37,7 +37,7 @@ export default function Searchbar() {
     type="text"
     
   /> 
-            <Button style={{ height: "auto" }} type="submit" onClick={() => scrollToCards()}  variant="outline-warning">Search</Button>
+            <Button style={{ height: "auto", }} type="submit" onClick={() => scrollToCards()}  variant="outline-warning">Search</Button>
         </Form>
         
     )
