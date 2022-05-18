@@ -95,7 +95,7 @@ export default function NavTop() {
                   fontSize: "15px",
                   fontWeight: "bold",
                 }}
-                title="Dropdown"
+                title="Menú"
                 id="collasible-nav-dropdown"
               >
                 <NavDropdown.Item name={"createEvent"} onClick={handleMenu}>

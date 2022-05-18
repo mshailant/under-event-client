@@ -55,7 +55,6 @@ export default function Home() {
               marginTop: "250px",
             }}
           />
-          ;
         </div>
       </div>
     );
@@ -124,24 +123,22 @@ export default function Home() {
                       <Alert
                         style={{
                           width: "850px",
-                          height: "350px",
+                          height: "150px",
                           marginLeft: "75%",
+                          background: "#292b2c",
+                          color: "#f0ad4e"
                         }}
-                        variant="light"
+                        variant="dark"
                       >
                         <Alert.Heading>
-                          Ups... Something went wrong
+                          No se han encontrado eventos
                         </Alert.Heading>
                         <p>
-                          Aww yeah, you successfully read this important alert
-                          message. This example text is going to run a bit
-                          longer so that you can see how spacing within an alert
-                          works with this kind of content.
+                          Explore los filtros para encontrar el evento que busca.
                         </p>
                         <hr />
                         <p className="mb-0">
-                          Whenever you need to, be sure to use margin utilities
-                          to keep things nice and tidy.
+                          Si tenés un problema podés hablarnos en la sección de contacto en el pie de página
                         </p>
                       </Alert>
                     )}

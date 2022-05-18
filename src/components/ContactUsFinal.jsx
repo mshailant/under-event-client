@@ -18,8 +18,6 @@ export default function ContactUsFinal() {
         emailjs.sendForm('service_ofwvliw', 'template_m60ighf', e.target, '4BHkR2Tf-F7GH6JZS').then(res=>{
             console.log(res);
         })
-        alert("Email sended")
-        handleClose() 
       }
 
     function handleShow(breakpoint) {
@@ -27,37 +25,13 @@ export default function ContactUsFinal() {
         setShow(true);
     }
 
-    // const handleSubmit = (e) => {
-    //     if (e.target.checkValidity() === false) {
-    //         e.preventDefault();
-    //         e.stopPropagation();
-    //     }  
-        
-    //     setValidated(true);
-    // };
-    
-    // function sendEmail(e){
-    //     emailjs.sendForm('service_ofwvliw', 'template_m60ighf', e.target, '4BHkR2Tf-F7GH6JZS').then(res=>{
-    //         console.log(res);
-    //     })
-    // }
-    // ------------------------------
-    // function handleOnClick(e){
-    //     if(validated){
-    //         alert("Email sended")
-    //     } else{
-    //         alert("Faltan datos")
-    //     }
-    //     handleClose()
-    // }
-
     return (
       <>
         <p style={{cursor: "pointer"}} onClick={handleShow}>
           Contactenos
         </p>
    
-        <Modal show={show} fullscreen={fullscreen} onHide={handleClose} style={{background: "#292b2c"}}>
+        <Modal show={show} fullscreen={fullscreen} onHide={handleClose} style={{background: "	#292b2c"}}>
           <Modal.Header closeButton style={{background: "gold"}} >
             <Modal.Title>Contactenos</Modal.Title>
           </Modal.Header>
