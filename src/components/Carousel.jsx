@@ -1,9 +1,9 @@
 import React from "react";
 import { Carousel, Item, Caption } from "react-bootstrap";
-import image from "../images/1646431090104-null-04-2022-04-02-lvp-kbz-accesoya-1920x720.jpg"
-import imagen from "../images/DETALLE_CARRO_DE_COMPRAS_HOME.jpg"
+import image from "../images/a8ec34ed-a379-4fe2-89e6-c10f66f1f97c.jpg"
+import imagen from "../images/c873bb0b-034a-47aa-a91e-1e8cfa421b1d.jpg"
 
-import imagenes from "../images/1649175668524-null-cabecera_crowder.jpg"
+import imagenes from "../images/f2140f52-0ad4-4beb-916c-7ab5e8c507f2.jpg"
 import {Col, Row, Container} from "react-bootstrap"
 
 

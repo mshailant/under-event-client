@@ -138,8 +138,8 @@ const Detail = () => {
                         variant.toLowerCase() === "light" ? "dark" : "white"
                       }
                       style={{
-                        width: "44rem",
-                        height: "850px",
+                        width: "auto",
+                        height: "auto",
                         marginTop: "25px",
                       }}
                       className="mb-2"
@@ -153,7 +153,7 @@ const Detail = () => {
                                 <h5
                                   style={{
                                     maringTop: "25px",
-                                    color: "#f4d03f",
+                                    color: "#f0ad4e",
                                     fontSize: "22px",
                                     fontWeight: "bold",
                                   }}
@@ -165,7 +165,7 @@ const Detail = () => {
                                 <h5
                                   style={{
                                     maringTop: "25px",
-                                    color: "#f4d03f",
+                                    color: "#f0ad4e",
                                     fontSize: "22px",
                                     fontWeight: "bold",
                                   }}
@@ -177,7 +177,7 @@ const Detail = () => {
                                 <h5
                                   style={{
                                     maringTop: "25px",
-                                    color: "#f4d03f",
+                                    color: "#f0ad4e",
                                     fontSize: "22px",
                                     fontWeight: "bold",
                                   }}
@@ -197,20 +197,20 @@ const Detail = () => {
                                 <h5
                                   style={{
                                     maringTop: "25px",
-                                    color: "#f4d03f",
+                                    color: "#f0ad4e",
                                   }}
                                 >
                                   {detalles.title}
                                 </h5>
                               </Col>
                               <Col xs={{ order: 12 }}>
-                                <h5 style={{ color: "#f4d03f" }}>
+                                <h5 style={{ color: "#f0ad4e" }}>
                                   {" "}
                                   $ {detalles.cost}.00
                                 </h5>
                               </Col>
                               <Col>
-                                <h5 style={{ color: "#f4d03f" }}>
+                                <h5 style={{ color: "#f0ad4e" }}>
                                   {detalles.stock}
                                 </h5>
                               </Col>
@@ -240,37 +240,68 @@ const Detail = () => {
                           </MapContainer>
                         </ListGroupItem>
                         <ListGroupItem
-                          bg="waring"
-                          variant="warning"
                           style={{
                             color: "black",
                             fontSize: "18px",
                             fontWeight: "bolder",
+                            background: "#292b2c",
+                            color: "#f0ad4e",
                           }}
                         >
                           {detalles.description}
                         </ListGroupItem>
 
                         <ListGroupItem
+                          style={{
+                            color: "black",
+                            fontSize: "18px",
+                            fontWeight: "bolder",
+                            background: "#292b2c",
+                            color: "#f0ad4e",
+                          }}
+                        >
+                         Comentarios:
+                        </ListGroupItem>
+
+                        <ListGroupItem
                           bg="waring"
                           variant="warning"
-                          style={{ marginTop: "15px", color: "black" }}
+                          style={{
+                            marginTop: "15px",
+                            color: "black",
+                            background: "#292b2c",
+                            height: "auto",
+                            gap: "10px"
+                          }}
                         >
-                          {detalles.Reviews.map((e) => e.description)}
+                          {detalles.Reviews.length > 0 ? (
+                            detalles.Reviews.map((e) => {
+                              return (
+                                <div style={{height: "auto", gap: "10px"}}>
+                                <DetailCard
+                                  name={e.name}
+                                  description={e.description}
+                                  rating={e.rating}
+                                  
+                                />
+                                </div>
+                              );
+                            })
+                          ) : (
+                            
+                            <h5 style={{color: "#f0ad4e"}}>No hay comentarios aun. Deja el tuyo!!</h5>
+                          )}
                         </ListGroupItem>
                       </ListGroup>
-                      <Card.Body>
-                        <Card.Link href="#"></Card.Link>
-                        <Card.Link href="#"></Card.Link>
-                      </Card.Body>
+                     
                     </Card>
                   ))}
 
                   <Button
                     style={{
-                      width: "600px",
+                      width: "520px",
                       marginTop: "20px",
-                      marginLeft: "7%",
+                      marginLeft: "8%",
                       fontWeight: "bold",
                     }}
                     className={styles.btn}
@@ -304,7 +335,8 @@ const Detail = () => {
                           variant.toLowerCase() === "light" ? "dark" : "white"
                         }
                         className="mb-2"
-                        style={{ width: "35rem", marginTop: "15px" }}
+                        style={{ width: "auto", marginTop: "15px" }}
+                        border="warning"
                       >
                         <Card.Img variant="top" src={detalles.imagen} />
                         <Card.Body>
@@ -312,7 +344,7 @@ const Detail = () => {
                             style={{
                               fontSize: "22px",
                               fontWeight: "Bolder",
-                              color: "#f4d03f",
+                              color: "#f0ad4e",
                             }}
                           >
                             {detalles.title}
@@ -322,7 +354,7 @@ const Detail = () => {
                             style={{
                               fontSize: "17px",
                               fontWeight: "Bolder",
-                              color: "#f4d03f",
+                              color: "#f0ad4e",
                             }}
                           >
                             {detalles.description}
@@ -332,7 +364,7 @@ const Detail = () => {
                           <ListGroupItem
                             bg="dark"
                             variant="warning"
-                            style={{ fontSize: "18px", fontWeight: "Bold" }}
+                            style={{ fontSize: "18px", fontWeight: "Bold", background: "#292b2c", color:"#f0ad4e" }}
                           >
                             {" "}
                             <FaCalendar /> {detalles.date}
@@ -340,14 +372,14 @@ const Detail = () => {
                           <ListGroupItem
                             bg="dark"
                             variant="warning"
-                            style={{ fontSize: "16px", fontWeight: "Bold" }}
+                            style={{ fontSize: "16px", fontWeight: "Bold", background: "#292b2c", color:"#f0ad4e" }}
                           >
                             <GoLocation /> {detalles.place}
                           </ListGroupItem>
                           <ListGroupItem
                             bg="dark"
                             variant="warning"
-                            style={{ fontSize: "16px", fontWeight: "Bold" }}
+                            style={{ fontSize: "16px", fontWeight: "Bold", background: "#292b2c", color:"#f0ad4e"}}
                           >
                             <GoLocation /> {detalles.address}
                           </ListGroupItem>
@@ -356,21 +388,22 @@ const Detail = () => {
                         <ListGroupItem
                           bg="dark"
                           variant="warning"
+                          style={{ fontSize: "16px", fontWeight: "Bold", background: "#292b2c", color:"#f0ad4e"}}
                         ></ListGroupItem>
 
-                        <Button variant="outline-warning" onClick={handleShow}>
-                          Launch demo modal
+                        <Button style={{fontWeight: "bold"}} variant="outline-warning" onClick={handleShow}>
+                          Deja tu Comentario!!
                         </Button>
 
                         <Modal show={show} onHide={handleClose}>
                           <Modal.Header
-                            style={{ background: "gold" }}
+                            style={{ background: "#f0ad4e" }}
                             closeButton
                           >
-                            <Modal.Title>Modal heading</Modal.Title>
+                            <Modal.Title>Deja tu Comentario</Modal.Title>
                           </Modal.Header>
                           <Modal.Body
-                            style={{ background: "rgba(65, 65, 65, 0.293)" }}
+                            style={{ background: "#1C2833 " }}
                           >
                             <Form variant="warning" onSubmit={handleSubmit}>
                               <Form.Group
@@ -400,7 +433,7 @@ const Detail = () => {
                                 />
                               </Form.Group>
 
-                              <Form.Select
+                              {/* <Form.Select
                                 name="rating"
                                 value={input.rating}
                                 onChange={handleSelect}
@@ -412,19 +445,21 @@ const Detail = () => {
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                                 <option value="5">5</option>
-                              </Form.Select>
+                              </Form.Select> */}
                               <Button
                                 type="submit"
-                                variant="primary"
+                                variant="outline-warning"
                                 onClick={handleClose}
+                                style={{width: "250px,", marginLeft: "23%"}}
+                                
                               >
-                                Save Changes
+                                Enviar
                               </Button>
                             </Form>
                           </Modal.Body>
-                          <Modal.Footer style={{ background: "gold" }}>
-                            <Button variant="secondary" onClick={handleClose}>
-                              Close
+                          <Modal.Footer style={{ background: "#f0ad4e" }}>
+                            <Button style={{color: "#f0ad4e"}} variant="dark" onClick={handleClose}>
+                              Cerrar
                             </Button>
                           </Modal.Footer>
                         </Modal>
