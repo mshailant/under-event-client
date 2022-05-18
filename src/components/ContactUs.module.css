@@ -1,9 +1,18 @@
-.contactUs {
+.special_modal .modal-content{
+    background-color: #000;
+    color: #fff;
+ }
+ 
+.btn{
+    position:relative;
+    padding-top: 0px;
+}
+/* .contactUs {
     background-color: rgb(180, 140, 10);
     width: 100%;
     height: 100%;
 }
-  
+
 .contactUs .contactUsContent{
     width: 80%;
     margin: auto;
@@ -11,6 +20,10 @@
     justify-content: center;
     flex-direction: column;
     height: 500px;
+}
+
+.title{
+    cursor: pointer;
 }
 
 .contactUsTitle{
@@ -23,10 +36,5 @@
 
 .emailPlace{
     background-color: black;
-}
+} */
 
-.btn{
-    position:relative;
-    padding-top: 0px;
-    color: red;
-}

@@ -32,7 +32,7 @@ const InitialState = {
 
   allOrders: [],
 
-  detailReviews: []
+  reviews: []
 };
 
 function rootReducer(state = InitialState, action) {
@@ -212,10 +212,12 @@ function rootReducer(state = InitialState, action) {
         detailEventos: [],
       };
 
-    case Action.ADD_REVIEWS:
+    case Action.GET_REVIEWS:
+      
       return{
         ...state,
-        detailReviews: action.payload
+        reviews: action.payload
+        
       }  
 
     default:
