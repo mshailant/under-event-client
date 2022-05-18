@@ -122,6 +122,7 @@ export default function OrderDetail() {
     console.log(ciudad, "soy la ciudad de los eventos")
     console.log(costo, "soy el costo de los eventos")
 
+
     
 
     return (
@@ -191,6 +192,7 @@ export default function OrderDetail() {
         </div>
       </div>
     );
+
 
 
   } catch (error) {
