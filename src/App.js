@@ -22,7 +22,7 @@ import ModalForm, { ModalFormulario } from "./components/ModalForm";
 import Reviews from "./components/Reviews";
 
 function App() {
-  const user = useSelector((state) => state.userLoged);
+  const user = useSelector((state) => state.userLoged)
 
   return (
     <BrowserRouter history={history}>

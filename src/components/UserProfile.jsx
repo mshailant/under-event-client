@@ -12,6 +12,7 @@ import {
 import NavTop from "./NavBars/Nav";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser, getUserByExternalId } from "../redux/actions/actions";
+import EventosCreadosPorElUsuario from "./EventosCreadosPorElUsuario";
 
 export function UserProfile() {
   const dispatch = useDispatch();
@@ -148,7 +149,10 @@ export function UserProfile() {
           </Col>
         </Row>
       </Container>
+
+      <EventosCreadosPorElUsuario/>
     </>
+
   );
 }
 
