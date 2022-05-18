@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import es from "date-fns/locale/es";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDate, FilterCalenderNuevo } from "../redux/actions/actions"
-
+import "./CalendarioMejodaro.css"
 
 
 

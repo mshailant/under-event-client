@@ -32,7 +32,7 @@ import * as Action from "../redux/actions/actions";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import NavTop from "./NavBars/Nav";
 import imagen from "../images/pexels-darya-sannikova-3824763.jpg";
-
+import UploadImg from "./UploadImg/UploadImg";
 export function CreateEvent() {
   const stateInitialForms = {
     title: "",
@@ -58,6 +58,7 @@ export function CreateEvent() {
   const userLoged = useSelector((state) => state.userLoged);
   const genres = useSelector((state) => state.allGeneros);
   const city = useSelector((state) => state.allCities);
+  const [urlImg, setUrlImg] = useState("");
   const [eventData, setEventData] = useState({
     title: "",
     imagen: "",
@@ -93,7 +94,7 @@ export function CreateEvent() {
       event.preventDefault();
       event.stopPropagation();
     } else {
-      dispatch(createEvent(eventData, userLoged.externalId)).then((res) => {
+      dispatch(createEvent(eventData, userLoged.externalId, {imagen: urlImg})).then((res) => {
         navigate(`/${res.payload.newEvent.id}`);
       });
       event.preventDefault();
@@ -510,30 +511,11 @@ export function CreateEvent() {
                     </Form.Group>
 
                     <Form.Group controlId="validationCustom11">
-                      <Form.Label
-                        style={{
-                          color: " #f7dc6f ",
-                          fontWeight: "bold",
-                          marginTop: "18px",
-                        }}
-                      >
-                        Imagen
-                      </Form.Label>
-                      <Form.Control
-                        name="imagen"
-                        value={eventData?.imagen}
-                        type="url"
-                        onChange={handleChange}
-                        required
-                        style={{
-                          background: " #f7dc6f ",
-                          borderColor: "black",
-                        }}
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        Please provide a valid url.
-                      </Form.Control.Feedback>
-                    </Form.Group>
+                              
+                              < UploadImg  setimgUp={setUrlImg} />
+                              {urlImg && <img src= {urlImg}/>}
+                            </Form.Group>
+
 
                     <Form.Group controlId="validationCustom12">
                       <Form.Label

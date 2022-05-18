@@ -73,7 +73,7 @@ function rootReducer(state = InitialState, action) {
         /* console.log(eventitosNuevo,"soy eventito nuevo") */
         for (let j = 0; j < action.payload.length; j++) {
           /* console.log(action.payload, "soy el action payload") */
-          if (eventitosNuevo[i].date == action.payload[j]) {
+          if (eventitosNuevo[i].date === action.payload[j]) {
             coleccion.push(eventitosNuevo[i]);
           }
         }
