@@ -276,6 +276,7 @@ export function Selector() {
 
   useEffect(() => {
     setFilterCity(getData());
+     dispatch(getAllEvent());
   }, []);
   //----------------------------------------------------
 
@@ -285,6 +286,10 @@ export function Selector() {
   
       
     } */
+ function handleClick(e) {
+   e.preventDefault();
+   dispatch(getAllEvent());
+ }
 
   return (
     <Container >
@@ -295,10 +300,12 @@ export function Selector() {
           bg="warning"
           variant="warning"
           style={{ color: " #f0ad4e", fontWeight: "bold", width: "auto" }}
+          onClick={(e) => { handleClick(e) }}
         >
           {" "}
+
           UnderEventsApp
-        </Navbar.Brand>
+        </Navbar.Brand >
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
