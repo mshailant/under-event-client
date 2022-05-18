@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllOrders, getAllEvent } from "../redux/actions/actions";
+import { getAllOrders, getAllEvent, getUsers } from "../redux/actions/actions";
 import {
     Container,
     Card,
@@ -16,24 +16,50 @@ import {
 export function EventosCreadosPorElUsuario() {
     const dispatch = useDispatch();
 
-    let MyUserId = "0630dcbd-136a-4045-98e8-5a473b8175ba";
+    /* let MyUserId = "0630dcbd-136a-4045-98e8-5a473b8175ba"; */
 
     useEffect(() => {
         dispatch(getAllOrders());
         dispatch(getAllEvent());
+        dispatch(getUsers())
     }, [dispatch]);
 
-    // me haria falta el id del usuario -------------------------------------------------------
-    const usuario = useSelector((state) => state.userLoged);
-    console.log(usuario, "soy el usuario")
-    // pero encima no esta en este estado, ¿de donde lo puedo sacar?---------------------------
+    // me haria falta el id del usuario LOGUEADO-------------------------------------------------------
+    let usuario = useSelector((state) => state.userLoged);
+    console.log(usuario.email, "soy el usuario logueado")
+    // pero encima no esta en este estado, ¿de donde lo puedo sacar?----------|
+    //----------------------------------------------------------------------- |
+    //                                                                        |
+    // aqui me traigo todos los usuarios de la pagina [{...}] <--- de aqui lo puedo sacar
+    let allUser = useSelector((state) => state.users);
+    console.log(allUser, "soy todos los usuarios")
+
+    // tomare solo el mail de los usuarios -----------> por que es lo unico que no se puede repetir entre usuarios
+    // y con ello podre descubrir el id del usuario logueado
+    let soloEmails = allUser.map(e => e.email)
+    console.log(soloEmails, "soy solo los mails")
+
+    // ahora puedo obtener el id del usuario logueado
+    let idDelUsuarioLogueado;
+    for (let i = 0; i < soloEmails.length; i++){
+        if (soloEmails[i] == usuario.email){
+            /* var coincide = true
+            console.log(coincide) */
+            idDelUsuarioLogueado = allUser.map(e => e.id)
+        }  
+    }
+
+
+    console.log(idDelUsuarioLogueado, "soy el id del usuario logueado")
+
+
+
 
     try{
 
         //aqui me traigo los eventos
         const objetos = useSelector((state) => state.eventosBack);
-        /* const usuario = useSelector((state) => state.userLoged); */
-        console.log(objetos, "soy los eventos")
+        /* console.log(objetos, "soy los eventos") */
 
         //quiero recorrerlos
 
@@ -45,7 +71,7 @@ export function EventosCreadosPorElUsuario() {
         let precio = []
 
         for (let i=0; i < objetos.length; i++){
-             if(objetos[i].UserId === MyUserId){
+             if(objetos[i].UserId == idDelUsuarioLogueado/* MyUserId */){
                  nombre.push(objetos[i].title)
                  stock.push(objetos[i].stock)
                  ciudad.push(objetos[i].city)
@@ -57,8 +83,8 @@ export function EventosCreadosPorElUsuario() {
 
         }
 
-        console.log(nombre, "soy el titulo del creado")
-        console.log(stock, "soy el stock del creado")
+        /* console.log(nombre, "soy el titulo del creado")
+        console.log(stock, "soy el stock del creado") */
 
         return(
             <div>
