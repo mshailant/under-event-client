@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { translationEs, stylesColor } from "./uploadConfig";
-
+import {Button} from "react-bootstrap";
 
 
 export default function UploadImg({ setimgUp }) {
@@ -34,9 +34,9 @@ export default function UploadImg({ setimgUp }) {
 
   return (
     <div>
-      <button variant="contained" color="primary" onClick={() => uploadImage()}>
+      <Button variant="warning" onClick={() => uploadImage()}>
         Subir foto
-      </button>
+      </Button>
     </div>
   );
 }

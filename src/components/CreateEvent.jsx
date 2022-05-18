@@ -94,8 +94,9 @@ export function CreateEvent() {
       event.preventDefault();
       event.stopPropagation();
     } else {
-      dispatch(createEvent(eventData, userLoged.externalId)).then((res) => {
+      dispatch(createEvent({...eventData, imagen: urlImg}, userLoged.externalId)).then((res) => {
         navigate(`/${res.payload.newEvent.id}`);
+
       });
       event.preventDefault();
       event.stopPropagation();
@@ -511,29 +512,10 @@ export function CreateEvent() {
                     </Form.Group>
 
                     <Form.Group controlId="validationCustom11">
-                      <Form.Label
-                        style={{
-                          color: " #f7dc6f ",
-                          fontWeight: "bold",
-                          marginTop: "18px",
-                        }}
-                      >
-                        Imagen
-                      </Form.Label>
-                      <Form.Control
-                        name="imagen"
-                        value={eventData?.imagen}
-                        type="url"
-                        onChange={handleChange}
-                        required
-                        style={{
-                          background: " #f7dc6f ",
-                          borderColor: "black",
-                        }}
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        Please provide a valid url.
-                      </Form.Control.Feedback>
+
+                    < UploadImg  setimgUp={setUrlImg} />
+                                  {urlImg && <img src= {urlImg} style={{width:"500px"}}/>}
+
                     </Form.Group>
 
                     <Form.Group controlId="validationCustom12">
