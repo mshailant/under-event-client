@@ -22,6 +22,7 @@ import { Formik } from "formik";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import NavTop from "./NavBars/Nav";
 import imagen from "../images/pexels-darya-sannikova-3824763.jpg";
+import UploadImg from "./UploadImg/UploadImg";
 
 export function CreateEvent() {
   const stateInitialForms = {
@@ -48,7 +49,7 @@ export function CreateEvent() {
   const userLoged = useSelector((state) => state.userLoged);
   const genres = useSelector((state) => state.allGeneros);
   const city = useSelector((state) => state.allCities);
-
+  const [urlImg, setUrlImg] = useState("");
   useEffect(() => {
     dispatch(Action.getAllGeneros());
     dispatch(Action.getAllCities());
@@ -83,7 +84,7 @@ export function CreateEvent() {
       event.stopPropagation();
     }
 
-    dispatch(Action.createEvent({ ...input, userEmail: userLoged.email }));
+    dispatch(Action.createEvent({ ...input, userEmail: userLoged.email, imagen: urlImg }));
     alert("New event added successfully!");
     setInput({
       title: "",
@@ -310,20 +311,9 @@ export function CreateEvent() {
                                 </Form.Group>
 
                                 <Form.Group controlId="validationCustom11">
-                                  <Form.Label style={{ color:  " #f7dc6f " , fontWeight:"bold", marginTop:"18px"}} >
-                                    Imagen
-                                  </Form.Label>
-                                  <Form.Control
-                                    name="imagen"
-                                    value={input.imagen}
-                                    type="text"
-                                    onChange={(e) => handleInputChange(e)}
-                                    required
-                                    style={{ background:  " #f7dc6f " , borderColor: "black"}}
-                                  />
-                                  <Form.Control.Feedback>
-                                    Looks good!
-                                  </Form.Control.Feedback>
+                              
+                                  < UploadImg  setimgUp={setUrlImg} />
+                                  {urlImg && <img src= {urlImg}/>}
                                 </Form.Group>
 
                                 <Form.Group controlId="validationCustom12">
