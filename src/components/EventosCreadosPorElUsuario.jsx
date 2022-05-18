@@ -11,6 +11,7 @@ import {
     Button,
     Modal,
 } from "react-bootstrap";
+import Footer from "./Footer/Footer";
 
 
 export function EventosCreadosPorElUsuario() {
@@ -71,9 +72,9 @@ export function EventosCreadosPorElUsuario() {
         let precio = []
 
         for (let i=0; i < objetos.length; i++){
-             if(objetos[i].UserId == idDelUsuarioLogueado/* MyUserId */){
-                 nombre.push(objetos[i].title)
-                 stock.push(objetos[i].stock)
+            if(objetos[i].UserId == idDelUsuarioLogueado/* MyUserId */){
+                nombre.push(objetos[i].title)
+                stock.push(objetos[i].stock)
                  ciudad.push(objetos[i].city)
                  fecha.push(objetos[i].date)
                  hora.push(objetos[i].time)
@@ -82,14 +83,16 @@ export function EventosCreadosPorElUsuario() {
              }
 
         }
-
+        
+   
         /* console.log(nombre, "soy el titulo del creado")
         console.log(stock, "soy el stock del creado") */
 
         return(
-            <div>
-                <div>
-                <Container bg="white" mt={5} mb={5}>
+            
+            <div style={{background: "#f0ad4e",  height: "100%"}} >
+                <div style={{background: "#f0ad4e"}} >
+                <Container style={{background: "#f0ad4e", height: "500px"}} bg="white" mt={5} mb={5}>
                 <h2>Eventos que has creado</h2>
                 <Table striped hover>
                                 <thead>
@@ -127,7 +130,8 @@ export function EventosCreadosPorElUsuario() {
                             </Table>
                             </Container>
                 </div>
-                
+               
+                <Footer/>
             </div>
 
             
@@ -136,6 +140,7 @@ export function EventosCreadosPorElUsuario() {
     }catch(e){
         console.log(e)
     }
+
 
     
 }

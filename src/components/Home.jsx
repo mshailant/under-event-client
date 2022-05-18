@@ -104,55 +104,7 @@ export default function Home() {
 
             <Container fluid style={{ width: "100wh" }}>
               <Row>
-                <Col style={{ width: "100wh" }}>
-                  {" "}
-                  <div className={styles.cards}>
-                    {Array.isArray(events) && events.length ? (
-                      events.map((e) => {
-                        return (
-                          <div key={e.id}>
-                            <Cardi
-                              title={e.title}
-                              imagen={e.imagen}
-                              date={e.date}
-                              id={e.id}
-                              eventType={e.eventType}
-                              state={e.state}
-                              place={e.place}
-                              key={e.id}
-                              month={e.month}
-                            />
-                          </div>
-                        );
-                      })
-                    ) : (
-                      <Alert
-                        style={{
-                          width: "850px",
-                          height: "350px",
-                          marginLeft: "75%",
-                        }}
-                        variant="light"
-                      >
-                        <Alert.Heading>
-                          Ups... Something went wrong
-                        </Alert.Heading>
-                        <p>
-                          Aww yeah, you successfully read this important alert
-                          message. This example text is going to run a bit
-                          longer so that you can see how spacing within an alert
-                          works with this kind of content.
-                        </p>
-                        <hr />
-                        <p className="mb-0">
-                          Whenever you need to, be sure to use margin utilities
-                          to keep things nice and tidy.
-                        </p>
-                      </Alert>
-                    )}
-                  </div>
-                </Col>
-                <Col style={{ marginTop: "120px", float: "rigth" }} md="auto">
+              <Col style={{ marginTop: "120px", float: "rigth" , width: "auto" }} md="auto">
                   <div
                     className={styles.calendarContainer}
                     style={{ marginLeft: "6%" }}
@@ -204,6 +156,55 @@ export default function Home() {
                     </Card>
                   </div>
                 </Col>
+                <Col style={{ width: "100wh", marginLeft: "60px" }}>
+{" "}
+<div className={styles.cards}>
+  {Array.isArray(events) && events.length ? (
+    events.map((e) => {
+      return (
+        <div key={e.id}>
+          <Cardi
+            title={e.title}
+            imagen={e.imagen}
+            date={e.date}
+            id={e.id}
+            eventType={e.eventType}
+            state={e.state}
+            place={e.place}
+            key={e.id}
+            month={e.month}
+          />
+        </div>
+      );
+    })
+  ) : (
+    <Alert
+      style={{
+        width: "850px",
+        height: "350px",
+        marginLeft: "75%",
+      }}
+      variant="light"
+    >
+      <Alert.Heading>
+        Ups... Something went wrong
+      </Alert.Heading>
+      <p>
+        Aww yeah, you successfully read this important alert
+        message. This example text is going to run a bit
+        longer so that you can see how spacing within an alert
+        works with this kind of content.
+      </p>
+      <hr />
+      <p className="mb-0">
+        Whenever you need to, be sure to use margin utilities
+        to keep things nice and tidy.
+      </p>
+    </Alert>
+  )}
+</div>
+</Col>
+               
               </Row>
             </Container>
 
