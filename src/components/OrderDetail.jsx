@@ -122,6 +122,7 @@ export default function OrderDetail() {
     console.log(ciudad, "soy la ciudad de los eventos")
     console.log(costo, "soy el costo de los eventos")
 
+
     
 
     return (
@@ -142,32 +143,32 @@ export default function OrderDetail() {
                   {/* <table className="table  text-center"> */}
                     <thead>
                       <tr>
-                        <th scope="col">Index </th>
-                        <th scope="col">Ticket ID </th>
-                        <th scope="col">Evento ID</th>
-                        <th scope="col">Nombre del evento</th>
-                        <th scope="col">Ciudad</th>
-                        <th scope="col">Lugar</th>
-                        <th scope="col">fecha</th>
-                        <th scope="col">Hora</th>
-                        <th scope="col">Costo</th>
-                        <th scope="col">Id de Usuario </th>
+                        <th style={{fontWeight: "bold", fontSize: "20px"}}  scope="col">Index </th>
+                        <th style={{fontWeight: "bold", fontSize: "20px"}} scope="col">Ticket ID </th>
+                        <th style={{fontWeight: "bold", fontSize: "20px"}} scope="col">Evento ID</th>
+                        <th style={{fontWeight: "bold", fontSize: "20px"}} scope="col">Nombre del evento</th>
+                        <th style={{fontWeight: "bold", fontSize: "20px"}} scope="col">Ciudad</th>
+                        <th style={{fontWeight: "bold", fontSize: "20px"}} scope="col">Lugar</th>
+                        <th style={{fontWeight: "bold", fontSize: "20px"}} scope="col">fecha</th>
+                        <th style={{fontWeight: "bold", fontSize: "20px"}} scope="col">Hora</th>
+                        <th style={{fontWeight: "bold", fontSize: "20px"}} scope="col">Costo</th>
+                        <th style={{fontWeight: "bold", fontSize: "20px"}} scope="col">Id de Usuario </th>
                         {/* <th scope="col">Nombre </th>
                         <th scope="col">Apellido </th> */}
                       </tr>
                     </thead>
                     {ticketSlpit?.map((e, index) => (
                       <tr key={index}>
-                        {<td>{index}</td>}
-                        <td>{ticketSlpit[index]}</td>
-                        <td>{IdsDeLosEventosSlpit[index]}</td>
-                        <td>{nombreDeLosEventos[index]}</td>
-                        <td>{ciudad[index]}</td>
-                        <td>{lugar[index]}</td>
-                        <td>{fecha[index]}</td>
-                        <td>{hora[index]}</td>
-                        <td>${costo[index]}</td>
-                        <td>{idDelUsuario}</td>
+                        {<td style={{fontWeight: "bold"}} >{index}</td>}
+                        <td style={{fontWeight: "bold"}} >{ticketSlpit[index]}</td>
+                        <td style={{fontWeight: "bold"}} >{IdsDeLosEventosSlpit[index]}</td>
+                        <td style={{fontWeight: "bold"}} >{nombreDeLosEventos[index]}</td>
+                        <td style={{fontWeight: "bold"}} >{ciudad[index]}</td>
+                        <td style={{fontWeight: "bold"}} >{lugar[index]}</td>
+                        <td style={{fontWeight: "bold"}} >{fecha[index]}</td>
+                        <td style={{fontWeight: "bold"}} >{hora[index]}</td>
+                        <td style={{fontWeight: "bold"}}>${costo[index]}</td>
+                        <td style={{fontWeight: "bold"}} >{idDelUsuario}</td>
                         {/* <td>{nombreSolo}</td>
                         <td>{apellidoSolo}</td> */}
                       </tr>
@@ -176,13 +177,22 @@ export default function OrderDetail() {
                   {/* </table> */}
                 </div>
                 </div>
+                <div style={{marginTop: '250px'}}>
+
+                <Carousely/>
+                </div>
               </Col>
             </Row>
           </Container>
         </div>
         </Container>
+        <div style={{marginTop: "15px"}}>
+
+        <Footer/>
+        </div>
       </div>
     );
+
 
 
   } catch (error) {

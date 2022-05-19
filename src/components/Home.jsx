@@ -183,18 +183,15 @@ export default function Home() {
         width: "850px",
         height: "350px",
         marginLeft: "75%",
+        background: "#292b2c",
+        color: '#f0ad4e'
       }}
       variant="light"
     >
       <Alert.Heading>
-        Ups... Something went wrong
+        No eventos que coincidan con tu busqueda
       </Alert.Heading>
-      <p>
-        Aww yeah, you successfully read this important alert
-        message. This example text is going to run a bit
-        longer so that you can see how spacing within an alert
-        works with this kind of content.
-      </p>
+    
       <hr />
       <p className="mb-0">
         Whenever you need to, be sure to use margin utilities

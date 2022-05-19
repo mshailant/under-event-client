@@ -13,6 +13,7 @@ import {
 } from "react-leaflet";
 import Loading from "./Loading";
 
+
 import L from "leaflet";
 import {
   Button,
@@ -136,9 +137,12 @@ export function CreateEvent() {
                   <div>
                     <h5
                       style={{
-                        color: " #f7dc6f ",
+                        color: " #f0ad4e ",
                         borderColor: "black",
                         fontWeight: "bold",
+                        marginLeft: "130px",
+                        fontWeight: "bold",
+                        
                       }}
                     >
                       INGRESA LOS DATOS DE TU EVENTO
@@ -148,7 +152,7 @@ export function CreateEvent() {
                   <Form.Group controlId="validationCustom01">
                     <Form.Label
                       style={{
-                        color: " #f7dc6f ",
+                        color: " #f0ad4e ",
                         fontWeight: "bold",
                         marginTop: "18px",
                       }}
@@ -161,7 +165,7 @@ export function CreateEvent() {
                       name="title"
                       value={eventData?.title}
                       onChange={handleChange}
-                      style={{ background: " #f7dc6f ", borderColor: "black" }}
+                      style={{ background: " #f0ad4e ", borderColor: "black" }}
                     />
                     <Form.Control.Feedback type="invalid">
                       Please provide a valid name.
@@ -171,7 +175,7 @@ export function CreateEvent() {
                   <Form.Group controlId="validationCustom02">
                     <Form.Label
                       style={{
-                        color: " #f7dc6f ",
+                        color: " #f0ad4e ",
                         fontWeight: "bold",
                         marginTop: "18px",
                       }}
@@ -179,11 +183,15 @@ export function CreateEvent() {
                       Genero Musical
                     </Form.Label>
                     <Form.Select
-                      style={{ background: " #f7dc6f ", borderColor: "black" }}
+                      style={{ background: " #f0ad4e ", borderColor: "black",background: "#f0ad4e",
+                      borderColor: "black",
+                      fontWeight: "bold",
+                      cursor: "pointer", }}
                       required
                       name="genero"
                       defaultValue={eventData?.genero}
                       onChange={handleChange}
+                      
                     >
                       <option>Seleccion tu Genero</option>
                       {genres?.map((dl) => (
@@ -198,7 +206,7 @@ export function CreateEvent() {
                   <Form.Group controlId="validationCustom03">
                     <Form.Label
                       style={{
-                        color: " #f7dc6f ",
+                        color: " #f0ad4e ",
                         fontWeight: "bold",
                         marginTop: "18px",
                       }}
@@ -213,7 +221,7 @@ export function CreateEvent() {
                       onChange={handleChange}
                       required
                       style={{
-                        background: " #f7dc6f ",
+                        background: " #f0ad4e ",
                         borderColor: "black",
                       }}
                     />
@@ -226,7 +234,7 @@ export function CreateEvent() {
                     <Form.Group controlId="validationCustom04">
                       <Form.Label
                         style={{
-                          color: " #f7dc6f ",
+                          color: " #f0ad4e ",
                           fontWeight: "bold",
                           marginTop: "18px",
                         }}
@@ -242,7 +250,7 @@ export function CreateEvent() {
                           marginBottom: "20px",
                           borderColor: "black",
                           borderWidth: "4px",
-                          background: " #f7dc6f ",
+                          background: " #f0ad4e ",
                         }}
                       >
                         <MapContainer
@@ -267,7 +275,7 @@ export function CreateEvent() {
                     <Form.Group as={Col} controlId="validationCustom01">
                       <Form.Label
                         style={{
-                          color: " #f7dc6f ",
+                          color: " #f0ad4e ",
                           fontWeight: "bold",
                           marginTop: "18px",
                         }}
@@ -284,7 +292,7 @@ export function CreateEvent() {
                         onChangeCapture={handleChange}
                         disabled={true}
                         style={{
-                          background: " #f7dc6f ",
+                          background: " #f0ad4e ",
                           borderColor: "black",
                         }}
                       />
@@ -292,7 +300,7 @@ export function CreateEvent() {
                     <Form.Group as={Col} controlId="validationCustom02">
                       <Form.Label
                         style={{
-                          color: " #f7dc6f ",
+                          color: " #f0ad4e ",
                           fontWeight: "bold",
                           marginTop: "18px",
                         }}
@@ -308,7 +316,7 @@ export function CreateEvent() {
                         onChange={handleChange}
                         disabled={true}
                         style={{
-                          background: " #f7dc6f ",
+                          background: " #f0ad4e ",
                           borderColor: "black",
                         }}
                       />
@@ -318,7 +326,7 @@ export function CreateEvent() {
                     <Form.Group controlId="validationCustom04">
                       <Form.Label
                         style={{
-                          color: " #f7dc6f ",
+                          color: " #f0ad4e ",
                           fontWeight: "bold",
                           marginTop: "18px",
                         }}
@@ -336,7 +344,7 @@ export function CreateEvent() {
                         onChange={handleChange}
                         required
                         style={{
-                          background: " #f7dc6f ",
+                          background: " #f0ad4e ",
                           borderColor: "black",
                         }}
                       />
@@ -350,7 +358,7 @@ export function CreateEvent() {
                     <Form.Group controlId="validationCustom05">
                       <Form.Label
                         style={{
-                          color: " #f7dc6f ",
+                          color: " #f0ad4e ",
                           fontWeight: "bold",
                           marginTop: "18px",
                         }}
@@ -364,7 +372,7 @@ export function CreateEvent() {
                         onChange={handleChange}
                         required
                         style={{
-                          background: " #f7dc6f ",
+                          background: " #f0ad4e ",
                           borderColor: "black",
                         }}
                       />
@@ -376,7 +384,7 @@ export function CreateEvent() {
                     <Form.Group controlId="validationCustom06">
                       <Form.Label
                         style={{
-                          color: " #f7dc6f ",
+                          color: " #f0ad4e ",
                           fontWeight: "bold",
                           marginTop: "18px",
                         }}
@@ -390,7 +398,7 @@ export function CreateEvent() {
                         onChange={handleChange}
                         required
                         style={{
-                          background: " #f7dc6f ",
+                          background: " #f0ad4e ",
                           borderColor: "black",
                         }}
                       />
@@ -403,7 +411,7 @@ export function CreateEvent() {
                   <Form.Group controlId="validationCustom07">
                     <Form.Label
                       style={{
-                        color: " #f7dc6f ",
+                        color: " #f0ad4e ",
                         fontWeight: "bold",
                         marginTop: "18px",
                       }}
@@ -413,10 +421,12 @@ export function CreateEvent() {
 
                     <Form.Select
                       name="city"
-                      style={{
-                        background: " #f7dc6f ",
-                        borderColor: "black",
-                      }}
+                      style={{ background: " #f0ad4e ", borderColor: "black",background: "#f0ad4e",
+                      borderColor: "black",
+                      fontWeight: "bold",
+                      cursor: "pointer" }}
+                        
+                      
                       required
                       defaultValue={eventData?.city}
                       onChange={handleChange}
@@ -435,7 +445,7 @@ export function CreateEvent() {
                   <Form.Group controlId="validationCustom08">
                     <Form.Label
                       style={{
-                        color: " #f7dc6f ",
+                        color: " #f0ad4e ",
                         fontWeight: "bold",
                         marginTop: "18px",
                       }}
@@ -449,7 +459,7 @@ export function CreateEvent() {
                       onChange={handleChange}
                       required
                       style={{
-                        background: " #f7dc6f ",
+                        background: " #f0ad4e ",
                         borderColor: "black",
                       }}
                     />
@@ -462,7 +472,7 @@ export function CreateEvent() {
                     <Form.Group controlId="validationCustom09">
                       <Form.Label
                         style={{
-                          color: " #f7dc6f ",
+                          color: " #f0ad4e ",
                           fontWeight: "bold",
                           marginTop: "18px",
                         }}
@@ -476,7 +486,7 @@ export function CreateEvent() {
                         onChange={handleChange}
                         required
                         style={{
-                          background: " #f7dc6f ",
+                          background: " #f0ad4e ",
                           borderColor: "black",
                         }}
                       />
@@ -488,7 +498,7 @@ export function CreateEvent() {
                     <Form.Group controlId="validationCustom10">
                       <Form.Label
                         style={{
-                          color: " #f7dc6f ",
+                          color: " #f0ad4e ",
                           fontWeight: "bold",
                           marginTop: "18px",
                         }}
@@ -502,7 +512,7 @@ export function CreateEvent() {
                         onChange={handleChange}
                         required
                         style={{
-                          background: " #f7dc6f ",
+                          background: " #f0ad4e ",
                           borderColor: "black",
                         }}
                       />
@@ -513,15 +523,14 @@ export function CreateEvent() {
 
                     <Form.Group controlId="validationCustom11">
 
-                    < UploadImg  setimgUp={setUrlImg} />
-                                  {urlImg && <img src= {urlImg} style={{width:"500px"}}/>}
+                  
 
                     </Form.Group>
 
                     <Form.Group controlId="validationCustom12">
                       <Form.Label
                         style={{
-                          color: " #f7dc6f ",
+                          color: " #f0ad4e ",
                           fontWeight: "bold",
                           marginTop: "18px",
                         }}
@@ -536,7 +545,7 @@ export function CreateEvent() {
                         onChange={handleChange}
                         required
                         style={{
-                          background: " #f7dc6f ",
+                          background: " #f0ad4e ",
                           borderColor: "black",
                         }}
                       />
@@ -548,7 +557,7 @@ export function CreateEvent() {
                     <Form.Group controlId="validationCustom13">
                       <Form.Label
                         style={{
-                          color: " #f7dc6f ",
+                          color: " #f0ad4e ",
                           fontWeight: "bold",
                           marginTop: "18px",
                         }}
@@ -564,7 +573,7 @@ export function CreateEvent() {
                         onChange={handleChange}
                         required
                         style={{
-                          background: " #f7dc6f ",
+                          background: " #f0ad4e ",
                           borderColor: "black",
                         }}
                       />
@@ -572,6 +581,11 @@ export function CreateEvent() {
                         Please provide a valid stock.
                       </Form.Control.Feedback>
                     </Form.Group>
+                          <div style={{marginTop: "15px", fontWeight: "bold"}}>
+
+                    < UploadImg  setimgUp={setUrlImg} />
+                                  {urlImg && <img src= {urlImg} width="100" height="150" />}
+                          </div>
                   </>
 
                   <div className="d-grid gap-2">
@@ -593,7 +607,7 @@ export function CreateEvent() {
               <img
                 className={styles.img}
                 src={imagen}
-                width="620px"
+                width="420px"
                 height="auto"
                 alt="imagen"
               />

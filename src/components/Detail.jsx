@@ -301,7 +301,7 @@ const Detail = () => {
                     style={{
                       width: "520px",
                       marginTop: "20px",
-                      marginLeft: "8%",
+                      marginLeft: "2%",
                       fontWeight: "bold",
                     }}
                     className={styles.btn}
@@ -410,7 +410,7 @@ const Detail = () => {
                                 className="mb-3"
                                 controlId="exampleForm.ControlInput1"
                               >
-                                <Form.Label>Nombre </Form.Label>
+                                <Form.Label style={{color: "#f0ad4e"}}>Nombre </Form.Label>
                                 <Form.Control
                                   type="text"
                                   autoFocus
@@ -423,7 +423,7 @@ const Detail = () => {
                                 className="mb-3"
                                 controlId="exampleForm.ControlTextarea1"
                               >
-                                <Form.Label>Descripcion del evento</Form.Label>
+                                <Form.Label style={{color: "#f0ad4e"}} >Descripcion del evento</Form.Label>
                                 <Form.Control
                                   name="description"
                                   value={input.description}
@@ -447,10 +447,11 @@ const Detail = () => {
                                 <option value="5">5</option>
                               </Form.Select>  */}
                               <Button
+                                style={{width: "350px", marginLeft: "12%"}}
                                 type="submit"
                                 variant="outline-warning"
                                 onClick={handleClose}
-                                style={{width: "250px,", marginLeft: "23%"}}
+                                
                                 
                               >
                                 Enviar

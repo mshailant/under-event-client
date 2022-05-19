@@ -26,8 +26,7 @@ export const FILTER_CALENDER_NUEVO = "FILTER_CALENDER_NUEVO"
 export const ADD_REVIEWS = "ADD_REVIEWS"
 export const CLEAN_DETAIL = "CLEAN_DETAIL"
 export const GET_REVIEWS = "GET_REVIEWS"
-
-
+export const GET_EVENTS_CLIENT = "GET_EVENTS_CLIENT"
 
 
 const API_URL = "http://localhost:3001";
@@ -342,4 +341,36 @@ export function detailClean (){
   return{
       type:CLEAN_DETAIL
   }
+}
+
+
+
+export function getEventClient(id) {
+  return async function (dispatch) {
+    try {
+      const events = await axios.get(
+        `http://localhost:3001/events/eventclient/${id}/`
+      );
+      return dispatch({
+        type: GET_EVENTS_CLIENT,
+        payload: events.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+}
+
+
+export function putEventClient(id, payload) {
+  return async function () {
+    try {
+       await axios.put( `http://localhost:3001/events/putEvent/${id}/`, payload);
+     
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
 }

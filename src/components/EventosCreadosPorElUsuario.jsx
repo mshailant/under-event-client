@@ -1,148 +1,110 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllOrders, getAllEvent, getUsers } from "../redux/actions/actions";
 import {
-    Container,
-    Card,
-    Row,
-    Table,
-    Col,
-    Form,
-    Button,
-    Modal,
+  
+  getEventClient,
+  getUserByExternalId
+} from "../redux/actions/actions";
+import {
+  Container,
+  Button,
+  Table,
+  Spinner
 } from "react-bootstrap";
 import Footer from "./Footer/Footer";
+import ClientEvent from "./ClientEvent.jsx";
+import { useAuth0 } from "@auth0/auth0-react";
 
+ 
+ 
+  
 
 export function EventosCreadosPorElUsuario() {
-    const objetos = useSelector((state) => state.eventosBack);
-    const dispatch = useDispatch();
-
-    /* let MyUserId = "0630dcbd-136a-4045-98e8-5a473b8175ba"; */
-
-    useEffect(() => {
-        dispatch(getAllOrders());
-        dispatch(getAllEvent());
-        dispatch(getUsers())
-    }, [dispatch]);
-
-    // me haria falta el id del usuario LOGUEADO-------------------------------------------------------
-    let usuario = useSelector((state) => state.userLoged);
+  const objeto = useSelector((state) => state.eventClient);
+  const loginUser = useSelector((state) => state.userLoged);
+ 
   
-    // pero encima no esta en este estado, ¿de donde lo puedo sacar?----------|
-    //----------------------------------------------------------------------- |
-    //                                                                        |
-    // aqui me traigo todos los usuarios de la pagina [{...}] <--- de aqui lo puedo sacar
-    let allUser = useSelector((state) => state.users);
-   // console.log(allUser, "soy todos los usuarios")
 
-    // tomare solo el mail de los usuarios -----------> por que es lo unico que no se puede repetir entre usuarios
-    // y con ello podre descubrir el id del usuario logueado
-    try{
-    let soloEmails = allUser.map(e => e.email)
-    console.log(soloEmails, "soy solo los mails")
+  const [openModal, setOpenModal] = useState(false);
+  const [modalData, setModalData] = useState(null);
+  const [action, setAction] = useState(loginUser)
+  const { user, isAuthenticated, loginWithPopup } = useAuth0();
+ 
 
-    // ahora puedo obtener el id del usuario logueado
-    let idDelUsuarioLogueado;
-    for (let i = 0; i < soloEmails.length; i++){
-        if (soloEmails[i] == usuario.email){
-            /* var coincide = true
-            console.log(coincide) */
-            idDelUsuarioLogueado = allUser.map(e => e.id)
-        }  
-    }
+  const dispatch = useDispatch();
 
+  /* let MyUserId = "0630dcbd-136a-4045-98e8-5a473b8175ba"; */
+  //let user = "68d5f8eb-9d21-4adf-89cc-00e09537d9cc";
 
-    console.log(idDelUsuarioLogueado, "soy el id del usuario logueado")
-
-
-
-
-
-        //aqui me traigo los eventos
-        /* console.log(objetos, "soy los eventos") */
-
-        //quiero recorrerlos
-
-        let nombre = []
-        let stock = []
-        let ciudad = []
-        let fecha = []
-        let hora = []
-        let precio = []
-
-        for (let i=0; i < objetos.length; i++){
-            if(objetos[i].UserId == idDelUsuarioLogueado/* MyUserId */){
-                nombre.push(objetos[i].title)
-                stock.push(objetos[i].stock)
-                 ciudad.push(objetos[i].city)
-                 fecha.push(objetos[i].date)
-                 hora.push(objetos[i].time)
-                 precio.push(objetos[i].cost)
-
-             }
-
-        }
-        
-   
-        /* console.log(nombre, "soy el titulo del creado")
-        console.log(stock, "soy el stock del creado") */
-
-        return(
-            
-            <div style={{background: "#f0ad4e",  height: "100%"}} >
-                <div style={{background: "#f0ad4e"}} >
-                <Container style={{background: "#f0ad4e", height: "500px"}} bg="white" mt={5} mb={5}>
-                <h2>Eventos que has creado</h2>
-                <Table striped hover>
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Nombre del evento</th>
-                                        <th>Ciudad</th>
-                                        <th>Fecha</th>
-                                        <th>Hora</th>
-                                        <th>Cantidad de entradas</th>
-                                        <th>Precio</th>
-                                        <th>Necesitas cambiar algo?</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {nombre?.map((e, index) => (
-                                        <tr key={index}>
-                                            <td>{index}</td>
-                                            <td>{e}</td>
-                                            <td>{ciudad[index]}</td>
-                                            <td>{fecha[index]}</td>
-                                            <td>{hora[index]}</td>
-                                            <td>{stock[index]}</td>
-                                            <td>$ {precio[index]}</td>
-                                            <td><button>modificar</button></td>
-
-                                            
-
-                                        </tr>
-                                    ))}
-
-
-                                </tbody>
-                            </Table>
-                            </Container>
-                </div>
-               
-                <Footer/>
-            </div>
-
-            
-        )
-
-    }catch(e){
-        console.log(e)
-    }
-
-
+  useEffect(() => {
+    dispatch(getUserByExternalId(user.sub))
+    dispatch(getEventClient(loginUser?.id));
     
+    
+  }, [user]); // aca escucha //
+
+  
+  return (
+    <div style={{ background: "#f0ad4e", height: "100%" }}>
+      <div style={{ background: "#f0ad4e" }}>
+        <Container
+          style={{ background: "#f0ad4e", height: "500px" }}
+          bg="white"
+          mt={5}
+          mb={5}
+        >
+          <h2>Eventos que has creado</h2>
+          <Table striped hover>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre del evento</th>
+                <th>Ciudad</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Cantidad de entradas</th>
+                <th>Precio</th>
+                <th>Necesitas cambiar algo?</th>
+              </tr>
+            </thead>
+            <tbody>
+              {objeto ? objeto?.map((data, index) => (
+                <tr key={index}>
+                  <td>{index}</td>
+                  <td>{data?.title}</td>
+                  <td>{data?.city}</td>
+                  <td>{data?.date}</td>
+                  <td>{data?.time}</td>
+                  <td>{data?.stock}</td>
+                  <td>$ {data?.cost}</td>
+                  <td>
+                    <Button
+                      onClick={() => {
+                        setOpenModal(true);
+                        setModalData(data);
+                      }}
+                    >
+                      modificar
+                    </Button>
+                  </td>
+                  <ClientEvent
+                    openModal={openModal}
+                    setOpenModal={setOpenModal}
+                    e={modalData}
+                  />
+                </tr>
+              ))
+            : <Spinner/>
+
+            }
+            </tbody>
+          </Table>
+        </Container>
+      </div>
+
+      <Footer />
+    </div>
+  );
 }
 
 export default EventosCreadosPorElUsuario;

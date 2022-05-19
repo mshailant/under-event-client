@@ -1,12 +1,17 @@
 import React from "react";
 import Spinner from "react-bootstrap/Spinner";
+import { SpinnerCircularFixed } from "spinners-react";
 
 const Loading = () => {
   return (
-    <div class="d-flex justify-content-center">
-      <Spinner animation="border" role="status" variant="warning">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
+<div style={{ background: "#1C2833 ", width: "2000px", height: "100vh" }}>
+       <SpinnerCircularFixed
+            style={{
+              marginLeft: "940px",
+              fontWeight: "bold",
+              marginTop: "250px",
+            }}
+          />
     </div>
   );
 };
