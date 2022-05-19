@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
+
 .container1{
     background-attachment: fixed;
     background-position: center;
@@ -33,6 +35,10 @@
         /* Create the parallax scrolling effect */
        
     
+}
+
+h5{
+   font-family: 'League Gothic', sans-serif; ;
 }
 
 .containerForm{
@@ -120,3 +126,5 @@
 .footer{
     margin-top: 150px;
 }
+
+

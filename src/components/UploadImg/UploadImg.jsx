@@ -34,7 +34,7 @@ export default function UploadImg({ setimgUp }) {
 
   return (
     <div>
-      <Button variant="warning" onClick={() => uploadImage()}>
+      <Button variant="outline-warning" onClick={() => uploadImage()}>
         Subir foto
       </Button>
     </div>

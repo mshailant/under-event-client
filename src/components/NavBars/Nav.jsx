@@ -300,11 +300,12 @@ export function Selector() {
           bg="warning"
           variant="warning"
           style={{ color: " #f0ad4e", fontWeight: "bold", width: "auto" }}
-          onClick={(e) => { handleClick(e) }}
+          
         >
           {" "}
 
-          UnderEventsApp
+          
+          <Nav.Link   style={{ color: " #f0ad4e", fontWeight: "bold", width: "auto" }} onClick={(e) => { handleClick(e) }} >UnderEventsApp</Nav.Link>
         </Navbar.Brand >
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">

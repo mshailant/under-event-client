@@ -32,7 +32,9 @@ const InitialState = {
 
   allOrders: [],
 
-  reviews: []
+  reviews: [],
+
+  eventClient: []
 };
 
 function rootReducer(state = InitialState, action) {
@@ -218,6 +220,12 @@ function rootReducer(state = InitialState, action) {
         ...state,
         reviews: action.payload
         
+      }  
+
+    case Action.GET_EVENTS_CLIENT:
+      return{
+        ...state,
+        eventClient: action.payload
       }  
 
     default:

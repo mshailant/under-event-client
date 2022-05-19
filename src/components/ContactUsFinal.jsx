@@ -58,7 +58,7 @@ export default function ContactUsFinal() {
         </p>
    
         <Modal show={show} fullscreen={fullscreen} onHide={handleClose} style={{background: "#292b2c"}}>
-          <Modal.Header closeButton style={{background: "gold"}} >
+          <Modal.Header closeButton style={{background: "#f0ad4e"}} >
             <Modal.Title>Contactenos</Modal.Title>
           </Modal.Header>
           <Modal.Body style={{background: "#292b2c"}}>
